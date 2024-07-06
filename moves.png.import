@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmjb22oy0ft7w"
-path="res://.godot/imported/moves.png-489ee0502229ed3cbc12e210b2e239cf.ctex"
+path="res://.godot/imported/moves.png-0b21513e4f3d677c92161d4aac20acf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RPG_REMASTER/moves.png"
-dest_files=["res://.godot/imported/moves.png-489ee0502229ed3cbc12e210b2e239cf.ctex"]
+source_file="res://moves.png"
+dest_files=["res://.godot/imported/moves.png-0b21513e4f3d677c92161d4aac20acf3.ctex"]
 
 [params]
 

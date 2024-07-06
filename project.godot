@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="zack sam rpg remaster"
-run/main_scene="res://RPG_REMASTER/main_game_window.tscn"
+run/main_scene="res://main_game_window.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://RPG_REMASTER/icon.svg"

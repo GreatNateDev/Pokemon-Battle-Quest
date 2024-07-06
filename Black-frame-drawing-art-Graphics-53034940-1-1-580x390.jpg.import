@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vuhbxoqod3qy"
-path="res://.godot/imported/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg-ffa6c14ade5343aa457019f1fe758c0c.ctex"
+path="res://.godot/imported/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg-f2b0df2e03f4da7fc90bcd51a20d7fed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RPG_REMASTER/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg"
-dest_files=["res://.godot/imported/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg-ffa6c14ade5343aa457019f1fe758c0c.ctex"]
+source_file="res://Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg"
+dest_files=["res://.godot/imported/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg-f2b0df2e03f4da7fc90bcd51a20d7fed.ctex"]
 
 [params]
 

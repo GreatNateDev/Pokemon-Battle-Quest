@@ -5,15 +5,16 @@ var enemy : Dictionary
 func _process(delta: float) -> void:
 	if first_start == true:
 		randize_ivs()
-		$Player/HPBar.max_value = player.hp
-		$Player/HPBar.value = player.hp
+		$shadowed/Player/HPBar.max_value = player.hp
+		$shadowed/Player/HPBar.value = player.hp
 		summon_lvl_one()
 		first_start = false
 	
 
 
 func fight() -> void:
-	$moves_menu.show()
+	$non_shadowed/moves_menu.show()
+	$shadowed/shad.show()
 	
 func randize_ivs():
 	if first_start == true:
@@ -39,5 +40,26 @@ func summon_lvl_one():
 		"def" : def,
 		"atk" : atk
 	}
-	$Enemy/Enemy_HP.max_value = enemy.hp
-	$Enemy/Enemy_HP.value = enemy.hp
+	$shadowed/Enemy/Enemy_HP.max_value = enemy.hp
+	$shadowed/Enemy/Enemy_HP.value = enemy.hp
+
+
+func back_moves() -> void:
+	$non_shadowed/moves_menu.hide()
+func refreshbars():
+	$shadowed/Player/HPBar.value = player.hp
+	$shadowed/Enemy/Enemy_HP.value = enemy.hp
+
+func move_1() -> void:
+	match $non_shadowed/moves_menu/Move1.text:
+		"Slap" :
+			if player.atk != 1:
+				enemy.hp -= (player.atk / 2)
+				textudt("Nate used slap and did "+str(player.atk / 2)+" damage!")
+			else:
+				enemy.hp -= 1
+				textudt("Nate used slap and did 1 damage!")
+	$non_shadowed/moves_menu.hide()
+	refreshbars()
+func textudt(text):
+	$shadowed/text_box/text.text = text

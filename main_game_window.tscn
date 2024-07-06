@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://buoilgtwrgekn"]
+[gd_scene load_steps=9 format=3 uid="uid://buoilgtwrgekn"]
 
-[ext_resource type="Script" path="res://RPG_REMASTER/main_game_window.gd" id="1_q0di0"]
-[ext_resource type="Texture2D" uid="uid://bod77xxl1jqa7" path="res://RPG_REMASTER/very-very-easy.png" id="2_fbcbn"]
-[ext_resource type="Texture2D" uid="uid://dpbe5ha4plyao" path="res://RPG_REMASTER/shadow.png" id="3_2yb0r"]
-[ext_resource type="Texture2D" uid="uid://dmjb22oy0ft7w" path="res://RPG_REMASTER/moves.png" id="4_jdtxf"]
+[ext_resource type="Script" path="res://main_game_window.gd" id="1_q0di0"]
+[ext_resource type="Texture2D" uid="uid://bod77xxl1jqa7" path="res://very-very-easy.png" id="2_fbcbn"]
+[ext_resource type="Texture2D" uid="uid://dpbe5ha4plyao" path="res://shadow.png" id="3_2yb0r"]
+[ext_resource type="Texture2D" uid="uid://dmjb22oy0ft7w" path="res://moves.png" id="4_jdtxf"]
+[ext_resource type="Texture2D" uid="uid://csseg4up1xjve" path="res://box.png" id="5_6rhri"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tym52"]
 bg_color = Color(1, 0, 0, 1)
@@ -22,30 +23,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q0di0")
+metadata/_edit_lock_ = true
 
-[node name="Shop_Window_Button" type="Button" parent="."]
-layout_mode = 1
+[node name="shadowed" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Shop_Window_Button" type="Button" parent="shadowed"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -26.0
-offset_bottom = 8.0
+offset_left = -47.0
+offset_bottom = 31.0
 grow_horizontal = 0
 text = "Shop"
 
-[node name="Flee" type="Button" parent="."]
-layout_mode = 1
+[node name="Flee" type="Button" parent="shadowed"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -15.0
+offset_top = -30.0
 offset_right = 50.0
 offset_bottom = 1.0
 grow_vertical = 0
 text = "Flee"
 
-[node name="Bag" type="Button" parent="."]
-layout_mode = 1
+[node name="Bag" type="Button" parent="shadowed"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -56,8 +58,7 @@ offset_bottom = -32.0
 grow_vertical = 0
 text = "Bag"
 
-[node name="Fight" type="Button" parent="."]
-layout_mode = 1
+[node name="Fight" type="Button" parent="shadowed"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -67,8 +68,7 @@ offset_bottom = -32.0
 grow_vertical = 0
 text = "Fight"
 
-[node name="Switch" type="Button" parent="."]
-layout_mode = 1
+[node name="Switch" type="Button" parent="shadowed"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -79,8 +79,8 @@ offset_bottom = 1.0
 grow_vertical = 0
 text = "Swap"
 
-[node name="Enemy" type="Control" parent="."]
-layout_mode = 1
+[node name="Enemy" type="Control" parent="shadowed"]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -93,17 +93,17 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Enemy" type="Sprite2D" parent="Enemy"]
+[node name="Enemy" type="Sprite2D" parent="shadowed/Enemy"]
 position = Vector2(25, -169)
 scale = Vector2(7.19048, 6.61303)
 texture = ExtResource("2_fbcbn")
 
-[node name="shadow" type="Sprite2D" parent="Enemy"]
+[node name="shadow" type="Sprite2D" parent="shadowed/Enemy"]
 z_index = -1
 position = Vector2(29, -84)
 texture = ExtResource("3_2yb0r")
 
-[node name="Enemy_HP" type="ProgressBar" parent="Enemy"]
+[node name="Enemy_HP" type="ProgressBar" parent="shadowed/Enemy"]
 layout_mode = 0
 offset_left = -53.0
 offset_top = -273.0
@@ -112,8 +112,8 @@ offset_bottom = -246.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_tym52")
 value = 100.0
 
-[node name="Player" type="Control" parent="."]
-layout_mode = 1
+[node name="Player" type="Control" parent="shadowed"]
+layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -121,17 +121,17 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="Player" type="Sprite2D" parent="Player"]
+[node name="Player" type="Sprite2D" parent="shadowed/Player"]
 position = Vector2(324, -171)
 scale = Vector2(8.5625, 7.6875)
 texture = ExtResource("2_fbcbn")
 
-[node name="shadow" type="Sprite2D" parent="Player"]
+[node name="shadow" type="Sprite2D" parent="shadowed/Player"]
 z_index = -1
 position = Vector2(332, -95)
 texture = ExtResource("3_2yb0r")
 
-[node name="HPBar" type="ProgressBar" parent="Player"]
+[node name="HPBar" type="ProgressBar" parent="shadowed/Player"]
 layout_mode = 0
 offset_left = 225.0
 offset_top = -271.0
@@ -140,7 +140,7 @@ offset_bottom = -244.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_wmwtp")
 value = 1.0
 
-[node name="lvl_bar" type="ProgressBar" parent="Player"]
+[node name="lvl_bar" type="ProgressBar" parent="shadowed/Player"]
 layout_mode = 0
 offset_left = 113.0
 offset_top = 10.0
@@ -148,9 +148,40 @@ offset_right = 277.0
 offset_bottom = 37.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_8tg3n")
 
-[node name="moves_menu" type="Control" parent="."]
+[node name="text_box" type="Control" parent="shadowed"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="txtbox" type="Sprite2D" parent="shadowed/text_box"]
+position = Vector2(-230, -72)
+scale = Vector2(1.02, 0.66)
+texture = ExtResource("5_6rhri")
+
+[node name="text" type="Label" parent="shadowed/text_box"]
+layout_mode = 0
+offset_left = -467.0
+offset_top = -161.0
+offset_right = 10.0
+offset_bottom = 19.0
+
+[node name="shad" type="CanvasModulate" parent="shadowed"]
 visible = false
-layout_mode = 1
+color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[node name="non_shadowed" type="CanvasLayer" parent="."]
+
+[node name="moves_menu" type="Control" parent="non_shadowed"]
+visible = false
+z_index = 3
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -163,12 +194,12 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="moves" type="Sprite2D" parent="moves_menu"]
+[node name="moves" type="Sprite2D" parent="non_shadowed/moves_menu"]
 texture_filter = 1
 scale = Vector2(10.0391, 6.39062)
 texture = ExtResource("4_jdtxf")
 
-[node name="Move1" type="Button" parent="moves_menu"]
+[node name="Move1" type="Button" parent="non_shadowed/moves_menu"]
 layout_mode = 0
 offset_left = -300.0
 offset_top = -45.0
@@ -177,7 +208,7 @@ offset_bottom = 19.0
 theme_override_font_sizes/font_size = 40
 text = "Slap"
 
-[node name="Move2" type="Button" parent="moves_menu"]
+[node name="Move2" type="Button" parent="non_shadowed/moves_menu"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = -44.0
@@ -186,7 +217,7 @@ offset_bottom = 19.0
 theme_override_font_sizes/font_size = 40
 text = "fdsa"
 
-[node name="Move4" type="Button" parent="moves_menu"]
+[node name="Move4" type="Button" parent="non_shadowed/moves_menu"]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 32.0
@@ -195,7 +226,7 @@ offset_bottom = 90.0
 theme_override_font_sizes/font_size = 40
 text = "fdsa"
 
-[node name="Move3" type="Button" parent="moves_menu"]
+[node name="Move3" type="Button" parent="non_shadowed/moves_menu"]
 layout_mode = 0
 offset_left = -301.0
 offset_top = 32.0
@@ -204,4 +235,14 @@ offset_bottom = 89.0
 theme_override_font_sizes/font_size = 40
 text = "fdsafdsa"
 
-[connection signal="pressed" from="Fight" to="." method="fight"]
+[node name="back" type="Button" parent="non_shadowed/moves_menu"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 101.0
+offset_right = 395.0
+offset_bottom = 132.0
+text = "Go Back!"
+
+[connection signal="pressed" from="shadowed/Fight" to="." method="fight"]
+[connection signal="pressed" from="non_shadowed/moves_menu/Move1" to="." method="move_1"]
+[connection signal="pressed" from="non_shadowed/moves_menu/back" to="." method="back_moves"]
