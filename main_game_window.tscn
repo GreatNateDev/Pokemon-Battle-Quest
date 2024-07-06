@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://buoilgtwrgekn"]
+[gd_scene load_steps=11 format=3 uid="uid://buoilgtwrgekn"]
 
 [ext_resource type="Script" path="res://main_game_window.gd" id="1_q0di0"]
 [ext_resource type="Texture2D" uid="uid://bod77xxl1jqa7" path="res://very-very-easy.png" id="2_fbcbn"]
 [ext_resource type="Texture2D" uid="uid://dpbe5ha4plyao" path="res://shadow.png" id="3_2yb0r"]
 [ext_resource type="Texture2D" uid="uid://dmjb22oy0ft7w" path="res://moves.png" id="4_jdtxf"]
 [ext_resource type="Texture2D" uid="uid://csseg4up1xjve" path="res://box.png" id="5_6rhri"]
+[ext_resource type="Texture2D" uid="uid://dt3habfd8lac0" path="res://defaultbk.png" id="5_st823"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tym52"]
 bg_color = Color(1, 0, 0, 1)
@@ -14,6 +15,10 @@ bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tg3n"]
 bg_color = Color(0.167631, 0.616521, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ikrv"]
+atlas = ExtResource("5_st823")
+region = Rect2(-488, -414, 1092.69, 947.51)
 
 [node name="Main Game Window" type="Control"]
 layout_mode = 3
@@ -175,6 +180,14 @@ offset_bottom = 19.0
 [node name="shad" type="CanvasModulate" parent="shadowed"]
 visible = false
 color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[node name="bk" type="Sprite2D" parent="shadowed"]
+z_index = -10
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-4526, -3013)
+scale = Vector2(8707, 6459)
+texture = SubResource("AtlasTexture_8ikrv")
 
 [node name="non_shadowed" type="CanvasLayer" parent="."]
 

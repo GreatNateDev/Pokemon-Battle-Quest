@@ -46,6 +46,7 @@ func summon_lvl_one():
 
 func back_moves() -> void:
 	$non_shadowed/moves_menu.hide()
+	$shadowed/shad.hide()
 func refreshbars():
 	$shadowed/Player/HPBar.value = player.hp
 	$shadowed/Enemy/Enemy_HP.value = enemy.hp
@@ -60,6 +61,7 @@ func move_1() -> void:
 				enemy.hp -= 1
 				textudt("Nate used slap and did 1 damage!")
 	$non_shadowed/moves_menu.hide()
+	$shadowed/shad.hide()
 	refreshbars()
 func textudt(text):
 	$shadowed/text_box/text.text = text
