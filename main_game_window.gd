@@ -2,6 +2,7 @@ extends Control
 var first_start = true
 var player : Dictionary
 var enemy : Dictionary
+var turn = true
 func _process(delta: float) -> void:
 	if first_start == true:
 		randize_ivs()
@@ -9,6 +10,8 @@ func _process(delta: float) -> void:
 		$shadowed/Player/HPBar.value = player.hp
 		summon_lvl_one()
 		first_start = false
+	if turn == false:
+		$shadowed/Fight.disabled = true
 	
 
 
@@ -33,12 +36,20 @@ func summon_lvl_one():
 	var speed = randi_range(1,5)
 	var def = randi_range(1,5)
 	var atk = randi_range(1,5)
+	var mov1 = randi_range(1,4)
+	var mov2 = randi_range(1,4)
+	var mov3 = randi_range(1,4)
+	var mov4 = randi_range(1,4)
 	enemy = {
 		"class" : "very very easy",
 		"hp" : hp,
 		"speed" : speed,
 		"def" : def,
-		"atk" : atk
+		"atk" : atk,
+		"mov1" : mov1,
+		"mov2" : mov2,
+		"mov3" : mov3,
+		"mov4" : mov4
 	}
 	$shadowed/Enemy/Enemy_HP.max_value = enemy.hp
 	$shadowed/Enemy/Enemy_HP.value = enemy.hp
@@ -54,14 +65,17 @@ func refreshbars():
 func move_1() -> void:
 	match $non_shadowed/moves_menu/Move1.text:
 		"Slap" :
-			if player.atk != 1:
-				enemy.hp -= (player.atk / 2)
-				textudt("Nate used slap and did "+str(player.atk / 2)+" damage!")
-			else:
-				enemy.hp -= 1
-				textudt("Nate used slap and did 1 damage!")
+			Moves.slap("player")
+			
+	turn = false
 	$non_shadowed/moves_menu.hide()
 	$shadowed/shad.hide()
 	refreshbars()
+	enemy_turn()
 func textudt(text):
 	$shadowed/text_box/text.text = text
+func enemy_turn():
+	match enemy.mov1:
+		1:
+			Moves.slap("enemy")
+		
