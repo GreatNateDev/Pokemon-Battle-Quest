@@ -17,5 +17,5 @@ config/icon="res://RPG_REMASTER/icon.svg"
 
 [autoload]
 
-Moves="*res://moves.gd"
 Main="*res://main_game_window.gd"
+Moves="*res://moves.gd"

@@ -1,13 +1,13 @@
 extends Control
-var first_start = true
-var player : Dictionary
-var enemy : Dictionary
-var turn = true
+@onready var first_start = true
+@onready var player : Dictionary
+@onready var enemy : Dictionary
+@onready var turn = true
 func _process(delta: float) -> void:
 	if first_start == true:
 		randize_ivs()
 		$shadowed/Player/HPBar.max_value = player.hp
-		$shadowed/Player/HPBar.value = player.hp
+		refreshbars()
 		summon_lvl_one()
 		first_start = false
 	if turn == false:
