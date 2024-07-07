@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="zack sam rpg remaster"
+config/name="rpg beta test"
 run/main_scene="res://main_game_window.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://RPG_REMASTER/icon.svg"
