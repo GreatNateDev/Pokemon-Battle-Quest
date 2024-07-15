@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bod77xxl1jqa7"
-path="res://.godot/imported/very-very-easy.png-7c8479ae42832b9b7dd332f3e75e41b5.ctex"
+uid="uid://0cu0km76xi7u"
+path="res://.godot/imported/moves.png-889b0720ad97f830fce56f30aa5789bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://very-very-easy.png"
-dest_files=["res://.godot/imported/very-very-easy.png-7c8479ae42832b9b7dd332f3e75e41b5.ctex"]
+source_file="res://assets/moves.png"
+dest_files=["res://.godot/imported/moves.png-889b0720ad97f830fce56f30aa5789bd.ctex"]
 
 [params]
 

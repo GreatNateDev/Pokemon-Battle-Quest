@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vuhbxoqod3qy"
-path="res://.godot/imported/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg-f2b0df2e03f4da7fc90bcd51a20d7fed.ctex"
+uid="uid://dp203ferjnoti"
+path="res://.godot/imported/very-very-easy.png-d2e711ba9f51accddb0c6567fb6909f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg"
-dest_files=["res://.godot/imported/Black-frame-drawing-art-Graphics-53034940-1-1-580x390.jpg-f2b0df2e03f4da7fc90bcd51a20d7fed.ctex"]
+source_file="res://assets/very-very-easy.png"
+dest_files=["res://.godot/imported/very-very-easy.png-d2e711ba9f51accddb0c6567fb6909f2.ctex"]
 
 [params]
 
