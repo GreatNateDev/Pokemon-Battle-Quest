@@ -20,7 +20,7 @@ bg_color = Color(0.167631, 0.616521, 1, 1)
 atlas = ExtResource("5_st823")
 region = Rect2(-488, -414, 1092.69, 947.51)
 
-[node name="Main Game Window" type="Control"]
+[node name="exec" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +28,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q0di0")
-metadata/_edit_lock_ = true
 
 [node name="shadowed" type="CanvasLayer" parent="."]
 layer = 0

@@ -1,15 +1,16 @@
 extends Control
-@onready var first_start = true
 @onready var player : Dictionary
 @onready var enemy : Dictionary
 @onready var turn = true
+@onready var hpbar = get_parent().get_node("/root/exec/shadowed/Player/HPBar")
+@onready var ehpbar = get_parent().get_node("/root/exec/shadowed/Enemy/Enemy_HP")
+@onready var textbox = get_parent().get_node("/root/exec/shadowed/text_box/text")
+func _ready() -> void:
+	randize_ivs()
+	hpbar.max_value = 10
+	summon_lvl_one()
+	refreshbars()
 func _process(delta: float) -> void:
-	if first_start == true:
-		randize_ivs()
-		$shadowed/Player/HPBar.max_value = player.hp
-		refreshbars()
-		summon_lvl_one()
-		first_start = false
 	if turn == false:
 		$shadowed/Fight.disabled = true
 	
@@ -20,17 +21,17 @@ func fight() -> void:
 	$shadowed/shad.show()
 	
 func randize_ivs():
-	if first_start == true:
-		var hp = randi_range(20,31)
-		var speed = randi_range(1,5)
-		var def = randi_range(1,5)
-		var atk = randi_range(1,5)
-		player = {
-			"hp" : hp,
-			"speed" : speed,
-			"def" : def,
-			"atk" : atk,
-		}
+	var hp = randi_range(20,31)
+	var speed = randi_range(1,5)
+	var def = randi_range(1,5)
+	var atk = randi_range(1,5)
+	player = {
+		"hp" : hp,
+		"speed" : speed,
+		"def" : def,
+		"atk" : atk,
+	}
+	print(player.hp)
 func summon_lvl_one():
 	var hp = randi_range(5,10)
 	var speed = randi_range(1,5)
@@ -51,16 +52,16 @@ func summon_lvl_one():
 		"mov3" : mov3,
 		"mov4" : mov4
 	}
-	$shadowed/Enemy/Enemy_HP.max_value = enemy.hp
-	$shadowed/Enemy/Enemy_HP.value = enemy.hp
+	ehpbar.max_value = enemy.hp
+	ehpbar.value = enemy.hp
 
 
 func back_moves() -> void:
 	$non_shadowed/moves_menu.hide()
 	$shadowed/shad.hide()
 func refreshbars():
-	$shadowed/Player/HPBar.value = player.hp
-	$shadowed/Enemy/Enemy_HP.value = enemy.hp
+	hpbar.value = player.hp
+	ehpbar.value = enemy.hp
 
 func move_1() -> void:
 	match $non_shadowed/moves_menu/Move1.text:
@@ -73,7 +74,7 @@ func move_1() -> void:
 	refreshbars()
 	enemy_turn()
 func textudt(text):
-	$shadowed/text_box/text.text = text
+	textbox.text = text
 func enemy_turn():
 	match enemy.mov1:
 		1:
