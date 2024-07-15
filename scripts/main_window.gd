@@ -1,4 +1,4 @@
-extends Control
+extends Control 
 signal Attack(Move,Entity,Stats,OStats)
 var players_turn = true
 var Player = null
@@ -29,7 +29,8 @@ func random_enemy_level_one():
 		"move1": randmov(),
 		"move2": randmov(),
 		"move3": randmov(),
-		"move4": randmov()
+		"move4": randmov(),
+		"current": null
 	}
 func reset_bars():
 	$Cast/Player/hpbar.value = Player.hp
@@ -63,16 +64,26 @@ func textedit(text):
 func _on_moves_damage(entity, damage, text):
 	if entity == "Enemy":
 		Player.hp -= damage
+		disable_btns(false)
 	elif entity == "Player":
 		Enemy.hp -= damage
+		$"after_attack cooldown".start()
 	reset_bars()
 	textedit(text)
-	$"after_attack cooldown".start()
 	
 func Enemy_atk():
 	var pick = randi_range(1,4)
-	Attack.emit("move"+str(pick),"Enemy",Enemy,Player)
+	if pick == 1:
+		Enemy.current = Enemy.move1
+	elif pick == 2:
+		Enemy.current = Enemy.move2
+	elif pick == 3:
+		Enemy.current = Enemy.move3
+	elif pick == 4:
+		Enemy.current = Enemy.move4
+	Attack.emit(Enemy.current,"Enemy",Enemy,Player)
 func _on_after_attack_cooldown_timeout():
+	print("stack start")
 	Enemy_atk()
 func randmov():
 	return "Slap"
