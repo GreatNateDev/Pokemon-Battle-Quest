@@ -60,15 +60,20 @@ func _on_fight_pressed():
 	
 
 func textedit(text):
+	var tween = get_tree().create_tween()
+	tween.tween_property($Cast/textbox/Label,"text",text,3)
 	$Cast/textbox/Label.text = text
 func _on_moves_damage(entity, damage, text):
 	if entity == "Enemy":
 		Player.hp -= damage
 		disable_btns(false)
+		var tween = get_tree().create_tween()
+		tween.tween_property($Cast/Player/hpbar,"value",Player.hp,1).set_trans(Tween.TRANS_LINEAR)
 	elif entity == "Player":
 		Enemy.hp -= damage
+		var tween = get_tree().create_tween()
+		tween.tween_property($Cast/Enemy/hpbar,"value",Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
 		$"after_attack cooldown".start()
-	reset_bars()
 	textedit(text)
 	
 func Enemy_atk():

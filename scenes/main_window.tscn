@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=13 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dppxhxryr3bu4" path="res://assets/defaultbk.png" id="2_8dx7n"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/moves.png" id="5_b0t8s"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/box.png" id="5_dyh0f"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
+[ext_resource type="AudioStream" uid="uid://csdpxyksbsgu2" path="res://battle_music.wav" id="8_ht83t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00rmm"]
 atlas = ExtResource("2_8dx7n")
@@ -231,6 +232,11 @@ script = ExtResource("5_v2ebp")
 [node name="after_attack cooldown" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(564, 320)
+stream = ExtResource("8_ht83t")
+autoplay = true
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
