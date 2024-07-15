@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=9 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dppxhxryr3bu4" path="res://assets/defaultbk.png" id="2_8dx7n"]
@@ -8,6 +8,15 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_00rmm"]
 atlas = ExtResource("2_8dx7n")
 region = Rect2(-1804.5, -1302.25, 4637.25, 3874.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
+bg_color = Color(0.968925, 0, 0.215202, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f723g"]
+bg_color = Color(0.114231, 0.54926, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asvjh"]
+bg_color = Color(0.968627, 0, 0.215686, 1)
 
 [node name="Main_Window" type="Control"]
 layout_mode = 3
@@ -46,6 +55,22 @@ position = Vector2(316, -189)
 scale = Vector2(10, 10)
 texture = ExtResource("4_5vm0e")
 
+[node name="hpbar" type="ProgressBar" parent="Cast/Player"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = -17.0
+offset_right = 316.0
+offset_bottom = 10.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ykd6k")
+
+[node name="xpbar" type="ProgressBar" parent="Cast/Player"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 11.0
+offset_right = 317.0
+offset_bottom = 38.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_f723g")
+
 [node name="Enemy" type="Control" parent="Cast"]
 layout_mode = 3
 anchors_preset = 1
@@ -65,6 +90,14 @@ texture = ExtResource("3_1hr1h")
 position = Vector2(-229, 137)
 scale = Vector2(10, 10)
 texture = ExtResource("4_5vm0e")
+
+[node name="hpbar" type="ProgressBar" parent="Cast/Enemy"]
+layout_mode = 0
+offset_left = -328.0
+offset_top = 12.0
+offset_right = -129.0
+offset_bottom = 39.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_asvjh")
 
 [node name="Buttons" type="Control" parent="Cast"]
 layout_mode = 3
