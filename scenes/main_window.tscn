@@ -32,7 +32,6 @@ script = ExtResource("1_lta6h")
 [node name="Cast" type="CanvasLayer" parent="."]
 
 [node name="Backround" type="Sprite2D" parent="Cast"]
-visible = false
 z_index = -10
 texture = SubResource("AtlasTexture_00rmm")
 
@@ -176,18 +175,21 @@ offset_bottom = 15.0
 text = "Slap"
 
 [node name="Move2" type="Button" parent="Castless/Box_and_buttons_centre"]
+layout_mode = 0
 offset_left = -150.0
 offset_top = 24.0
 offset_right = -9.0
 offset_bottom = 70.0
 
 [node name="Move3" type="Button" parent="Castless/Box_and_buttons_centre"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = -35.0
 offset_right = 150.0
 offset_bottom = 15.0
 
 [node name="Move4" type="Button" parent="Castless/Box_and_buttons_centre"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 25.0
 offset_right = 150.0
@@ -199,4 +201,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_v2ebp")
 
+[connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
+[connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="damage" from="Moves" to="." method="damage"]

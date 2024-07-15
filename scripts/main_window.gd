@@ -1,4 +1,5 @@
 extends Control
+signal Attack(Move,Entity,Stats,OStats)
 var players_turn = true
 var Player = null
 var Player2 = null
@@ -11,6 +12,7 @@ func _ready():
 	randomize_player()
 	random_enemy_level_one()
 	reset_bars()
+	cap_bars()
 	
 func randomize_player():
 	Player = {
@@ -29,8 +31,32 @@ func random_enemy_level_one():
 func reset_bars():
 	$Cast/Player/hpbar.value = Player.hp
 	$Cast/Enemy/hpbar.value = Enemy.hp
-
+func cap_bars():
+	$Cast/Player/hpbar.max_value = Player.hp
+	$Cast/Enemy/hpbar.max_value = Enemy.hp
 
 func damage(entity, damage):
-	if entity == "player":
+	if entity == "Enemy":
 		Player.hp -= damage
+	elif entity == "Player":
+		Enemy.hp -= damage
+	reset_bars()
+func disable_btns(value):
+	$Cast/Buttons/Fight.disabled = value
+	$Cast/Buttons/Run.disabled = value
+	$Cast/Buttons/Bag.disabled = value
+	$Cast/Buttons/Swap.disabled = value
+	
+
+func Move1():
+	Attack.emit($Castless/Box_and_buttons_centre/Move1.text,"Player",Player,Enemy)
+	$Cast/darken.hide()
+	$Castless/Box_and_buttons_centre.hide()
+
+
+func _on_fight_pressed():
+	$Cast/darken.show()
+	$Castless/Box_and_buttons_centre.show()
+	disable_btns(true)
+	
+	
