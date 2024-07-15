@@ -61,8 +61,7 @@ func _on_fight_pressed():
 
 func textedit(text):
 	var tween = get_tree().create_tween()
-	tween.tween_property($Cast/textbox/Label,"text",text,3)
-	$Cast/textbox/Label.text = text
+	tween.tween_property($Cast/textbox/Label,"text",text,.3)
 func _on_moves_damage(entity, damage, text):
 	if entity == "Enemy":
 		Player.hp -= damage
