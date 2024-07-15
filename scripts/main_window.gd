@@ -63,6 +63,7 @@ func textedit(text):
 	var tween = get_tree().create_tween()
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
 func _on_moves_damage(entity, damage, text):
+	await get_tree().create_timer(.5).timeout
 	if entity == "Enemy":
 		Player.hp -= damage
 		disable_btns(false)

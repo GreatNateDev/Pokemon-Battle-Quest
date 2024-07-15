@@ -3,13 +3,13 @@ signal text(text)
 signal damage(entity,damage,text)
 signal effects(entity,effect)
 var opp = null
-
-
+@onready var anim = get_parent().get_node("AnimationPlayer")
 func _on_main_window_attack(Move, Entity, Stats, OStats):
 	var miss = randi_range(1,10)
 	if miss == 8:
 		pass
 	if Entity == "Player":
+		anim.play("player_slap")
 		opp = "Enemy"
 	elif Entity == "Enemy":
 		opp = "Player"
