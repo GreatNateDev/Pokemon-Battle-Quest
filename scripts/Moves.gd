@@ -6,6 +6,9 @@ var opp = null
 
 
 func _on_main_window_attack(Move, Entity, Stats, OStats):
+	var miss = randi_range(1,10)
+	if miss == 8:
+		pass
 	if Entity == "Player":
 		opp = "Enemy"
 	elif Entity == "Enemy":
