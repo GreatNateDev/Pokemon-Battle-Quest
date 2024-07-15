@@ -12,7 +12,6 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 		opp = "Player"
 	match Move:
 		"Slap":
-			print(Entity)
 			if Stats.atk /OStats.def / 2 <= 0:
 				damage.emit(Entity,1,Entity+" Weakly slapped the "+opp)
 			else:

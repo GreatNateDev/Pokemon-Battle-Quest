@@ -83,7 +83,6 @@ func Enemy_atk():
 		Enemy.current = Enemy.move4
 	Attack.emit(Enemy.current,"Enemy",Enemy,Player)
 func _on_after_attack_cooldown_timeout():
-	print("stack start")
 	Enemy_atk()
 func randmov():
 	return "Slap"
