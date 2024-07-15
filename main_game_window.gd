@@ -7,14 +7,16 @@ extends Control
 @onready var textbox = get_parent().get_node("/root/exec/shadowed/text_box/text")
 func _ready() -> void:
 	randize_ivs()
-	hpbar.max_value = 10
+	hpbar.max_value = player.hp
 	summon_lvl_one()
 	refreshbars()
 func _process(delta: float) -> void:
 	if turn == false:
 		$shadowed/Fight.disabled = true
 	
-
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		ehpbar.value -= 1
 
 func fight() -> void:
 	$non_shadowed/moves_menu.show()
@@ -31,7 +33,7 @@ func randize_ivs():
 		"def" : def,
 		"atk" : atk,
 	}
-	print(player.hp)
+	hpbar.value = player.hp
 func summon_lvl_one():
 	var hp = randi_range(5,10)
 	var speed = randi_range(1,5)
