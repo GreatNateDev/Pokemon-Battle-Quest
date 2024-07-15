@@ -13,8 +13,6 @@ func _ready():
 	random_enemy_level_one()
 	reset_bars()
 	cap_bars()
-func _process(delta):
-	print(Enemy.hp)
 func randomize_player():
 	Player = {
 		"hp" : randi_range(20,25),
@@ -27,7 +25,11 @@ func random_enemy_level_one():
 		"hp" : randi_range(15,20),
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
-		"def" : randi_range(1,5)
+		"def" : randi_range(1,5),
+		"move1": randmov(),
+		"move2": randmov(),
+		"move3": randmov(),
+		"move4": randmov()
 	}
 func reset_bars():
 	$Cast/Player/hpbar.value = Player.hp
@@ -65,9 +67,12 @@ func _on_moves_damage(entity, damage, text):
 		Enemy.hp -= damage
 	reset_bars()
 	textedit(text)
+	$"after_attack cooldown".start()
 	
-
-
+func Enemy_atk():
+	var pick = randi_range(1,4)
+	Attack.emit("move"+str(pick),"Enemy",Enemy,Player)
 func _on_after_attack_cooldown_timeout():
-	#Enemy_atk()
-	pass
+	Enemy_atk()
+func randmov():
+	return "Slap"
