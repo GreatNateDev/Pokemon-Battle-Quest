@@ -1,5 +1,4 @@
 extends Control
-class_name Main
 var players_turn = true
 var Player = null
 var Player2 = null
@@ -8,15 +7,10 @@ var Player4 = null
 var Player5 = null
 var Player6 = null
 var Enemy = null
-
 func _ready():
 	randomize_player()
 	random_enemy_level_one()
 	reset_bars()
-	
-	
-	
-	
 	
 func randomize_player():
 	Player = {
@@ -33,4 +27,10 @@ func random_enemy_level_one():
 		"def" : randi_range(1,5)
 	}
 func reset_bars():
-	pass
+	$Cast/Player/hpbar.value = Player.hp
+	$Cast/Enemy/hpbar.value = Enemy.hp
+
+
+func damage(entity, damage):
+	if entity == "player":
+		Player.hp -= damage
