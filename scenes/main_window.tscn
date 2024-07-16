@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/shadow.png" id="3_1hr1h"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://battle_music.wav" id="8_ht83t"]
 [ext_resource type="Texture2D" uid="uid://dyowdehhlv7bw" path="res://assets/moves/bubble.png" id="10_4uwq2"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
+[ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/weak_attack.wav" id="11_gdaxw"]
+[ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/attack.wav" id="12_4muds"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -581,6 +583,15 @@ scale = Vector2(3, 3)
 texture = ExtResource("10_4uwq2")
 vframes = 3
 frame = 1
+
+[node name="weak attack" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(567.8, 259.76)
+stream = ExtResource("11_gdaxw")
+volume_db = 24.0
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_4muds")
+volume_db = 24.0
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]

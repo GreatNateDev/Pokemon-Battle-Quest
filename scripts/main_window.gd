@@ -20,19 +20,19 @@ func _ready():
 	set_max_exp()
 func refine_level_stats(entity,lvlup):
 	if lvlup == false:
-		entity.hp += entity.level
-		entity.spd += entity.level
-		entity.atk += entity.level
-		entity.def += entity.level
+		entity.hp += 2
+		entity.spd += 2
+		entity.atk += 2
+		entity.def += 2
 	elif lvlup == true:
 		var old_hp = entity.hp
 		var old_spd = entity.spd
 		var old_atk = entity.atk
 		var old_def = entity.def
-		entity.hp += entity.level
-		entity.spd += entity.level
-		entity.atk += entity.level
-		entity.def += entity.level
+		entity.hp += 2
+		entity.spd += 2
+		entity.atk += 2
+		entity.def += 2
 		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def))
 func set_types():
 	$Cast/Player/type.text = Player.type
@@ -94,15 +94,23 @@ func _on_fight_pressed():
 func textedit(text):
 	var tween = get_tree().create_tween()
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
-func _on_moves_damage(entity, damage, text):
+func _on_moves_damage(entity, damage, text, effectivity):
 	await get_tree().create_timer(.5).timeout
 	if entity == "Enemy":
 		Player.hp -= damage
 		disable_btns(false)
+		if effectivity == "weak":
+			$"weak attack".play()
+		elif effectivity == "reg":
+			$attack.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Player/hpbar,"value",Player.hp,1).set_trans(Tween.TRANS_LINEAR)
 	elif entity == "Player":
 		Enemy.hp -= damage
+		if effectivity == "weak":
+			$"weak attack".play()
+		elif effectivity == "reg":
+			$attack.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
 		if Enemy.hp <= 0:
