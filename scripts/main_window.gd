@@ -35,7 +35,7 @@ func randomize_player():
 		"type": "Normal"
 	}
 func _process(delta: float) -> void:
-	print((5 - 2) / 2)
+	pass
 func random_enemy_level_one():
 	Enemy = {
 		"level" : randi_range(5,7),
