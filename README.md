@@ -1,1 +1,2 @@
-Remaster of a rpg like story make your own game that i had made with 1017 lines of js
+A pokemon game with my own spin on it that is only the battle mode
+TODO: let player die and finish bite anim for enemy as well as adding it to their move pool
