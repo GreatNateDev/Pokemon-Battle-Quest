@@ -1,13 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=21 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dppxhxryr3bu4" path="res://assets/defaultbk.png" id="2_8dx7n"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/shadow.png" id="3_1hr1h"]
-[ext_resource type="Texture2D" uid="uid://dp203ferjnoti" path="res://assets/very-very-easy.png" id="4_5vm0e"]
+[ext_resource type="Texture2D" uid="uid://dm8tdf848scpa" path="res://assets/pokemon/zigzagoon/back.png" id="4_yujbb"]
 [ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/moves.png" id="5_b0t8s"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/box.png" id="5_dyh0f"]
+[ext_resource type="Texture2D" uid="uid://dt16u6pq5xxsw" path="res://assets/pokemon/zigzagoon/front.png" id="5_kyxvq"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
 [ext_resource type="AudioStream" uid="uid://csdpxyksbsgu2" path="res://battle_music.wav" id="8_ht83t"]
+[ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00rmm"]
 atlas = ExtResource("2_8dx7n")
@@ -35,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(10, 10), Vector2(1, 1)]
+"values": [Vector2(3, 3), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -47,7 +49,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-229, 137), Vector2(-230, 237)]
+"values": [Vector2(-223, 213), Vector2(-230, 237)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -74,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.533333, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-229, 137), Vector2(-369, 612), Vector2(-769, 606), Vector2(-369, 612), Vector2(-229, 137)]
+"values": [Vector2(-223, 213), Vector2(-369, 612), Vector2(-769, 606), Vector2(-369, 612), Vector2(-223, 213)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -101,7 +103,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-229, 137), Vector2(-663, 300), Vector2(-229, 137)]
+"values": [Vector2(-223, 213), Vector2(-663, 300), Vector2(-223, 213)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -211,9 +213,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1hr1h")
 
 [node name="Player_sprite" type="Sprite2D" parent="Cast/Player"]
-position = Vector2(316, -189)
-scale = Vector2(10, 10)
-texture = ExtResource("4_5vm0e")
+texture_filter = 1
+position = Vector2(333, -159)
+scale = Vector2(3, 3)
+texture = ExtResource("4_yujbb")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Player"]
 layout_mode = 0
@@ -267,9 +270,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1hr1h")
 
 [node name="Enemy_sprite" type="Sprite2D" parent="Cast/Enemy"]
-position = Vector2(-229, 137)
-scale = Vector2(10, 10)
-texture = ExtResource("4_5vm0e")
+texture_filter = 1
+position = Vector2(-223, 213)
+scale = Vector2(3, 3)
+texture = ExtResource("5_kyxvq")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Enemy"]
 layout_mode = 0
@@ -441,6 +445,17 @@ autoplay = true
 libraries = {
 "": SubResource("AnimationLibrary_3s2k3")
 }
+
+[node name="Pokemon" type="Control" parent="."]
+anchors_preset = 0
+script = ExtResource("10_rwwo6")
+
+[node name="Move_anims" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="watergun" type="Sprite2D" parent="Move_anims"]
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]

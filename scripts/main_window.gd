@@ -42,7 +42,7 @@ func randomize_player():
 		"level" : randi_range(5,7),
 		"hp" : randi_range(20,25),
 		"spd" : randi_range(1,5),
-		"atk" : randi_range(100,500),
+		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
 		"type": "Normal",
 		"exp": 0,
