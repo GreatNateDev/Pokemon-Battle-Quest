@@ -1,5 +1,5 @@
 extends Control
-signal text(text)
+signal text(text,unblock,entity)
 signal damage(entity,damage,text)
 signal effects(entity,effect)
 var opp = null
@@ -7,7 +7,8 @@ var opp = null
 func _on_main_window_attack(Move, Entity, Stats, OStats):
 	var miss = randi_range(1,10)
 	if miss == 8:
-		pass
+		text.emit("The "+Entity+"'s attack missed! Unlucky!",true,Entity)
+		return "ms"
 	if Entity == "Player":
 		anim.play("player_slap")
 		opp = "Enemy"

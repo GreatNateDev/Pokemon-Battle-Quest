@@ -91,3 +91,11 @@ func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
 func randmov():
 	return "Slap"
+
+
+func text_from_moves(text,unblocked,entity):
+	textedit(text)
+	if unblocked == true:
+		disable_btns(false)
+	if entity == "Player":
+		$"after_attack cooldown".start()
