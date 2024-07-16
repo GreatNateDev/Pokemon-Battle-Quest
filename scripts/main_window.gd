@@ -127,13 +127,14 @@ func Enemy_atk():
 func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
 func randmov():
-	var movs = randi_range(1,2)
+	var movs = randi_range(1,3)
 	match movs:
 		1:
 			return "Slap"
 		2:
 			return "Kick"
-
+		3:
+			return "Watergun"
 
 func text_from_moves(text,unblocked,entity):
 	textedit(text)
@@ -195,3 +196,9 @@ func level_up():
 func set_max_exp():
 	Player.max_exp = Player.level * 30
 	$Cast/Player/xpbar.max_value = Player.max_exp
+
+
+func Move3():
+	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",Player,Enemy)
+	$Cast/darken.hide()
+	$Castless/Box_and_buttons_centre.hide()

@@ -26,3 +26,9 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 			else:
 				damage.emit(Entity,(Stats.atk -2) /OStats.def ,Entity+" Kicked the "+opp)
 			anim.play(Entity+"_kick") 
+		"Watergun":
+			if Stats.atk /OStats.def <= 0:
+				damage.emit(Entity,1,Entity+" Weakly used WaterGun on the "+opp)
+			else:
+				damage.emit(Entity,Stats.atk /OStats.def ,Entity+" Used WaterGun on the "+opp)
+			anim.play(Entity+"_watergun")

@@ -12,5 +12,10 @@ config_version=5
 
 config/name="Pokemon Battle-Mode"
 run/main_scene="res://scenes/main_window.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 1, 1, 1)
 config/icon="res://assets/icon.svg"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.556953, 0.556953, 0.556953, 1)
