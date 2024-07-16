@@ -267,8 +267,8 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1hr1h")
 
 [node name="Enemy_sprite" type="Sprite2D" parent="Cast/Enemy"]
-position = Vector2(-229, 137)
-scale = Vector2(10, 10)
+visible = false
+position = Vector2(-230, 237)
 texture = ExtResource("4_5vm0e")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Enemy"]

@@ -17,6 +17,7 @@ func _ready():
 	reset_bars()
 	cap_bars()
 	set_levels()
+	set_max_exp()
 func refine_level_stats(entity):
 	entity.hp += entity.level
 	entity.spd += entity.level
@@ -30,9 +31,11 @@ func randomize_player():
 		"level" : randi_range(5,7),
 		"hp" : randi_range(20,25),
 		"spd" : randi_range(1,5),
-		"atk" : randi_range(1,5),
+		"atk" : randi_range(100,500),
 		"def" : randi_range(1,5),
-		"type": "Normal"
+		"type": "Normal",
+		"exp": 0,
+		"max_exp": null
 	}
 func _process(delta: float) -> void:
 	pass
@@ -91,6 +94,10 @@ func _on_moves_damage(entity, damage, text):
 		Enemy.hp -= damage
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
+		if Enemy.hp <= 0:
+			await get_tree().create_timer(1).timeout
+			kill_enemy()
+			return
 		$"after_attack cooldown".start()
 	textedit(text)
 	
@@ -147,3 +154,28 @@ func Move2() -> void:
 	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",Player,Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
+func kill_enemy():
+	$AnimationPlayer.play("Enemy_death")
+	add_exp(Enemy.level * 10)
+	players_turn = true
+	await get_tree().create_timer(2).timeout
+	random_enemy_level_one()
+	$AnimationPlayer.play_backwards("Enemy_death")
+	reset_bars()
+	cap_bars()
+	disable_btns(false)
+func add_exp(amt):
+	Player.exp += amt
+	var tween = get_tree().create_tween()
+	tween.tween_property($Cast/Player/xpbar,"value",Player.exp,1)
+	if Player.exp >= Player.max_exp:
+		level_up()
+	
+func level_up():
+	Player.exp = 0
+	Player.level += 1
+	refine_level_stats(Player)
+	Player.max_exp = Player.level * 30
+	$Cast/Player/xpbar.value = 0
+func set_max_exp():
+	Player.max_exp = Player.level * 30
