@@ -210,3 +210,9 @@ func Move3():
 	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",Player,Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
+
+
+func Move4():
+	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",Player,Enemy)
+	$Cast/darken.hide()
+	$Castless/Box_and_buttons_centre.hide()

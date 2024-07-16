@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/shadow.png" id="3_1hr1h"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dyowdehhlv7bw" path="res://assets/moves/bubble.png" id="10_4uwq2"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/weak_attack.wav" id="11_gdaxw"]
+[ext_resource type="Texture2D" uid="uid://cttim853rgd3q" path="res://assets/moves/bite.png" id="11_wa7ii"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/attack.wav" id="12_4muds"]
+[ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/crit.png" id="14_tf27j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -247,6 +249,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Move_layer/Move_anims/bite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_2adkc"]
 resource_name = "Player_watergun"
@@ -287,12 +301,53 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_vubl3"]
+resource_name = "Player_bite"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/bite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(827.598, 220.999)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/bite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Move_layer/Move_anims/bite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3s2k3"]
 _data = {
 "Enemy_death": SubResource("Animation_0ftyq"),
 "Enemy_kick": SubResource("Animation_a0543"),
 "Enemy_slap": SubResource("Animation_plit3"),
 "Enemy_watergun": SubResource("Animation_tr1yq"),
+"Player_bite": SubResource("Animation_vubl3"),
 "Player_kick": SubResource("Animation_k78d8"),
 "Player_slap": SubResource("Animation_h6cvu"),
 "Player_watergun": SubResource("Animation_2adkc"),
@@ -541,6 +596,7 @@ offset_left = 5.0
 offset_top = 25.0
 offset_right = 150.0
 offset_bottom = 71.0
+text = "Bite"
 
 [node name="Moves" type="Control" parent="."]
 anchors_preset = 0
@@ -584,6 +640,14 @@ texture = ExtResource("10_4uwq2")
 vframes = 3
 frame = 1
 
+[node name="bite" type="Sprite2D" parent="Move_layer/Move_anims"]
+visible = false
+texture_filter = 1
+position = Vector2(827.598, 220.999)
+scale = Vector2(3, 3)
+texture = ExtResource("11_wa7ii")
+hframes = 2
+
 [node name="weak attack" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(567.8, 259.76)
 stream = ExtResource("11_gdaxw")
@@ -593,12 +657,39 @@ volume_db = 24.0
 stream = ExtResource("12_4muds")
 volume_db = 24.0
 
+[node name="top_layer" type="CanvasLayer" parent="."]
+
+[node name="CRIT" type="CPUParticles2D" parent="top_layer"]
+z_index = 1
+texture_filter = 1
+position = Vector2(361.399, 378.181)
+emitting = false
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("14_tf27j")
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 84.5
+initial_velocity_max = 84.5
+angle_min = -126.0
+angle_max = 52.5
+
+[node name="CRIT_timer" type="Timer" parent="top_layer"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]
+[connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
 [connection signal="damage" from="Moves" to="." method="_on_moves_damage"]
 [connection signal="text" from="Moves" to="." method="text_from_moves"]
 [connection signal="timeout" from="after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
+[connection signal="timeout" from="top_layer/CRIT_timer" to="Moves" method="_on_crit_timer_timeout"]
