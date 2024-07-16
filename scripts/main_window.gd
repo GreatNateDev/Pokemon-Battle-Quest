@@ -163,6 +163,7 @@ func kill_enemy():
 	$AnimationPlayer.play_backwards("Enemy_death")
 	reset_bars()
 	cap_bars()
+	reset_bars()
 	disable_btns(false)
 func add_exp(amt):
 	Player.exp += amt
@@ -172,10 +173,13 @@ func add_exp(amt):
 		level_up()
 	
 func level_up():
+	await get_tree().create_timer(1).timeout
 	Player.exp = 0
 	Player.level += 1
 	refine_level_stats(Player)
-	Player.max_exp = Player.level * 30
+	set_max_exp()
+	set_levels()
 	$Cast/Player/xpbar.value = 0
 func set_max_exp():
 	Player.max_exp = Player.level * 30
+	$Cast/Player/xpbar.max_value = Player.max_exp
