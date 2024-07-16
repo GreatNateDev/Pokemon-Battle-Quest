@@ -11,16 +11,16 @@ var Enemy = null
 func _ready():
 	randomize_player()
 	random_enemy_level_one()
-	reset_bars()
-	cap_bars()
 	set_types()
 	refine_level_stats(Player)
 	refine_level_stats(Enemy)
+	reset_bars()
+	cap_bars()
 func refine_level_stats(entity):
-	entity.hp = entity.hp + entity.level
-	entity.spd = entity.spd + entity.level
-	entity.atk = entity.atk + entity.level
-	entity.def = entity.def + entity.level
+	entity.hp += entity.level
+	entity.spd += entity.level
+	entity.atk += entity.level
+	entity.def += entity.level
 func set_types():
 	$Cast/Player/type.text = Player.type
 	$Cast/Enemy/type.text = Enemy.type
@@ -33,6 +33,8 @@ func randomize_player():
 		"def" : randi_range(1,5),
 		"type": "Normal"
 	}
+func _process(delta: float) -> void:
+	pass
 func random_enemy_level_one():
 	Enemy = {
 		"level" : randi_range(5,7),
