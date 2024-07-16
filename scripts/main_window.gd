@@ -12,17 +12,28 @@ func _ready():
 	randomize_player()
 	random_enemy_level_one()
 	set_types()
-	refine_level_stats(Player)
-	refine_level_stats(Enemy)
+	refine_level_stats(Player,false)
+	refine_level_stats(Enemy,false)
 	reset_bars()
 	cap_bars()
 	set_levels()
 	set_max_exp()
-func refine_level_stats(entity):
-	entity.hp += entity.level
-	entity.spd += entity.level
-	entity.atk += entity.level
-	entity.def += entity.level
+func refine_level_stats(entity,lvlup):
+	if lvlup == false:
+		entity.hp += entity.level
+		entity.spd += entity.level
+		entity.atk += entity.level
+		entity.def += entity.level
+	elif lvlup == true:
+		var old_hp = entity.hp
+		var old_spd = entity.spd
+		var old_atk = entity.atk
+		var old_def = entity.def
+		entity.hp += entity.level
+		entity.spd += entity.level
+		entity.atk += entity.level
+		entity.def += entity.level
+		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def))
 func set_types():
 	$Cast/Player/type.text = Player.type
 	$Cast/Enemy/type.text = Enemy.type
@@ -95,6 +106,7 @@ func _on_moves_damage(entity, damage, text):
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
 		if Enemy.hp <= 0:
+			textedit(text)
 			await get_tree().create_timer(1).timeout
 			kill_enemy()
 			return
@@ -176,7 +188,7 @@ func level_up():
 	await get_tree().create_timer(1).timeout
 	Player.exp = 0
 	Player.level += 1
-	refine_level_stats(Player)
+	refine_level_stats(Player,true)
 	set_max_exp()
 	set_levels()
 	$Cast/Player/xpbar.value = 0
