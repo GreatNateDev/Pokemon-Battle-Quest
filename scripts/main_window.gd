@@ -176,6 +176,7 @@ func Move2() -> void:
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
+	$faint.play()
 	$AnimationPlayer.play("Enemy_death")
 	add_exp(Enemy.level * 10)
 	players_turn = true
