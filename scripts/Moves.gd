@@ -10,10 +10,8 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 		text.emit("The "+Entity+"'s attack missed! Unlucky!",true,Entity)
 		return "ms"
 	if Entity == "Player":
-		anim.play("player_slap")
 		opp = "Enemy"
 	elif Entity == "Enemy":
-		anim.play("enemy_slap")
 		opp = "Player"
 	match Move:
 		"Slap":
@@ -21,3 +19,10 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 				damage.emit(Entity,1,Entity+" Weakly slapped the "+opp)
 			else:
 				damage.emit(Entity,Stats.atk /OStats.def / 2,Entity+" Slapped the "+opp)
+			anim.play(Entity+"_slap")
+		"Kick":
+			if (Stats.atk -2) /OStats.def <= 0:
+				damage.emit(Entity,1,Entity+" Weakly kicked the "+opp)
+			else:
+				damage.emit(Entity,(Stats.atk -2) /OStats.def ,Entity+" Kicked the "+opp)
+			anim.play(Entity+"_kick") 

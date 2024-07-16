@@ -35,7 +35,7 @@ func randomize_player():
 		"type": "Normal"
 	}
 func _process(delta: float) -> void:
-	pass
+	print((5 - 2) / 2)
 func random_enemy_level_one():
 	Enemy = {
 		"level" : randi_range(5,7),
@@ -108,7 +108,12 @@ func Enemy_atk():
 func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
 func randmov():
-	return "Slap"
+	var movs = randi_range(1,2)
+	match movs:
+		1:
+			return "Slap"
+		2:
+			return "Kick"
 
 
 func text_from_moves(text,unblocked,entity):
@@ -136,3 +141,9 @@ func run_clicked():
 func set_levels():
 	$Cast/Player/lvl.text = "Level: "+str(Player.level)
 	$Cast/Enemy/lvl.text = "Level: "+str(Enemy.level)
+
+
+func Move2() -> void:
+	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",Player,Enemy)
+	$Cast/darken.hide()
+	$Castless/Box_and_buttons_centre.hide()
