@@ -307,6 +307,7 @@ libraries = {
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="damage" from="Moves" to="." method="_on_moves_damage"]
 [connection signal="text" from="Moves" to="." method="text_from_moves"]

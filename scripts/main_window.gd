@@ -99,3 +99,19 @@ func text_from_moves(text,unblocked,entity):
 		disable_btns(false)
 	if entity == "Player":
 		$"after_attack cooldown".start()
+
+
+func run_clicked():
+	var run_chance = randi_range(1,2)
+	if run_chance == 1:
+		textedit("You ran away!")
+		await get_tree().create_timer(2).timeout
+		random_enemy_level_one()
+		reset_bars()
+		cap_bars()
+		textedit("You encountered another enemy! and healed up!")
+	elif run_chance == 2:
+		textedit("You failed to run away!")
+		disable_btns(true)
+		await get_tree().create_timer(2).timeout
+		Enemy_atk()
