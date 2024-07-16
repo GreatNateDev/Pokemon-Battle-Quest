@@ -40,7 +40,7 @@ func set_types():
 func randomize_player():
 	Player = {
 		"level" : randi_range(5,7),
-		"hp" : randi_range(20,25),
+		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 func random_enemy_level_one():
 	Enemy = {
 		"level" : randi_range(5,7),
-		"hp" : randi_range(15,20),
+		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
@@ -194,6 +194,7 @@ func add_exp(amt):
 		level_up()
 	
 func level_up():
+	$lvlup.play()
 	await get_tree().create_timer(1).timeout
 	Player.exp = 0
 	Player.level += 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=29 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/shadow.png" id="3_1hr1h"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cttim853rgd3q" path="res://assets/moves/bite.png" id="11_wa7ii"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/attack.wav" id="12_4muds"]
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/crit.png" id="14_tf27j"]
+[ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/LVLUP.wav" id="15_avpwn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -681,6 +682,10 @@ angle_max = 52.5
 [node name="CRIT_timer" type="Timer" parent="top_layer"]
 wait_time = 0.5
 one_shot = true
+
+[node name="lvlup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_avpwn")
+volume_db = 24.0
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
