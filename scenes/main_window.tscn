@@ -145,6 +145,15 @@ theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
 theme_override_constants/line_spacing = 0
 text = "Null"
 
+[node name="lvl" type="Label" parent="Cast/Player"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 11.0
+offset_right = 363.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Level: "
+
 [node name="Enemy" type="Control" parent="Cast"]
 layout_mode = 3
 anchors_preset = 1
@@ -175,13 +184,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_asvjh")
 
 [node name="type" type="Label" parent="Cast/Enemy"]
 layout_mode = 0
-offset_left = -125.0
-offset_top = 15.0
-offset_right = -85.0
-offset_bottom = 38.0
+offset_left = -123.0
+offset_top = 4.0
+offset_right = -83.0
+offset_bottom = 27.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 1, 1)
 text = "Null"
+
+[node name="lvl" type="Label" parent="Cast/Enemy"]
+offset_left = -125.0
+offset_top = 26.0
+offset_right = -76.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "Level: "
 
 [node name="Buttons" type="Control" parent="Cast"]
 layout_mode = 3

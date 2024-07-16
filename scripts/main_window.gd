@@ -16,6 +16,7 @@ func _ready():
 	refine_level_stats(Enemy)
 	reset_bars()
 	cap_bars()
+	set_levels()
 func refine_level_stats(entity):
 	entity.hp += entity.level
 	entity.spd += entity.level
@@ -132,3 +133,6 @@ func run_clicked():
 		disable_btns(true)
 		await get_tree().create_timer(2).timeout
 		Enemy_atk()
+func set_levels():
+	$Cast/Player/lvl.text = "Level: "+str(Player.level)
+	$Cast/Enemy/lvl.text = "Level: "+str(Enemy.level)
