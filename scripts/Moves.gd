@@ -13,6 +13,7 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 		anim.play("player_slap")
 		opp = "Enemy"
 	elif Entity == "Enemy":
+		anim.play("enemy_slap")
 		opp = "Player"
 	match Move:
 		"Slap":
