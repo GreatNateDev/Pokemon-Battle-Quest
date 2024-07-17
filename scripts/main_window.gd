@@ -131,9 +131,9 @@ func _on_moves_damage(entity, damage, text, effectivity):
 	elif entity == "Player":
 		data.Enemy.hp -= damage
 		if effectivity == "weak":
-			$"weak attack".play()
+			$"SFX/weak attack".play()
 		elif effectivity == "reg":
-			$attack.play()
+			$SFX/attack.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",data.Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
 		if data.Enemy.hp <= 0:
@@ -141,7 +141,7 @@ func _on_moves_damage(entity, damage, text, effectivity):
 			await get_tree().create_timer(1).timeout
 			kill_enemy()
 			return
-		$"after_attack cooldown".start()
+		$"timers/after_attack cooldown".start()
 	textedit(text)
 	
 func Enemy_atk():
@@ -201,7 +201,7 @@ func Move2() -> void:
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
-	$faint.play()
+	$SFX/faint.play()
 	$AnimationPlayer.play("Enemy_death")
 	add_exp(data.Enemy.level * 10)
 	data.players_turn = true
@@ -222,7 +222,7 @@ func add_exp(amt):
 		level_up()
 	
 func level_up():
-	$lvlup.play()
+	$SFX/lvlup.play()
 	await get_tree().create_timer(1).timeout
 	data.Player.exp = 0
 	data.Player.level += 1

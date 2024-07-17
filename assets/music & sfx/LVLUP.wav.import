@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dqxsqmarixhak"
-path="res://.godot/imported/super_attack.wav-0b9a76181cd8d4d1b46a6e25af4a9813.sample"
+uid="uid://ckn8b5i6b3alm"
+path="res://.godot/imported/LVLUP.wav-30c067a50f435352886c61f017255775.sample"
 
 [deps]
 
-source_file="res://assets/super_attack.wav"
-dest_files=["res://.godot/imported/super_attack.wav-0b9a76181cd8d4d1b46a6e25af4a9813.sample"]
+source_file="res://assets/music & sfx/LVLUP.wav"
+dest_files=["res://.godot/imported/LVLUP.wav-30c067a50f435352886c61f017255775.sample"]
 
 [params]
 
