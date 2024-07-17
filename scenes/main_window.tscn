@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=31 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/shadow.png" id="3_1hr1h"]
@@ -343,8 +343,48 @@ tracks/3/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_pgsil"]
+resource_name = "Enemy_bite"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/bite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/bite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 470)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Move_layer/Move_anims/bite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3s2k3"]
 _data = {
+"Enemy_bite": SubResource("Animation_pgsil"),
 "Enemy_death": SubResource("Animation_0ftyq"),
 "Enemy_kick": SubResource("Animation_a0543"),
 "Enemy_slap": SubResource("Animation_plit3"),
@@ -645,7 +685,7 @@ frame = 1
 [node name="bite" type="Sprite2D" parent="Move_layer/Move_anims"]
 visible = false
 texture_filter = 1
-position = Vector2(827.598, 220.999)
+position = Vector2(335, 470)
 scale = Vector2(3, 3)
 texture = ExtResource("11_wa7ii")
 hframes = 2

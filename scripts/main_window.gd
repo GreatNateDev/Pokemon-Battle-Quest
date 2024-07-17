@@ -1,4 +1,5 @@
 extends Control 
+var pokemon : Array = ["mudkip","zigzagoon"]
 signal Attack(Move,Entity,Stats,OStats)
 var texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
 var players_turn = true
@@ -50,7 +51,7 @@ func randomize_player():
 		"exp": 0,
 		"max_exp": null
 	}
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 func random_enemy_level_one():
 	Enemy = {
@@ -137,7 +138,7 @@ func Enemy_atk():
 func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
 func randmov():
-	var movs = randi_range(1,3)
+	var movs = randi_range(1,4)
 	match movs:
 		1:
 			return "Slap"
@@ -145,6 +146,8 @@ func randmov():
 			return "Kick"
 		3:
 			return "Watergun"
+		4:
+			return "Bite"
 
 func text_from_moves(text,unblocked,entity):
 	textedit(text)
