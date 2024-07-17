@@ -6,6 +6,7 @@ var pokemon : Array = ["mudkip","zigzagoon"]
 var texture
 signal Attack(Move,Entity,Stats,OStats)
 signal getrandmon(lvl)
+signal type_requester(pokemon)
 func load_data():
 	data = ResourceLoader.load(save_path+save_name).duplicate(true)
 func save_data():
@@ -61,7 +62,7 @@ func randomize_player():
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
-		"type": "Normal",
+		"type": request_type(data.starter),
 		"exp": 0,
 		"max_exp": null
 	}
@@ -236,3 +237,5 @@ func get_random_mon(lvl):
 func retux_mon(sprite, type):
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
 	$Cast/Enemy/type.text = type
+func request_type(pokemon):
+	type_requester.emit(pokemon)

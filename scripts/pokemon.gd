@@ -13,3 +13,10 @@ signal pkmn_data(pkmn)
 	"Escalex" : "3",
 	"Escaley" : "3",
 }
+@export var mudkip = {
+	"type" : "water"
+}
+
+
+func _on_main_window_type_requester(pokemon):
+	pass # Replace with function body.
