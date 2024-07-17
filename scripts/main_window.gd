@@ -1,5 +1,6 @@
 extends Control 
 signal Attack(Move,Entity,Stats,OStats)
+var texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
 var players_turn = true
 var Player = null
 var Player2 = null
@@ -9,6 +10,7 @@ var Player5 = null
 var Player6 = null
 var Enemy = null
 func _ready():
+	$Cast/Player/Player_sprite.texture = texture 
 	randomize_player()
 	random_enemy_level_one()
 	set_types()
