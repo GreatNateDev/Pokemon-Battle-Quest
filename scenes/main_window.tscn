@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/moves.png" id="5_b0t8s"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/box.png" id="5_dyh0f"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
-[ext_resource type="AudioStream" uid="uid://csdpxyksbsgu2" path="res://battle_music.wav" id="8_ht83t"]
+[ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://battle_music.wav" id="8_ht83t"]
 [ext_resource type="Texture2D" uid="uid://dyowdehhlv7bw" path="res://assets/moves/bubble.png" id="10_4uwq2"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/weak_attack.wav" id="11_gdaxw"]
@@ -25,6 +25,45 @@ bg_color = Color(0.114231, 0.54926, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asvjh"]
 bg_color = Color(0.968627, 0, 0.215686, 1)
+
+[sub_resource type="Animation" id="Animation_pgsil"]
+resource_name = "Enemy_bite"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/bite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/bite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 470)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Move_layer/Move_anims/bite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_0ftyq"]
 resource_name = "Enemy_death"
@@ -341,45 +380,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_pgsil"]
-resource_name = "Enemy_bite"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Move_layer/Move_anims/bite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Move_layer/Move_anims/bite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(335, 470)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Move_layer/Move_anims/bite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3s2k3"]

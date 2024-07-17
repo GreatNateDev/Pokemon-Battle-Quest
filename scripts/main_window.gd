@@ -1,26 +1,28 @@
 extends Control 
+var save_path = "user://save/"
+var save_name = "Data.tres"
+var data = savedata.new()
 var pokemon : Array = ["mudkip","zigzagoon"]
 signal Attack(Move,Entity,Stats,OStats)
 var texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
-var players_turn = true
-var Player = null
-var Player2 = null
-var Player3 = null
-var Player4 = null
-var Player5 = null
-var Player6 = null
-var Enemy = null
+func load_data():
+	data = ResourceLoader.load(save_path+save_name).duplicate(true)
+func save_data():
+	ResourceSaver.save(data,save_path+save_name)
 func _ready():
+	verify(save_path)
 	$Cast/Player/Player_sprite.texture = texture 
 	randomize_player()
 	random_enemy_level_one()
 	set_types()
-	refine_level_stats(Player,false)
-	refine_level_stats(Enemy,false)
+	refine_level_stats(data.Player,false)
+	refine_level_stats(data.Enemy,false)
 	reset_bars()
 	cap_bars()
 	set_levels()
 	set_max_exp()
+func verify(path):
+	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup):
 	if lvlup == false:
 		entity.hp += 2
@@ -38,10 +40,10 @@ func refine_level_stats(entity,lvlup):
 		entity.def += 2
 		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def))
 func set_types():
-	$Cast/Player/type.text = Player.type
-	$Cast/Enemy/type.text = Enemy.type
+	$Cast/Player/type.text = data.Player.type
+	$Cast/Enemy/type.text = data.Enemy.type
 func randomize_player():
-	Player = {
+	data.Player = {
 		"level" : randi_range(5,7),
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
@@ -54,7 +56,7 @@ func randomize_player():
 func _process(_delta: float) -> void:
 	pass
 func random_enemy_level_one():
-	Enemy = {
+	data.Enemy = {
 		"level" : randi_range(5,7),
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
@@ -68,11 +70,11 @@ func random_enemy_level_one():
 		"type": "Normal"
 	}
 func reset_bars():
-	$Cast/Player/hpbar.value = Player.hp
-	$Cast/Enemy/hpbar.value = Enemy.hp
+	$Cast/Player/hpbar.value = data.Player.hp
+	$Cast/Enemy/hpbar.value = data.Enemy.hp
 func cap_bars():
-	$Cast/Player/hpbar.max_value = Player.hp
-	$Cast/Enemy/hpbar.max_value = Enemy.hp
+	$Cast/Player/hpbar.max_value = data.Player.hp
+	$Cast/Enemy/hpbar.max_value = data.Enemy.hp
 
 func disable_btns(value):
 	$Cast/Buttons/Fight.disabled = value
@@ -82,7 +84,7 @@ func disable_btns(value):
 	
 
 func Move1():
-	Attack.emit($Castless/Box_and_buttons_centre/Move1.text,"Player",Player,Enemy)
+	Attack.emit($Castless/Box_and_buttons_centre/Move1.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 
@@ -100,23 +102,23 @@ func textedit(text):
 func _on_moves_damage(entity, damage, text, effectivity):
 	await get_tree().create_timer(.5).timeout
 	if entity == "Enemy":
-		Player.hp -= damage
+		data.Player.hp -= damage
 		disable_btns(false)
 		if effectivity == "weak":
 			$"weak attack".play()
 		elif effectivity == "reg":
 			$attack.play()
 		var tween = get_tree().create_tween()
-		tween.tween_property($Cast/Player/hpbar,"value",Player.hp,1).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property($Cast/Player/hpbar,"value",data.Player.hp,1).set_trans(Tween.TRANS_LINEAR)
 	elif entity == "Player":
-		Enemy.hp -= damage
+		data.Enemy.hp -= damage
 		if effectivity == "weak":
 			$"weak attack".play()
 		elif effectivity == "reg":
 			$attack.play()
 		var tween = get_tree().create_tween()
-		tween.tween_property($Cast/Enemy/hpbar,"value",Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
-		if Enemy.hp <= 0:
+		tween.tween_property($Cast/Enemy/hpbar,"value",data.Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
+		if data.Enemy.hp <= 0:
 			textedit(text)
 			await get_tree().create_timer(1).timeout
 			kill_enemy()
@@ -127,14 +129,14 @@ func _on_moves_damage(entity, damage, text, effectivity):
 func Enemy_atk():
 	var pick = randi_range(1,4)
 	if pick == 1:
-		Enemy.current = Enemy.move1
+		data.Enemy.current = data.Enemy.move1
 	elif pick == 2:
-		Enemy.current = Enemy.move2
+		data.Enemy.current = data.Enemy.move2
 	elif pick == 3:
-		Enemy.current = Enemy.move3
+		data.Enemy.current = data.Enemy.move3
 	elif pick == 4:
-		Enemy.current = Enemy.move4
-	Attack.emit(Enemy.current,"Enemy",Enemy,Player)
+		data.Enemy.current = data.Enemy.move4
+	Attack.emit(data.Enemy.current,"Enemy",data.Enemy,data.Player)
 func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
 func randmov():
@@ -172,19 +174,21 @@ func run_clicked():
 		await get_tree().create_timer(2).timeout
 		Enemy_atk()
 func set_levels():
-	$Cast/Player/lvl.text = "Level: "+str(Player.level)
-	$Cast/Enemy/lvl.text = "Level: "+str(Enemy.level)
+	$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
+	$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
 
 
 func Move2() -> void:
-	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",Player,Enemy)
+	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
 	$faint.play()
 	$AnimationPlayer.play("Enemy_death")
-	add_exp(Enemy.level * 10)
-	players_turn = true
+	add_exp(data.Enemy.level * 10)
+	data.players_turn = true
+	save_data()
+	#clear data enemy
 	await get_tree().create_timer(2).timeout
 	random_enemy_level_one()
 	$AnimationPlayer.play_backwards("Enemy_death")
@@ -193,33 +197,33 @@ func kill_enemy():
 	reset_bars()
 	disable_btns(false)
 func add_exp(amt):
-	Player.exp += amt
+	data.Player.exp += amt
 	var tween = get_tree().create_tween()
-	tween.tween_property($Cast/Player/xpbar,"value",Player.exp,1)
-	if Player.exp >= Player.max_exp:
+	tween.tween_property($Cast/Player/xpbar,"value",data.Player.exp,1)
+	if data.Player.exp >= data.Player.max_exp:
 		level_up()
 	
 func level_up():
 	$lvlup.play()
 	await get_tree().create_timer(1).timeout
-	Player.exp = 0
-	Player.level += 1
-	refine_level_stats(Player,true)
+	data.Player.exp = 0
+	data.Player.level += 1
+	refine_level_stats(data.Player,true)
 	set_max_exp()
 	set_levels()
 	$Cast/Player/xpbar.value = 0
 func set_max_exp():
-	Player.max_exp = Player.level * 30
-	$Cast/Player/xpbar.max_value = Player.max_exp
+	data.Player.max_exp = data.Player.level * 30
+	$Cast/Player/xpbar.max_value = data.Player.max_exp
 
 
 func Move3():
-	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",Player,Enemy)
+	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 
 
 func Move4():
-	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",Player,Enemy)
+	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()

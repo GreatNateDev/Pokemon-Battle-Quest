@@ -11,4 +11,12 @@ func _on_mudkip_pressed():
 
 
 func _on_torchic_pressed():
-	pass # Replace with function body.
+	Globals.starter = "torchic"
+	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
+
+
+func _on_load_pressed():
+	if ResourceLoader.exists("user://save/Data.tres") == true:
+		Globals.load = true
+	else:
+		$Label2.text = "Sorry! no save was detected"
