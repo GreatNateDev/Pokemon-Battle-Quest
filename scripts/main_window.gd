@@ -74,6 +74,7 @@ func _process(_delta: float) -> void:
 	pass
 func random_enemy_level_one():
 	data.Enemy = {
+		"sprite" : getrandmon(1),
 		"level" : randi_range(5,7),
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
@@ -84,7 +85,7 @@ func random_enemy_level_one():
 		"move3": randmov(),
 		"move4": randmov(),
 		"current": null,
-		"type": "Normal"
+		"type": "null"
 	}
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
@@ -227,3 +228,21 @@ func Move4():
 	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
+func getrandmon(lvl):
+	print("func enter")
+	var mon
+	match lvl:
+		1:
+			mon = randi_range(1,3)
+			match mon:
+				1:
+					data.Enemy.sprite = "zigzagoon"
+					data.Enemy.type = "Normal"
+				2:
+					data.Enemy.sprite = "mudkip"
+					data.Enemy.type = "Water"
+				3:
+					data.Enemy.sprite = "torchic"
+					data.Enemy.type = "Fire"
+	var etext = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
+	$Cast/Enemy/type.text = data.Enemy.type
