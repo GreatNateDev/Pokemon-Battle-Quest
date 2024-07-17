@@ -656,6 +656,8 @@ libraries = {
 [node name="Pokemon" type="Control" parent="."]
 anchors_preset = 0
 script = ExtResource("10_rwwo6")
+zigzagoon = null
+mudkip = null
 
 [node name="Move_layer" type="CanvasLayer" parent="."]
 
@@ -761,6 +763,7 @@ script = ExtResource("18_0r5vn")
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]
+[connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]

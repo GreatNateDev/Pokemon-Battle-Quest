@@ -19,4 +19,4 @@ signal pkmn_data(pkmn)
 
 
 func _on_main_window_type_requester(pokemon):
-	pass # Replace with function body.
+	
