@@ -99,21 +99,14 @@ func disable_btns(value):
 	$Cast/Buttons/Run.disabled = value
 	$Cast/Buttons/Bag.disabled = value
 	$Cast/Buttons/Swap.disabled = value
-	
-
 func Move1():
 	Attack.emit($Castless/Box_and_buttons_centre/Move1.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
-
-
 func _on_fight_pressed():
 	$Cast/darken.show()
 	$Castless/Box_and_buttons_centre.show()
 	disable_btns(true)
-	
-	
-
 func textedit(text):
 	var tween = get_tree().create_tween()
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
@@ -143,7 +136,6 @@ func _on_moves_damage(entity, damage, text, effectivity):
 			return
 		$"Timers/after_attack cooldown".start()
 	textedit(text)
-	
 func Enemy_atk():
 	var pick = randi_range(1,4)
 	if pick == 1:
@@ -168,15 +160,12 @@ func randmov():
 			return "Watergun"
 		4:
 			return "Bite"
-
 func text_from_moves(text,unblocked,entity):
 	textedit(text)
 	if unblocked == true:
 		disable_btns(false)
 	if entity == "Player":
 		$"Timers/after_attack cooldown".start()
-
-
 func run_clicked():
 	var run_chance = randi_range(1,2)
 	if run_chance == 1:
@@ -194,8 +183,6 @@ func run_clicked():
 func set_levels():
 	$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
 	$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
-
-
 func Move2() -> void:
 	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
@@ -220,7 +207,6 @@ func add_exp(amt):
 	tween.tween_property($Cast/Player/xpbar,"value",data.Player.exp,1)
 	if data.Player.exp >= data.Player.max_exp:
 		level_up()
-	
 func level_up():
 	$SFX/lvlup.play()
 	await get_tree().create_timer(1).timeout
@@ -233,14 +219,10 @@ func level_up():
 func set_max_exp():
 	data.Player.max_exp = data.Player.level * 30
 	$Cast/Player/xpbar.max_value = data.Player.max_exp
-
-
 func Move3():
 	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
-
-
 func Move4():
 	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
