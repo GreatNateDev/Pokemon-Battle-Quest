@@ -20,27 +20,21 @@ func _ready():
 		reset_bars()
 		cap_bars()
 		random_enemy_level_one()
-		set_levels()
+		set_levels("both")
 		set_max_exp()
 	$Cast/Player/Player_sprite.texture = texture 
 	randomize_player()
 	random_enemy_level_one()
-	set_types()
 	refine_level_stats(data.Player,false,true)
 	refine_level_stats(data.Enemy,false,true)
-	set_levels()
+	set_levels("both")
 	set_max_exp()
 	reset_bars()
 	cap_bars()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
-	if lvlup == false:
-		entity.hp += 2
-		entity.spd += 2
-		entity.atk += 2
-		entity.def += 2
-	elif lvlup == true:
+	if lvlup == true:
 		var old_hp = entity.hp
 		var old_spd = entity.spd
 		var old_atk = entity.atk
@@ -50,7 +44,7 @@ func refine_level_stats(entity,lvlup,starting):
 		entity.atk += 2
 		entity.def += 2
 		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def))
-	elif starting == true:
+	if starting == true:
 		var value = entity.level * 2
 		entity.hp += value
 		entity.spd += value
@@ -64,7 +58,7 @@ func randomize_player():
 		"level" : randi_range(5,7),
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
-		"atk" : randi_range(1,5),
+		"atk" : randi_range(1000,5000),
 		"def" : randi_range(1,5),
 		"type": "Normal",
 		"exp": 0,
@@ -74,7 +68,6 @@ func _process(_delta: float) -> void:
 	pass
 func random_enemy_level_one():
 	data.Enemy = {
-		"sprite" : getrandmon(1),
 		"level" : randi_range(5,7),
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
@@ -85,7 +78,8 @@ func random_enemy_level_one():
 		"move3": randmov(),
 		"move4": randmov(),
 		"current": null,
-		"type": "null"
+		"type": "null",
+		"sprite" : getrandmon(1)
 	}
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
@@ -181,9 +175,15 @@ func run_clicked():
 		disable_btns(true)
 		await get_tree().create_timer(2).timeout
 		Enemy_atk()
-func set_levels():
-	$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
-	$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
+func set_levels(entity):
+	match entity:
+		"Player":
+			$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
+		"Enemy":
+			$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
+		"both":
+			$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
+			$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
 func Move2() -> void:
 	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
@@ -215,7 +215,7 @@ func level_up():
 	data.Player.level += 1
 	refine_level_stats(data.Player,true,false)
 	set_max_exp()
-	set_levels()
+	set_levels("Player")
 	$Cast/Player/xpbar.value = 0
 func set_max_exp():
 	data.Player.max_exp = data.Player.level * 30
@@ -229,7 +229,6 @@ func Move4():
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func getrandmon(lvl):
-	print("func enter")
 	var mon
 	match lvl:
 		1:
@@ -238,11 +237,15 @@ func getrandmon(lvl):
 				1:
 					data.Enemy.sprite = "zigzagoon"
 					data.Enemy.type = "Normal"
+					print("match zig")
 				2:
 					data.Enemy.sprite = "mudkip"
 					data.Enemy.type = "Water"
+					print("match mud")
 				3:
 					data.Enemy.sprite = "torchic"
 					data.Enemy.type = "Fire"
+					print("match tor")
 	var etext = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
-	$Cast/Enemy/type.text = data.Enemy.type
+	$Cast/Enemy/Enemy_sprite.texture = etext
+	set_types()	
