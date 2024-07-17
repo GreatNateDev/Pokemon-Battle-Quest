@@ -3,27 +3,36 @@ var save_path = "user://save/"
 var save_name = "Data.tres"
 var data = savedata.new()
 var pokemon : Array = ["mudkip","zigzagoon"]
+var texture
 signal Attack(Move,Entity,Stats,OStats)
-var texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
 func load_data():
 	data = ResourceLoader.load(save_path+save_name).duplicate(true)
 func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
+	if Globals.starter != null:
+		texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
+		data.starter = Globals.starter
 	verify(save_path)
+	if Globals.loader == true:
+		load_data()
+		texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
+		reset_bars()
+		cap_bars()
+		random_enemy_level_one()
 	$Cast/Player/Player_sprite.texture = texture 
 	randomize_player()
 	random_enemy_level_one()
 	set_types()
-	refine_level_stats(data.Player,false)
-	refine_level_stats(data.Enemy,false)
+	refine_level_stats(data.Player,false,true)
+	refine_level_stats(data.Enemy,false,true)
 	reset_bars()
 	cap_bars()
 	set_levels()
 	set_max_exp()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
-func refine_level_stats(entity,lvlup):
+func refine_level_stats(entity,lvlup,starting):
 	if lvlup == false:
 		entity.hp += 2
 		entity.spd += 2
@@ -39,6 +48,12 @@ func refine_level_stats(entity,lvlup):
 		entity.atk += 2
 		entity.def += 2
 		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def))
+	elif starting == true:
+		var value = entity.level * 2
+		entity.hp += value
+		entity.spd += value
+		entity.atk += value
+		entity.def += value
 func set_types():
 	$Cast/Player/type.text = data.Player.type
 	$Cast/Enemy/type.text = data.Enemy.type
@@ -188,7 +203,7 @@ func kill_enemy():
 	add_exp(data.Enemy.level * 10)
 	data.players_turn = true
 	save_data()
-	#clear data enemy
+	data.Enemy = {}
 	await get_tree().create_timer(2).timeout
 	random_enemy_level_one()
 	$AnimationPlayer.play_backwards("Enemy_death")
@@ -208,7 +223,7 @@ func level_up():
 	await get_tree().create_timer(1).timeout
 	data.Player.exp = 0
 	data.Player.level += 1
-	refine_level_stats(data.Player,true)
+	refine_level_stats(data.Player,true,false)
 	set_max_exp()
 	set_levels()
 	$Cast/Player/xpbar.value = 0

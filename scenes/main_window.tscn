@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/moves.png" id="5_b0t8s"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/box.png" id="5_dyh0f"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
-[ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://battle_music.wav" id="8_ht83t"]
+[ext_resource type="AudioStream" uid="uid://csdpxyksbsgu2" path="res://battle_music.wav" id="8_ht83t"]
 [ext_resource type="Texture2D" uid="uid://dyowdehhlv7bw" path="res://assets/moves/bubble.png" id="10_4uwq2"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/weak_attack.wav" id="11_gdaxw"]

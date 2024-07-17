@@ -17,6 +17,7 @@ func _on_torchic_pressed():
 
 func _on_load_pressed():
 	if ResourceLoader.exists("user://save/Data.tres") == true:
-		Globals.load = true
+		Globals.loader = true
+		get_tree().change_scene_to_file("res://scenes/main_window.tscn")
 	else:
 		$Label2.text = "Sorry! no save was detected"
