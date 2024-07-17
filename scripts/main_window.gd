@@ -20,16 +20,18 @@ func _ready():
 		reset_bars()
 		cap_bars()
 		random_enemy_level_one()
+		set_levels()
+		set_max_exp()
 	$Cast/Player/Player_sprite.texture = texture 
 	randomize_player()
 	random_enemy_level_one()
 	set_types()
 	refine_level_stats(data.Player,false,true)
 	refine_level_stats(data.Enemy,false,true)
-	reset_bars()
-	cap_bars()
 	set_levels()
 	set_max_exp()
+	reset_bars()
+	cap_bars()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -87,10 +89,11 @@ func random_enemy_level_one():
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
 	$Cast/Enemy/hpbar.value = data.Enemy.hp
+	$Cast/Player/xpbar.value = data.Player.exp
 func cap_bars():
 	$Cast/Player/hpbar.max_value = data.Player.hp
 	$Cast/Enemy/hpbar.max_value = data.Enemy.hp
-
+	$Cast/Player/xpbar.max_value = data.Player.max_exp
 func disable_btns(value):
 	$Cast/Buttons/Fight.disabled = value
 	$Cast/Buttons/Run.disabled = value
