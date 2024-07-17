@@ -50,6 +50,8 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 func _on_crit_timer_timeout():
 	if opp == "Enemy":
 			critp.position = Vector2(835,152)
+			critp.emitting = true
+			critical = 1.5
 	elif opp == "Player":
 		critp.position = Vector2(361,378)
 		critp.emitting = true
