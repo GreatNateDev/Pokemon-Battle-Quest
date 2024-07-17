@@ -5,6 +5,7 @@ var data = savedata.new()
 var pokemon : Array = ["mudkip","zigzagoon"]
 var texture
 signal Attack(Move,Entity,Stats,OStats)
+signal getrandmon(lvl)
 func load_data():
 	data = ResourceLoader.load(save_path+save_name).duplicate(true)
 func save_data():
@@ -79,7 +80,7 @@ func random_enemy_level_one():
 		"move4": randmov(),
 		"current": null,
 		"type": "null",
-		"sprite" : getrandmon(1)
+		"sprite" : get_random_mon(1)
 	}
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
@@ -228,24 +229,10 @@ func Move4():
 	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
-func getrandmon(lvl):
-	var mon
-	match lvl:
-		1:
-			mon = randi_range(1,3)
-			match mon:
-				1:
-					data.Enemy.sprite = "zigzagoon"
-					data.Enemy.type = "Normal"
-					print("match zig")
-				2:
-					data.Enemy.sprite = "mudkip"
-					data.Enemy.type = "Water"
-					print("match mud")
-				3:
-					data.Enemy.sprite = "torchic"
-					data.Enemy.type = "Fire"
-					print("match tor")
-	var etext = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
-	$Cast/Enemy/Enemy_sprite.texture = etext
-	set_types()	
+func get_random_mon(lvl):
+	getrandmon.emit(1)
+
+
+func retux_mon(sprite, type):
+	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
+	$Cast/Enemy/type.text = type
