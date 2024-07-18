@@ -1,5 +1,5 @@
 extends Control
-
+var pkmn = [zigzagoon,]
 signal pkmn_data(pkmn)
 @export var zigzagoon = {
 	"name" : "zigzagoon",
@@ -19,4 +19,4 @@ signal pkmn_data(pkmn)
 
 
 func _on_main_window_type_requester(pokemon):
-	
+	if 
