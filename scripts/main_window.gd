@@ -245,7 +245,7 @@ func request_type(pokemon):
 	var dato = Globals.loaded_data
 	Globals.loaded_data = null
 	await get_tree().create_timer(5).timeout
-	return dato.type
+	return dato
 
 
 func pokemon_data(pkmn):

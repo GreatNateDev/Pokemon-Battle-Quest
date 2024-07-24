@@ -22,5 +22,6 @@ signal pkmn_data(pkmn)
 
 
 func _on_main_window_type_requester(pokemon):
-	var data = pkmn.get(pokemon,{})
-	pkmn_data.emit(data)
+	var data = pkmn.get(pokemon, {})
+	print(data)
+	pkmn_data.emit(data.type)
