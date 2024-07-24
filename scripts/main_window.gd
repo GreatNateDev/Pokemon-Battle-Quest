@@ -16,6 +16,7 @@ func _ready():
 		data.starter = Globals.starter
 	verify(save_path)
 	if Globals.loader == true:
+		Globals.starter = data.starter
 		load_data()
 		texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		reset_bars()
@@ -23,8 +24,9 @@ func _ready():
 		random_enemy_level_one()
 		set_levels("both")
 		set_max_exp()
+	data.starter = Globals.starter
 	$Cast/Player/Player_sprite.texture = texture 
-	randomize_player()
+	await randomize_player()
 	random_enemy_level_one()
 	refine_level_stats(data.Player,false,true)
 	refine_level_stats(data.Enemy,false,true)
@@ -61,10 +63,11 @@ func randomize_player():
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
-		"type": request_type(data.starter),
+		"type": await request_type(data.starter),
 		"exp": 0,
 		"max_exp": null
 	}
+	print(data.Player.type)
 func _process(_delta: float) -> void:
 	pass
 func random_enemy_level_one():
@@ -237,12 +240,12 @@ func retux_mon(sprite, type):
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
 	$Cast/Enemy/type.text = type
 func request_type(pokemon):
+	await get_tree().create_timer(.5).timeout
 	type_requester.emit(pokemon)
-	while Globals.loaded_data == null:
-		pass
-	var load_datas = Globals.loaded_data
+	var dato = Globals.loaded_data
 	Globals.loaded_data = null
-	return load_datas
+	await get_tree().create_timer(5).timeout
+	return dato.type
 
 
 func pokemon_data(pkmn):
