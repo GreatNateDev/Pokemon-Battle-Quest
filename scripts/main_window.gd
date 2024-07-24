@@ -63,11 +63,10 @@ func randomize_player():
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
-		"type": await request_type(data.starter),
+		"type": request_type(data.starter),
 		"exp": 0,
 		"max_exp": null
 	}
-	print(data.Player.type)
 func _process(_delta: float) -> void:
 	pass
 func random_enemy_level_one():
@@ -240,11 +239,9 @@ func retux_mon(sprite, type):
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
 	$Cast/Enemy/type.text = type
 func request_type(pokemon):
-	await get_tree().create_timer(.5).timeout
 	type_requester.emit(pokemon)
 	var dato = Globals.loaded_data
 	Globals.loaded_data = null
-	await get_tree().create_timer(5).timeout
 	return dato
 
 

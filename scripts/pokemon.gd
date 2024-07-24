@@ -1,8 +1,4 @@
 extends Control
-var pkmn = {
-	"zigzagoon": zigzagoon,
-	"mudkip": mudkip,
-}
 signal pkmn_data(pkmn)
 @export var zigzagoon = {
 	"name" : "zigzagoon",
@@ -19,9 +15,11 @@ signal pkmn_data(pkmn)
 @export var mudkip = {
 	"type" : "water"
 }
-
+@export var pkmn = {
+	"zigzagoon": zigzagoon,
+	"mudkip": mudkip,
+}
 
 func _on_main_window_type_requester(pokemon):
-	var data = pkmn.get(pokemon, {})
-	print(data)
+	var data = pkmn.get(pokemon)
 	pkmn_data.emit(data.type)
