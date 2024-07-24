@@ -2,7 +2,6 @@ extends Control
 var save_path = "user://save/"
 var save_name = "Data.tres"
 var data = savedata.new()
-var pokemon : Array = ["mudkip","zigzagoon"]
 var texture
 signal Attack(Move,Entity,Stats,OStats)
 signal getrandmon(lvl)
@@ -239,3 +238,12 @@ func retux_mon(sprite, type):
 	$Cast/Enemy/type.text = type
 func request_type(pokemon):
 	type_requester.emit(pokemon)
+	while Globals.loaded_data == null:
+		pass
+	var load_datas = Globals.loaded_data
+	Globals.loaded_data = null
+	return load_datas
+
+
+func pokemon_data(pkmn):
+	Globals.loaded_data = pkmn
