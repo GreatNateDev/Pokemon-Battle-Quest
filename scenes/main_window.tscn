@@ -432,7 +432,7 @@ texture = ExtResource("3_1hr1h")
 
 [node name="Player_sprite" type="Sprite2D" parent="Cast/Player"]
 texture_filter = 1
-position = Vector2(333, -159)
+position = Vector2(316, -189)
 scale = Vector2(3, 3)
 texture = ExtResource("3_514l4")
 
@@ -686,7 +686,6 @@ vframes = 3
 frame = 1
 
 [node name="bite" type="Sprite2D" parent="Move_layer/Move_anims"]
-visible = false
 texture_filter = 1
 position = Vector2(335, 470)
 scale = Vector2(3, 3)
