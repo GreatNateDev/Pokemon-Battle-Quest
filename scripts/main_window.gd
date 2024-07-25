@@ -114,7 +114,9 @@ func textedit(text):
 func _on_moves_damage(entity, damage, text, effectivity, type):
 	await get_tree().create_timer(.5).timeout
 	if entity == "Enemy":
-		
+		match data.Enemy.type:
+			"Normal":
+				pass
 		data.Player.hp -= damage
 		disable_btns(false)
 		if effectivity == "weak":
