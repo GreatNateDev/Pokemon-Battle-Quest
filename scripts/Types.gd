@@ -26,3 +26,17 @@ var Fire : Dictionary = {
 	"d_ground": "seff",
 	"d_rock": "seff",
 }
+var Water : Dictionary = {
+	"a_fire": "seff",
+	"a_ground": "seff",
+	"a_rock": "seff",
+	"a_water": "neff",
+	"a_grass": "neff",
+	"a_dragon": "neff",
+	"d_fire": "neff",
+	"d_water": "neff",
+	"d_ice": "neff",
+	"d_steel": "neff",
+	"d_electric": "seff",
+	"d_grass": "seff",
+}
