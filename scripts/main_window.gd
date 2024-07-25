@@ -25,6 +25,7 @@ func _ready():
 		random_enemy_level_one()
 		set_types()
 		set_levels("both")
+		init_money()
 		set_max_exp()
 	data.starter = Globals.starter
 	$Cast/Player/Player_sprite.texture = texture 
@@ -34,6 +35,7 @@ func _ready():
 	refine_level_stats(data.Enemy,false,true)
 	set_levels("both")
 	set_types()
+	init_money()
 	set_max_exp()
 	reset_bars()
 	cap_bars()
@@ -253,3 +255,5 @@ func set_enemy_type():
 	var type = Globals.Enemy_type
 	Globals.Enemy_type = null
 	return type
+func init_money():
+	$Cast/Money/Money_label.text = str(data.Money)+"$"

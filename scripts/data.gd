@@ -10,3 +10,4 @@ class_name savedata
 @export var Player6 : Dictionary
 @export var Enemy : Dictionary
 @export var starter : String
+@export var Money : int

@@ -599,6 +599,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
+[node name="Money" type="Control" parent="Cast"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Money_label" type="Label" parent="Cast/Money"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(7.46027e-07, 0.681845, 7.70092e-07, 1)
+theme_override_font_sizes/font_size = 30
+text = "0$"
+
 [node name="Castless" type="CanvasLayer" parent="."]
 
 [node name="Box_and_buttons_centre" type="Control" parent="Castless"]
