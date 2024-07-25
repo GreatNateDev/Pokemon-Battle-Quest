@@ -9,5 +9,5 @@ add pokemon switch/swap\
 add trainers and their sprites\
 add all pokemon from emerald and below\
 add all moves from emerald and below\
-MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator
+MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator\
 *. Changed to make irrelevant
