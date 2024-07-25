@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=34 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="16_6kc6n"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="17_3nwhe"]
 [ext_resource type="Script" path="res://scripts/Rand_enemy_gen.gd" id="18_0r5vn"]
+[ext_resource type="Script" path="res://scripts/Types.gd" id="19_rjewy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -591,7 +592,6 @@ autowrap_mode = 1
 [node name="Castless" type="CanvasLayer" parent="."]
 
 [node name="Box_and_buttons_centre" type="Control" parent="Castless"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -758,6 +758,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("18_0r5vn")
+
+[node name="Types" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_rjewy")
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]
