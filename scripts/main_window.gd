@@ -3,6 +3,7 @@ var save_path = "user://save/"
 var save_name = "Data.tres"
 var data = savedata.new()
 var texture
+var Type = types.new()
 signal Attack(Move,Entity,Stats,OStats)
 signal getrandmon(lvl)
 signal type_requester(pokemon)
@@ -110,9 +111,10 @@ func _on_fight_pressed():
 func textedit(text):
 	var tween = get_tree().create_tween()
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
-func _on_moves_damage(entity, damage, text, effectivity):
+func _on_moves_damage(entity, damage, text, effectivity, type):
 	await get_tree().create_timer(.5).timeout
 	if entity == "Enemy":
+		
 		data.Player.hp -= damage
 		disable_btns(false)
 		if effectivity == "weak":
