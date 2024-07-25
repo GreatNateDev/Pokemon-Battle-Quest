@@ -53,7 +53,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(335, 470)]
+"values": [Vector2(599, 774)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -186,7 +186,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(782.93, 263.135), Vector2(370, 446)]
+"values": [Vector2(1511, 355), Vector2(643, 763)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -214,7 +214,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(827.598, 220.999)]
+"values": [Vector2(1516, 329)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -280,7 +280,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(316, -189), Vector2(724, -433), Vector2(316, -189)]
+"values": [Vector2(316, -189), Vector2(852, -444), Vector2(316, -189)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -307,7 +307,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(417.872, 436.182), Vector2(827.994, 215.564)]
+"values": [Vector2(692, 713), Vector2(1520, 329)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -407,6 +407,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lta6h")
+metadata/_edit_lock_ = true
 
 [node name="Cast" type="CanvasLayer" parent="."]
 layer = 0
@@ -686,8 +687,9 @@ vframes = 3
 frame = 1
 
 [node name="bite" type="Sprite2D" parent="Move_layer/Move_anims"]
+visible = false
 texture_filter = 1
-position = Vector2(335, 470)
+position = Vector2(599, 774)
 scale = Vector2(3, 3)
 texture = ExtResource("11_wa7ii")
 hframes = 2
@@ -725,6 +727,7 @@ texture_filter = 1
 position = Vector2(985.25, 498.25)
 scale = Vector2(4.26899, 3.47781)
 texture = ExtResource("17_3nwhe")
+metadata/_edit_lock_ = true
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
