@@ -4,7 +4,7 @@ let player die \
 add type advantages and disadvantages\
 ~~make animations scaleable~~*\
 add bag and items\
-add shop and pokedolars\
+add shop and ~~pokedolars~~\
 add pokemon switch/swap\
 add trainers and their sprites\
 add all pokemon from emerald and below\
