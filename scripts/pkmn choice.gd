@@ -1,20 +1,13 @@
 extends Control
-
-
+func data(mon):
+	Globals.starter = mon
+	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
 func _on_zigzagoon_pressed():
-	Globals.starter = "zigzagoon"
-	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
-
+	data("zigzagoon")
 func _on_mudkip_pressed():
-	Globals.starter = "mudkip"
-	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
-
-
+	data("mudkip")
 func _on_torchic_pressed():
-	Globals.starter = "torchic"
-	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
-
-
+	data("torchic")
 func _on_load_pressed():
 	if ResourceLoader.exists("user://save/Data.tres") == true:
 		Globals.loader = true

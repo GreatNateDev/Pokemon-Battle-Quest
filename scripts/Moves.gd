@@ -12,7 +12,7 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 	if miss == 8:
 		text.emit("The "+Entity+"'s attack missed! Unlucky!",true,Entity)
 		return "ms"
-	var crit = 8
+	var crit = randi_range(1,10)
 	if crit == 8:
 		timer.start()
 	if Entity == "Player":

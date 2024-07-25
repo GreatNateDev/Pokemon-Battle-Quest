@@ -6,18 +6,22 @@ signal pkmn_data(pkmn)
 	"Eposx" : "-224",
 	"Pposx" : "333",
 	"Pposy" : "-159",
-	"type" : "normal",
+	"type" : "Normal",
 	"Pscalex" : "3",
 	"Pscaley" : "3",
 	"Escalex" : "3",
 	"Escaley" : "3",
 }
 @export var mudkip = {
-	"type" : "water"
+	"type" : "Water"
+}
+@export var torchic = {
+	"type" : "Fire"
 }
 @export var pkmn = {
 	"zigzagoon": zigzagoon,
 	"mudkip": mudkip,
+	"torchic": torchic,
 }
 
 func _on_main_window_type_requester(pokemon):

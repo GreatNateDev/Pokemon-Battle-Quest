@@ -22,6 +22,7 @@ func _ready():
 		reset_bars()
 		cap_bars()
 		random_enemy_level_one()
+		set_types()
 		set_levels("both")
 		set_max_exp()
 	data.starter = Globals.starter
@@ -31,6 +32,7 @@ func _ready():
 	refine_level_stats(data.Player,false,true)
 	refine_level_stats(data.Enemy,false,true)
 	set_levels("both")
+	set_types()
 	set_max_exp()
 	reset_bars()
 	cap_bars()
@@ -81,8 +83,8 @@ func random_enemy_level_one():
 		"move3": randmov(),
 		"move4": randmov(),
 		"current": null,
-		"type": "null",
-		"sprite" : get_random_mon(1)
+		"sprite" : get_random_mon(1),
+		"type": set_enemy_type(),
 	}
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
@@ -232,18 +234,18 @@ func Move4():
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func get_random_mon(lvl):
-	getrandmon.emit(1)
-
-
+	getrandmon.emit(lvl)
 func retux_mon(sprite, type):
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
-	$Cast/Enemy/type.text = type
+	Globals.Enemy_type = type
 func request_type(pokemon):
 	type_requester.emit(pokemon)
 	var dato = Globals.loaded_data
 	Globals.loaded_data = null
 	return dato
-
-
 func pokemon_data(pkmn):
 	Globals.loaded_data = pkmn
+func set_enemy_type():
+	var type = Globals.Enemy_type
+	Globals.Enemy_type = null
+	return type
