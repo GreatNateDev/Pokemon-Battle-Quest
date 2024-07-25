@@ -416,9 +416,12 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_left = 131.0
+offset_top = -62.0
+offset_right = 171.0
+offset_bottom = -22.0
 grow_vertical = 0
+scale = Vector2(1.5, 1.5)
 
 [node name="Shadow" type="Sprite2D" parent="Cast/Player"]
 z_index = -5
@@ -474,9 +477,11 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
+offset_left = -39.0
+offset_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 0
+scale = Vector2(1.5, 1.5)
 
 [node name="Shadow" type="Sprite2D" parent="Cast/Enemy"]
 z_index = -5
@@ -522,9 +527,12 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_left = 2.0
+offset_top = -83.0
+offset_right = 42.0
+offset_bottom = -43.0
 grow_vertical = 0
+scale = Vector2(2, 2)
 
 [node name="Fight" type="Button" parent="Cast/Buttons"]
 layout_mode = 0
@@ -568,8 +576,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
+offset_left = -39.0
 offset_top = -40.0
+offset_right = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -714,8 +723,8 @@ layer = -10
 
 [node name="backround" type="Sprite2D" parent="backround_layer"]
 texture_filter = 1
-position = Vector2(566, 333)
-scale = Vector2(2.5, 2.5)
+position = Vector2(985.25, 498.25)
+scale = Vector2(4.26899, 3.47781)
 texture = ExtResource("17_3nwhe")
 
 [node name="SFX" type="Control" parent="."]
