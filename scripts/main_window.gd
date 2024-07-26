@@ -119,6 +119,8 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 	if entity == "Enemy":
 		multi = getMultiplier(type,data.Player.type)
 		data.Player.hp -= damage * multi
+		if data.Player.hp <= $Cast/Player/hpbar.max_value:
+			kill_player(data.Player)
 		disable_btns(false)
 		if effectivity == "weak":
 			$"SFX/weak attack".play()
@@ -269,3 +271,11 @@ func getMultiplier(Move_type,Entity_type):
 		return Type.typx[Move_type][Entity_type]
 	else:
 		return 1
+func kill_player(plr):
+	$SFX/faint.play()
+	$AnimationPlayer.play("Player_death")
+	data.players_turn = true
+	disable_btns(true)
+	#switch mon
+	if data.Player.faint == true and data.Player2.faint == true or null and data.Player3.faint == true or null and data.Player4.faint == true or null and data.Player5.faint == true or null and data.Player6.faint == true or null:
+		DirAccess.remove_absolute(save_path+save_name)
