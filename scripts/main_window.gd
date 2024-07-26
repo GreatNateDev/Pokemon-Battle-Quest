@@ -265,10 +265,7 @@ func set_enemy_type():
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"
 func getMultiplier(Move_type,Entity_type):
-	print(Move_type)
-	print(Entity_type)
 	if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
-		print("accept")
 		return Type.typx[Move_type][Entity_type]
 	else:
 		return 1
