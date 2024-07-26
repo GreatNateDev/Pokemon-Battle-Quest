@@ -115,11 +115,10 @@ func textedit(text):
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
 func _on_moves_damage(entity, damage, text, effectivity, type):
 	await get_tree().create_timer(.5).timeout
+	var multi
 	if entity == "Enemy":
-		match data.Enemy.type:
-			"Normal":
-				pass
-		data.Player.hp -= damage
+		multi = getMultiplier(type,data.Enemy.type)
+		data.Player.hp -= damage * multi
 		disable_btns(false)
 		if effectivity == "weak":
 			$"SFX/weak attack".play()
@@ -128,7 +127,8 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Player/hpbar,"value",data.Player.hp,1).set_trans(Tween.TRANS_LINEAR)
 	elif entity == "Player":
-		data.Enemy.hp -= damage
+		multi = getMultiplier(type,data.Player.type)
+		data.Enemy.hp -= damage * multi
 		if effectivity == "weak":
 			$"SFX/weak attack".play()
 		elif effectivity == "reg":
@@ -141,7 +141,14 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 			kill_enemy()
 			return
 		$"Timers/after_attack cooldown".start()
-	textedit(text)
+	if multi == .5:
+		textedit(text+". It was not very effective")
+	elif multi == 1:
+		textedit(text+". It was effective")
+	elif multi == 2 or 4:
+		textedit(text+". It was Super Effective")
+	else:
+		textedit(text)
 func Enemy_atk():
 	var pick = randi_range(1,4)
 	if pick == 1:
@@ -257,3 +264,9 @@ func set_enemy_type():
 	return type
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"
+func getMultiplier(Move_type,Entity_type):
+	if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
+		return Type.typx[Move_type][Entity_type]
+	else:
+		return 1
+

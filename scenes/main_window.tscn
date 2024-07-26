@@ -597,7 +597,7 @@ theme_override_font_sizes/font_size = 20
 text = "Battle Start Player VS Enemy!"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="Money" type="Control" parent="Cast"]
 layout_mode = 3
