@@ -14,3 +14,7 @@ func _on_load_pressed():
 		get_tree().change_scene_to_file("res://scenes/main_window.tscn")
 	else:
 		$Label2.text = "Sorry! no save was detected"
+
+
+func guide():
+	get_tree().change_scene_to_file("res://scenes/guide.tscn")

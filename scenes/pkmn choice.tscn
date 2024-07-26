@@ -23,12 +23,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
+offset_left = -196.0
 offset_top = -32.0
-offset_right = 100.0
+offset_right = 4.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 columns = 3
 
 [node name="zigzagoon" type="TextureButton" parent="GridContainer"]
@@ -53,12 +54,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -59.5
-offset_right = 88.0
-offset_bottom = -36.5
+offset_left = -176.0
+offset_top = -108.5
+offset_bottom = -85.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "Choose you're weapon"
 
 [node name="Label2" type="Label" parent="."]
@@ -68,12 +69,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 44.5
-offset_right = 20.0
-offset_bottom = 67.5
+offset_left = -36.0
+offset_top = 108.5
+offset_right = 4.0
+offset_bottom = 131.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "or"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -85,15 +87,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = 100.0
-offset_right = 4.0
-offset_bottom = 108.0
+offset_left = -47.0
+offset_top = 224.5
+offset_right = -1.0
+offset_bottom = 255.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "Load"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 594.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -449.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "Game Guide"
 
 [connection signal="pressed" from="GridContainer/zigzagoon" to="." method="_on_zigzagoon_pressed"]
 [connection signal="pressed" from="GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
 [connection signal="pressed" from="GridContainer/torchic" to="." method="_on_torchic_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Button2" to="." method="guide"]

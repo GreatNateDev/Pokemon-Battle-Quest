@@ -28,7 +28,3 @@ window/size/viewport_height=1080
 window/size/mode=3
 window/size/resizable=false
 window/size/borderless=true
-
-[rendering]
-
-environment/defaults/default_clear_color=Color(0.556953, 0.556953, 0.556953, 1)

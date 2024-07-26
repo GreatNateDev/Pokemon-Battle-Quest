@@ -269,4 +269,3 @@ func getMultiplier(Move_type,Entity_type):
 		return Type.typx[Move_type][Entity_type]
 	else:
 		return 1
-
