@@ -117,7 +117,7 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 	await get_tree().create_timer(.5).timeout
 	var multi
 	if entity == "Enemy":
-		multi = getMultiplier(type,data.Enemy.type)
+		multi = getMultiplier(type,data.Player.type)
 		data.Player.hp -= damage * multi
 		disable_btns(false)
 		if effectivity == "weak":
@@ -127,7 +127,7 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Player/hpbar,"value",data.Player.hp,1).set_trans(Tween.TRANS_LINEAR)
 	elif entity == "Player":
-		multi = getMultiplier(type,data.Player.type)
+		multi = getMultiplier(type,data.Enemy.type)
 		data.Enemy.hp -= damage * multi
 		if effectivity == "weak":
 			$"SFX/weak attack".play()
@@ -265,7 +265,10 @@ func set_enemy_type():
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"
 func getMultiplier(Move_type,Entity_type):
+	print(Move_type)
+	print(Entity_type)
 	if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
+		print("accept")
 		return Type.typx[Move_type][Entity_type]
 	else:
 		return 1
