@@ -170,7 +170,7 @@ func randmov():
 		1:
 			return "Ember"
 		2:
-			return "Kick"
+			return "Absorb"
 		3:
 			return "Watergun"
 		4:

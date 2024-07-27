@@ -20,18 +20,6 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 	elif Entity == "Enemy":
 		opp = "Player"
 	match Move:
-		"Slap":
-			if Stats.atk /OStats.def / 2 <= 0:
-				damage.emit(Entity,1 * critical,Entity+" Weakly slapped the "+opp,"weak","Normal")
-			else:
-				damage.emit(Entity,Stats.atk * critical /OStats.def / 2,Entity+" Slapped the "+opp,"reg","Normal")
-			anim.play(Entity+"_slap")
-		"Kick":
-			if (Stats.atk -2) /OStats.def <= 0:
-				damage.emit(Entity,1 * critical,Entity+" Weakly kicked the "+opp,"weak","Normal")
-			else:
-				damage.emit(Entity,(Stats.atk * critical -2) /OStats.def ,Entity+" Kicked the "+opp,"reg","Normal")
-			anim.play(Entity+"_kick") 
 		"Watergun":
 			if Stats.atk /OStats.def <= 0:
 				damage.emit(Entity,1 * critical,Entity+" Weakly used WaterGun on the "+opp,"weak","Water")
@@ -50,6 +38,12 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def * critical /OStats.def,Entity+" Shot a bolt of fire at the "+opp,"weak","Fire")
 				anim.play(Entity+"_ember")
+		"Absorb":
+			if Stats.atk /OStats.def <= 0:
+				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","weak","Fire")
+			else:
+				damage.emit(Entity,Stats.atk * critical /OStats.def * critical /OStats.def,Entity+" Absorbed the "+opp+"s hp!","weak","Fire")
+				anim.play(Entity+"_absorb")
 	critical = 1
 
 
