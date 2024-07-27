@@ -70,7 +70,8 @@ func randomize_player():
 		"def" : randi_range(1,5),
 		"type": request_type(data.starter),
 		"exp": 0,
-		"max_exp": null
+		"max_exp": null,
+		"faint": false
 	}
 func _process(_delta: float) -> void:
 	pass
@@ -119,8 +120,9 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 	if entity == "Enemy":
 		multi = getMultiplier(type,data.Player.type)
 		data.Player.hp -= damage * multi
-		if data.Player.hp <= $Cast/Player/hpbar.max_value:
+		if data.Player.hp <= $Cast/Player/hpbar.min_value:
 			kill_player(data.Player)
+			return
 		disable_btns(false)
 		if effectivity == "weak":
 			$"SFX/weak attack".play()
@@ -276,6 +278,9 @@ func kill_player(plr):
 	$AnimationPlayer.play("Player_death")
 	data.players_turn = true
 	disable_btns(true)
+	plr.faint = true
 	#switch mon
-	if data.Player.faint == true and data.Player2.faint == true or null and data.Player3.faint == true or null and data.Player4.faint == true or null and data.Player5.faint == true or null and data.Player6.faint == true or null:
+	if data.Player.faint == true:
+		await get_tree().create_timer(1).timeout
 		DirAccess.remove_absolute(save_path+save_name)
+		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")
