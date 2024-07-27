@@ -40,9 +40,9 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 				anim.play(Entity+"_ember")
 		"Absorb":
 			if Stats.atk /OStats.def <= 0:
-				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","weak","Fire")
+				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","weak","Grass")
 			else:
-				damage.emit(Entity,Stats.atk * critical /OStats.def * critical /OStats.def,Entity+" Absorbed the "+opp+"s hp!","weak","Fire")
+				damage.emit(Entity,Stats.atk * critical /OStats.def * critical /OStats.def,Entity+" Absorbed the "+opp+"s hp!","weak","Grass")
 				anim.play(Entity+"_absorb")
 	critical = 1
 
