@@ -4,3 +4,8 @@ to add a new type just edit the types.gd file
 to add a new starter put a textured button in the container in the pkmn_choice.tscn
 to add data to the save data add the var to the data.gd file and add the prefix data.(varname)
 to add a global var add the var in globals.gd and refrance it like Globals.(varname)
+
+
+
+CODESTRIPS:
+"Normal": 1, "Fire": 1, "Water": 1, "Rock": 1, "Steel": 1, "Ghost": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1,"Bug": 1,"Dragon": 1,"Dark": 1,"Fairy": 1
