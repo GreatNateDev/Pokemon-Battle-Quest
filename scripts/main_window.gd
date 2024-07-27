@@ -139,7 +139,6 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 			kill_enemy()
 			return
 		$"Timers/after_attack cooldown".start()
-		print(multi)
 	if multi == .5:
 		textedit(text+". It was not very effective")
 		$"SFX/weak attack".play()
@@ -204,7 +203,7 @@ func set_levels(entity):
 		"both":
 			$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
 			$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
-func Move2() -> void:
+func Move2():
 	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
