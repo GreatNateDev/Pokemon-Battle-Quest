@@ -795,10 +795,9 @@ layer = -10
 
 [node name="backround" type="Sprite2D" parent="backround_layer"]
 texture_filter = 1
-position = Vector2(985.25, 498.25)
-scale = Vector2(4.26899, 3.47781)
+position = Vector2(1373.5, 808.5)
+scale = Vector2(11.3776, 7.57101)
 texture = ExtResource("17_3nwhe")
-metadata/_edit_lock_ = true
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
