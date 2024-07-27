@@ -13,4 +13,4 @@ patch for duel type advantages and add duel types\
 MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator\
 *. Changed to make irrelevant
 BUGS:
-	remove kick
+	sometimes enemy doesnt attack, type advantages can cause the attack to not do any damage
