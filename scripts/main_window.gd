@@ -32,7 +32,6 @@ func _ready():
 	await randomize_player()
 	random_enemy_level_one()
 	refine_level_stats(data.Player,false,true)
-	refine_level_stats(data.Enemy,false,true)
 	set_levels("both")
 	set_types()
 	init_money()
@@ -73,8 +72,6 @@ func randomize_player():
 		"max_exp": null,
 		"faint": false
 	}
-func _process(_delta: float) -> void:
-	pass
 func random_enemy_level_one():
 	data.Enemy = {
 		"level" : randi_range(5,7),
@@ -90,6 +87,7 @@ func random_enemy_level_one():
 		"sprite" : get_random_mon(1),
 		"type": set_enemy_type(),
 	}
+	refine_level_stats(data.Enemy,false,true)
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
 	$Cast/Enemy/hpbar.value = data.Enemy.hp
@@ -220,7 +218,6 @@ func kill_enemy():
 	await get_tree().create_timer(2).timeout
 	random_enemy_level_one()
 	$AnimationPlayer.play_backwards("Enemy_death")
-	reset_bars()
 	cap_bars()
 	reset_bars()
 	disable_btns(false)
@@ -284,3 +281,6 @@ func kill_player(plr):
 		await get_tree().create_timer(1).timeout
 		DirAccess.remove_absolute(save_path+save_name)
 		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
