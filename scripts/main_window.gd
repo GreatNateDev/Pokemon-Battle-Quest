@@ -282,5 +282,6 @@ func kill_player(plr):
 		DirAccess.remove_absolute(save_path+save_name)
 		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+	if OS.is_debug_build():
+		if event.is_action_pressed("ui_accept"):
+			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))

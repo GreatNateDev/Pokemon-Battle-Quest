@@ -12,4 +12,4 @@ add all moves from emerald and below\
 patch for duel type advantages and add duel types\
 MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator\
 *. Changed to make irrelevant
-BUGS:remove debugs, Crit particles in the wrong areas, remove slap and kick
+BUGS:Crit particles in the wrong areas, remove slap and kick
