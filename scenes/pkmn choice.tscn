@@ -96,7 +96,16 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Load"
 
-[node name="Button2" type="Button" parent="."]
+[node name="side button right" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Button2" type="Button" parent="side button right"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -109,14 +118,20 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 60
 text = "Game Guide"
 
-[node name="Button3" type="Button" parent="."]
+[node name="side button left" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button3" type="Button" parent="side button left"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -961.0
+offset_left = -1001.0
 offset_top = -540.0
-offset_right = -595.0
+offset_right = -635.0
 offset_bottom = -449.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 60
@@ -126,5 +141,5 @@ text = "ReadMe"
 [connection signal="pressed" from="GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
 [connection signal="pressed" from="GridContainer/torchic" to="." method="_on_torchic_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="Button2" to="." method="guide"]
-[connection signal="pressed" from="Button3" to="." method="Changelog"]
+[connection signal="pressed" from="side button right/Button2" to="." method="guide"]
+[connection signal="pressed" from="side button left/Button3" to="." method="Changelog"]
