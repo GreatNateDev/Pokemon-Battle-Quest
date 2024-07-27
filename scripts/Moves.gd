@@ -12,7 +12,7 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 	if miss == 8:
 		text.emit("The "+Entity+"'s attack missed! Unlucky!",true,Entity)
 		return "ms"
-	var crit = randi_range(1,10)
+	var crit = 8#randi_range(1,10)
 	if crit == 8:
 		timer.start()
 	if Entity == "Player":
@@ -49,10 +49,10 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 
 func _on_crit_timer_timeout():
 	if opp == "Enemy":
-			critp.position = Vector2(835,152)
+			critp.position = Vector2(1539,254)
 			critp.emitting = true
 			critical = 1.5
 	elif opp == "Player":
-		critp.position = Vector2(361,378)
+		critp.position = Vector2(624,727)
 		critp.emitting = true
 		critical = 1.5
