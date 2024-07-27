@@ -18,3 +18,7 @@ func _on_load_pressed():
 
 func guide():
 	get_tree().change_scene_to_file("res://scenes/guide.tscn")
+
+
+func Changelog():
+	get_tree().change_scene_to_file("res://scenes/changelog.tscn")

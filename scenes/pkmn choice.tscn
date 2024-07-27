@@ -109,8 +109,22 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 60
 text = "Game Guide"
 
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -961.0
+offset_top = -540.0
+offset_right = -595.0
+offset_bottom = -449.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "ReadMe"
+
 [connection signal="pressed" from="GridContainer/zigzagoon" to="." method="_on_zigzagoon_pressed"]
 [connection signal="pressed" from="GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
 [connection signal="pressed" from="GridContainer/torchic" to="." method="_on_torchic_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Button2" to="." method="guide"]
+[connection signal="pressed" from="Button3" to="." method="Changelog"]
