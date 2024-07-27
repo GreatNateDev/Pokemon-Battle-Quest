@@ -9,8 +9,12 @@ signal pkmn_data(pkmn)
 @export var torchic = {
 	"type" : "Fire"
 }
+@export var treecko = {
+	"type" : "Grass"
+}
 @export var pkmn = {
 	"zigzagoon": zigzagoon,
+	"treecko": treecko,
 	"mudkip": mudkip,
 	"torchic": torchic,
 }

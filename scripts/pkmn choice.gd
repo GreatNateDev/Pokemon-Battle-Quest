@@ -2,8 +2,8 @@ extends Control
 func data(mon):
 	Globals.starter = mon
 	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
-func _on_zigzagoon_pressed():
-	data("zigzagoon")
+func _on_treecko_pressed():
+	data("treecko")
 func _on_mudkip_pressed():
 	data("mudkip")
 func _on_torchic_pressed():
@@ -22,3 +22,6 @@ func guide():
 
 func Changelog():
 	get_tree().change_scene_to_file("res://scenes/changelog.tscn")
+
+
+

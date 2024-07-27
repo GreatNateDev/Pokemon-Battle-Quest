@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1l5a53y8du8s"]
 
 [ext_resource type="Script" path="res://scripts/pkmn choice.gd" id="1_m0itf"]
-[ext_resource type="Texture2D" uid="uid://dt16u6pq5xxsw" path="res://assets/pokemon/zigzagoon/front.png" id="2_a3mco"]
+[ext_resource type="Texture2D" uid="uid://bu2gulnu4yaq5" path="res://assets/pokemon/treecko/front.png" id="2_1gqtk"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="3_7g28n"]
 [ext_resource type="Texture2D" uid="uid://dohtna0cj63ev" path="res://assets/pokemon/torchic/front.png" id="4_7wrk3"]
 
@@ -32,10 +32,10 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 columns = 3
 
-[node name="zigzagoon" type="TextureButton" parent="GridContainer"]
+[node name="treecko" type="TextureButton" parent="GridContainer"]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("2_a3mco")
+texture_normal = ExtResource("2_1gqtk")
 
 [node name="mudkip" type="TextureButton" parent="GridContainer"]
 texture_filter = 1
@@ -122,7 +122,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 60
 text = "ReadMe"
 
-[connection signal="pressed" from="GridContainer/zigzagoon" to="." method="_on_zigzagoon_pressed"]
+[connection signal="pressed" from="GridContainer/treecko" to="." method="_on_treecko_pressed"]
 [connection signal="pressed" from="GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
 [connection signal="pressed" from="GridContainer/torchic" to="." method="_on_torchic_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_load_pressed"]

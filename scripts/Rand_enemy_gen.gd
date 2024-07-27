@@ -9,7 +9,7 @@ func _on_main_window_getrandmon(lvl):
 	var type
 	match lvl:
 		1:
-			mon = randi_range(1,3)
+			mon = randi_range(1,4)
 			match mon:
 				1:
 					sprite = "zigzagoon"
@@ -20,4 +20,7 @@ func _on_main_window_getrandmon(lvl):
 				3:
 					sprite = "torchic"
 					type = "Fire"
+				4:
+					sprite = "treecko"
+					type = "Grass"
 	retux.emit(sprite,type)
