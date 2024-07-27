@@ -168,7 +168,7 @@ func randmov():
 	var movs = randi_range(1,4)
 	match movs:
 		1:
-			return "Slap"
+			return "Ember"
 		2:
 			return "Kick"
 		3:

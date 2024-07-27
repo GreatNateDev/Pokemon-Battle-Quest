@@ -13,4 +13,4 @@ patch for duel type advantages and add duel types\
 MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator\
 *. Changed to make irrelevant
 BUGS:
-	remove slap and kick
+	remove kick

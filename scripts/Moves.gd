@@ -12,7 +12,7 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 	if miss == 8:
 		text.emit("The "+Entity+"'s attack missed! Unlucky!",true,Entity)
 		return "ms"
-	var crit = 8#randi_range(1,10)
+	var crit = randi_range(1,10)
 	if crit == 8:
 		timer.start()
 	if Entity == "Player":
@@ -44,6 +44,12 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Bit the "+opp,"reg","Dark")
 			anim.play(Entity+"_bite")
+		"Ember":
+			if Stats.atk /OStats.def <= 0:
+				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly shot a bolt of fire at the "+opp,"weak","Fire")
+			else:
+				damage.emit(Entity,Stats.atk * critical /OStats.def * critical /OStats.def,Entity+" Shot a bolt of fire at the "+opp,"weak","Fire")
+				anim.play(Entity+"_ember")
 	critical = 1
 
 

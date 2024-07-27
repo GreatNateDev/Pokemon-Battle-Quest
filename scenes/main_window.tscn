@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=35 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
 [ext_resource type="Texture2D" uid="uid://dyowdehhlv7bw" path="res://assets/moves/bubble.png" id="10_4uwq2"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
+[ext_resource type="Texture2D" uid="uid://lb6d75f78bkm" path="res://assets/moves/ember.png" id="11_63ygn"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="11_gdaxw"]
 [ext_resource type="Texture2D" uid="uid://cttim853rgd3q" path="res://assets/moves/bite.png" id="11_wa7ii"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="12_4muds"]
@@ -108,6 +109,46 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_kx00j"]
+resource_name = "Enemy_ember"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/ember:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(604, 752)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/ember:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Move_layer/Move_anims/ember:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4]
+}
+
 [sub_resource type="Animation" id="Animation_a0543"]
 resource_name = "Enemy_kick"
 tracks/0/type = "value"
@@ -133,33 +174,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -3.89383, -6.28319, -3.89383, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_plit3"]
-resource_name = "enemy_slap"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cast/Enemy/Enemy_sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-223, 213), Vector2(-663, 300), Vector2(-223, 213)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cast/Enemy/Enemy_sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -5.36514, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_tr1yq"]
@@ -281,6 +295,46 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_palxj"]
+resource_name = "Player_ember"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/ember:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1520.41, 369.095)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/ember:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Move_layer/Move_anims/ember:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4]
+}
+
 [sub_resource type="Animation" id="Animation_k78d8"]
 resource_name = "Player_kick"
 tracks/0/type = "value"
@@ -306,33 +360,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 3.18523, 6.28319, 3.18523, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_h6cvu"]
-resource_name = "player_slap"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cast/Player/Player_sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(316, -189), Vector2(852, -444), Vector2(316, -189)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cast/Player/Player_sprite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 5.29882, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_2adkc"]
@@ -378,13 +405,13 @@ tracks/2/keys = {
 _data = {
 "Enemy_bite": SubResource("Animation_pgsil"),
 "Enemy_death": SubResource("Animation_0ftyq"),
+"Enemy_ember": SubResource("Animation_kx00j"),
 "Enemy_kick": SubResource("Animation_a0543"),
-"Enemy_slap": SubResource("Animation_plit3"),
 "Enemy_watergun": SubResource("Animation_tr1yq"),
 "Player_bite": SubResource("Animation_vubl3"),
 "Player_death": SubResource("Animation_jfnrq"),
+"Player_ember": SubResource("Animation_palxj"),
 "Player_kick": SubResource("Animation_k78d8"),
-"Player_slap": SubResource("Animation_h6cvu"),
 "Player_watergun": SubResource("Animation_2adkc")
 }
 
@@ -630,7 +657,7 @@ offset_left = -151.0
 offset_top = -35.0
 offset_right = -10.0
 offset_bottom = 15.0
-text = "Slap"
+text = "Ember"
 
 [node name="Move2" type="Button" parent="Castless/Box_and_buttons_centre"]
 layout_mode = 0
@@ -696,6 +723,14 @@ position = Vector2(599, 774)
 scale = Vector2(3, 3)
 texture = ExtResource("11_wa7ii")
 hframes = 2
+
+[node name="ember" type="Sprite2D" parent="Move_layer/Move_anims"]
+visible = false
+texture_filter = 1
+position = Vector2(1520.41, 369.095)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("11_63ygn")
+hframes = 5
 
 [node name="top_layer" type="CanvasLayer" parent="."]
 
