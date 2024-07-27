@@ -122,10 +122,6 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 			kill_player(data.Player)
 			return
 		disable_btns(false)
-		if effectivity == "weak":
-			$"SFX/weak attack".play()
-		elif effectivity == "reg":
-			$SFX/attack.play()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Player/hpbar,"value",data.Player.hp,1).set_trans(Tween.TRANS_LINEAR)
 	elif entity == "Player":
@@ -143,12 +139,16 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 			kill_enemy()
 			return
 		$"Timers/after_attack cooldown".start()
+		print(multi)
 	if multi == .5:
 		textedit(text+". It was not very effective")
+		$"SFX/weak attack".play()
 	elif multi == 1:
 		textedit(text+". It was effective")
+		$SFX/attack.play()
 	elif multi == 2 or 4:
 		textedit(text+". It was Super Effective")
+		$"SFX/super attack".play()
 	else:
 		textedit(text)
 func Enemy_atk():
