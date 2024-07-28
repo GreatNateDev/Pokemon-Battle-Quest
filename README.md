@@ -11,4 +11,4 @@ add all moves from emerald and below\
 patch for duel type advantages and add duel types\
 MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator\
 BUGS:
-	sometimes enemy doesnt attack due to the miss function not disableing buttons
+	Strange things with the moves 

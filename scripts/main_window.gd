@@ -176,7 +176,7 @@ func randmov():
 			return "Bite"
 func text_from_moves(text,unblocked,entity):
 	textedit(text)
-	if unblocked == true:
+	if unblocked == true and entity == "Enemy":
 		disable_btns(false)
 	if entity == "Player":
 		$"Timers/after_attack cooldown".start()

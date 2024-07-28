@@ -753,8 +753,9 @@ texture = ExtResource("11_wa7ii")
 hframes = 2
 
 [node name="ember" type="Sprite2D" parent="Move_layer/Move_anims"]
+visible = false
 texture_filter = 1
-position = Vector2(604, 752)
+position = Vector2(1520.41, 369.095)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("11_63ygn")
 hframes = 5
@@ -762,7 +763,8 @@ hframes = 5
 [node name="absorb" type="Sprite2D" parent="Move_layer/Move_anims"]
 visible = false
 texture_filter = 1
-position = Vector2(623, 744)
+position = Vector2(1503, 352)
+scale = Vector2(2, 2)
 texture = ExtResource("12_fb43n")
 
 [node name="top_layer" type="CanvasLayer" parent="."]
