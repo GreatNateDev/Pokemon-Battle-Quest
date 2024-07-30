@@ -1,11 +1,82 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1l5a53y8du8s"]
 
-[ext_resource type="Script" path="res://scripts/pkmn choice.gd" id="1_m0itf"]
 [ext_resource type="Texture2D" uid="uid://bu2gulnu4yaq5" path="res://assets/pokemon/treecko/front.png" id="2_1gqtk"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="3_7g28n"]
 [ext_resource type="Texture2D" uid="uid://dohtna0cj63ev" path="res://assets/pokemon/torchic/front.png" id="4_7wrk3"]
 
-[node name="choice" type="Control"]
+[sub_resource type="GDScript" id="GDScript_k83u4"]
+script/source = "extends Control
+func data(mon):
+	Globals.starter = mon
+	get_tree().change_scene_to_file(\"res://scenes/main_window.tscn\")
+func _on_treecko_pressed():
+	data(\"treecko\")
+func _on_mudkip_pressed():
+	data(\"mudkip\")
+func _on_torchic_pressed():
+	data(\"torchic\")
+func _on_load_pressed():
+	if ResourceLoader.exists(\"user://save/Data.tres\") == true:
+		Globals.loader = true
+		get_tree().change_scene_to_file(\"res://scenes/main_window.tscn\")
+	else:
+		$Label2.text = \"Sorry! no save was detected\"
+
+
+func guide():
+	get_tree().change_scene_to_file(\"res://scenes/guide.tscn\")
+
+
+func Changelog():
+	get_tree().change_scene_to_file(\"res://scenes/changelog.tscn\")
+
+
+
+"
+
+[node name="choice" type="Node"]
+script = SubResource("GDScript_k83u4")
+
+[node name="side button right" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Button2" type="Button" parent="side button right"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -367.0
+offset_right = -1.0
+offset_bottom = 91.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "Game Guide"
+
+[node name="side button left" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button3" type="Button" parent="side button left"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = 326.0
+offset_bottom = 91.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "ReadMe"
+
+[node name="choice" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -14,9 +85,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m0itf")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,22 +102,22 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 columns = 3
 
-[node name="treecko" type="TextureButton" parent="GridContainer"]
+[node name="treecko" type="TextureButton" parent="choice/GridContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("2_1gqtk")
 
-[node name="mudkip" type="TextureButton" parent="GridContainer"]
+[node name="mudkip" type="TextureButton" parent="choice/GridContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("3_7g28n")
 
-[node name="torchic" type="TextureButton" parent="GridContainer"]
+[node name="torchic" type="TextureButton" parent="choice/GridContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("4_7wrk3")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,7 +132,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Choose you're weapon"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,7 +150,7 @@ text = "or"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -96,50 +166,9 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Load"
 
-[node name="side button right" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Button2" type="Button" parent="side button right"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 594.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = -449.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 60
-text = "Game Guide"
-
-[node name="side button left" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button3" type="Button" parent="side button left"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1001.0
-offset_top = -540.0
-offset_right = -635.0
-offset_bottom = -449.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 60
-text = "ReadMe"
-
-[connection signal="pressed" from="GridContainer/treecko" to="." method="_on_treecko_pressed"]
-[connection signal="pressed" from="GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
-[connection signal="pressed" from="GridContainer/torchic" to="." method="_on_torchic_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="side button right/Button2" to="." method="guide"]
 [connection signal="pressed" from="side button left/Button3" to="." method="Changelog"]
+[connection signal="pressed" from="choice/GridContainer/treecko" to="." method="_on_treecko_pressed"]
+[connection signal="pressed" from="choice/GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
+[connection signal="pressed" from="choice/GridContainer/torchic" to="." method="_on_torchic_pressed"]
+[connection signal="pressed" from="choice/Button" to="." method="_on_load_pressed"]
