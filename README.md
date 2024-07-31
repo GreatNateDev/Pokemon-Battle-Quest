@@ -4,11 +4,11 @@ TODO:\
 ~~add type advantages and disadvantages~~\
 ~~add bag and items~~\
 add shop and ~~pokedolars~~\
-add pokemon switch/swap\
+add pokemon switching\
 add trainers\
-~~add all pokemon from emerald and below~~\
-add all moves from emerald and below\
-patch for duel type advantages and add duel types\
-MAYBE add a real pokemon game into all this if i feal like it and not just a battle simulator\
+~~add gen 3 sprites not including battle anims~~\
+add all pokemon from gen 3\
+add all moves from gen 3\
+duel type overhall\
 BUGS:\
 	None atm
