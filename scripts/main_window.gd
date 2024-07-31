@@ -4,6 +4,7 @@ var save_name = "Data.tres"
 var data = savedata.new()
 var texture
 var Type = types.new()
+signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
 signal getrandmon(lvl)
 signal type_requester(pokemon)
@@ -292,6 +293,7 @@ func playsound(multiplyer):
 func Bag():
 	$Cast/darken.show()
 	$Castless/Bag.show()
+	disable_btns(true)
 	update_bag()
 func update_bag():
 	for key in data.Items.keys():
@@ -302,8 +304,15 @@ func update_bag():
 		new_text.position = new_button.position
 		new_text.position.y += 30
 		new_text.text = str(data.Items[key])
-		new_button.texture_normal = load("res://assets/items/"+str(key)+"/main.png")
-		new_button.pressed.connect(Item_pressed, key)
+		new_button.texture_normal = load("res://assets/items/"+str(key)+".png")
+		new_button.pressed.connect(Item_pressed.bind(key,data.Items[key]))
 
-func Item_pressed(key):
-	print(key)
+func Item_pressed(key, num):
+	data.Items[key] -= 1
+	if data.Items[key] == 0:
+		data.Items.erase(key)
+	$Cast/darken.hide()
+	$Castless/Bag.hide()
+	disable_btns(false)
+	run_items.emit(key)
+	
