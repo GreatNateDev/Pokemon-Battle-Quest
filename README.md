@@ -3,7 +3,7 @@ TODO:\
 ~~let player die~~ \
 ~~add type advantages and disadvantages~~\
 ~~add bag and items~~\
-add shop and ~~pokedolars~~\
+__add shop__ and ~~pokedolars~~\
 add pokemon switching\
 add trainers\
 ~~add gen 3 sprites not including battle anims~~\
