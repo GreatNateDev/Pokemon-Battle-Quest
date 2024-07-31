@@ -137,7 +137,6 @@ func _on_moves_damage(entity, damage, text, type):
 			kill_enemy()
 			return
 		$"Timers/after_attack cooldown".start()
-	print(multi)
 	if multi == .5:
 		textedit(text+". It was not very effective")
 	elif multi == 1:
@@ -283,11 +282,11 @@ func _input(event):
 func playsound(multiplyer):
 	print(multiplyer)
 	match multiplyer:
-		"2":
+		2:
 			$"SFX/super attack".play()
-		"4":
+		4:
 			$"SFX/super attack".play()
-		"1":
+		1:
 			$SFX/attack.play()
-		"0.5":
+		0.5:
 			$"SFX/weak attack".play()

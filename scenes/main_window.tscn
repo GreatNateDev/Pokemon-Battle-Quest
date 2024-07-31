@@ -760,7 +760,6 @@ texture = ExtResource("11_63ygn")
 hframes = 5
 
 [node name="absorb" type="Sprite2D" parent="Move_layer/Move_anims"]
-visible = false
 texture_filter = 1
 position = Vector2(623, 744)
 scale = Vector2(2, 2)
@@ -829,6 +828,7 @@ autoplay = true
 
 [node name="super attack" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("20_y8gax")
+volume_db = 24.0
 
 [node name="Timers" type="Control" parent="."]
 anchors_preset = 0
