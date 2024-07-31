@@ -324,8 +324,8 @@ func update_bag():
 		new_text.position.y += 30
 		new_text.text = str(data.Items[key])
 		new_button.texture_normal = load("res://assets/items/"+str(key)+".png")
-		new_button.pressed.connect(Item_pressed.bind(key,data.Items[key]))
-func Item_pressed(key, num):
+		new_button.pressed.connect(Item_pressed.bind(key))
+func Item_pressed(key):
 	data.Items[key] -= 1
 	if data.Items[key] == 0:
 		data.Items.erase(key)
