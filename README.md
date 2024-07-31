@@ -5,4 +5,4 @@ duel type overhall\
 add trainers\
 add all pokemon from gen 3\
 add all moves from gen 3\
-add a end to the game\
+add a end to the game
