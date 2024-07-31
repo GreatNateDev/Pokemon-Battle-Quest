@@ -303,4 +303,7 @@ func update_bag():
 		new_text.position.y += 30
 		new_text.text = str(data.Items[key])
 		new_button.texture_normal = load("res://assets/items/"+str(key)+"/main.png")
-		
+		new_button.pressed.connect(Item_pressed, key)
+
+func Item_pressed(key):
+	print(key)
