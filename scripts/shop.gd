@@ -29,23 +29,27 @@ func _ready():
 	$Panel/Label.text = str(price_one) + "$"
 	$Panel2/Label.text = str(price_two) + "$"
 	$Panel3/Label.text = str(price_three) + "$"
+	print(price_one)
 
 
 
 
 func oone():
-	Globals.money -= price_one 
-	Globals.item = one
+	if Globals.money >= price_one:
+		Globals.money -= price_one 
+		Globals.item = one
 	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
 
 func otwo():
-	Globals.money -= price_two
-	Globals.item = two
+	if Globals.money >= price_two:
+		Globals.money -= price_two
+		Globals.item = two
 	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
 
 func othree():
-	Globals.money -= price_three
-	Globals.item = three
+	if Globals.money >= price_three:
+		Globals.money -= price_three
+		Globals.item = three
 	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
 func _input(event):
 	if event.is_action_pressed("z"):

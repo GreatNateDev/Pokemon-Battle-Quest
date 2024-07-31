@@ -14,10 +14,10 @@ func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
 	if data.first_start == true:
-		if Globals.starter != null:
-			texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
-			data.starter = Globals.starter
-		verify(save_path)
+if Globals.starter != null:
+	texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
+	data.starter = Globals.starter
+	verify(save_path)
 		if Globals.loader == true:
 			Globals.starter = data.starter
 			load_data()
@@ -41,6 +41,8 @@ func _ready():
 		reset_bars()
 		cap_bars()
 	else:
+		print(Globals.item)
+		print(Globals.money)
 		load_data()
 		if Globals.item != null:
 			if data.Items.has(Globals.item) == false:
