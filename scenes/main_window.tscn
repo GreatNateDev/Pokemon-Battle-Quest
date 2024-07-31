@@ -727,10 +727,11 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 
-[node name="Container" type="Container" parent="Castless/Bag"]
+[node name="Container" type="GridContainer" parent="Castless/Bag"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+columns = 10
 
 [node name="Moves" type="Control" parent="."]
 anchors_preset = 0

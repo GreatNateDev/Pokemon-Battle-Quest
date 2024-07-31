@@ -51,6 +51,7 @@ func _ready():
 		if Globals.money != null:
 			data.Money = Globals.money
 			Globals.money = null
+		init_money()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		random_enemy_level_one()
 		reset_bars()
@@ -90,6 +91,7 @@ func randomize_player():
 		"max_exp": null,
 		"faint": false
 	}
+	refine_level_stats(data.Player,false,true)
 func random_enemy_level_one():
 	data.Enemy = {
 		"level" : randi_range(5,7),
@@ -298,6 +300,7 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			save_data()
+			print(data.Money)
 			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			shop()
 func playsound(multiplyer):
