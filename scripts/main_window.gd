@@ -21,12 +21,10 @@ func _ready():
 		set_max_exp()
 		reset_bars()
 		cap_bars()
-		print("set types")
 		set_types()
 		set_levels("both")
 		init_money()
 	elif Globals.loader == true and Globals.back_shop == false:
-		print("true")
 		verify(save_name)
 		load_data()
 		texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
@@ -43,6 +41,7 @@ func _ready():
 		verify(save_path)
 		load_data()
 		if Globals.item != null:
+			print(Globals.item)
 			if data.Items.has(Globals.item) == false:
 				data.Items[Globals.item] = 1
 			else:
@@ -300,8 +299,8 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			save_data()
-			print(data.Money)
-			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+			print(data.Items)
+			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			shop()
 func playsound(multiplyer):
 	match multiplyer:
@@ -332,6 +331,10 @@ func update_bag():
 func Item_pressed(key):
 	data.Items[key] -= 1
 	if data.Items[key] == 0:
+		var texture_to_check = load("res://assets/items/"+key+".png")
+		for button in get_tree().get_nodes_in_group("TextureButtons"):
+			if button.texture_normal == texture_to_check:
+				button.queue_free()
 		data.Items.erase(key)
 	$Cast/darken.hide()
 	$Castless/Bag.hide()
