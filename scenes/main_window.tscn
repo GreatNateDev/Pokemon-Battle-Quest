@@ -671,6 +671,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 
 [node name="Menu_Box" type="Sprite2D" parent="Castless/Box_and_buttons_centre"]
 texture_filter = 1

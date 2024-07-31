@@ -112,12 +112,13 @@ func _on_fight_pressed():
 func textedit(text):
 	var tween = get_tree().create_tween()
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
-func _on_moves_damage(entity, damage, text, effectivity, type):
+func _on_moves_damage(entity, damage, text, type):
 	await get_tree().create_timer(.5).timeout
 	var multi
 	if entity == "Enemy":
 		multi = getMultiplier(type,data.Player.type)
 		data.Player.hp -= damage * multi
+		playsound(multi)
 		if data.Player.hp <= $Cast/Player/hpbar.min_value:
 			kill_player(data.Player)
 			return
@@ -127,10 +128,7 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 	elif entity == "Player":
 		multi = getMultiplier(type,data.Enemy.type)
 		data.Enemy.hp -= damage * multi
-		if effectivity == "weak":
-			$"SFX/weak attack".play()
-		elif effectivity == "reg":
-			$SFX/attack.play()
+		playsound(multi)
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",data.Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
 		if data.Enemy.hp <= 0:
@@ -139,15 +137,13 @@ func _on_moves_damage(entity, damage, text, effectivity, type):
 			kill_enemy()
 			return
 		$"Timers/after_attack cooldown".start()
+	print(multi)
 	if multi == .5:
 		textedit(text+". It was not very effective")
-		$"SFX/weak attack".play()
 	elif multi == 1:
 		textedit(text+". It was effective")
-		$SFX/attack.play()
 	elif multi == 2 or 4:
 		textedit(text+". It was Super Effective")
-		$"SFX/super attack".play()
 	else:
 		textedit(text)
 func Enemy_atk():
@@ -284,3 +280,14 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+func playsound(multiplyer):
+	print(multiplyer)
+	match multiplyer:
+		"2":
+			$"SFX/super attack".play()
+		"4":
+			$"SFX/super attack".play()
+		"1":
+			$SFX/attack.play()
+		"0.5":
+			$"SFX/weak attack".play()

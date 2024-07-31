@@ -1,6 +1,6 @@
 extends Control
 signal text(text,unblock,entity)
-signal damage(entity,damage,text,effect,type)
+signal damage(entity,damage,text,type)
 #signal effects(entity,effect)
 var opp = null
 var critical = 1
@@ -22,27 +22,27 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 	match Move:
 		"Watergun":
 			if Stats.atk /OStats.def <= 0:
-				damage.emit(Entity,1 * critical,Entity+" Weakly used WaterGun on the "+opp,"weak","Water")
+				damage.emit(Entity,1 * critical,Entity+" Weakly used WaterGun on the "+opp,"Water")
 			else:
-				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Used WaterGun on the "+opp,"reg","Water")
+				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Used WaterGun on the "+opp,"Water")
 			anim.play(Entity+"_watergun")
 		"Bite":
 			if Stats.atk /OStats.def <= 0:
-				damage.emit(Entity,1 * critical,Entity+" Weakly used Bite on the "+opp,"weak","Dark")
+				damage.emit(Entity,1 * critical,Entity+" Weakly used Bite on the "+opp,"Dark")
 			else:
-				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Bit the "+opp,"reg","Dark")
+				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Bit the "+opp,"Dark")
 			anim.play(Entity+"_bite")
 		"Ember":
 			if Stats.atk /OStats.def <= 0:
-				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly shot a bolt of fire at the "+opp,"weak","Fire")
+				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly shot a bolt of fire at the "+opp,"Fire")
 			else:
-				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Shot a bolt of fire at the "+opp,"reg","Fire")
+				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Shot a bolt of fire at the "+opp,"Fire")
 				anim.play(Entity+"_ember")
 		"Absorb":
 			if Stats.atk /OStats.def <= 0:
-				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","weak","Grass")
+				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","Grass")
 			else:
-				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Absorbed the "+opp+"s hp!","reg","Grass")
+				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Absorbed the "+opp+"s hp!","Grass")
 				anim.play(Entity+"_absorb")
 	critical = 1
 
