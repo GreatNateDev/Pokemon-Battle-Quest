@@ -1,7 +1,7 @@
 extends Control
 signal text(text,unblock,entity)
 signal damage(entity,damage,text,effect,type)
-signal effects(entity,effect)
+#signal effects(entity,effect)
 var opp = null
 var critical = 1
 @onready var anim = get_parent().get_node("AnimationPlayer")
