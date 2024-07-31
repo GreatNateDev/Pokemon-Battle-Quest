@@ -13,7 +13,7 @@ func load_data():
 func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
-	if Globals.loader == true:
+	if Globals.loader == true and Globals.back_shop == false:
 		load_data()
 		texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
 		data.starter = Globals.starter
@@ -24,10 +24,10 @@ func _ready():
 		set_levels("both")
 		init_money()
 		set_max_exp()
-	elif Globals.loader == false and data.first_start == true:
-		data.first_start == false
+	if Globals.loader == false and Globals.back_shop == false:
 		Globals.starter = data.starter
 		texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
+		await randomize_player()
 		reset_bars()
 		cap_bars()
 		random_enemy_level_one()
@@ -35,9 +35,8 @@ func _ready():
 		set_levels("both")
 		init_money()
 		set_max_exp()
-	else:
-		print(Globals.item)
-		print(Globals.money)
+	if Globals.back_shop == true:
+		Globals.back_shop = false
 		load_data()
 		if Globals.item != null:
 			if data.Items.has(Globals.item) == false:

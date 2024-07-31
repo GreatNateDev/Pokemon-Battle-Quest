@@ -29,7 +29,7 @@ func _ready():
 	$Panel/Label.text = str(price_one) + "$"
 	$Panel2/Label.text = str(price_two) + "$"
 	$Panel3/Label.text = str(price_three) + "$"
-	print(price_one)
+	Globals.back_shop = true
 
 
 
