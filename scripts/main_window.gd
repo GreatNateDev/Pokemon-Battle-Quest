@@ -42,11 +42,20 @@ func _ready():
 		cap_bars()
 	else:
 		load_data()
+		if Globals.item != null:
+			if data.Items.has(Globals.item) == false:
+				data.Items[Globals.item] = 1
+			else:
+				data.Items[Globals.item] += 1
+			Globals.item = null
+		if Globals.money != null:
+			data.Money = Globals.money
+			Globals.money = null
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		random_enemy_level_one()
 		reset_bars()
 		cap_bars()
-
+		
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
