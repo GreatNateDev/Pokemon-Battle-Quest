@@ -710,6 +710,17 @@ offset_right = 150.0
 offset_bottom = 71.0
 text = "Bite"
 
+[node name="Bag" type="Control" parent="Castless"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Container" type="Container" parent="Castless/Bag"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Moves" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -857,6 +868,7 @@ script = ExtResource("19_rjewy")
 [connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
+[connection signal="pressed" from="Cast/Buttons/Bag" to="." method="Bag"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]

@@ -11,3 +11,4 @@ class_name savedata
 @export var Enemy : Dictionary
 @export var starter : String
 @export var Money : int
+@export var Items : Dictionary

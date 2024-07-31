@@ -289,3 +289,18 @@ func playsound(multiplyer):
 			$SFX/attack.play()
 		0.5:
 			$"SFX/weak attack".play()
+func Bag():
+	$Cast/darken.show()
+	$Castless/Bag.show()
+	update_bag()
+func update_bag():
+	for key in data.Items.keys():
+		var new_button : TextureButton = TextureButton.new()
+		var new_text : Label = Label.new()
+		$Castless/Bag/Container.add_child(new_button)
+		new_button.add_child(new_text)
+		new_text.position = new_button.position
+		new_text.position.y += 30
+		new_text.text = str(data.Items[key])
+		new_button.texture_normal = load("res://assets/items/"+str(key)+"/main.png")
+		
