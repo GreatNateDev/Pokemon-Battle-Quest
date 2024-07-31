@@ -1,6 +1,6 @@
 A pokemon game with my own spin on it that is only the battle mode
 TODO:\
-__add shop__
+__add shop__\
 add pokemon switching\
 duel type overhall\
 add trainers\
