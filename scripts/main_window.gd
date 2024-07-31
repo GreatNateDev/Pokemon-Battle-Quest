@@ -13,33 +13,28 @@ func load_data():
 func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
-	if data.first_start == true:
-if Globals.starter != null:
-	texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
-	data.starter = Globals.starter
-	verify(save_path)
-		if Globals.loader == true:
-			Globals.starter = data.starter
-			load_data()
-			texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
-			reset_bars()
-			cap_bars()
-			random_enemy_level_one()
-			set_types()
-			set_levels("both")
-			init_money()
-			set_max_exp()
+	if Globals.loader == true:
+		load_data()
+		texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
 		data.starter = Globals.starter
-		$Cast/Player/Player_sprite.texture = texture 
-		await randomize_player()
-		random_enemy_level_one()
-		refine_level_stats(data.Player,false,true)
-		set_levels("both")
-		set_types()
-		init_money()
-		set_max_exp()
 		reset_bars()
 		cap_bars()
+		random_enemy_level_one()
+		set_types()
+		set_levels("both")
+		init_money()
+		set_max_exp()
+	elif Globals.loader == false and data.first_start == true:
+		data.first_start == false
+		Globals.starter = data.starter
+		texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
+		reset_bars()
+		cap_bars()
+		random_enemy_level_one()
+		set_types()
+		set_levels("both")
+		init_money()
+		set_max_exp()
 	else:
 		print(Globals.item)
 		print(Globals.money)

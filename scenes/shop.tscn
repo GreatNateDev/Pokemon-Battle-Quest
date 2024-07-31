@@ -46,6 +46,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 
 [node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 643.0
 offset_top = 69.0
 offset_right = 1283.0
@@ -80,6 +81,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 
 [node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 1286.0
 offset_top = 69.0
 offset_right = 1926.0
