@@ -2,6 +2,9 @@ extends Control
 
 func _ready():
 	var text = FileAccess.get_file_as_string("res://README.md")
+	text = text.replace("\\","")
+	text = text.replace("_","")
+	text = text.replace("~","")
 	$Label.text = text
 func _process(delta):
 	if Input.is_anything_pressed():
