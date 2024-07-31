@@ -280,7 +280,6 @@ func _input(event):
 		if event.is_action_pressed("ui_accept"):
 			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 func playsound(multiplyer):
-	print(multiplyer)
 	match multiplyer:
 		2:
 			$"SFX/super attack".play()
