@@ -123,3 +123,7 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "Pokedolars: "
+
+[connection signal="pressed" from="Panel/TextureButton" to="." method="oone"]
+[connection signal="pressed" from="Panel2/TextureButton" to="." method="otwo"]
+[connection signal="pressed" from="Panel3/TextureButton" to="." method="othree"]
