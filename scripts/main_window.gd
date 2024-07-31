@@ -13,32 +13,40 @@ func load_data():
 func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
-	if Globals.starter != null:
-		texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
+	if data.first_start == true:
+		if Globals.starter != null:
+			texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
+			data.starter = Globals.starter
+		verify(save_path)
+		if Globals.loader == true:
+			Globals.starter = data.starter
+			load_data()
+			texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
+			reset_bars()
+			cap_bars()
+			random_enemy_level_one()
+			set_types()
+			set_levels("both")
+			init_money()
+			set_max_exp()
 		data.starter = Globals.starter
-	verify(save_path)
-	if Globals.loader == true:
-		Globals.starter = data.starter
-		load_data()
-		texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
-		reset_bars()
-		cap_bars()
+		$Cast/Player/Player_sprite.texture = texture 
+		await randomize_player()
 		random_enemy_level_one()
-		set_types()
+		refine_level_stats(data.Player,false,true)
 		set_levels("both")
+		set_types()
 		init_money()
 		set_max_exp()
-	data.starter = Globals.starter
-	$Cast/Player/Player_sprite.texture = texture 
-	await randomize_player()
-	random_enemy_level_one()
-	refine_level_stats(data.Player,false,true)
-	set_levels("both")
-	set_types()
-	init_money()
-	set_max_exp()
-	reset_bars()
-	cap_bars()
+		reset_bars()
+		cap_bars()
+	else:
+		load_data()
+		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
+		random_enemy_level_one()
+		reset_bars()
+		cap_bars()
+
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -210,6 +218,7 @@ func kill_enemy():
 	data.players_turn = true
 	save_data()
 	data.Enemy = {}
+	await shop()
 	await get_tree().create_timer(2).timeout
 	random_enemy_level_one()
 	$AnimationPlayer.play_backwards("Enemy_death")
@@ -306,7 +315,6 @@ func update_bag():
 		new_text.text = str(data.Items[key])
 		new_button.texture_normal = load("res://assets/items/"+str(key)+".png")
 		new_button.pressed.connect(Item_pressed.bind(key,data.Items[key]))
-
 func Item_pressed(key, num):
 	data.Items[key] -= 1
 	if data.Items[key] == 0:
@@ -315,4 +323,5 @@ func Item_pressed(key, num):
 	$Castless/Bag.hide()
 	disable_btns(false)
 	run_items.emit(key)
-	
+func shop():
+	get_tree().change_scene_to_file("res://scenes/shop.tscn")

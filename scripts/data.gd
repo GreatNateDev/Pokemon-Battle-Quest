@@ -11,6 +11,7 @@ class_name savedata
 @export var Enemy : Dictionary
 @export var starter : String
 @export var Money : int
+@export var first_start : bool = true
 @export var Items : Dictionary = {
 	"potion": 1,
 }
