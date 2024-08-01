@@ -5,4 +5,4 @@ func _on_main_window_run_items(item):
 			#run pokemon menu
 			#click pokemon
 			#handle heals
-			print("used potion")
+			pass

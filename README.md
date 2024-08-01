@@ -9,4 +9,4 @@ add all moves from gen 3\
 add a end to the game\
 BUGS:\
 	sometimes anims just dont show seems to be a absorb problem\
-	bag issues this might take a bit
+	some visual glitches in the bag
