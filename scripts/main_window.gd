@@ -55,7 +55,6 @@ func _ready():
 		random_enemy_level_one()
 		reset_bars()
 		cap_bars()
-		
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -326,14 +325,15 @@ func update_bag():
 		new_text.position = new_button.position
 		new_text.position.y += 30
 		new_text.text = str(data.Items[key])
+		new_button.add_to_group("ItemButton")
 		new_button.texture_normal = load("res://assets/items/"+str(key)+".png")
 		new_button.pressed.connect(Item_pressed.bind(key))
 func Item_pressed(key):
 	data.Items[key] -= 1
 	if data.Items[key] == 0:
-		var texture_to_check = load("res://assets/items/"+key+".png")
-		for button in get_tree().get_nodes_in_group("TextureButtons"):
-			if button.texture_normal == texture_to_check:
+		var texture_to_check = "res://assets/items/"+key+".png"
+		for button in get_tree().get_nodes_in_group("ItemButton"):
+			if button.texture_normal.resource_path == texture_to_check:
 				button.queue_free()
 		data.Items.erase(key)
 	$Cast/darken.hide()
