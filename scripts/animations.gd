@@ -3,6 +3,7 @@ extends Control
 @onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 @onready var Playerpos = get_parent().get_node("Cast/Player/Player_sprite")
 func Animation(entity, move):
+	return
 	match move:
 		"Absorb":
 			match entity:
