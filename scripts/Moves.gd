@@ -1,10 +1,10 @@
 extends Control
 signal text(text,unblock,entity)
 signal damage(entity,damage,text,type)
+signal anim(entity,move)
 #signal effects(entity,effect)
 var opp = null
 var critical = 1
-@onready var anim = get_parent().get_node("AnimationPlayer")
 @onready var critp = get_parent().get_node("top_layer/CRIT")
 @onready var timer = get_parent().get_node("top_layer/CRIT_timer")
 func _on_main_window_attack(Move, Entity, Stats, OStats):
@@ -25,25 +25,26 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 				damage.emit(Entity,1 * critical,Entity+" Weakly used WaterGun on the "+opp,"Water")
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Used WaterGun on the "+opp,"Water")
-			anim.play(Entity+"_watergun")
+			anim.emit(Entity,Move)
 		"Bite":
 			if Stats.atk /OStats.def <= 0:
 				damage.emit(Entity,1 * critical,Entity+" Weakly used Bite on the "+opp,"Dark")
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Bit the "+opp,"Dark")
-			anim.play(Entity+"_bite")
+			anim.emit(Entity,Move)
 		"Ember":
 			if Stats.atk /OStats.def <= 0:
 				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly shot a bolt of fire at the "+opp,"Fire")
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Shot a bolt of fire at the "+opp,"Fire")
-				anim.play(Entity+"_ember")
+			anim.emit(Entity,Move)
 		"Absorb":
 			if Stats.atk /OStats.def <= 0:
 				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","Grass")
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Absorbed the "+opp+"s hp!","Grass")
-				anim.play(Entity+"_absorb")
+			print(Entity,Move)
+			anim.emit(Entity,Move)
 	critical = 1
 
 
