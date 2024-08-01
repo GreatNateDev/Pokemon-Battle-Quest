@@ -315,6 +315,8 @@ func Bag():
 	disable_btns(true)
 	update_bag()
 func update_bag():
+	for child in $Castless/Bag/Container.get_children():
+		child.queue_free()
 	for key in data.Items.keys():
 		var new_button : TextureButton = TextureButton.new()
 		var new_text : Label = Label.new()
