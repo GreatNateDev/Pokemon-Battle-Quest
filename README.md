@@ -1,5 +1,6 @@
 A pokemon game with my own spin on it that is only the battle mode
 TODO:\
+Remake Anims with CODE!\
 catching\
 add pokemon switching\
 make items do stuff\
@@ -8,5 +9,3 @@ add trainers\
 add all pokemon from gen 3\
 add all moves from gen 3\
 add a end to the game\
-BUGS:\
-	sometimes anims just dont show seems to be a absorb problem\

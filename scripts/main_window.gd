@@ -49,6 +49,8 @@ func _ready():
 		if Globals.money != null:
 			data.Money = Globals.money
 			Globals.money = null
+		set_levels("both")
+		set_types()
 		init_money()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		random_enemy_level_one()
@@ -226,13 +228,8 @@ func kill_enemy():
 	data.players_turn = true
 	save_data()
 	data.Enemy = {}
-	await shop()
 	await get_tree().create_timer(2).timeout
-	random_enemy_level_one()
-	$AnimationPlayer.play_backwards("Enemy_death")
-	cap_bars()
-	reset_bars()
-	disable_btns(false)
+	await shop()
 func add_exp(amt):
 	data.Player.exp += amt
 	var tween = get_tree().create_tween()

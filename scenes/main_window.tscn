@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=36 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -32,45 +32,6 @@ bg_color = Color(0.114231, 0.54926, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asvjh"]
 bg_color = Color(0.968627, 0, 0.215686, 1)
-
-[sub_resource type="Animation" id="Animation_5gljv"]
-resource_name = "Enemy_absorb"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Move_layer/Move_anims/absorb:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(623, 744), Vector2(1503, 352)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Move_layer/Move_anims/absorb:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Move_layer/Move_anims/absorb:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_pgsil"]
 resource_name = "Enemy_bite"
@@ -151,45 +112,6 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_2lxtq"]
-resource_name = "Enemy_ember"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Move_layer/Move_anims/ember:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(604, 752)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Move_layer/Move_anims/ember:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Move_layer/Move_anims/ember:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 2, 3, 4]
-}
-
 [sub_resource type="Animation" id="Animation_tr1yq"]
 resource_name = "Enemy_watergun"
 tracks/0/type = "value"
@@ -224,46 +146,6 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_xsaka"]
-resource_name = "Player_absorb"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Move_layer/Move_anims/absorb:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1503, 352), Vector2(623, 744)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Move_layer/Move_anims/absorb:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Move_layer/Move_anims/absorb:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -349,46 +231,6 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_palxj"]
-resource_name = "Player_ember"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Move_layer/Move_anims/ember:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1520.41, 369.095)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Move_layer/Move_anims/ember:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Move_layer/Move_anims/ember:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 2, 3, 4]
-}
-
 [sub_resource type="Animation" id="Animation_2adkc"]
 resource_name = "Player_watergun"
 tracks/0/type = "value"
@@ -428,17 +270,71 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_8fbpi"]
+resource_name = "Enemy_absorb"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/absorb:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/absorb:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(623, 744), Vector2(1520, 336)]
+}
+
+[sub_resource type="Animation" id="Animation_lquc5"]
+resource_name = "Player_absorb"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Move_layer/Move_anims/absorb:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Move_layer/Move_anims/absorb:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1519, 344), Vector2(623, 744)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3s2k3"]
 _data = {
-"Enemy_absorb": SubResource("Animation_5gljv"),
+"Enemy_absorb": SubResource("Animation_8fbpi"),
 "Enemy_bite": SubResource("Animation_pgsil"),
 "Enemy_death": SubResource("Animation_0ftyq"),
-"Enemy_ember": SubResource("Animation_2lxtq"),
 "Enemy_watergun": SubResource("Animation_tr1yq"),
-"Player_absorb": SubResource("Animation_xsaka"),
+"Player_absorb": SubResource("Animation_lquc5"),
 "Player_bite": SubResource("Animation_vubl3"),
 "Player_death": SubResource("Animation_jfnrq"),
-"Player_ember": SubResource("Animation_palxj"),
 "Player_watergun": SubResource("Animation_2adkc")
 }
 
@@ -760,11 +656,10 @@ offset_bottom = 40.0
 visible = false
 z_index = 6
 texture_filter = 1
-position = Vector2(782.93, 263.135)
+position = Vector2(1511, 355)
 scale = Vector2(3, 3)
 texture = ExtResource("10_4uwq2")
 vframes = 3
-frame = 1
 
 [node name="bite" type="Sprite2D" parent="Move_layer/Move_anims"]
 visible = false
@@ -822,6 +717,7 @@ texture_filter = 1
 position = Vector2(1373.5, 808.5)
 scale = Vector2(11.3776, 7.57101)
 texture = ExtResource("17_3nwhe")
+metadata/_edit_lock_ = true
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
