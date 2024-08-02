@@ -4,10 +4,10 @@ on: [push]
 
 jobs:
   build_with_signing:
-    runs-on: macos-latest:
-    steps:l
+    runs-on: macos-latest
+    steps:
       - name: checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: build archive and ipaify
         run: |
