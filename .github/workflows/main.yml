@@ -14,7 +14,8 @@ jobs:
           xcodebuild archive -project "build/Pokemon Battle-Mode.xcodeproj" -scheme 'Pokemon Battle-Mode' -archivePath Example-Project.xcarchive -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
           mkdir Payload
-          mv Example-Project.xcarchive/Products/Applications/Example-Project.app Payload/Example-Project.app
+          ls
+          mv build/Example-Project.xcarchive/Products/Applications/Example-Project.app build/Payload/Example-Project.app
 
           zip -r "Example-Project.ipa" "Payload"
 
