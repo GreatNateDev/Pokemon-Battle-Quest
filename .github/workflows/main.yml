@@ -1,0 +1,31 @@
+name: "Build iOS app"
+
+on: [push]
+
+jobs:
+  build_with_signing:
+    runs-on: macos-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: build archive and ipaify
+        run: |
+          xcodebuild archive -project Pokemon_Battle-Mode.xcodeproj -scheme 'Pokemon_Battle-Mode' -archivePath Pokemon_Battle-Mode.xcarchive -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
+          mkdir Payload
+          mv Pokemon_Battle-Mode.xcarchive/Products/Applications/Pokemon_Battle-Mode.app Payload/Pokemon_Battle-Mode.app
+
+          zip -r "Pokemon_Battle-Mode.ipa" "Payload"
+
+          mv Pokemon_Battle-Mode.ipa ${{ runner.temp }}/Pokemon_Battle-Mode.ipa
+
+
+      - name: Upload application
+        uses: actions/upload-artifact@v3
+        with:
+          name: Example-Project
+          path: ${{ runner.temp }}/Pokemon_Battle-Mode.ipa
+          # you can also archive the entire directory
+          # path: ${{ runner.temp }}/build
+          retention-days: 3
