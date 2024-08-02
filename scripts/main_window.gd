@@ -98,7 +98,7 @@ func random_enemy_level_one():
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
-		"def" : randi_range(1000,5000),
+		"def" : randi_range(1,5),
 		"move1": randmov(),
 		"move2": randmov(),
 		"move3": randmov(),
@@ -138,7 +138,6 @@ func _on_moves_damage(entity, damage, text, type):
 	if entity == "Enemy":
 		multi = getMultiplier(type,data.Player.type)
 		data.Player.hp -= damage * multi
-		print(damage*multi)
 		playsound(multi)
 		disable_btns(false)
 		var tween = get_tree().create_tween()
@@ -149,9 +148,6 @@ func _on_moves_damage(entity, damage, text, type):
 	elif entity == "Player":
 		multi = getMultiplier(type,data.Enemy.type)
 		data.Enemy.hp -= damage * multi
-		print(damage)
-		print(multi)
-		print(damage*multi)
 		playsound(multi)
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",data.Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
@@ -299,7 +295,7 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			#save_data()
-			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			#shop()
 			#_on_moves_damage("Player",1000,"E","Water")
 			pass
