@@ -223,7 +223,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "";
+				ARCHS = "arm64";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -270,7 +270,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "";
+				ARCHS = "arm64";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -312,7 +312,7 @@
 		D0BCFE7218AEBDA3004A7AAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "";
+				ARCHS = "arm64";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Pokemon Battle-Mode/Pokemon Battle-Mode.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -347,7 +347,7 @@
 		D0BCFE7318AEBDA3004A7AAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "";
+				ARCHS = "arm64";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Pokemon Battle-Mode/Pokemon Battle-Mode.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
