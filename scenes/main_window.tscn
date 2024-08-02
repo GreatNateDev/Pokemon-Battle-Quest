@@ -71,10 +71,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_ckc1j")
 
-[node name="Animations" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Animations" type="Node" parent="."]
 script = ExtResource("24_qbdsb")
 
 [node name="SFX" type="Control" parent="."]

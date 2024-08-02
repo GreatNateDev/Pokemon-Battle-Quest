@@ -1,16 +1,22 @@
-extends Control
+extends Node
 @onready var absorb = get_parent().get_node("Move_layer/absorb")
 @onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 @onready var Playerpos = get_parent().get_node("Cast/Player/Player_sprite")
 func Animation(entity, move):
-	return
 	match move:
 		"Absorb":
 			match entity:
 				"Player":
 					absorb.show()
 					var tween = get_tree().create_tween()
-					absorb.position = Enemypos.position
-					#set tween delay to 10 for debugging
-					tween.tween_property(absorb,"position",Playerpos.position,10)
+					absorb.position = Enemypos.global_position
+					tween.tween_property(absorb,"position",Playerpos.global_position,.5)
 					await get_tree().create_timer(.5).timeout
+					absorb.hide()
+				"Enemy":
+					absorb.show()
+					var tween = get_tree().create_tween()
+					absorb.position = Playerpos.global_position
+					tween.tween_property(absorb,"position",Enemypos.global_position,.5)
+					await  get_tree().create_timer(.5).timeout
+					absorb.hide()

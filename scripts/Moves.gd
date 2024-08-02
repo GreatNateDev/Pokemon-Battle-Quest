@@ -43,7 +43,6 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly absorbed the "+opp+"s hp!","Grass")
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Absorbed the "+opp+"s hp!","Grass")
-			print(Entity,Move)
 			anim.emit(Entity,Move)
 	critical = 1
 
