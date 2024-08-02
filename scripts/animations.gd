@@ -16,139 +16,72 @@ func faint(entity):
 			var tweene = get_tree().create_tween()
 			var tween = get_tree().create_tween()
 			var pos = Enemypos.position.y + .1
-			tween.tween_property(Enemypos,"scale",Vector2(.1,.1),5)
-			tweene.tween_property(Enemypos,"position",Vector2(Enemypos.position.x,pos),.3)
+			tween.tween_property(Enemypos,"scale",Vector2(.1,.1),.5)
+			tweene.tween_property(Enemypos,"position",Vector2(Enemypos.position.x,pos),5)
 			await get_tree().create_timer(.5).timeout
 			Enemypos.hide()
 func Animation(entity, move):
+	var target: Vector2 = Enemypos.global_position if entity == "Player" else Playerpos.global_position
+	var source: Vector2 = Playerpos.global_position if entity == "Player" else Enemypos.global_position
 	match move:
 		"Absorb":
-			match entity:
-				"Player":
-					res.texture = load("res://assets/moves/absorb.png")
-					res.scale = Vector2(2,2)
-					res.show()
-					var tween = get_tree().create_tween()
-					res.position = Enemypos.global_position
-					tween.tween_property(res,"position",Playerpos.global_position,.5)
-					await get_tree().create_timer(.5).timeout
-					res.hide()
-					res.scale = Vector2(1,1)
-				"Enemy":
-					res.texture = load("res://assets/moves/absorb.png")
-					res.scale = Vector2(2,2)
-					res.show()
-					var tween = get_tree().create_tween()
-					res.position = Playerpos.global_position
-					tween.tween_property(res,"position",Enemypos.global_position,.5)
-					await  get_tree().create_timer(.5).timeout
-					res.hide()
-					res.scale = Vector2(2,2)
+				res.texture = load("res://assets/moves/absorb.png")
+				res.scale = Vector2(2,2)
+				res.show()
+				var tween = get_tree().create_tween()
+				res.position = target
+				tween.tween_property(res,"position",source,.5)
+				await get_tree().create_timer(.5).timeout
+				res.hide()
+				res.scale = Vector2(1,1)
 		"Bite":
-			match entity:
-				"Player":
-					res.texture = load("res://assets/moves/bite.png")
-					res.scale = Vector2(2,2)
-					res.hframes = 2
-					res.show()
-					res.frame = 1
-					res.position = Enemypos.global_position
-					await get_tree().create_timer(.4).timeout
-					res.frame = 0
-					await get_tree().create_timer(.2).timeout
-					res.hide()
-					res.hframes = 1
-					res.scale = Vector2(1,1)
-				"Enemy":
-					res.texture = load("res://assets/moves/bite.png")
-					res.scale = Vector2(2,2)
-					res.hframes = 2
-					res.show()
-					res.frame = 1
-					res.position = Playerpos.global_position
-					await get_tree().create_timer(.4).timeout
-					res.frame = 0
-					await get_tree().create_timer(.2).timeout
-					res.hide()
-					res.hframes = 1
-					res.scale = Vector2(1,1)
+				res.texture = load("res://assets/moves/bite.png")
+				res.scale = Vector2(2,2)
+				res.hframes = 2
+				res.show()
+				res.frame = 1
+				res.position = target
+				await get_tree().create_timer(.4).timeout
+				res.frame = 0
+				await get_tree().create_timer(.2).timeout
+				res.hide()
+				res.hframes = 1
+				res.scale = Vector2(1,1)
 		"Watergun":
-			match entity:
-				"Player":
-					res.texture = load("res://assets/moves/bubble.png")
-					res.vframes = 3
-					res.frame = 0
-					res.scale = Vector2(2,2)
-					res.position = Playerpos.global_position
-					res.show()
-					var tween = get_tree().create_tween()
-					tween.tween_property(res,"position",Enemypos.global_position,.5)
-					await get_tree().create_timer(.5).timeout
-					res.frame = 1
-					await get_tree().create_timer(.2).timeout
-					res.frame = 2
-					await get_tree().create_timer(.2).timeout
-					res.hide()
-					res.frame = 0
-					res.vframes = 1
-					res.scale = Vector2(2,2)
-				"Enemy":
-					res.texture = load("res://assets/moves/bubble.png")
-					res.vframes = 3
-					res.frame = 0
-					res.scale = Vector2(2,2)
-					res.position = Enemypos.global_position
-					res.show()
-					var tween = get_tree().create_tween()
-					tween.tween_property(res,"position",Playerpos.global_position,.5)
-					await get_tree().create_timer(.5).timeout
-					res.frame = 1
-					await get_tree().create_timer(.2).timeout
-					res.frame = 2
-					await get_tree().create_timer(.2).timeout
-					res.hide()
-					res.frame = 0
-					res.vframes = 1
-					res.scale = Vector2(2,2)
+				res.texture = load("res://assets/moves/bubble.png")
+				res.vframes = 3
+				res.frame = 0
+				res.scale = Vector2(2,2)
+				res.position = source
+				res.show()
+				var tween = get_tree().create_tween()
+				tween.tween_property(res,"position",target,.5)
+				await get_tree().create_timer(.5).timeout
+				res.frame = 1
+				await get_tree().create_timer(.2).timeout
+				res.frame = 2
+				await get_tree().create_timer(.2).timeout
+				res.hide()
+				res.frame = 0
+				res.vframes = 1
+				res.scale = Vector2(2,2)
 		"Ember":
-			match entity:
-				"Player":
-					res.texture = load("res://assets/moves/ember.png")
-					res.hframes = 5
-					res.frame = 0
-					res.scale = Vector2(2,2)
-					res.position = Enemypos.global_position
-					res.show()
-					await get_tree().create_timer(.1).timeout
-					res.frame = 1
-					await get_tree().create_timer(.1).timeout
-					res.frame = 2
-					await get_tree().create_timer(.1).timeout
-					res.frame = 3
-					await get_tree().create_timer(.1).timeout
-					res.frame = 4
-					await get_tree().create_timer(.1).timeout
-					res.hide()
-					res.frame = 0
-					res.hframes = 1
-					res.scale = Vector2(1,1)
-				"Enemy":
-					res.texture = load("res://assets/moves/ember.png")
-					res.hframes = 5
-					res.frame = 0
-					res.scale = Vector2(2,2)
-					res.position = Playerpos.global_position
-					res.show()
-					await get_tree().create_timer(.1).timeout
-					res.frame = 1
-					await get_tree().create_timer(.1).timeout
-					res.frame = 2
-					await get_tree().create_timer(.1).timeout
-					res.frame = 3
-					await get_tree().create_timer(.1).timeout
-					res.frame = 4
-					await get_tree().create_timer(.1).timeout
-					res.hide()
-					res.frame = 0
-					res.hframes = 1
-					res.scale = Vector2(1,1)
+				res.texture = load("res://assets/moves/ember.png")
+				res.hframes = 5
+				res.frame = 0
+				res.scale = Vector2(2,2)
+				res.position = target
+				res.show()
+				await get_tree().create_timer(.1).timeout
+				res.frame = 1
+				await get_tree().create_timer(.1).timeout
+				res.frame = 2
+				await get_tree().create_timer(.1).timeout
+				res.frame = 3
+				await get_tree().create_timer(.1).timeout
+				res.frame = 4
+				await get_tree().create_timer(.1).timeout
+				res.hide()
+				res.frame = 0
+				res.hframes = 1
+				res.scale = Vector2(1,1)

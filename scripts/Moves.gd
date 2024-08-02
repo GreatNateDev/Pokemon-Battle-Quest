@@ -34,6 +34,8 @@ func _on_main_window_attack(Move, Entity, Stats, OStats):
 			anim.emit(Entity,Move)
 		"Ember":
 			if Stats.atk /OStats.def <= 0:
+				print("stats")
+				print("crit"+str(1*critical))
 				damage.emit(Entity,1 * critical /OStats.def,Entity+" Weakly shot a bolt of fire at the "+opp,"Fire")
 			else:
 				damage.emit(Entity,Stats.atk * critical /OStats.def ,Entity+" Shot a bolt of fire at the "+opp,"Fire")
