@@ -88,3 +88,46 @@ func Animation(entity, move):
 					res.frame = 0
 					res.vframes = 1
 					res.scale = Vector2(2,2)
+		"Ember":
+			match entity:
+				"Player":
+					res.texture = load("res://assets/moves/ember.png")
+					res.hframes = 5
+					res.frame = 0
+					res.scale = Vector2(2,2)
+					res.position = Enemypos.global_position
+					res.show()
+					await get_tree().create_timer(.1).timeout
+					res.frame = 1
+					await get_tree().create_timer(.1).timeout
+					res.frame = 2
+					await get_tree().create_timer(.1).timeout
+					res.frame = 3
+					await get_tree().create_timer(.1).timeout
+					res.frame = 4
+					await get_tree().create_timer(.1).timeout
+					res.hide()
+					res.frame = 0
+					res.hframes = 1
+					res.scale = Vector2(1,1)
+				"Enemy":
+					res.texture = load("res://assets/moves/ember.png")
+					res.hframes = 5
+					res.frame = 0
+					res.scale = Vector2(2,2)
+					res.position = Playerpos.global_position
+					res.show()
+					await get_tree().create_timer(.1).timeout
+					res.frame = 1
+					await get_tree().create_timer(.1).timeout
+					res.frame = 2
+					await get_tree().create_timer(.1).timeout
+					res.frame = 3
+					await get_tree().create_timer(.1).timeout
+					res.frame = 4
+					await get_tree().create_timer(.1).timeout
+					res.hide()
+					res.frame = 0
+					res.hframes = 1
+					res.scale = Vector2(1,1)
+					
