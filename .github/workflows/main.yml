@@ -13,7 +13,7 @@ jobs:
         run: |
           xcodebuild archive -project "build/Pokemon Battle-Mode.xcodeproj" -scheme 'Pokemon Battle-Mode' -archivePath build/Pokemon_Battle-Mode.xcarchive -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
-          mv /build/Pokemon_Battle-Mode.xcarchive/Products/Applications/Pokemon Battle-Mode.app Payload/Pokemon_Battle-Mode.app
+          mv /build/Pokemon_Battle-Mode.xcarchive/Products/Applications/Pokemon Battle-Mode.app "Payload/Pokemon Battle-Mode.app"
 
           zip -r "Pokemon_Battle-Mode.ipa" "Payload"
 
