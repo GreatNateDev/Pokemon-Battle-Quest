@@ -13,5 +13,7 @@ class_name savedata
 @export var starter : String
 @export var Money : int = 1000
 @export var Items : Dictionary = {
-	"potion": 1,
+	"potion": 5,
+	"super_potion": 5,
+	"hyper_potion": 5,
 }
