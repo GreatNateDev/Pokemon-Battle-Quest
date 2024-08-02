@@ -50,7 +50,41 @@ func Animation(entity, move):
 					await get_tree().create_timer(.2).timeout
 					res.hide()
 					res.hframes = 1
-		#"Watergun":
-		#	match entity:
-			#	"Player":
-			#		watergun
+		"Watergun":
+			match entity:
+				"Player":
+					res.texture = load("res://assets/moves/bubble.png")
+					res.vframes = 3
+					res.frame = 0
+					res.scale = Vector2(2,2)
+					res.position = Playerpos.global_position
+					res.show()
+					var tween = get_tree().create_tween()
+					tween.tween_property(res,"position",Enemypos.global_position,.5)
+					await get_tree().create_timer(.5).timeout
+					res.frame = 1
+					await get_tree().create_timer(.2).timeout
+					res.frame = 2
+					await get_tree().create_timer(.2).timeout
+					res.hide()
+					res.frame = 0
+					res.vframes = 1
+					res.scale = Vector2(2,2)
+				"Enemy":
+					res.texture = load("res://assets/moves/bubble.png")
+					res.vframes = 3
+					res.frame = 0
+					res.scale = Vector2(2,2)
+					res.position = Enemypos.global_position
+					res.show()
+					var tween = get_tree().create_tween()
+					tween.tween_property(res,"position",Playerpos.global_position,.5)
+					await get_tree().create_timer(.5).timeout
+					res.frame = 1
+					await get_tree().create_timer(.2).timeout
+					res.frame = 2
+					await get_tree().create_timer(.2).timeout
+					res.hide()
+					res.frame = 0
+					res.vframes = 1
+					res.scale = Vector2(2,2)

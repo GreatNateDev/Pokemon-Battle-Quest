@@ -436,6 +436,7 @@ follow_viewport_enabled = true
 
 [node name="move" type="Sprite2D" parent="Move_layer"]
 visible = false
+texture_filter = 1
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]

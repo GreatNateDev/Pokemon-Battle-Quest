@@ -223,7 +223,6 @@ func Move2():
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
 	$SFX/faint.play()
-	$AnimationPlayer.play("Enemy_death")
 	add_exp(data.Enemy.level * 10)
 	data.players_turn = true
 	save_data()
