@@ -11,20 +11,21 @@ jobs:
 
       - name: build archive and ipaify
         run: |
-          xcodebuild archive -project "build/Pokemon Battle-Mode.xcodeproj" -scheme 'Pokemon Battle-Mode' -archivePath build/Pokemon_Battle-Mode.xcarchive -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+          xcodebuild archive -project "Pokemon Battle-Mode.xcodeproj" -scheme 'Example-Project' -archivePath Example-Project.xcarchive -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
-          mv /build/Pokemon_Battle-Mode.xcarchive/Products/Applications/Pokemon Battle-Mode.app "Payload/Pokemon Battle-Mode.app"
+          mkdir Payload
+          mv Example-Project.xcarchive/Products/Applications/Example-Project.app Payload/Example-Project.app
 
-          zip -r "Pokemon_Battle-Mode.ipa" "Payload"
+          zip -r "Example-Project.ipa" "Payload"
 
-          mv "Pokemon_Battle-Mode.ipa" ${{ runner.temp }}/"Pokemon_Battle-Mode.ipa"
+          mv Example-Project.ipa ${{ runner.temp }}/Example-Project.ipa
 
 
       - name: Upload application
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Example-Project
-          path: ${{ runner.temp }}/"Pokemon_Battle-Mode.ipa"
+          path: ${{ runner.temp }}/Example-Project.ipa
           # you can also archive the entire directory
           # path: ${{ runner.temp }}/build
           retention-days: 3
