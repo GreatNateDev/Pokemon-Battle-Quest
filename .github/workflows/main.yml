@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build_with_signing:
-    runs-on: macos-latest
+    runs-on: macos-latest:
     steps:l
       - name: checkout repository
         uses: actions/checkout@v3
