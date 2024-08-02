@@ -1,13 +1,31 @@
-steps:
-  - uses: actions/checkout@v2
-  - uses: vitorgus/setup-godot@v1
-    with:
-      godot-version: 4.2.2
-  - name: Web Build
-    run: |
-      mkdir -v -p build/web
-      godot -v --export "HTML5" ./build/web/index.html
-  - uses: actions/upload-artifact@v2
-    with:
-      name: web
-      path: build/web
+name: "Build iOS app"
+
+on: [push]
+
+jobs:
+  build_with_signing:
+    runs-on: macos-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3
+
+      - name: build archive and ipaify
+        run: |
+          xcodebuild archive -project Example-Project.xcodeproj -scheme 'Example-Project' -archivePath Example-Project.xcarchive -configuration Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
+          mkdir Payload
+          mv Example-Project.xcarchive/Products/Applications/Example-Project.app Payload/Example-Project.app
+
+          zip -r "Example-Project.ipa" "Payload"
+
+          mv Example-Project.ipa ${{ runner.temp }}/Example-Project.ipa
+
+
+      - name: Upload application
+        uses: actions/upload-artifact@v3
+        with:
+          name: Example-Project
+          path: ${{ runner.temp }}/Example-Project.ipa
+          # you can also archive the entire directory
+          # path: ${{ runner.temp }}/build
+          retention-days: 3
