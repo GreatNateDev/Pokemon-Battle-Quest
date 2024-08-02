@@ -281,7 +281,6 @@ func getMultiplier(Move_type,Entity_type):
 		return 1
 func kill_player(plr):
 	$SFX/faint.play()
-	$AnimationPlayer.play("Player_death")
 	data.players_turn = true
 	disable_btns(true)
 	plr.faint = true

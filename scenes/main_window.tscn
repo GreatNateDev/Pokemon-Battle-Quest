@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=24 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -8,13 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="5_dyh0f"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
-[ext_resource type="Texture2D" uid="uid://dyowdehhlv7bw" path="res://assets/moves/bubble.png" id="10_4uwq2"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
-[ext_resource type="Texture2D" uid="uid://lb6d75f78bkm" path="res://assets/moves/ember.png" id="11_63ygn"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="11_gdaxw"]
-[ext_resource type="Texture2D" uid="uid://cttim853rgd3q" path="res://assets/moves/bite.png" id="11_wa7ii"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="12_4muds"]
-[ext_resource type="Texture2D" uid="uid://bv2fdisa2cjhu" path="res://assets/moves/absorb.png" id="12_fb43n"]
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_tf27j"]
 [ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="15_avpwn"]
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="16_6kc6n"]
@@ -71,7 +67,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_ckc1j")
 
-[node name="Animations" type="Node" parent="."]
+[node name="Animations" type="Control" parent="."]
+anchors_preset = 0
 script = ExtResource("24_qbdsb")
 
 [node name="SFX" type="Control" parent="."]
@@ -437,37 +434,8 @@ metadata/_edit_lock_ = true
 [node name="Move_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="watergun" type="Sprite2D" parent="Move_layer"]
+[node name="move" type="Sprite2D" parent="Move_layer"]
 visible = false
-z_index = 6
-texture_filter = 1
-position = Vector2(1511, 355)
-scale = Vector2(3, 3)
-texture = ExtResource("10_4uwq2")
-vframes = 3
-
-[node name="bite" type="Sprite2D" parent="Move_layer"]
-visible = false
-texture_filter = 1
-position = Vector2(599, 774)
-scale = Vector2(3, 3)
-texture = ExtResource("11_wa7ii")
-hframes = 2
-
-[node name="ember" type="Sprite2D" parent="Move_layer"]
-visible = false
-texture_filter = 1
-position = Vector2(604, 752)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("11_63ygn")
-hframes = 5
-
-[node name="absorb" type="Sprite2D" parent="Move_layer"]
-visible = false
-texture_filter = 1
-position = Vector2(599.858, 505.433)
-scale = Vector2(2, 2)
-texture = ExtResource("12_fb43n")
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]
