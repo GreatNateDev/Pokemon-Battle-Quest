@@ -30,6 +30,7 @@ func Animation(entity, move):
 			match entity:
 				"Player":
 					res.texture = load("res://assets/moves/bite.png")
+					res.scale = Vector2(2,2)
 					res.hframes = 2
 					res.show()
 					res.frame = 1
@@ -39,8 +40,10 @@ func Animation(entity, move):
 					await get_tree().create_timer(.2).timeout
 					res.hide()
 					res.hframes = 1
+					res.scale = Vector2(1,1)
 				"Enemy":
 					res.texture = load("res://assets/moves/bite.png")
+					res.scale = Vector2(2,2)
 					res.hframes = 2
 					res.show()
 					res.frame = 1
@@ -50,6 +53,7 @@ func Animation(entity, move):
 					await get_tree().create_timer(.2).timeout
 					res.hide()
 					res.hframes = 1
+					res.scale = Vector2(1,1)
 		"Watergun":
 			match entity:
 				"Player":
