@@ -2,6 +2,18 @@ extends Control
 @onready var res = get_parent().get_node("Move_layer/move")
 @onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 @onready var Playerpos = get_parent().get_node("Cast/Player/Player_sprite")
+func faint(entity):
+	match entity:
+		"Player":
+			var tween = get_tree().create_tween()
+			tween.tween_property(Playerpos,"scale",Vector2(.1,.1),.5)
+			await get_tree().create_timer(.5).timeout
+			Playerpos.hide()
+		"Enemy":
+			var tween = get_tree().create_tween()
+			tween.tween_property(Enemypos,"scale",Vector2(.1,.1),.5)
+			await get_tree().create_timer(.5).timeout
+			Enemypos.hide()
 func Animation(entity, move):
 	match move:
 		"Absorb":
@@ -134,4 +146,3 @@ func Animation(entity, move):
 					res.frame = 0
 					res.hframes = 1
 					res.scale = Vector2(1,1)
-					

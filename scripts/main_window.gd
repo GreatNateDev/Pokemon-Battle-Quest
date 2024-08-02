@@ -4,6 +4,7 @@ var save_name = "Data.tres"
 var data = savedata.new()
 var texture
 var Type = types.new()
+signal faint(entity)
 signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
 signal getrandmon(lvl)
@@ -138,12 +139,12 @@ func _on_moves_damage(entity, damage, text, type):
 		multi = getMultiplier(type,data.Player.type)
 		data.Player.hp -= damage * multi
 		playsound(multi)
-		if data.Player.hp <= $Cast/Player/hpbar.min_value:
-			kill_player(data.Player)
-			return
 		disable_btns(false)
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Player/hpbar,"value",data.Player.hp,1).set_trans(Tween.TRANS_LINEAR)
+		if data.Player.hp <= $Cast/Player/hpbar.min_value:
+			kill_player(data.Player)
+			return
 	elif entity == "Player":
 		multi = getMultiplier(type,data.Enemy.type)
 		data.Enemy.hp -= damage * multi
@@ -223,6 +224,7 @@ func Move2():
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
 	$SFX/faint.play()
+	faint.emit("Enemy")
 	add_exp(data.Enemy.level * 10)
 	data.players_turn = true
 	save_data()
@@ -280,20 +282,22 @@ func getMultiplier(Move_type,Entity_type):
 		return 1
 func kill_player(plr):
 	$SFX/faint.play()
+	faint.emit("Player")
 	data.players_turn = true
 	disable_btns(true)
 	plr.faint = true
 	#switch mon
 	if data.Player.faint == true:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(.5).timeout
 		DirAccess.remove_absolute(save_path+save_name)
 		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")
 func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
-			save_data()
-			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
-			shop()
+			#save_data()
+			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+			#shop()
+			#_on_moves_damage("Enemy",1000,"E","Water")
 			pass
 func playsound(multiplyer):
 	match multiplyer:

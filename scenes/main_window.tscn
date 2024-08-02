@@ -439,6 +439,7 @@ visible = false
 texture_filter = 1
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
+[connection signal="faint" from="." to="Animations" method="faint"]
 [connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]
 [connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
 [connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
