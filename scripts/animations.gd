@@ -5,13 +5,19 @@ extends Control
 func faint(entity):
 	match entity:
 		"Player":
+			var tweene = get_tree().create_tween()
 			var tween = get_tree().create_tween()
+			var pos = Playerpos.global_position.y + .1
 			tween.tween_property(Playerpos,"scale",Vector2(.1,.1),.5)
+			tweene.tween_property(Playerpos,"position",Vector2(Playerpos.position.x,pos),5)
 			await get_tree().create_timer(.5).timeout
 			Playerpos.hide()
 		"Enemy":
+			var tweene = get_tree().create_tween()
 			var tween = get_tree().create_tween()
-			tween.tween_property(Enemypos,"scale",Vector2(.1,.1),.5)
+			var pos = Enemypos.position.y + .1
+			tween.tween_property(Enemypos,"scale",Vector2(.1,.1),5)
+			tweene.tween_property(Enemypos,"position",Vector2(Enemypos.position.x,pos),.3)
 			await get_tree().create_timer(.5).timeout
 			Enemypos.hide()
 func Animation(entity, move):
