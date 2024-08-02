@@ -2,7 +2,6 @@ extends Control
 var save_path = "user://save/"
 var save_name = "Data.tres"
 var data = savedata.new()
-var texture
 var Type = types.new()
 signal faint(entity)
 signal run_items(item)
@@ -16,7 +15,7 @@ func save_data():
 func _ready():
 	if Globals.loader == false and Globals.back_shop == false:
 		data.starter = Globals.starter 
-		texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
+		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		randomize_player()
 		random_enemy_level_one()
 		set_max_exp()
@@ -28,7 +27,7 @@ func _ready():
 	elif Globals.loader == true and Globals.back_shop == false:
 		verify(save_name)
 		load_data()
-		texture = load("res://assets/pokemon/"+Globals.starter+"/back.png")
+		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		data.starter = Globals.starter
 		random_enemy_level_one()
 		set_max_exp()
