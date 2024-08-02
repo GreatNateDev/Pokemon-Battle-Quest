@@ -1,4 +1,5 @@
 extends Control
+signal animation(item)
 func _on_main_window_run_items(item):
 	match item:
 		"potion":
@@ -7,7 +8,7 @@ func _on_main_window_run_items(item):
 			#handle heals
 			pass
 		"poke_ball":
-			#throw
+			animation.emit(item)
 			#catch_rate
 			#handle fail and catch
 			pass
