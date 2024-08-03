@@ -1,8 +1,9 @@
 A pokemon game with my own spin on it that is only the battle mode
 TODO:\
-~~catching~~\
 add pokemon switching\
 make items do stuff\
+remake the moves fourmula\
+remake the move methods\
 duel type overhall\
 add trainers\
 add all pokemon from gen 3\

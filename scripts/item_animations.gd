@@ -3,6 +3,8 @@ extends Control
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 @onready var star = get_parent().get_node("Move_layer/star")
+@onready var caught = get_parent().get_node("SFX/caught")
+@onready var Audio = get_parent().get_node("SFX/Audio")
 @onready var pkmn = pokemon.new()
 func Item_anim(item, e):
 	match item:
@@ -54,6 +56,7 @@ func Item_anim(item, e):
 					enemy.show()
 				false:
 					#text
-					#sound
+					Audio.stop()
+					caught.play()
 					#handle adding to party
 					pass

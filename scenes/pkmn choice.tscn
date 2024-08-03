@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1l5a53y8du8s"]
+[gd_scene load_steps=6 format=3 uid="uid://c1l5a53y8du8s"]
 
 [ext_resource type="Texture2D" uid="uid://bu2gulnu4yaq5" path="res://assets/pokemon/treecko/front.png" id="2_1gqtk"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="3_7g28n"]
+[ext_resource type="VideoStream" path="res://assets/music & sfx/intro.ogv" id="4_6s4gx"]
 [ext_resource type="Texture2D" uid="uid://dohtna0cj63ev" path="res://assets/pokemon/torchic/front.png" id="4_7wrk3"]
 
 [sub_resource type="GDScript" id="GDScript_k83u4"]
@@ -162,6 +163,24 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Load"
+
+[node name="video" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="video"]
+z_index = -5
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 1922.0
+offset_bottom = 1073.0
+stream = ExtResource("4_6s4gx")
+autoplay = true
+expand = true
+loop = true
 
 [connection signal="pressed" from="side button right/Button2" to="." method="guide"]
 [connection signal="pressed" from="side button left/Button3" to="." method="Changelog"]

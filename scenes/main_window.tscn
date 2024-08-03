@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=26 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="12_4muds"]
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_tf27j"]
 [ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="15_avpwn"]
+[ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="15_hwawq"]
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="16_6kc6n"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="17_3nwhe"]
 [ext_resource type="Script" path="res://scripts/Rand_enemy_gen.gd" id="18_0r5vn"]
@@ -107,6 +108,10 @@ autoplay = true
 
 [node name="super attack" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("20_y8gax")
+volume_db = 24.0
+
+[node name="caught" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("15_hwawq")
 volume_db = 24.0
 
 [node name="Timers" type="Control" parent="."]

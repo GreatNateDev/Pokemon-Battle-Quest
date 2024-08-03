@@ -110,7 +110,10 @@ func random_enemy_level_one():
 		"sprite" : get_random_mon(1),
 		"type": set_enemy_type(),
 		"max_hp": null,
-		"stat": 1
+		"stat": 1,
+		"exp": 0,
+		"max_exp": null,
+		"faint": false
 	}
 	refine_level_stats(data.Enemy,false,true)
 	data.Enemy.max_hp = data.Enemy.hp
