@@ -2,16 +2,20 @@ extends Control
 class_name pokemon
 signal pkmn_data(pkmn)
 @export var zigzagoon = {
-	"type": "Normal"
+	"type": "Normal",
+	"catch" : 255
 }
 @export var mudkip = {
-	"type" : "Water"
+	"type" : "Water",
+	"catch" : 45
 }
 @export var torchic = {
-	"type" : "Fire"
+	"type" : "Fire",
+	"catch" : 45
 }
 @export var treecko = {
-	"type" : "Grass"
+	"type" : "Grass",
+	"catch" : 45
 }
 @export var pkmn = {
 	"zigzagoon": zigzagoon,

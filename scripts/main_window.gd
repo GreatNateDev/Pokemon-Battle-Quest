@@ -261,6 +261,7 @@ func Move4():
 func get_random_mon(lvl):
 	getrandmon.emit(lvl)
 func retux_mon(sprite, type):
+	data.Enemy.pokemon = sprite
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
 	Globals.Enemy_type = type
 func request_type(pokemon):
