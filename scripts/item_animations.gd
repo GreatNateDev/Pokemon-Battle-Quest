@@ -2,6 +2,7 @@ extends Control
 @onready var res = get_parent().get_node("Move_layer/item")
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
+@onready var star = get_parent().get_node("Move_layer/star")
 @onready var pkmn = pokemon.new()
 func Item_anim(item, e):
 	match item:
@@ -45,6 +46,14 @@ func Item_anim(item, e):
 				res.skew = 0
 				await get_tree().create_timer(.5).timeout
 			breaker = false
-			#match breaker
-			res.hide()
-			res.scale = Vector2(1,1)
+			match breaker:
+				true:
+					#text
+					res.hide()
+					res.scale = Vector2(1,1)
+					enemy.show()
+				false:
+					#text
+					#sound
+					#handle adding to party
+					pass

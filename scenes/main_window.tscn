@@ -446,7 +446,11 @@ visible = false
 texture_filter = 1
 
 [node name="item" type="Sprite2D" parent="Move_layer"]
+visible = false
 texture_filter = 1
+
+[node name="star" type="Sprite2D" parent="Move_layer"]
+visible = false
 
 [connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
