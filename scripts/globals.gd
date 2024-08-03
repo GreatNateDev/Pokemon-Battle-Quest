@@ -6,3 +6,4 @@ var Enemy_type = null
 var money = null
 var item  = null
 var back_shop = false
+var sprite : String

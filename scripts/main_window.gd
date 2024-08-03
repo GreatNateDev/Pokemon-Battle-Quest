@@ -18,6 +18,7 @@ func _ready():
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		randomize_player()
 		random_enemy_level_one()
+		set_sprite()
 		set_max_exp()
 		reset_bars()
 		cap_bars()
@@ -30,6 +31,7 @@ func _ready():
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		data.starter = Globals.starter
 		random_enemy_level_one()
+		set_sprite()
 		set_max_exp()
 		reset_bars()
 		cap_bars()
@@ -54,6 +56,7 @@ func _ready():
 		init_money()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		random_enemy_level_one()
+		set_sprite()
 		reset_bars()
 		cap_bars()
 func verify(path):
@@ -92,9 +95,10 @@ func randomize_player():
 	}
 	refine_level_stats(data.Player,false,true)
 func random_enemy_level_one():
+	var hp = randi_range(1,5)
 	data.Enemy = {
 		"level" : randi_range(5,7),
-		"hp" : randi_range(1,5),
+		"hp" : hp,
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
@@ -105,8 +109,7 @@ func random_enemy_level_one():
 		"current": null,
 		"sprite" : get_random_mon(1),
 		"type": set_enemy_type(),
-		"max_hp": data.Enemy.hp,
-		"pokemon": null,
+		"max_hp": hp,
 		"stat": 1
 	}
 	refine_level_stats(data.Enemy,false,true)
@@ -262,11 +265,11 @@ func Move4():
 func get_random_mon(lvl):
 	getrandmon.emit(lvl)
 func retux_mon(sprite, type):
-	data.Enemy.pokemon = sprite
+	Globals.sprite = sprite 
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
 	Globals.Enemy_type = type
-func request_type(pokemon):
-	type_requester.emit(pokemon)
+func request_type(pkmn):
+	type_requester.emit(pkmn)
 	var dato = Globals.loaded_data
 	Globals.loaded_data = null
 	return dato
@@ -298,7 +301,8 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			save_data()
-			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+			print(data.Enemy)
+			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			shop()
 			#_on_moves_damage("Player",1000,"E","Water")
 			pass
@@ -346,3 +350,5 @@ func Item_pressed(key):
 func shop():
 	Globals.money = data.Money
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
+func set_sprite():
+	data.Enemy.sprite = Globals.sprite

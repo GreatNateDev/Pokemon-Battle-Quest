@@ -29,10 +29,13 @@ func Item_anim(item, e):
 			tweenw.tween_property(res,"position",Vector2(res.position.x,res.position.y + 100),1)
 			await get_tree().create_timer(1).timeout
 			res.skew = 50
-			var R = pkmn.pkmn[e.pokemon]
+			print(e)
+			var R = pkmn.pkmn[e.sprite]
 			await get_tree().create_timer(1).timeout
-			var catch1 = ((3 * e.max_hp - 2 * e.hp) * R.catch * 1 ) / 3*e.stat
-			catch1 / 3*e.max_hp
-			print(catch1)
+			print("hp: "+str(e.hp)+" max_hp: "+str(e.max_hp)+" crate: "+str(R.catch)+" state: "+str(e.stat))
+			var base_capture_rate = ((3 * e.max_hp - 2 * e.hp) * R.catch) / (3 * e.max_hp)
+			var modified_capture_rate = base_capture_rate * 1
+			var final_capture_rate = modified_capture_rate * e.stat
+			print(final_capture_rate)
 			res.hide()
 			res.scale = Vector2(1,1)
