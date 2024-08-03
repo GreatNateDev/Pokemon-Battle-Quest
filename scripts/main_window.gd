@@ -109,10 +109,11 @@ func random_enemy_level_one():
 		"current": null,
 		"sprite" : get_random_mon(1),
 		"type": set_enemy_type(),
-		"max_hp": hp,
+		"max_hp": null,
 		"stat": 1
 	}
 	refine_level_stats(data.Enemy,false,true)
+	data.Enemy.max_hp = data.Enemy.hp
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
 	$Cast/Enemy/hpbar.value = data.Enemy.hp

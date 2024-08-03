@@ -28,14 +28,23 @@ func Item_anim(item, e):
 			var tweenw = get_tree().create_tween()
 			tweenw.tween_property(res,"position",Vector2(res.position.x,res.position.y + 100),1)
 			await get_tree().create_timer(1).timeout
-			res.skew = 50
-			print(e)
 			var R = pkmn.pkmn[e.sprite]
-			await get_tree().create_timer(1).timeout
-			print("hp: "+str(e.hp)+" max_hp: "+str(e.max_hp)+" crate: "+str(R.catch)+" state: "+str(e.stat))
+			#print("hp: "+str(e.hp)+" max_hp: "+str(e.max_hp)+" crate: "+str(R.catch)+" state: "+str(e.stat))
 			var base_capture_rate = ((3 * e.max_hp - 2 * e.hp) * R.catch) / (3 * e.max_hp)
 			var modified_capture_rate = base_capture_rate * 1
 			var final_capture_rate = modified_capture_rate * e.stat
-			print(final_capture_rate)
+			var probability = final_capture_rate / 255
+			var breaker
+			for i in range(4):  
+				if randf() > probability:
+					breaker = true
+				res.skew = 50
+				await get_tree().create_timer(.2).timeout
+				res.skew = -50
+				await get_tree().create_timer(.2).timeout
+				res.skew = 0
+				await get_tree().create_timer(.5).timeout
+			breaker = false
+			#match breaker
 			res.hide()
 			res.scale = Vector2(1,1)
