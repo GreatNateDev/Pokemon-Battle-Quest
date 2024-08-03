@@ -4,6 +4,7 @@ class_name savedata
 @export var players_turn = true
 @export var current_player : Dictionary
 @export var Player : Dictionary
+@export var Player1 : Dictionary
 @export var Player2 : Dictionary
 @export var Player3 : Dictionary
 @export var Player4 : Dictionary

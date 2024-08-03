@@ -94,6 +94,7 @@ func randomize_player():
 		"faint": false
 	}
 	refine_level_stats(data.Player,false,true)
+	data.Player1 = data.Player
 func random_enemy_level_one():
 	var hp = randi_range(1,5)
 	data.Enemy = {
