@@ -1,4 +1,5 @@
 extends Control
+class_name pokemon
 signal pkmn_data(pkmn)
 @export var zigzagoon = {
 	"type": "Normal"
@@ -19,6 +20,6 @@ signal pkmn_data(pkmn)
 	"torchic": torchic,
 }
 
-func _on_main_window_type_requester(pokemon):
-	var data = pkmn.get(pokemon)
+func _on_main_window_type_requester(pokemoner):
+	var data = pkmn.get(pokemoner)
 	pkmn_data.emit(data.type)

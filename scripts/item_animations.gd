@@ -2,7 +2,8 @@ extends Control
 @onready var res = get_parent().get_node("Move_layer/item")
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
-func Item_anim(item):
+@onready var pkmn = pokemon.new()
+func Item_anim(item, e):
 	match item:
 		"poke_ball":
 			res.position = player.global_position
@@ -29,5 +30,6 @@ func Item_anim(item):
 			await get_tree().create_timer(1).timeout
 			res.skew = 50
 			await get_tree().create_timer(1).timeout
+			var catch1 = (3 * e.max_hp - 2 * e.hp) * 
 			res.hide()
 			res.scale = Vector2(1,1)
