@@ -338,7 +338,7 @@ func Item_pressed(key):
 	$Cast/darken.hide()
 	$Castless/Bag.hide()
 	disable_btns(false)
-	run_items.emit(key)
+	run_items.emit(key,data.Enemy)
 func shop():
 	Globals.money = data.Money
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
