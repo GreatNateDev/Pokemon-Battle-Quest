@@ -406,6 +406,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 columns = 10
 
+[node name="Pokemon_Menu" type="Control" parent="Castless"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="top_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -443,6 +449,10 @@ scale = Vector2(11.3776, 7.57101)
 texture = ExtResource("17_3nwhe")
 metadata/_edit_lock_ = true
 
+[node name="darken" type="CanvasModulate" parent="backround_layer"]
+visible = false
+color = Color(0.458405, 0.458405, 0.458405, 1)
+
 [node name="Move_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -472,6 +482,7 @@ visible = false
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
 [connection signal="pressed" from="Cast/Buttons/Bag" to="." method="Bag"]
+[connection signal="pressed" from="Cast/Buttons/Swap" to="." method="Swap"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]

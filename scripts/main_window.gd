@@ -134,9 +134,11 @@ func disable_btns(value):
 func Move1():
 	Attack.emit($Castless/Box_and_buttons_centre/Move1.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
+	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func _on_fight_pressed():
 	$Cast/darken.show()
+	$backround_layer/darken.show()
 	$Castless/Box_and_buttons_centre.show()
 	disable_btns(true)
 func textedit(text):
@@ -231,6 +233,7 @@ func set_levels(entity):
 func Move2():
 	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
+	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
 	$SFX/faint.play()
@@ -262,10 +265,12 @@ func set_max_exp():
 func Move3():
 	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
+	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func Move4():
 	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
+	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func get_random_mon(lvl):
 	getrandmon.emit(lvl)
@@ -323,6 +328,7 @@ func playsound(multiplyer):
 			$"SFX/weak attack".play()
 func Bag():
 	$Cast/darken.show()
+	$backround_layer/darken.show()
 	$Castless/Bag.show()
 	disable_btns(true)
 	update_bag()
@@ -349,6 +355,7 @@ func Item_pressed(key):
 				button.queue_free()
 		data.Items.erase(key)
 	$Cast/darken.hide()
+	$backround_layer/darken.hide()
 	$Castless/Bag.hide()
 	disable_btns(false)
 	run_items.emit(key,data.Enemy)
@@ -357,3 +364,11 @@ func shop():
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
 func set_sprite():
 	data.Enemy.sprite = Globals.sprite
+
+
+func Swap():
+	$Castless/Pokemon_Menu.show()
+	$Cast/darken.show()
+	$backround_layer/darken.show()
+	disable_btns(true)
+	
