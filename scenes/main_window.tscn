@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=27 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
 [ext_resource type="Script" path="res://scripts/item_animations.gd" id="8_dybkr"]
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
+[ext_resource type="Script" path="res://scripts/damage.gd" id="9_s3jf0"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="11_gdaxw"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="12_4muds"]
@@ -80,6 +81,12 @@ script = ExtResource("19_rjewy")
 [node name="Move Animations" type="Control" parent="."]
 anchors_preset = 0
 script = ExtResource("24_qbdsb")
+
+[node name="Damage" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_s3jf0")
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
@@ -461,10 +468,6 @@ initial_velocity_max = 84.5
 angle_min = -126.0
 angle_max = 52.5
 
-[node name="CRIT_timer" type="Timer" parent="top_layer"]
-wait_time = 0.5
-one_shot = true
-
 [node name="backround_layer" type="CanvasLayer" parent="."]
 layer = -10
 follow_viewport_enabled = true
@@ -494,14 +497,11 @@ texture_filter = 1
 [node name="star" type="Sprite2D" parent="Move_layer"]
 visible = false
 
-[connection signal="Attack" from="." to="Moves" method="_on_main_window_attack"]
+[connection signal="Attack" from="." to="Damage" method="Attack"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
 [connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]
 [connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
 [connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
-[connection signal="anim" from="Moves" to="Move Animations" method="Animation"]
-[connection signal="damage" from="Moves" to="." method="_on_moves_damage"]
-[connection signal="text" from="Moves" to="." method="text_from_moves"]
 [connection signal="pkmn_data" from="Pokemon" to="." method="pokemon_data"]
 [connection signal="retux" from="Rand_enemy_gen" to="." method="retux_mon"]
 [connection signal="animation" from="Items" to="Item Animations" method="Item_anim"]
@@ -518,4 +518,3 @@ visible = false
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
 [connection signal="item_clicked" from="Castless/Pokemon_Menu/ItemList" to="." method="Pokemon_swap"]
-[connection signal="timeout" from="top_layer/CRIT_timer" to="Moves" method="_on_crit_timer_timeout"]

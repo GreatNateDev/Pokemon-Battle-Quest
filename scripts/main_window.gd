@@ -2,7 +2,6 @@ extends Control
 var save_path = "user://save/"
 var save_name = "Data.tres"
 var data = savedata.new()
-var Type = types.new()
 var speeddiff
 signal faint(entity)
 signal run_items(item)
@@ -167,13 +166,11 @@ func _on_fight_pressed():
 func textedit(text):
 	var tween = get_tree().create_tween()
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
-func _on_moves_damage(entity, damage, text, type):
+func Damage(damage, entity, text, multi):
 	await get_tree().create_timer(.5).timeout
-	var multi
 	if entity == "Enemy":
-		multi = getMultiplier(type,data.Player.type)
-		data.Player.hp -= damage * multi
 		playsound(multi)
+		data.Player.hp -= damage
 		disable_btns(false)
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Player/hpbar,"value",data.Player.hp,1).set_trans(Tween.TRANS_LINEAR)
@@ -181,9 +178,8 @@ func _on_moves_damage(entity, damage, text, type):
 			kill_player(data.Player)
 			return
 	elif entity == "Player":
-		multi = getMultiplier(type,data.Enemy.type)
-		data.Enemy.hp -= damage * multi
 		playsound(multi)
+		data.Enemy.hp -= damage
 		var tween = get_tree().create_tween()
 		tween.tween_property($Cast/Enemy/hpbar,"value",data.Enemy.hp,1).set_trans(Tween.TRANS_LINEAR)
 		if data.Enemy.hp <= 0:
@@ -314,11 +310,6 @@ func set_enemy_type():
 	return type
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"
-func getMultiplier(Move_type,Entity_type):
-	if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
-		return Type.typx[Move_type][Entity_type]
-	else:
-		return 1
 func kill_player(plr):
 	$SFX/faint.play()
 	faint.emit("Player")
