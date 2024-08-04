@@ -86,6 +86,7 @@ func set_types():
 	$Cast/Enemy/type.text = data.Enemy.type
 func randomize_player():
 	data.Player = {
+		"index": 1,
 		"level" : randi_range(5,7),
 		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
@@ -419,7 +420,7 @@ func caught():
 func Pokemon_swap(index, _at_position, _mouse_button_index):
 	match Globals.swapvar:
 		null:
-			#handle swap anim
+			
 			#handle_swap_code
 			#end menu
 			pass
@@ -430,6 +431,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 			match  index:
 				0:
 					data.Player1 = {
+						"index": 1,
 						"hp": data.Enemy.prehp,
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
@@ -443,6 +445,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					}
 				1:
 					data.Player2 = {
+						"index": 2,
 						"hp": data.Enemy.prehp,
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
@@ -456,6 +459,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					}
 				2:
 					data.Player3 = {
+						"index": 3,
 						"hp": data.Enemy.prehp,
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
@@ -469,6 +473,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					}
 				3:
 					data.Player4 = {
+						"index": 4,
 						"hp": data.Enemy.prehp,
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
@@ -482,6 +487,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					}
 				4:
 					data.Player5 = {
+						"index": 5,
 						"hp": data.Enemy.prehp,
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
@@ -495,6 +501,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					}
 				5:
 					data.Player6 = {
+						"index": 6,
 						"hp": data.Enemy.prehp,
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,

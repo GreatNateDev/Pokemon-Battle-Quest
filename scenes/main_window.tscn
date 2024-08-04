@@ -65,6 +65,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_ckc1j")
 
+[node name="Item Animations" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_dybkr")
+
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -74,12 +80,6 @@ script = ExtResource("19_rjewy")
 [node name="Move Animations" type="Control" parent="."]
 anchors_preset = 0
 script = ExtResource("24_qbdsb")
-
-[node name="Item Animations" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("8_dybkr")
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
