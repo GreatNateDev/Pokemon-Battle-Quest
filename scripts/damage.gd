@@ -12,7 +12,7 @@ func Attack(Move, Entity, Stats, OStats):
 	else : opp = "Player"
 	print(Mover.movs)
 	var mov = Mover.movs[Move]
-	var type_effectiveness = getMultiplier(mov.type,OStats.type)
+	var type_effectiveness = getMultiplier(mov.type,OStats.type,OStats.type2)
 	var stab = 1
 	if Stats.type == OStats.type: stab = 1.5
 	var crit_chance = 6.25
@@ -33,12 +33,16 @@ func Attack(Move, Entity, Stats, OStats):
 	anim.emit(Entity,Move)
 	print(Entity+" "+Move)
 
-func getMultiplier(Move_type, Entity_types):
+func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
-	for Entity_type in Entity_types:
-		if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
-			multiplier *= Type.typx[Move_type][Entity_type]
-			return multiplier
+	if move_type in Type.typx:
+		if primary_type in Type.typx[move_type]:
+			multiplier *= Type.typx[move_type][primary_type]
+		if secondary_type in Type.typx[move_type]:
+			multiplier *= Type.typx[move_type][secondary_type]
+
+	return multiplier
+
 func crito():
 	var pos
 	if opp == "Player": pos = player.global_position
