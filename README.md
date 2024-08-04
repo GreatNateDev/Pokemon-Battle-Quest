@@ -8,6 +8,7 @@ remake the moves fourmula\
 remake the move methods\
 duel type overhall\
 add trainers\
+add abilitys\
 add all pokemon from gen 3\
 add all moves from gen 3\
 add a end to the game\
