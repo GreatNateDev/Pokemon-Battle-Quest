@@ -1,6 +1,5 @@
 A pokemon game with my own spin on it that is only the battle mode
 TODO:\
-change player stats from global to local array for more preformance
 __add story with trainers gym leaders and a champion__\
 add all abilitys from gen 3\
 add all items from gen 3\

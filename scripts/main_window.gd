@@ -6,6 +6,7 @@ var data = savedata.new()
 var speeddiff
 var rand_mon
 var movs : Array
+var player_mon : Array
 signal faint(entity)
 signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
@@ -108,18 +109,21 @@ func randomize_player():
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
-		"type": request_type(data.starter),
+		"type": null,
 		"exp": 0,
 		"max_exp": null,
 		"faint": false,
-		"name" : Globals.loaded_name,
+		"name" : data.starter,
 		"max_hp": null,
-		"type2": request_type2(),
+		"type2": null,
 		"Move1": null,
 		"Move2": null,
 		"Move3": null,
 		"Move4": null,
 	}
+	type_requester.emit(data.starter)
+	data.Player.type = player_mon[0]
+	data.Player.type2 = player_mon[1]
 	data.Player.hp += bst.hp
 	data.Player.spd += bst.spd
 	data.Player.def += bst.def
@@ -332,19 +336,10 @@ func Move4():
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
-func request_type(pkmn):
-	type_requester.emit(pkmn)
-	var dato = Globals.loaded_data
-	Globals.loaded_data = null
-	return dato
-func request_type2():
-	var dato = Globals.loaded_data_two
-	Globals.loaded_data_two = null
-	return dato
-func pokemon_data(pkmn,mon,type2,base):
-	Globals.loaded_data = pkmn
-	Globals.loaded_data_two = type2
-	Globals.loaded_name = mon
+func pokemon_data(pkmn,type2,base):
+	player_mon.clear()
+	player_mon.append(pkmn)
+	player_mon.append(type2)
 	bst = base
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"

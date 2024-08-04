@@ -27,7 +27,7 @@ var pkmn = {
 
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
-	pkmn_data.emit(data.type,pokemoner,data.type2,data.base_stats)
+	pkmn_data.emit(data.type,data.type2,data.base_stats)
 
 
 func RandMon():
