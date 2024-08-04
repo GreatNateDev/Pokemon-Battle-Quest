@@ -509,6 +509,7 @@ visible = false
 [connection signal="potion" from="Items" to="." method="Potion"]
 [connection signal="anim_text" from="Item Animations" to="." method="anim_text"]
 [connection signal="caught" from="Item Animations" to="." method="caught"]
+[connection signal="failed" from="Item Animations" to="." method="failed"]
 [connection signal="Damage" from="Damage" to="." method="Damage"]
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]

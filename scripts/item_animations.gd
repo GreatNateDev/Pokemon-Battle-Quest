@@ -8,6 +8,7 @@ extends Control
 @onready var pkmn = pokemon.new()
 signal anim_text(text)
 signal caught()
+signal failed()
 func Item_anim(item, e):
 	match item:
 		"poke_ball":
@@ -40,9 +41,9 @@ func Item_anim(item, e):
 			#print(base_capture_rate)
 			var final_capture_rate = modified_capture_rate * e.stat
 			#print(final_capture_rate)
-			var probability = final_capture_rate 
+			var probability = final_capture_rate /255.0
 			var breaker
-			#print(probability)
+			print(probability)
 			for i in range(4):  
 				if randf() > probability:
 					breaker = true
@@ -58,6 +59,7 @@ func Item_anim(item, e):
 			match breaker:
 				true:
 					anim_text.emit("Aww the pokemon escaped you will get him next time!")
+					failed.emit()
 					res.hide()
 					res.scale = Vector2(1,1)
 					enemy.show()
