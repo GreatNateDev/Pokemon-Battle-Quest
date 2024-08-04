@@ -323,8 +323,8 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			save_data()
-			print(data.Enemy)
-			print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
+			#print(data.Enemy)
+			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			shop()
 			#_on_moves_damage("Player",1000,"E","Water")
 			pass
@@ -383,25 +383,24 @@ func Swap():
 	disable_btns(true)
 	update_swapper()
 func update_swapper():
-	print(data.Player1)
 	if data.Player1 != null:
 		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player1.name+"/front.png"))
 		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player1.name)
 	if data.Player2 != null:
-		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player2.name+"/front.png"))
-		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player2.name)
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(1,load("res://assets/pokemon/"+data.Player2.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(1,data.Player2.name)
 	if data.Player3 != null:
-		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player3.name+"/front.png"))
-		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player3.name)
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(2,load("res://assets/pokemon/"+data.Player3.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(2,data.Player3.name)
 	if data.Player4 != null:
-		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player4.name+"/front.png"))
-		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player4.name)
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(3,load("res://assets/pokemon/"+data.Player4.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(3,data.Player4.name)
 	if data.Player5 != null:
-		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player5.name+"/front.png"))
-		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player5.name)
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(4,load("res://assets/pokemon/"+data.Player5.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(4,data.Player5.name)
 	if data.Player6 != null:
-		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player6.name+"/front.png"))
-		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player6.name)
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(5,load("res://assets/pokemon/"+data.Player6.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(5,data.Player6.name)
 func anim_text(text):
 	textedit(text)
 func caught():
@@ -424,7 +423,6 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					data.Player5 = data.Player
 				6:
 					data.Player6 = data.Player
-					print(data.Player1.index)
 			match index:
 				0:
 					if data.Player1 != null: if data.Player.index != data.Player1.index:
@@ -457,12 +455,15 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 			faint.emit("Player")
 			await get_tree().create_timer(3.5).timeout
 			textedit("You sent out "+data.Player.name+"!")
+			$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+data.Player.name+"/back.png")
 			faint.emit("Swap")
+			await get_tree().create_timer(3.5).timeout
 			$"Timers/after_attack cooldown".start()
 		"caught":
-			$Castless/Pokemon_Menu/ItemList.set_item_icon(index,load("res://assets/pokemon/"+data.Enemy.sprite+"front.png"))
+			$Castless/Pokemon_Menu/ItemList.set_item_icon(index,load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png"))
 			$Castless/Pokemon_Menu/ItemList.set_item_text(index,data.Enemy.sprite)
 			Globals.swapvar = null
+			print(index)
 			match  index:
 				0:
 					data.Player1 = {

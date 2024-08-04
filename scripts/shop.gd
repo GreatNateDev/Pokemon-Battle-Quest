@@ -26,9 +26,9 @@ func _ready():
 	loc_three = items.list.find(three)
 	price_three = items.prices[loc_three]
 	
-	$"Panel one/Panel/Lable".text = str(price_one) + "$"
-	$"Panel two/Panel2/Lable".text = str(price_two) + "$"
-	$"Panel three/Panel3/Lable".text = str(price_three) + "$"
+	$"Panel one/Panel/Label".text = str(price_one) + "$"
+	$"Panel two/Panel2/Label".text = str(price_two) + "$"
+	$"Panel three/Panel3/Label".text = str(price_three) + "$"
 	Globals.back_shop = true
 
 

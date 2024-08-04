@@ -17,4 +17,5 @@ class_name savedata
 	"potion": 5,
 	"super_potion": 5,
 	"hyper_potion": 5,
+	"poke_ball": 5,
 }
