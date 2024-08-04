@@ -4,12 +4,12 @@ class_name savedata
 @export var players_turn = true
 @export var current_player : Dictionary
 @export var Player : Dictionary
-@export var Player1 : Dictionary
-@export var Player2 : Dictionary
-@export var Player3 : Dictionary
-@export var Player4 : Dictionary
-@export var Player5 : Dictionary
-@export var Player6 : Dictionary
+@export var Player1 = null
+@export var Player2 = null
+@export var Player3 = null
+@export var Player4 = null
+@export var Player5 = null
+@export var Player6 = null
 @export var Enemy : Dictionary
 @export var starter : String
 @export var Money : int = 1000
