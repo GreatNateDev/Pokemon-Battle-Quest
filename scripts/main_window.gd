@@ -3,6 +3,7 @@ var save_path = "user://save/"
 var save_name = "Data.tres"
 var data = savedata.new()
 var Type = types.new()
+var speeddiff
 signal faint(entity)
 signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
@@ -26,6 +27,7 @@ func _ready():
 		set_levels("both")
 		init_money()
 		update_swapper()
+		if speeddiff == "Enemy": $"Timers/after_attack cooldown".start()
 	elif Globals.loader == true and Globals.back_shop == false:
 		verify(save_name)
 		load_data()
@@ -40,6 +42,7 @@ func _ready():
 		set_levels("both")
 		init_money()
 		update_swapper()
+		if speeddiff == "Enemy": $"Timers/after_attack cooldown".start()
 	if Globals.back_shop == true and Globals.loader == false:
 		Globals.back_shop = false
 		verify(save_path)
@@ -62,6 +65,7 @@ func _ready():
 		reset_bars()
 		cap_bars()
 		update_swapper()
+		if speeddiff == "Enemy": $"Timers/after_attack cooldown".start()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -133,6 +137,10 @@ func random_enemy_level_one():
 	data.Enemy.prespd = data.Enemy.spd
 	refine_level_stats(data.Enemy,false,true)
 	data.Enemy.max_hp = data.Enemy.hp
+	if data.Player.spd >= data.Enemy.spd:
+		speeddiff = "Player"
+	else:
+		speeddiff = "Enemy"
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
 	$Cast/Enemy/hpbar.value = data.Enemy.hp
