@@ -334,11 +334,7 @@ func kill_player(plr):
 	faint.emit("Player")
 	disable_btns(true)
 	plr.faint = true
-	#switch mon
-	if data.Player.faint == true:
-		await get_tree().create_timer(.5).timeout
-		DirAccess.remove_absolute(save_path+save_name)
-		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")
+	Swap()
 func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
@@ -444,22 +440,22 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					data.Player6 = data.Player
 			match index:
 				0:
-					if data.Player1 != null: if data.Player.index != data.Player1.index:
+					if data.Player1 != null: if data.Player.index != data.Player1.index and data.Player1.faint == false:
 						data.Player = data.Player1
 				1:
-					if data.Player2 != null: if data.Player.index != data.Player2.index:
+					if data.Player2 != null: if data.Player.index != data.Player2.index and data.Player2.faint == false:
 						data.Player = data.Player2
 				2:
-					if data.Player3 != null: if data.Player.index != data.Player3.index:
+					if data.Player3 != null: if data.Player.index != data.Player3.index and data.Player3.faint == false:
 						data.Player = data.Player3
 				3:
-					if data.Player4 != null: if data.Player.index != data.Player4.index:
+					if data.Player4 != null: if data.Player.index != data.Player4.index and data.Player4.faint == false:
 						data.Player = data.Player4
 				4:
-					if data.Player5 != null: if data.Player.index != data.Player5.index:
+					if data.Player5 != null: if data.Player.index != data.Player5.index and data.Player5.faint == false:
 						data.Player = data.Player5
 				5:
-					if data.Player6 != null: if data.Player.index != data.Player6.index:
+					if data.Player6 != null: if data.Player.index != data.Player6.index and data.Player6.faint == false:
 						data.Player = data.Player6
 			if data.Player.index == old_index:
 				$Castless/Pokemon_Menu.hide()
@@ -651,3 +647,27 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 func Potion(item):
 	Globals.swapvar = "potion"
 	Globals.swapitem = item
+func checkfaint():
+	if data.Player1 == null: data.Player1 = {"index":1}
+	if data.Player2 == null: data.Player2 = {"index":2}
+	if data.Player3 == null: data.Player3 = {"index":3}
+	if data.Player4 == null: data.Player4 = {"index":4}
+	if data.Player5 == null: data.Player5 = {"index":5}
+	if data.Player6 == null: data.Player6 = {"index":6}
+	match data.Player.index:
+		data.Player1.index:
+			data.Player1 = data.Player
+		data.Player2.index:
+			data.Player2 = data.Player
+		data.Player3.index:
+			data.Player3 = data.Player
+		data.Player4.index:
+			data.Player4 = data.Player
+		data.Player5.index:
+			data.Player1 = data.Player
+		data.Player6.index:
+			data.Player6 = data.Player
+	if data.Player1.faint == true and data.Player2.faint == true and data.Player3.faint == true and data.Player4.faint == true and data.Player5.faint == true and data.Player6.faint == true:
+		await get_tree().create_timer(.5).timeout
+		DirAccess.remove_absolute(save_path+save_name)
+		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")
