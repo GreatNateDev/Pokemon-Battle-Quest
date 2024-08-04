@@ -24,7 +24,6 @@ func _ready():
 		randomize_player()
 		update_moves()
 		next_enemy()
-		set_sprite()
 		set_max_exp()
 		reset_bars()
 		cap_bars()
@@ -42,7 +41,6 @@ func _ready():
 		data.starter = Globals.starter
 		update_moves()
 		next_enemy()
-		set_sprite()
 		set_max_exp()
 		reset_bars()
 		cap_bars()
@@ -72,7 +70,6 @@ func _ready():
 		init_money()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		next_enemy()
-		set_sprite()
 		reset_bars()
 		cap_bars()
 		update_swapper()
@@ -403,8 +400,6 @@ func Item_pressed(key):
 func shop():
 	Globals.money = data.Money
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
-func set_sprite():
-	data.Enemy.sprite = Globals.sprite
 func Swap():
 	$Castless/Pokemon_Menu.show()
 	$Cast/darken.show()
