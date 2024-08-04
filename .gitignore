@@ -5,3 +5,4 @@ addons/
 /build
 
 *.exe
+build/Pokemon Battle-Mode.exe
