@@ -21,7 +21,7 @@ func _ready():
 		data.starter = Globals.starter 
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		randomize_player()
-		
+		update_moves()
 		next_enemy()
 		set_sprite()
 		set_max_exp()
@@ -39,6 +39,7 @@ func _ready():
 		load_data()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		data.starter = Globals.starter
+		update_moves()
 		next_enemy()
 		set_sprite()
 		set_max_exp()
@@ -55,6 +56,7 @@ func _ready():
 		Globals.back_shop = false
 		verify(save_path)
 		load_data()
+		update_moves()
 		if Globals.item != null:
 			if data.Items.has(Globals.item) == false:
 				data.Items[Globals.item] = 1
@@ -521,6 +523,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
 					}
+					update_moves()
 					refine_level_stats(data.Player1,false,true)
 					data.Player1.max_hp = data.Player1.hp
 				1:
@@ -543,6 +546,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
 					}
+					update_moves()
 					refine_level_stats(data.Player2,false,true)
 					data.Player2.max_hp = data.Player2.hp
 				2:
@@ -565,6 +569,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
 					}
+					update_moves()
 					refine_level_stats(data.Player3,false,true)
 					data.Player3.max_hp = data.Player3.hp
 				3:
@@ -587,6 +592,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
 					}
+					update_moves()
 					refine_level_stats(data.Player4,false,true)
 					data.Player4.max_hp = data.Player4.hp
 				4:
@@ -609,6 +615,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
 					}
+					update_moves()
 					refine_level_stats(data.Player5,false,true)
 					data.Player5.max_hp = data.Player5.hp
 				5:
@@ -631,6 +638,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
 					}
+					update_moves()
 					refine_level_stats(data.Player6,false,true)
 					data.Player6.max_hp = data.Player6.hp
 			faint.emit("Enemy")
@@ -744,3 +752,8 @@ func RandMon(type,type2,pk_name,base_stat):
 	rand_mon = [type,type2,pk_name,base_stat]
 func Mov_return(mov):
 	movs.append(mov)
+func update_moves():
+	$Castless/Box_and_buttons_centre/Move1.text = data.Player.Move1
+	$Castless/Box_and_buttons_centre/Move2.text = data.Player.Move2
+	$Castless/Box_and_buttons_centre/Move3.text = data.Player.Move3
+	$Castless/Box_and_buttons_centre/Move4.text = data.Player.Move4

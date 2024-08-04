@@ -31,7 +31,7 @@ var pkmn = {
 func RandMov(mon):
 	var value = pkmn[mon]
 	var arrlen = value.size()
-	var rand = randi_range(1,arrlen)
+	var rand = randi_range(0,arrlen - 1)
 	var output = value[rand]
 	Mov_return.emit(output)
 	
