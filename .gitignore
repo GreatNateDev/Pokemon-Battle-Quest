@@ -3,6 +3,4 @@
 *.DS_STORE
 addons/
 /build
-/build
-build/Pokemon Battle-Mode.exe
-*.exe
+
