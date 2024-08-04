@@ -252,7 +252,6 @@ func kill_enemy():
 	$SFX/faint.play()
 	faint.emit("Enemy")
 	add_exp(data.Enemy.level * 10)
-	data.players_turn = true
 	save_data()
 	data.Enemy = {}
 	await get_tree().create_timer(2).timeout
@@ -313,7 +312,6 @@ func getMultiplier(Move_type,Entity_type):
 func kill_player(plr):
 	$SFX/faint.play()
 	faint.emit("Player")
-	data.players_turn = true
 	disable_btns(true)
 	plr.faint = true
 	#switch mon
@@ -378,8 +376,6 @@ func shop():
 	get_tree().change_scene_to_file("res://scenes/shop.tscn")
 func set_sprite():
 	data.Enemy.sprite = Globals.sprite
-
-
 func Swap():
 	$Castless/Pokemon_Menu.show()
 	$Cast/darken.show()
@@ -406,17 +402,11 @@ func update_swapper():
 	if data.Player6 != null:
 		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player6.name+"/front.png"))
 		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player6.name)
-
-
 func anim_text(text):
 	textedit(text)
-
-
 func caught():
 	Swap()
 	Globals.swapvar = "caught"
-
-
 func Pokemon_swap(index, _at_position, _mouse_button_index):
 	match Globals.swapvar:
 		null:
@@ -458,9 +448,15 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 				$Cast/darken.hide()
 				$backround_layer/darken.hide()
 				disable_btns(false)
-			#$Cast/Player/Player_sprite
-			#end menu
-			pass
+			$Castless/Pokemon_Menu.hide()
+			$Cast/darken.hide()
+			$backround_layer/darken.hide()
+			update_swapper()
+			faint.emit("Player")
+			await get_tree().create_timer(3.5).timeout
+			textedit("You sent out "+data.Player.name+"!")
+			faint.emit("Swap")
+			$"Timers/after_attack cooldown".start()
 		"caught":
 			$Castless/Pokemon_Menu/ItemList.set_item_icon(index,load("res://assets/pokemon/"+data.Enemy.sprite+"front.png"))
 			$Castless/Pokemon_Menu/ItemList.set_item_text(index,data.Enemy.sprite)
@@ -552,7 +548,6 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					}
 			faint.emit("Enemy")
 			add_exp(data.Enemy.level * 10)
-			data.players_turn = true
 			save_data()
 			data.Enemy = {}
 			await get_tree().create_timer(2).timeout

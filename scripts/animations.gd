@@ -12,6 +12,16 @@ func faint(entity):
 			tweene.tween_property(Playerpos,"position",Vector2(Playerpos.position.x,pos),5)
 			await get_tree().create_timer(.5).timeout
 			Playerpos.hide()
+			await get_tree().create_timer(3).timeout
+		"Swap":
+			var tweene = get_tree().create_tween()
+			var tween = get_tree().create_tween()
+			var pos = Playerpos.global_position.y - .1
+			Playerpos.show()
+			tween.tween_property(Playerpos,"scale",Vector2(2,2),.5)
+			tweene.tween_property(Playerpos,"position",Vector2(Playerpos.position.x,pos),5)
+			await get_tree().create_timer(.5).timeout
+			await get_tree().create_timer(3).timeout
 		"Enemy":
 			var tweene = get_tree().create_tween()
 			var tween = get_tree().create_tween()
