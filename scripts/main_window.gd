@@ -424,6 +424,7 @@ func caught():
 func Pokemon_swap(index, _at_position, _mouse_button_index):
 	match Globals.swapvar:
 		null:
+			checkfaint()
 			var old_index = data.Player.index
 			match data.Player.index:
 				1:
