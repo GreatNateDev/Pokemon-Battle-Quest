@@ -1,6 +1,7 @@
 extends Control 
 var save_path = "user://save/"
 var save_name = "Data.tres"
+var bst
 var data = savedata.new()
 var speeddiff
 signal faint(entity)
@@ -110,6 +111,10 @@ func randomize_player():
 		"max_hp": null,
 		"type2": request_type2()
 	}
+	data.Player.hp += bst.hp
+	data.Player.spd += bst.spd
+	data.Player.def += bst.def
+	data.Player.atk += bst.atk
 	refine_level_stats(data.Player,false,true)
 	data.Player.max_hp = data.Player.hp
 	data.Player1 = data.Player
@@ -317,10 +322,11 @@ func request_type2():
 	var dato = Globals.loaded_data_two
 	Globals.loaded_data_two = null
 	return dato
-func pokemon_data(pkmn,mon,type2):
+func pokemon_data(pkmn,mon,type2,base):
 	Globals.loaded_data = pkmn
 	Globals.loaded_data_two = type2
 	Globals.loaded_name = mon
+	bst = base
 func set_enemy_type():
 	var type = Globals.Enemy_type
 	Globals.Enemy_type = null

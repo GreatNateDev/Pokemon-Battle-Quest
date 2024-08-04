@@ -1,5 +1,6 @@
 A pokemon game with my own spin on it that is only the battle mode
 TODO:\
+combine the way that the enemy and player get there stats\
 make the way the enemy and play obtain moves better\
 __add story with trainers gym leaders and a champion__\
 add all abilitys from gen 3\
