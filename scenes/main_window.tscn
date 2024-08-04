@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=29 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="5_dyh0f"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
 [ext_resource type="Script" path="res://scripts/learnable_moves.gd" id="6_htm76"]
+[ext_resource type="Script" path="res://scripts/trainers.gd" id="7_d748f"]
 [ext_resource type="Script" path="res://scripts/item_animations.gd" id="8_dybkr"]
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
 [ext_resource type="Script" path="res://scripts/damage.gd" id="9_s3jf0"]
@@ -22,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/Types.gd" id="19_rjewy"]
 [ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="20_y8gax"]
 [ext_resource type="Script" path="res://scripts/items.gd" id="23_ckc1j"]
+[ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="24_gg8a3"]
 [ext_resource type="Script" path="res://scripts/animations.gd" id="24_qbdsb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
@@ -71,6 +73,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_htm76")
+
+[node name="Trainers" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_d748f")
 
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
@@ -498,14 +506,23 @@ texture_filter = 1
 [node name="star" type="Sprite2D" parent="Move_layer"]
 visible = false
 
+[node name="trainer" type="Sprite2D" parent="Move_layer"]
+visible = false
+texture_filter = 1
+position = Vector2(1824, 192)
+scale = Vector2(5, 5)
+texture = ExtResource("24_gg8a3")
+
 [connection signal="Attack" from="." to="Damage" method="Attack"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
 [connection signal="randmov" from="." to="Learnable_Moves" method="RandMov"]
 [connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
 [connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
+[connection signal="trainer_battle" from="." to="Trainers" method="Trainer_battle"]
 [connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
 [connection signal="pkmn_data" from="Pokemon" to="." method="pokemon_data"]
 [connection signal="random_pokemon" from="Pokemon" to="." method="RandMon"]
+[connection signal="return_mon_data" from="Pokemon" to="Trainers" method="Return_data"]
 [connection signal="animation" from="Items" to="Item Animations" method="Item_anim"]
 [connection signal="potion" from="Items" to="." method="Potion"]
 [connection signal="anim_text" from="Item Animations" to="." method="anim_text"]
@@ -514,6 +531,7 @@ visible = false
 [connection signal="Damage" from="Damage" to="." method="Damage"]
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
 [connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]
+[connection signal="get_pkmn_data" from="Trainers" to="Pokemon" method="get_pokemon_data"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

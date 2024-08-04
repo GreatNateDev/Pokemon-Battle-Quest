@@ -1,6 +1,7 @@
 extends Control
 class_name pokemon
 signal pkmn_data()
+signal return_mon_data()
 signal random_pokemon()
 var totodile = {"type": "Water", "type2": "none", "catch": 45, "base_stats": {"hp": 50, "atk": 65, "def": 64, "spd": 43}}
 var bulbasaur = {"type": "Grass", "type2": "Poison", "catch": 45, "base_stats": {"hp": 45, "atk": 49, "def": 49, "spd": 45}}
@@ -35,3 +36,8 @@ func RandMon():
 	var random_key = keys[randi() % keys.size()]
 	var value = pkmn[random_key]
 	random_pokemon.emit(value.type,value.type2,random_key,value.base_stats)
+
+
+func get_pokemon_data(name):
+	var mon = pkmn[name]
+	return_mon_data.emit(mon.type,mon.type2,mon.base_stats)

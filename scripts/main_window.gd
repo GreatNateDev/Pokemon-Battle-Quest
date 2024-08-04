@@ -7,6 +7,7 @@ var speeddiff
 var rand_mon
 var movs : Array
 var player_mon : Array
+signal trainer_battle(index)
 signal faint(entity)
 signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
@@ -736,8 +737,9 @@ func failed():
 func next_enemy():
 	if data.battle_num < 5:
 		random_enemy_level_one()
-	else:
-		random_enemy_level_one()
+	if data.battle_num == 5:
+		trainer(1)
+		pass
 func RandMon(type,type2,pk_name,base_stat):
 	rand_mon = [type,type2,pk_name,base_stat]
 func Mov_return(mov):
@@ -747,3 +749,5 @@ func update_moves():
 	$Castless/Box_and_buttons_centre/Move2.text = data.Player.Move2
 	$Castless/Box_and_buttons_centre/Move3.text = data.Player.Move3
 	$Castless/Box_and_buttons_centre/Move4.text = data.Player.Move4
+func trainer(index):
+	trainer_battle.emit(index)
