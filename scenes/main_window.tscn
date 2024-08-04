@@ -506,6 +506,7 @@ visible = false
 [connection signal="retux" from="Rand_enemy_gen" to="." method="retux_mon"]
 [connection signal="animation" from="Items" to="Item Animations" method="Item_anim"]
 [connection signal="anim_text" from="Item Animations" to="." method="anim_text"]
+[connection signal="caught" from="Item Animations" to="." method="caught"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
@@ -515,4 +516,5 @@ visible = false
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
+[connection signal="item_clicked" from="Castless/Pokemon_Menu/ItemList" to="." method="Pokemon_swap"]
 [connection signal="timeout" from="top_layer/CRIT_timer" to="Moves" method="_on_crit_timer_timeout"]

@@ -8,3 +8,4 @@ var money = null
 var item  = null
 var back_shop = false
 var sprite : String
+var swapvar = null

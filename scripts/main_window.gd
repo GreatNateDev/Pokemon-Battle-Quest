@@ -113,13 +113,21 @@ func random_enemy_level_one():
 		"move4": randmov(),
 		"current": null,
 		"sprite" : get_random_mon(1),
-		"type": set_enemy_type(),
-		"max_hp": null,
-		"stat": 1,
-		"exp": 0,
-		"max_exp": null,
-		"faint": false
+		"type" : set_enemy_type(),
+		"max_hp" : null,
+		"stat" : 1,
+		"exp" : 0,
+		"max_exp" : null,
+		"faint" : false,
+		"prehp" : null,
+		"predef" : null,
+		"preatk" : null,
+		"prespd" : null,
 	}
+	data.Enemy.prehp = data.Enemy.hp
+	data.Enemy.preatk = data.Enemy.atk
+	data.Enemy.predef = data.Enemy.def
+	data.Enemy.prespd = data.Enemy.spd
 	refine_level_stats(data.Enemy,false,true)
 	data.Enemy.max_hp = data.Enemy.hp
 func reset_bars():
@@ -376,7 +384,7 @@ func Swap():
 	$Cast/darken.show()
 	$backround_layer/darken.show()
 	disable_btns(true)
-	
+	update_swapper()
 func update_swapper():
 	print(data.Player1)
 	if data.Player1 != null:
@@ -401,3 +409,107 @@ func update_swapper():
 
 func anim_text(text):
 	textedit(text)
+
+
+func caught():
+	Swap()
+	Globals.swapvar = "caught"
+
+
+func Pokemon_swap(index, _at_position, _mouse_button_index):
+	match Globals.swapvar:
+		null:
+			#handle swap anim
+			#handle_swap_code
+			#end menu
+			pass
+		"caught":
+			$Castless/Pokemon_Menu/ItemList.set_item_icon(index,load("res://assets/pokemon/"+data.Enemy.sprite+"front.png"))
+			$Castless/Pokemon_Menu/ItemList.set_item_text(index,data.Enemy.sprite)
+			Globals.swapvar = null
+			match  index:
+				0:
+					data.Player1 = {
+						"hp": data.Enemy.prehp,
+						"def": data.Enemy.predef,
+						"atk": data.Enemy.preatk,
+						"spd": data.Enemy.prespd,
+						"level": data.Enemy.level,
+						"type": data.Enemy.type,
+						"exp": 0,
+						"max_exp" : null,
+						"faint" : false,
+						"name": data.Enemy.sprite
+					}
+				1:
+					data.Player2 = {
+						"hp": data.Enemy.prehp,
+						"def": data.Enemy.predef,
+						"atk": data.Enemy.preatk,
+						"spd": data.Enemy.prespd,
+						"level": data.Enemy.level,
+						"type": data.Enemy.type,
+						"exp": 0,
+						"max_exp" : null,
+						"faint" : false,
+						"name": data.Enemy.sprite
+					}
+				2:
+					data.Player3 = {
+						"hp": data.Enemy.prehp,
+						"def": data.Enemy.predef,
+						"atk": data.Enemy.preatk,
+						"spd": data.Enemy.prespd,
+						"level": data.Enemy.level,
+						"type": data.Enemy.type,
+						"exp": 0,
+						"max_exp" : null,
+						"faint" : false,
+						"name": data.Enemy.sprite
+					}
+				3:
+					data.Player4 = {
+						"hp": data.Enemy.prehp,
+						"def": data.Enemy.predef,
+						"atk": data.Enemy.preatk,
+						"spd": data.Enemy.prespd,
+						"level": data.Enemy.level,
+						"type": data.Enemy.type,
+						"exp": 0,
+						"max_exp" : null,
+						"faint" : false,
+						"name": data.Enemy.sprite
+					}
+				4:
+					data.Player5 = {
+						"hp": data.Enemy.prehp,
+						"def": data.Enemy.predef,
+						"atk": data.Enemy.preatk,
+						"spd": data.Enemy.prespd,
+						"level": data.Enemy.level,
+						"type": data.Enemy.type,
+						"exp": 0,
+						"max_exp" : null,
+						"faint" : false,
+						"name": data.Enemy.sprite
+					}
+				5:
+					data.Player6 = {
+						"hp": data.Enemy.prehp,
+						"def": data.Enemy.predef,
+						"atk": data.Enemy.preatk,
+						"spd": data.Enemy.prespd,
+						"level": data.Enemy.level,
+						"type": data.Enemy.type,
+						"exp": 0,
+						"max_exp" : null,
+						"faint" : false,
+						"name": data.Enemy.sprite
+					}
+			faint.emit("Enemy")
+			add_exp(data.Enemy.level * 10)
+			data.players_turn = true
+			save_data()
+			data.Enemy = {}
+			await get_tree().create_timer(2).timeout
+			await shop()

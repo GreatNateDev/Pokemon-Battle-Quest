@@ -3,10 +3,11 @@ extends Control
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 @onready var star = get_parent().get_node("Move_layer/star")
-@onready var caught = get_parent().get_node("SFX/caught")
+@onready var caughtsfx = get_parent().get_node("SFX/caught")
 @onready var Audio = get_parent().get_node("SFX/Audio")
 @onready var pkmn = pokemon.new()
 signal anim_text(text)
+signal caught()
 func Item_anim(item, e):
 	match item:
 		"poke_ball":
@@ -58,5 +59,8 @@ func Item_anim(item, e):
 				false:
 					anim_text.emit("You caught the pokemon!")
 					Audio.stop()
-					caught.play()
-					#handle adding to party
+					caughtsfx.play()
+					caught.emit()
+					await get_tree().create_timer(4).timeout
+					res.hide()
+					res.scale = Vector2(1,1)
