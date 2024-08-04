@@ -456,16 +456,20 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 			update_swapper()
 			faint.emit("Player")
 			await get_tree().create_timer(3.5).timeout
-			textedit("You sent out "+data.Player.name+"!")
+			set_max_exp()
+			reset_bars()
+			cap_bars()
+			set_types()
+			set_levels("both")
 			$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+data.Player.name+"/back.png")
 			faint.emit("Swap")
 			await get_tree().create_timer(3.5).timeout
+			textedit("You sent out "+data.Player.name+"!")
 			$"Timers/after_attack cooldown".start()
 		"caught":
 			$Castless/Pokemon_Menu/ItemList.set_item_icon(index,load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png"))
 			$Castless/Pokemon_Menu/ItemList.set_item_text(index,data.Enemy.sprite)
 			Globals.swapvar = null
-			print(index)
 			match  index:
 				0:
 					data.Player1 = {
