@@ -1,3 +1,4 @@
 .godot/
 *.tmp
 *.DS_STORE
+addons/
