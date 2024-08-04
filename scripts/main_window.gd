@@ -17,7 +17,8 @@ func _ready():
 		data.starter = Globals.starter 
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		randomize_player()
-		random_enemy_level_one()
+		
+		next_enemy()
 		set_sprite()
 		set_max_exp()
 		reset_bars()
@@ -34,7 +35,7 @@ func _ready():
 		load_data()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		data.starter = Globals.starter
-		random_enemy_level_one()
+		next_enemy()
 		set_sprite()
 		set_max_exp()
 		reset_bars()
@@ -63,7 +64,7 @@ func _ready():
 		set_types()
 		init_money()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
-		random_enemy_level_one()
+		next_enemy()
 		set_sprite()
 		reset_bars()
 		cap_bars()
@@ -240,7 +241,7 @@ func run_clicked():
 	if run_chance == 1:
 		textedit("You ran away!")
 		await get_tree().create_timer(2).timeout
-		random_enemy_level_one()
+		next_enemy()
 		reset_bars()
 		cap_bars()
 		textedit("You encountered another enemy! and healed up!")
@@ -265,6 +266,7 @@ func Move2():
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
 	$SFX/faint.play()
+	data.battle_num += 1
 	faint.emit("Enemy")
 	add_exp(data.Enemy.level * 10)
 	save_data()
@@ -593,6 +595,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					refine_level_stats(data.Player6,false,true)
 					data.Player6.max_hp = data.Player6.hp
 			faint.emit("Enemy")
+			data.battle_num += 1
 			add_exp(data.Enemy.level * 10)
 			save_data()
 			data.Enemy = {}
@@ -693,3 +696,8 @@ func checkfaint():
 func failed():
 	disable_btns(true)
 	$"Timers/after_attack cooldown".start()
+func next_enemy():
+	if data.battle_num < 5:
+		random_enemy_level_one()
+	else:
+		random_enemy_level_one()
