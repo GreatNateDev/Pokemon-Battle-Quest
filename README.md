@@ -9,4 +9,4 @@ add abilitys\
 add all items from gen 3\
 add all pokemon from gen 3\
 add all moves from gen 3\
-add a end to the game\
+add a end to the game
