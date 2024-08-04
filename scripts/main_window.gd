@@ -382,3 +382,18 @@ func update_swapper():
 	if data.Player1.name != null:
 		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player1.name+"/front.png"))
 		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player1.name)
+	if data.Player2.name != null:
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player2.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player2.name)
+	if data.Player3.name != null:
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player3.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player3.name)
+	if data.Player4.name != null:
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player4.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player4.name)
+	if data.Player5.name != null:
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player5.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player5.name)
+	if data.Player6.name != null:
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player6.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player6.name)
