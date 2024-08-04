@@ -59,17 +59,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("18_0r5vn")
 
-[node name="Types" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("19_rjewy")
-
 [node name="Items" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("23_ckc1j")
+
+[node name="Types" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_rjewy")
 
 [node name="Move Animations" type="Control" parent="."]
 anchors_preset = 0
