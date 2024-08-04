@@ -33,11 +33,12 @@ func Attack(Move, Entity, Stats, OStats):
 	anim.emit(Entity,Move)
 	print(Entity+" "+Move)
 
-func getMultiplier(Move_type,Entity_type):
-	if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
-		return Type.typx[Move_type][Entity_type]
-	else:
-		return 1
+func getMultiplier(Move_type, Entity_types):
+	var multiplier = 1
+	for Entity_type in Entity_types:
+		if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:
+			multiplier *= Type.typx[Move_type][Entity_type]
+			return multiplier
 func crito():
 	var pos
 	if opp == "Player": pos = player.global_position
