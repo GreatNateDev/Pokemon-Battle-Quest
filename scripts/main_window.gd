@@ -115,7 +115,7 @@ func randomize_player():
 func random_enemy_level_one():
 	var hp = randi_range(1,5)
 	data.Enemy = {
-		"level" : randi_range(1,1),
+		"level" : randi_range(5,5),
 		"hp" : hp,
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
@@ -148,7 +148,7 @@ func random_enemy_level_one():
 	if data.Player.spd >= data.Enemy.spd:
 		speeddiff = "Player"
 	else:
-		speeddiff = "Player"
+		speeddiff = "Enemy"
 func reset_bars():
 	$Cast/Player/hpbar.value = data.Player.hp
 	$Cast/Enemy/hpbar.value = data.Enemy.hp
