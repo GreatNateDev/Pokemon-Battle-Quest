@@ -37,9 +37,12 @@ func Item_anim(item, e):
 			#print("hp: "+str(e.hp)+" max_hp: "+str(e.max_hp)+" crate: "+str(R.catch)+" state: "+str(e.stat))
 			var base_capture_rate = ((3 * e.max_hp - 2 * e.hp) * R.catch) / (3 * e.max_hp)
 			var modified_capture_rate = base_capture_rate * 1
+			#print(base_capture_rate)
 			var final_capture_rate = modified_capture_rate * e.stat
-			var probability = clamp(final_capture_rate / 255, 0, 1)
+			#print(final_capture_rate)
+			var probability = final_capture_rate 
 			var breaker
+			#print(probability)
 			for i in range(4):  
 				if randf() > probability:
 					breaker = true

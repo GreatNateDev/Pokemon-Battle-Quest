@@ -38,7 +38,7 @@ func Changelog():
 
 
 func _on_squirtle_pressed():
-	data(\"squritle\")
+	data(\"squirtle\")
 
 
 func _on_charmander_pressed():
