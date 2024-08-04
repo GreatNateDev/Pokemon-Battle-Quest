@@ -649,16 +649,18 @@ func Potion(item):
 	Globals.swapvar = "potion"
 	Globals.swapitem = item
 func checkfaint():
-	if data.Player1 == null: data.Player1 = {"index":1}
-	if data.Player2 == null: data.Player2 = {"index":2}
-	if data.Player3 == null: data.Player3 = {"index":3}
-	if data.Player4 == null: data.Player4 = {"index":4}
-	if data.Player5 == null: data.Player5 = {"index":5}
-	if data.Player6 == null: data.Player6 = {"index":6}
+	if data.Player1 == null: data.Player1 = {"index":1,"faint":true}
+	if data.Player2 == null: data.Player2 = {"index":2,"faint":true}
+	if data.Player3 == null: data.Player3 = {"index":3,"faint":true}
+	if data.Player4 == null: data.Player4 = {"index":4,"faint":true}
+	if data.Player5 == null: data.Player5 = {"index":5,"faint":true}
+	if data.Player6 == null: data.Player6 = {"index":6,"faint":true}
 	match data.Player.index:
 		data.Player1.index:
+			print("here")
 			data.Player1 = data.Player
 		data.Player2.index:
+			print("not here")
 			data.Player2 = data.Player
 		data.Player3.index:
 			data.Player3 = data.Player
@@ -668,6 +670,7 @@ func checkfaint():
 			data.Player1 = data.Player
 		data.Player6.index:
 			data.Player6 = data.Player
+	print(data.Player1)
 	if data.Player1.faint == true and data.Player2.faint == true and data.Player3.faint == true and data.Player4.faint == true and data.Player5.faint == true and data.Player6.faint == true:
 		await get_tree().create_timer(.5).timeout
 		DirAccess.remove_absolute(save_path+save_name)
