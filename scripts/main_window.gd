@@ -301,6 +301,10 @@ func Move2():
 	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func kill_enemy():
+	var rand = randi_range(1,5)
+	var money_payout = 100 * rand
+	data.Money += money_payout
+	init_money()
 	$SFX/faint.play()
 	data.battle_num += 1
 	faint.emit("Enemy")
