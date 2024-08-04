@@ -4,11 +4,12 @@ var save_name = "Data.tres"
 var bst
 var data = savedata.new()
 var speeddiff
+var rand_mon
 signal faint(entity)
 signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
-signal getrandmon(lvl)
 signal type_requester(pokemon)
+signal random_pokemon()
 func load_data():
 	data = ResourceLoader.load(save_path+save_name).duplicate(true)
 func save_data():
@@ -115,14 +116,14 @@ func randomize_player():
 	data.Player.spd += bst.spd
 	data.Player.def += bst.def
 	data.Player.atk += bst.atk
+	bst = null
 	refine_level_stats(data.Player,false,true)
 	data.Player.max_hp = data.Player.hp
 	data.Player1 = data.Player
 func random_enemy_level_one():
-	var hp = randi_range(1,5)
 	data.Enemy = {
 		"level" : randi_range(5,5),
-		"hp" : hp,
+		"hp" : randi_range(1,5),
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
@@ -131,8 +132,8 @@ func random_enemy_level_one():
 		"move3": randmov(),
 		"move4": randmov(),
 		"current": null,
-		"sprite" : get_random_mon(1),
-		"type" : set_enemy_type(),
+		"sprite" : null,
+		"type" : null,
 		"max_hp" : null,
 		"stat" : 1,
 		"exp" : 0,
@@ -142,13 +143,23 @@ func random_enemy_level_one():
 		"predef" : null,
 		"preatk" : null,
 		"prespd" : null,
-		"type2" : set_enemy_type2()
+		"type2" : null
 		
 	}
+	
 	data.Enemy.prehp = data.Enemy.hp
 	data.Enemy.preatk = data.Enemy.atk
 	data.Enemy.predef = data.Enemy.def
 	data.Enemy.prespd = data.Enemy.spd
+	random_pokemon.emit()
+	data.Enemy.type = rand_mon[0]
+	data.Enemy.type2 = rand_mon[1]
+	data.Enemy.sprite = rand_mon[2]
+	data.Enemy.hp += rand_mon[3].hp
+	data.Enemy.atk += rand_mon[3].atk
+	data.Enemy.def += rand_mon[3].def
+	data.Enemy.spd += rand_mon[3].spd
+	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
 	refine_level_stats(data.Enemy,false,true)
 	data.Enemy.max_hp = data.Enemy.hp
 	if data.Player.spd >= data.Enemy.spd:
@@ -306,13 +317,6 @@ func Move4():
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
-func get_random_mon(lvl):
-	getrandmon.emit(lvl)
-func retux_mon(sprite, type, type2):
-	Globals.sprite = sprite 
-	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+sprite+"/front.png")
-	Globals.Enemy_type = type
-	Globals.Enemy_type2 = type2
 func request_type(pkmn):
 	type_requester.emit(pkmn)
 	var dato = Globals.loaded_data
@@ -327,14 +331,6 @@ func pokemon_data(pkmn,mon,type2,base):
 	Globals.loaded_data_two = type2
 	Globals.loaded_name = mon
 	bst = base
-func set_enemy_type():
-	var type = Globals.Enemy_type
-	Globals.Enemy_type = null
-	return type
-func set_enemy_type2():
-	var type2 = Globals.Enemy_type2
-	Globals.Enemy_type2 = null
-	return type2
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"
 func kill_player(plr):
@@ -707,3 +703,7 @@ func next_enemy():
 		random_enemy_level_one()
 	else:
 		random_enemy_level_one()
+
+
+func RandMon(type,type2,pk_name,base_stat):
+	rand_mon = [type,type2,pk_name,base_stat]

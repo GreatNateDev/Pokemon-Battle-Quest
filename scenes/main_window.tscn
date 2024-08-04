@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=26 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -18,7 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="15_hwawq"]
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="16_6kc6n"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="17_3nwhe"]
-[ext_resource type="Script" path="res://scripts/Rand_enemy_gen.gd" id="18_0r5vn"]
 [ext_resource type="Script" path="res://scripts/Types.gd" id="19_rjewy"]
 [ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="20_y8gax"]
 [ext_resource type="Script" path="res://scripts/items.gd" id="23_ckc1j"]
@@ -47,12 +46,6 @@ script = ExtResource("1_lta6h")
 [node name="Pokemon" type="Control" parent="."]
 anchors_preset = 0
 script = ExtResource("10_rwwo6")
-
-[node name="Rand_enemy_gen" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("18_0r5vn")
 
 [node name="Items" type="Control" parent="."]
 anchors_preset = 0
@@ -500,11 +493,11 @@ visible = false
 
 [connection signal="Attack" from="." to="Damage" method="Attack"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
-[connection signal="getrandmon" from="." to="Rand_enemy_gen" method="_on_main_window_getrandmon"]
+[connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
 [connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
 [connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
 [connection signal="pkmn_data" from="Pokemon" to="." method="pokemon_data"]
-[connection signal="retux" from="Rand_enemy_gen" to="." method="retux_mon"]
+[connection signal="random_pokemon" from="Pokemon" to="." method="RandMon"]
 [connection signal="animation" from="Items" to="Item Animations" method="Item_anim"]
 [connection signal="potion" from="Items" to="." method="Potion"]
 [connection signal="anim_text" from="Item Animations" to="." method="anim_text"]

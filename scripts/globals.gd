@@ -12,3 +12,4 @@ var swapvar = null
 var swapitem = null
 var loaded_data_two = null
 var Enemy_type2 = null
+var eloaded_name = null
