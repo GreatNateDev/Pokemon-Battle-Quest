@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=27 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/UI/moves.png" id="5_b0t8s"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="5_dyh0f"]
 [ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
+[ext_resource type="Script" path="res://scripts/learnable_moves.gd" id="6_htm76"]
 [ext_resource type="Script" path="res://scripts/item_animations.gd" id="8_dybkr"]
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
 [ext_resource type="Script" path="res://scripts/damage.gd" id="9_s3jf0"]
@@ -64,6 +65,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("9_s3jf0")
+
+[node name="Learnable_Moves" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_htm76")
 
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
@@ -493,6 +500,7 @@ visible = false
 
 [connection signal="Attack" from="." to="Damage" method="Attack"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
+[connection signal="randmov" from="." to="Learnable_Moves" method="RandMov"]
 [connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
 [connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
 [connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
@@ -505,6 +513,7 @@ visible = false
 [connection signal="failed" from="Item Animations" to="." method="failed"]
 [connection signal="Damage" from="Damage" to="." method="Damage"]
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
+[connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

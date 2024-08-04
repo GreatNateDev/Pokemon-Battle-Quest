@@ -5,11 +5,13 @@ var bst
 var data = savedata.new()
 var speeddiff
 var rand_mon
+var movs : Array
 signal faint(entity)
 signal run_items(item)
 signal Attack(Move,Entity,Stats,OStats)
 signal type_requester(pokemon)
-signal random_pokemon()
+signal random_pokemon(mon)
+signal randmov()
 func load_data():
 	data = ResourceLoader.load(save_path+save_name).duplicate(true)
 func save_data():
@@ -110,12 +112,25 @@ func randomize_player():
 		"faint": false,
 		"name" : Globals.loaded_name,
 		"max_hp": null,
-		"type2": request_type2()
+		"type2": request_type2(),
+		"Move1": null,
+		"Move2": null,
+		"Move3": null,
+		"Move4": null,
 	}
 	data.Player.hp += bst.hp
 	data.Player.spd += bst.spd
 	data.Player.def += bst.def
 	data.Player.atk += bst.atk
+	movs.clear()
+	randmov.emit(data.Player.name)
+	randmov.emit(data.Player.name)
+	randmov.emit(data.Player.name)
+	randmov.emit(data.Player.name)
+	data.Player.Move1 = movs[0]
+	data.Player.Move2 = movs[1]
+	data.Player.Move3 = movs[2]
+	data.Player.Move4 = movs[3]
 	bst = null
 	refine_level_stats(data.Player,false,true)
 	data.Player.max_hp = data.Player.hp
@@ -127,10 +142,10 @@ func random_enemy_level_one():
 		"spd" : randi_range(1,5),
 		"atk" : randi_range(1,5),
 		"def" : randi_range(1,5),
-		"move1": randmov(),
-		"move2": randmov(),
-		"move3": randmov(),
-		"move4": randmov(),
+		"move1": null,
+		"move2": null,
+		"move3": null,
+		"move4": null,
 		"current": null,
 		"sprite" : null,
 		"type" : null,
@@ -160,6 +175,15 @@ func random_enemy_level_one():
 	data.Enemy.def += rand_mon[3].def
 	data.Enemy.spd += rand_mon[3].spd
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
+	movs.clear()
+	randmov.emit(data.Enemy.sprite)
+	randmov.emit(data.Enemy.sprite)
+	randmov.emit(data.Enemy.sprite)
+	randmov.emit(data.Enemy.sprite)
+	data.Enemy.move1 = movs[0]
+	data.Enemy.move2 = movs[1]
+	data.Enemy.move3 = movs[2]
+	data.Enemy.move4 = movs[3]
 	refine_level_stats(data.Enemy,false,true)
 	data.Enemy.max_hp = data.Enemy.hp
 	if data.Player.spd >= data.Enemy.spd:
@@ -235,17 +259,6 @@ func Enemy_atk():
 	Attack.emit(data.Enemy.current,"Enemy",data.Enemy,data.Player)
 func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
-func randmov():
-	var movs = randi_range(1,4)
-	match movs:
-		1:
-			return "Ember"
-		2:
-			return "Absorb"
-		3:
-			return "Watergun"
-		4:
-			return "Bite"
 func text_from_moves(text,unblocked,entity):
 	textedit(text)
 	if unblocked == true and entity == "Enemy":
@@ -503,6 +516,10 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"faint" : false,
 						"name": data.Enemy.sprite,
 						"max_hp": null,
+						"Move1": data.Enemy.move1,
+						"Move2": data.Enemy.move2,
+						"Move3": data.Enemy.move3,
+						"Move4": data.Enemy.move4,
 					}
 					refine_level_stats(data.Player1,false,true)
 					data.Player1.max_hp = data.Player1.hp
@@ -521,6 +538,10 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"name": data.Enemy.sprite,
 						"max_hp": null,
 						"type2": data.Enemy.type2,
+						"Move1": data.Enemy.move1,
+						"Move2": data.Enemy.move2,
+						"Move3": data.Enemy.move3,
+						"Move4": data.Enemy.move4,
 					}
 					refine_level_stats(data.Player2,false,true)
 					data.Player2.max_hp = data.Player2.hp
@@ -539,6 +560,10 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"name": data.Enemy.sprite,
 						"max_hp": null,
 						"type2": data.Enemy.type2,
+						"Move1": data.Enemy.move1,
+						"Move2": data.Enemy.move2,
+						"Move3": data.Enemy.move3,
+						"Move4": data.Enemy.move4,
 					}
 					refine_level_stats(data.Player3,false,true)
 					data.Player3.max_hp = data.Player3.hp
@@ -557,6 +582,10 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"name": data.Enemy.sprite,
 						"max_hp": null,
 						"type2": data.Enemy.type2,
+						"Move1": data.Enemy.move1,
+						"Move2": data.Enemy.move2,
+						"Move3": data.Enemy.move3,
+						"Move4": data.Enemy.move4,
 					}
 					refine_level_stats(data.Player4,false,true)
 					data.Player4.max_hp = data.Player4.hp
@@ -575,6 +604,10 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"name": data.Enemy.sprite,
 						"max_hp": null,
 						"type2": data.Enemy.type2,
+						"Move1": data.Enemy.move1,
+						"Move2": data.Enemy.move2,
+						"Move3": data.Enemy.move3,
+						"Move4": data.Enemy.move4,
 					}
 					refine_level_stats(data.Player5,false,true)
 					data.Player5.max_hp = data.Player5.hp
@@ -593,6 +626,10 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"name": data.Enemy.sprite,
 						"max_hp": null,
 						"type2": data.Enemy.type2,
+						"Move1": data.Enemy.move1,
+						"Move2": data.Enemy.move2,
+						"Move3": data.Enemy.move3,
+						"Move4": data.Enemy.move4,
 					}
 					refine_level_stats(data.Player6,false,true)
 					data.Player6.max_hp = data.Player6.hp
@@ -703,7 +740,7 @@ func next_enemy():
 		random_enemy_level_one()
 	else:
 		random_enemy_level_one()
-
-
 func RandMon(type,type2,pk_name,base_stat):
 	rand_mon = [type,type2,pk_name,base_stat]
+func Mov_return(mov):
+	movs.append(mov)
