@@ -44,12 +44,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lta6h")
 
-[node name="Moves" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_v2ebp")
-
 [node name="Pokemon" type="Control" parent="."]
 anchors_preset = 0
 script = ExtResource("10_rwwo6")
@@ -72,6 +66,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("8_dybkr")
 
+[node name="Damage" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_s3jf0")
+
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -82,11 +82,12 @@ script = ExtResource("19_rjewy")
 anchors_preset = 0
 script = ExtResource("24_qbdsb")
 
-[node name="Damage" type="Control" parent="."]
+[node name="Moves" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("9_s3jf0")
+script = ExtResource("5_v2ebp")
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
@@ -508,6 +509,8 @@ visible = false
 [connection signal="potion" from="Items" to="." method="Potion"]
 [connection signal="anim_text" from="Item Animations" to="." method="anim_text"]
 [connection signal="caught" from="Item Animations" to="." method="caught"]
+[connection signal="Damage" from="Damage" to="." method="Damage"]
+[connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

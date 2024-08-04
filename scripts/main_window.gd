@@ -26,7 +26,9 @@ func _ready():
 		set_levels("both")
 		init_money()
 		update_swapper()
-		if speeddiff == "Enemy": $"Timers/after_attack cooldown".start()
+		if speeddiff == "Enemy":
+			disable_btns(true)
+			$"Timers/after_attack cooldown".start()
 	elif Globals.loader == true and Globals.back_shop == false:
 		verify(save_name)
 		load_data()
@@ -41,7 +43,9 @@ func _ready():
 		set_levels("both")
 		init_money()
 		update_swapper()
-		if speeddiff == "Enemy": $"Timers/after_attack cooldown".start()
+		if speeddiff == "Enemy":
+			disable_btns(true)
+			$"Timers/after_attack cooldown".start()
 	if Globals.back_shop == true and Globals.loader == false:
 		Globals.back_shop = false
 		verify(save_path)
@@ -64,7 +68,9 @@ func _ready():
 		reset_bars()
 		cap_bars()
 		update_swapper()
-		if speeddiff == "Enemy": $"Timers/after_attack cooldown".start()
+		if speeddiff == "Enemy":
+			disable_btns(true)
+			$"Timers/after_attack cooldown".start()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):

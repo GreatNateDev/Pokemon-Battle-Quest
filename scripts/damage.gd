@@ -3,6 +3,7 @@ extends Control
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 var opp
+signal anim(entity,mov)
 signal Damage(damage,Entity,text,type_eff)
 var Type = types.new()
 var Mover = Movos.new()
@@ -29,6 +30,8 @@ func Attack(Move, Entity, Stats, OStats):
 		final_damage = final_damage * 2
 		crito()
 	Damage.emit(max(int(final_damage), 1),Entity,opp+mov.text,type_effectiveness)
+	anim.emit(Entity,Move)
+	print(Entity+" "+Move)
 
 func getMultiplier(Move_type,Entity_type):
 	if Move_type in Type.typx and Entity_type in Type.typx[Move_type]:

@@ -29,7 +29,7 @@ var Absorb = {
 	"type": "Grass",
 	"text":" had its health absorbed!"
 }
-@onready var movs = {
+var movs = {
 	"Absorb": Absorb,
 	"Bite": Bite,
 	"Ember": Ember,
