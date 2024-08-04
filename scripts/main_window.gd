@@ -420,8 +420,45 @@ func caught():
 func Pokemon_swap(index, _at_position, _mouse_button_index):
 	match Globals.swapvar:
 		null:
-			
-			#handle_swap_code
+			var old_index = data.Player.index
+			match data.Player.index:
+				1:
+					data.Player1 = data.Player
+				2:
+					data.Player2 = data.Player
+				3:
+					data.Player3 = data.Player
+				4:
+					data.Player4 = data.Player
+				5:
+					data.Player5 = data.Player
+				6:
+					data.Player6 = data.Player
+			match index:
+				0:
+					if data.Player1 != null: if data.Player.index != data.Player1.index:
+						data.Player = data.Player1
+				1:
+					if data.Player2 != null: if data.Player.index != data.Player2.index:
+						data.Player = data.Player2
+				2:
+					if data.Player3 != null: if data.Player.index != data.Player3.index:
+						data.Player = data.Player3
+				3:
+					if data.Player4 != null: if data.Player.index != data.Player4.index:
+						data.Player = data.Player4
+				4:
+					if data.Player5 != null: if data.Player.index != data.Player5.index:
+						data.Player = data.Player5
+				5:
+					if data.Player6 != null: if data.Player.index != data.Player6.index:
+						data.Player = data.Player6
+			if data.Player.index == old_index:
+				$Castless/Pokemon_Menu.hide()
+				$Cast/darken.hide()
+				$backround_layer/darken.hide()
+				disable_btns(false)
+			#$Cast/Player/Player_sprite
 			#end menu
 			pass
 		"caught":
