@@ -97,8 +97,10 @@ func randomize_player():
 		"max_exp": null,
 		"faint": false,
 		"name" : Globals.loaded_name,
+		"max_hp": null,
 	}
 	refine_level_stats(data.Player,false,true)
+	data.Player.max_hp = data.Player.hp
 	data.Player1 = data.Player
 func random_enemy_level_one():
 	var hp = randi_range(1,5)
@@ -477,8 +479,11 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"exp": 0,
 						"max_exp" : null,
 						"faint" : false,
-						"name": data.Enemy.sprite
+						"name": data.Enemy.sprite,
+						"max_hp": null,
 					}
+					refine_level_stats(data.Player1,false,true)
+					data.Player1.max_hp = data.Player1.hp
 				1:
 					data.Player2 = {
 						"index": 2,
@@ -491,8 +496,11 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"exp": 0,
 						"max_exp" : null,
 						"faint" : false,
-						"name": data.Enemy.sprite
+						"name": data.Enemy.sprite,
+						"max_hp": null,
 					}
+					refine_level_stats(data.Player2,false,true)
+					data.Player2.max_hp = data.Player2.hp
 				2:
 					data.Player3 = {
 						"index": 3,
@@ -505,8 +513,11 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"exp": 0,
 						"max_exp" : null,
 						"faint" : false,
-						"name": data.Enemy.sprite
+						"name": data.Enemy.sprite,
+						"max_hp": null,
 					}
+					refine_level_stats(data.Player3,false,true)
+					data.Player3.max_hp = data.Player3.hp
 				3:
 					data.Player4 = {
 						"index": 4,
@@ -519,8 +530,11 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"exp": 0,
 						"max_exp" : null,
 						"faint" : false,
-						"name": data.Enemy.sprite
+						"name": data.Enemy.sprite,
+						"max_hp": null,
 					}
+					refine_level_stats(data.Player4,false,true)
+					data.Player4.max_hp = data.Player4.hp
 				4:
 					data.Player5 = {
 						"index": 5,
@@ -533,8 +547,11 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"exp": 0,
 						"max_exp" : null,
 						"faint" : false,
-						"name": data.Enemy.sprite
+						"name": data.Enemy.sprite,
+						"max_hp": null,
 					}
+					refine_level_stats(data.Player5,false,true)
+					data.Player5.max_hp = data.Player5.hp
 				5:
 					data.Player6 = {
 						"index": 6,
@@ -547,8 +564,11 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"exp": 0,
 						"max_exp" : null,
 						"faint" : false,
-						"name": data.Enemy.sprite
+						"name": data.Enemy.sprite,
+						"max_hp": null,
 					}
+					refine_level_stats(data.Player6,false,true)
+					data.Player6.max_hp = data.Player6.hp
 			faint.emit("Enemy")
 			add_exp(data.Enemy.level * 10)
 			save_data()

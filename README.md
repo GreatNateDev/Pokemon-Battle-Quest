@@ -12,4 +12,4 @@ add all moves from gen 3\
 add a end to the game\
 BUGS:\
 i dont think you can fail at catching for some reason\
-cant send out any mons
+cant send out any mons because of animation
