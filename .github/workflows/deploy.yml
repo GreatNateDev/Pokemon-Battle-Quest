@@ -1,7 +1,7 @@
 name: "Publish to GitHub Pages"
 
 env:
-  GODOT_VERSION: 4.1.2
+  GODOT_VERSION: 4.3.rc2
 
 on:
   workflow_dispatch:
