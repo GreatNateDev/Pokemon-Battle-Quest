@@ -1,12 +1,5 @@
-to add a new move first make a animation with Player_(move name) and Enemy_(move name) then add the move in the moves.gd file then add it to the players move button and or the enemys rand_mov() function
+to add a new item go to the items.gd script and add it then add the animation in the item_animations.gd file
 to add a pokemon just put the folder of the pokemon in the res://assets/pokemon folder then go to pokemon.gd and add it in and do the same for Rand_enemy_gen.gd
-to add a new type just edit the types.gd file
-to add a new starter put a textured button in the container in the pkmn_choice.tscn
-to add data to the save data add the var to the data.gd file and add the prefix data.(varname)
-to add a global var add the var in globals.gd and refrance it like Globals.(varname)
-to build for windows just export for windows
-to build for ios export for ios then go to xcodeproject file and open then fix certs change certs to appledev and good luck lol
-
-
-CODESTRIPS:
-"Normal": 1, "Fire": 1, "Water": 1, "Rock": 1, "Steel": 1, "Ghost": 1, "Electric": 1, "Grass": 1, "Ice": 1, "Fighting": 1, "Poison": 1, "Ground": 1, "Flying": 1, "Psychic": 1,"Bug": 1,"Dragon": 1,"Dark": 1,"Fairy": 1
+to add a ability (NOT KNOWN)
+to add a move go to the Moves.gd file and add it there then go to the Animations file and add it there
+o add the story mode (NOT KNOWN)
