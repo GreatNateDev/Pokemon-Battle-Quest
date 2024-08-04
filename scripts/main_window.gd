@@ -397,3 +397,7 @@ func update_swapper():
 	if data.Player6 != null:
 		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player6.name+"/front.png"))
 		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player6.name)
+
+
+func anim_text(text):
+	textedit(text)

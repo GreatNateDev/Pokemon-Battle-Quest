@@ -505,6 +505,7 @@ visible = false
 [connection signal="pkmn_data" from="Pokemon" to="." method="pokemon_data"]
 [connection signal="retux" from="Rand_enemy_gen" to="." method="retux_mon"]
 [connection signal="animation" from="Items" to="Item Animations" method="Item_anim"]
+[connection signal="anim_text" from="Item Animations" to="." method="anim_text"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

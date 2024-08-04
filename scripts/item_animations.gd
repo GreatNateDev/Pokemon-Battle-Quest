@@ -6,6 +6,7 @@ extends Control
 @onready var caught = get_parent().get_node("SFX/caught")
 @onready var Audio = get_parent().get_node("SFX/Audio")
 @onready var pkmn = pokemon.new()
+signal anim_text(text)
 func Item_anim(item, e):
 	match item:
 		"poke_ball":
@@ -50,13 +51,12 @@ func Item_anim(item, e):
 			breaker = false
 			match breaker:
 				true:
-					#text
+					anim_text.emit("Aww the pokemon escaped you will get him next time!")
 					res.hide()
 					res.scale = Vector2(1,1)
 					enemy.show()
 				false:
-					#text
+					anim_text.emit("You caught the pokemon!")
 					Audio.stop()
 					caught.play()
 					#handle adding to party
-					pass
