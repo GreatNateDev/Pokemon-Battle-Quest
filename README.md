@@ -1,6 +1,7 @@
 A pokemon game with my own spin on it that is only the battle mode
 TODO:\
-make pokemon catchable\
+finish swapping anim and code\
+add speed\
 make items do stuff\
 remake the moves fourmula\
 remake the move methods\
