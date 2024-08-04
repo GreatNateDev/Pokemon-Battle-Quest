@@ -37,6 +37,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 232.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lta6h")
@@ -385,6 +387,7 @@ offset_bottom = 71.0
 text = "Bite"
 
 [node name="Bag" type="Control" parent="Castless"]
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 8
@@ -407,10 +410,46 @@ offset_bottom = 40.0
 columns = 10
 
 [node name="Pokemon_Menu" type="Control" parent="Castless"]
+visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="Castless/Pokemon_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -210.0
+offset_right = 224.5
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 6
+item_0/text = "Mudkip"
+item_0/icon = ExtResource("4_2ah0f")
+item_1/text = "Mudkip"
+item_1/icon = ExtResource("4_2ah0f")
+item_2/text = "Mudkip"
+item_2/icon = ExtResource("4_2ah0f")
+item_3/text = "Mudkip"
+item_3/icon = ExtResource("4_2ah0f")
+item_4/text = "Mudkip"
+item_4/icon = ExtResource("4_2ah0f")
+item_5/text = "Mudkip"
+item_5/icon = ExtResource("4_2ah0f")
 
 [node name="top_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
