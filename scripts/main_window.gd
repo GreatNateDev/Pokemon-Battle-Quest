@@ -25,6 +25,7 @@ func _ready():
 		set_types()
 		set_levels("both")
 		init_money()
+		update_swapper()
 	elif Globals.loader == true and Globals.back_shop == false:
 		verify(save_name)
 		load_data()
@@ -38,6 +39,7 @@ func _ready():
 		set_types()
 		set_levels("both")
 		init_money()
+		update_swapper()
 	if Globals.back_shop == true and Globals.loader == false:
 		Globals.back_shop = false
 		verify(save_path)
@@ -59,6 +61,7 @@ func _ready():
 		set_sprite()
 		reset_bars()
 		cap_bars()
+		update_swapper()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -91,7 +94,8 @@ func randomize_player():
 		"type": request_type(data.starter),
 		"exp": 0,
 		"max_exp": null,
-		"faint": false
+		"faint": false,
+		"name" : Globals.loaded_name,
 	}
 	refine_level_stats(data.Player,false,true)
 	data.Player1 = data.Player
@@ -283,8 +287,9 @@ func request_type(pkmn):
 	var dato = Globals.loaded_data
 	Globals.loaded_data = null
 	return dato
-func pokemon_data(pkmn):
+func pokemon_data(pkmn,mon):
 	Globals.loaded_data = pkmn
+	Globals.loaded_name = mon
 func set_enemy_type():
 	var type = Globals.Enemy_type
 	Globals.Enemy_type = null
@@ -372,3 +377,8 @@ func Swap():
 	$backround_layer/darken.show()
 	disable_btns(true)
 	
+func update_swapper():
+	print(data.Player1)
+	if data.Player1.name != null:
+		$Castless/Pokemon_Menu/ItemList.set_item_icon(0,load("res://assets/pokemon/"+data.Player1.name+"/front.png"))
+		$Castless/Pokemon_Menu/ItemList.set_item_text(0,data.Player1.name)

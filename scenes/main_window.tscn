@@ -438,18 +438,6 @@ offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
 item_count = 6
-item_0/text = "Mudkip"
-item_0/icon = ExtResource("4_2ah0f")
-item_1/text = "Mudkip"
-item_1/icon = ExtResource("4_2ah0f")
-item_2/text = "Mudkip"
-item_2/icon = ExtResource("4_2ah0f")
-item_3/text = "Mudkip"
-item_3/icon = ExtResource("4_2ah0f")
-item_4/text = "Mudkip"
-item_4/icon = ExtResource("4_2ah0f")
-item_5/text = "Mudkip"
-item_5/icon = ExtResource("4_2ah0f")
 
 [node name="top_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
