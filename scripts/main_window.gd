@@ -2,9 +2,12 @@ extends Control
 var save_path = "user://save/"
 var save_name = "Data.tres"
 var bst
+var left = 0
 var data = savedata.new()
 var speeddiff
+var Trainer_Party
 var rand_mon
+var catchable = true
 var movs : Array
 var player_mon : Array
 signal trainer_battle(index)
@@ -305,6 +308,9 @@ func kill_enemy():
 	save_data()
 	data.Enemy = {}
 	await get_tree().create_timer(2).timeout
+	if catchable == false:
+		next_mon()
+		return
 	await shop()
 func add_exp(amt):
 	data.Player.exp += amt
@@ -397,6 +403,7 @@ func Item_pressed(key):
 	$backround_layer/darken.hide()
 	$Castless/Bag.hide()
 	disable_btns(false)
+	if key == "poke_ball" and catchable == false: $"Timers/after_attack cooldown".start(); disable_btns(true)
 	run_items.emit(key,data.Enemy)
 func shop():
 	Globals.money = data.Money
@@ -739,7 +746,8 @@ func next_enemy():
 		random_enemy_level_one()
 	if data.battle_num == 5:
 		trainer(1)
-		pass
+	if data.battle_num > 5 and data.battle_num < 10:
+		random_enemy_level_one()
 func RandMon(type,type2,pk_name,base_stat):
 	rand_mon = [type,type2,pk_name,base_stat]
 func Mov_return(mov):
@@ -751,3 +759,71 @@ func update_moves():
 	$Castless/Box_and_buttons_centre/Move4.text = data.Player.Move4
 func trainer(index):
 	trainer_battle.emit(index)
+func _on_trainers_text(text):
+	textedit(text)
+func Party(party):
+	Trainer_Party = party
+	data.Enemy = {}
+	data.Enemy = party.first
+	catchable = false
+	init_enemy()
+	left = 1
+func init_enemy():
+	$Cast/Enemy/Enemy_sprite.position.y - .1
+	$Cast/Enemy/Enemy_sprite.scale = Vector2(3,3)
+	$Cast/Enemy/Enemy_sprite.show()
+	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.name+"/front.png")
+	movs.clear()
+	randmov.emit(data.Enemy.name)
+	randmov.emit(data.Enemy.name)
+	randmov.emit(data.Enemy.name)
+	randmov.emit(data.Enemy.name)
+	data.Enemy["move1"] = null
+	data.Enemy["move2"] = null
+	data.Enemy["move3"] = null
+	data.Enemy["move4"] = null
+	data.Enemy.move1 = movs[0]
+	data.Enemy.move2 = movs[1]
+	data.Enemy.move3 = movs[2]
+	data.Enemy.move4 = movs[3]
+	refine_level_stats(data.Enemy,false,true)
+	set_types()
+	set_levels("both")
+	reset_bars()
+	cap_bars()
+	if data.Player.spd >= data.Enemy.spd:
+		speeddiff = "Player"
+	else:
+		speeddiff = "Enemy"
+	if speeddiff == "Enemy":
+		disable_btns(true)
+		$"Timers/after_attack cooldown".start()
+	else:
+		pass
+func next_mon():
+	left += 1
+	match left:
+		2:
+			if Trainer_Party.second != null:
+				data.Enemy = Trainer_Party.second
+				init_enemy()
+		3:
+			if Trainer_Party.third != null:
+				data.Enemy = Trainer_Party.third
+				init_enemy()
+		4:
+			if Trainer_Party.forth != null:
+				data.Enemy = Trainer_Party.forth
+				init_enemy()
+		5:
+			if Trainer_Party.fifth != null:
+				data.Enemy = Trainer_Party.fifth
+				init_enemy()
+		6:
+			if Trainer_Party.sixth != null:
+				data.Enemy = Trainer_Party.sixth
+				init_enemy()
+		
+	data.battle_num += 1
+	catchable = true
+	next_enemy()

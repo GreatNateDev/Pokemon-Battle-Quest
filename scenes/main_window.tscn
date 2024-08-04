@@ -532,6 +532,8 @@ texture = ExtResource("24_gg8a3")
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
 [connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]
 [connection signal="get_pkmn_data" from="Trainers" to="Pokemon" method="get_pokemon_data"]
+[connection signal="send_party" from="Trainers" to="." method="Party"]
+[connection signal="text" from="Trainers" to="." method="_on_trainers_text"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

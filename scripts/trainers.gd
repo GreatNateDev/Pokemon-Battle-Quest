@@ -50,21 +50,24 @@ func Trainer_battle(index):
 			party = {
 				"first": mon1,
 				"second": mon2,
+				"third": null,
+				"forth": null,
+				"fifth": null,
+				"sixth": null,
 				"sprite": "may",
 				"text": "Hey there lets battle!",
 			}
 	trainer.position = Enemypos.global_position
-	trainer.position.x += 50
-	var output = trainer.position.x + 200
+	trainer.position.x += 230
+	var output = trainer.position.x + 400
 	trainer.texture = load("res://assets/trainers/"+party.sprite+".png")
 	trainer.show()
 	text.emit(party.text)
 	await get_tree().create_timer(1).timeout
 	var tween = get_tree().create_tween()
-	tween.tween_property(trainer,"position",output,1)
+	tween.tween_property(trainer,"position",Vector2(output,trainer.position.y),1)
 	await get_tree().create_timer(1).timeout
-	#send out first mon
-	
+	send_party.emit(party)
 
 
 func Return_data(type,type2,stats):
