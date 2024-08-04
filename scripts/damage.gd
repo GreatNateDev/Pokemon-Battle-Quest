@@ -10,7 +10,6 @@ var Mover = Movos.new()
 func Attack(Move, Entity, Stats, OStats):
 	if Entity == "Player": opp = "Enemy"
 	else : opp = "Player"
-	print(Mover.movs)
 	var mov = Mover.movs[Move]
 	var type_effectiveness = getMultiplier(mov.type,OStats.type,OStats.type2)
 	var stab = 1
@@ -31,8 +30,6 @@ func Attack(Move, Entity, Stats, OStats):
 		crito()
 	Damage.emit(max(int(final_damage), 1),Entity,opp+mov.text,type_effectiveness)
 	anim.emit(Entity,Move)
-	print(Entity+" "+Move)
-
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
 	if move_type in Type.typx:
