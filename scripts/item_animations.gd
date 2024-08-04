@@ -38,18 +38,20 @@ func Item_anim(item, e):
 			var base_capture_rate = ((3 * e.max_hp - 2 * e.hp) * R.catch) / (3 * e.max_hp)
 			var modified_capture_rate = base_capture_rate * 1
 			var final_capture_rate = modified_capture_rate * e.stat
-			var probability = final_capture_rate / 255
+			var probability = clamp(final_capture_rate / 255, 0, 1)
 			var breaker
 			for i in range(4):  
 				if randf() > probability:
 					breaker = true
+					break
 				res.skew = 50
 				await get_tree().create_timer(.2).timeout
 				res.skew = -50
 				await get_tree().create_timer(.2).timeout
 				res.skew = 0
 				await get_tree().create_timer(.5).timeout
-			breaker = false
+			if breaker != true:
+				breaker = false
 			match breaker:
 				true:
 					anim_text.emit("Aww the pokemon escaped you will get him next time!")

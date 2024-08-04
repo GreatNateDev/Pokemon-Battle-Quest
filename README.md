@@ -10,5 +10,3 @@ add all items from gen 3\
 add all pokemon from gen 3\
 add all moves from gen 3\
 add a end to the game\
-BUGS:\
-i dont think you can fail at catching for some reason
