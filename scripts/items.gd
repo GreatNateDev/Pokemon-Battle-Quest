@@ -1,14 +1,13 @@
 extends Control
-signal animation(item)
+signal animation(item,enemy)
+signal potion(item)
 func _on_main_window_run_items(item,enemy):
 	match item:
 		"potion":
-			#run pokemon menu
-			#click pokemon
-			#handle heals
-			pass
+			potion.emit(potion)
+		"super_potion":
+			potion.emit(potion)
+		"hyper_potion":
+			potion.emit(potion)
 		"poke_ball":
 			animation.emit(item,enemy)
-			#catch_rate
-			#handle fail and catch
-			pass

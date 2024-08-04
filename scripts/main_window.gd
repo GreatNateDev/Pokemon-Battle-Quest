@@ -424,6 +424,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 					data.Player5 = data.Player
 				6:
 					data.Player6 = data.Player
+					print(data.Player1.index)
 			match index:
 				0:
 					if data.Player1 != null: if data.Player.index != data.Player1.index:
@@ -448,6 +449,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 				$Cast/darken.hide()
 				$backround_layer/darken.hide()
 				disable_btns(false)
+				return 1
 			$Castless/Pokemon_Menu.hide()
 			$Cast/darken.hide()
 			$backround_layer/darken.hide()
@@ -552,3 +554,53 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 			data.Enemy = {}
 			await get_tree().create_timer(2).timeout
 			await shop()
+		"potion":
+			var heal
+			match Globals.swapitem:
+				"potion":
+					heal = 20
+				"super_potion":
+					heal = 50
+				"hyper_potion":
+					heal = 200
+			match index:
+				0:
+					if data.Player1 != null:
+						data.Player1.hp += heal
+						if data.Player1.hp > data.Player1.max_hp:
+							data.Player1.hp = data.Player1.max_hp
+						data.Player = data.Player1
+				1:
+					if data.Player2 != null:
+						data.Player2.hp += heal
+						if data.Player2.hp > data.Player2.max_hp:
+							data.Player2.hp = data.Player2.max_hp
+						data.Player = data.Player2
+				2:
+					if data.Player3 != null:
+						data.Player3.hp += heal
+						if data.Player3.hp > data.Player3.max_hp:
+							data.Player3.hp = data.Player3.max_hp
+						data.Player = data.Player3
+				3:
+					if data.Player4 != null:
+						data.Player4.hp += heal
+						if data.Player4.hp > data.Player4.max_hp:
+							data.Player4.hp = data.Player4.max_hp
+						data.Player = data.Player4
+				4:
+					if data.Player5 != null:
+						data.Player5.hp += heal
+						if data.Player5.hp > data.Player5.max_hp:
+							data.Player5.hp = data.Player5.max_hp
+						data.Player = data.Player5
+				5:
+					if data.Player6 != null:
+						data.Player6.hp += heal
+						if data.Player6.hp > data.Player6.max_hp:
+							data.Player6.hp = data.Player6.max_hp
+						data.Player = data.Player6
+			update_swapper()
+func Potion(item):
+	Globals.swapvar = "potion"
+	Globals.swapitem = item
