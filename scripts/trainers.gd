@@ -17,33 +17,36 @@ var mon3
 var mon4
 var mon5
 var mon6
+var dict
 @onready var trainer = get_parent().get_node("Move_layer/trainer")
 @onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 func IVify(level):
-	var dict = {
-		"level": randi_range(5,7),
-		"atk": randi_range(5,6),
-		"def": randi_range(5,6),
-		"spd": randi_range(5,6),
-		"hp": randi_range(5,6),
-	}
+	match level:
+		1:
+			dict = {
+			"level": randi_range(5,7),
+			"atk": randi_range(5,6),
+			"def": randi_range(5,6),
+			"spd": randi_range(5,6),
+			"hp": randi_range(5,6),
+			}
 	return dict
-func Return_data(type,type2,stats):
+func Return_data(type,type2,statx):
 	data.append(type)
 	data.append(type2)
-	data.append(stats)
-func init_trainer(party):
+	data.append(statx)
+func init_trainer(partys):
 	trainer.position = Enemypos.global_position
 	trainer.position.x += 230
 	var output = trainer.position.x + 400
-	trainer.texture = load("res://assets/trainers/"+party.sprite+".png")
+	trainer.texture = load("res://assets/trainers/"+partys.sprite+".png")
 	trainer.show()
-	text.emit(party.text)
+	text.emit(partys.text)
 	await get_tree().create_timer(1).timeout
 	var tween = get_tree().create_tween()
 	tween.tween_property(trainer,"position",Vector2(output,trainer.position.y),1)
 	await get_tree().create_timer(1).timeout
-	send_party.emit(party)
+	send_party.emit(partys)
 func init_ivs(amt,lvl):
 	data.clear()
 	if amt >= 1:
@@ -58,7 +61,7 @@ func init_ivs(amt,lvl):
 		base_ivs5 = IVify(lvl)
 	if amt == 6:
 		base_ivs6 = IVify(lvl)
-func set_party(first,second,third,forth,fifth,sixth,sprite,text):
+func set_party(first,second,third,forth,fifth,sixth,sprite,textx):
 				party = {
 				"first": first,
 				"second": second,
@@ -67,9 +70,9 @@ func set_party(first,second,third,forth,fifth,sixth,sprite,text):
 				"fifth": fifth,
 				"sixth": sixth,
 				"sprite": sprite,
-				"text": text,
+				"text": textx,
 			}
-func set_mon(amt,name):
+func set_mon(amt,nameme):
 	match amt:
 		1:
 			stats = data[2]
@@ -81,7 +84,7 @@ func set_mon(amt,name):
 				"spd": stats.spd + base_ivs1.spd,
 				"hp": stats.hp + base_ivs1.hp,
 				"level": base_ivs1.level,
-				"name": name
+				"name": nameme
 			}
 		2:
 			stats = data[2]
@@ -93,7 +96,7 @@ func set_mon(amt,name):
 				"spd": stats.spd + base_ivs2.spd,
 				"hp": stats.hp + base_ivs1.hp,
 				"level": base_ivs1.level,
-				"name": name
+				"name": nameme
 			}
 		3:
 			stats = data[2]
@@ -105,7 +108,7 @@ func set_mon(amt,name):
 				"spd": stats.spd + base_ivs3.spd,
 				"hp": stats.hp + base_ivs3.hp,
 				"level": base_ivs3.level,
-				"name": name
+				"name": nameme
 			}
 		4:
 			stats = data[2]
@@ -117,7 +120,7 @@ func set_mon(amt,name):
 				"spd": stats.spd + base_ivs4.spd,
 				"hp": stats.hp + base_ivs4.hp,
 				"level": base_ivs4.level,
-				"name": name
+				"name": nameme
 				}
 		5:
 			stats = data[2]
@@ -129,7 +132,7 @@ func set_mon(amt,name):
 				"spd": stats.spd + base_ivs5.spd,
 				"hp": stats.hp + base_ivs5.hp,
 				"level": base_ivs5.level,
-				"name": name
+				"name": nameme
 				}
 		6:
 			stats = data[2]
@@ -141,15 +144,15 @@ func set_mon(amt,name):
 				"spd": stats.spd + base_ivs6.spd,
 				"hp": stats.hp + base_ivs6.hp,
 				"level": base_ivs6.level,
-				"name": name
+				"name": nameme
 				}
+	data.clear()
 func Trainer_battle(index):
 	match index:
 		1:
 			init_ivs(2,1)
 			get_pkmn_data.emit("mudkip")
 			set_mon(1,"mudkip")
-			data.clear()
 			get_pkmn_data.emit("zigzagoon")
 			set_mon(2,"zigzagoon")
 			set_party(mon1,mon2,null,null,null,null,"may","Hey there lets battle!")
