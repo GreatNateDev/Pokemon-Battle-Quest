@@ -29,10 +29,6 @@ window/size/mode=3
 window/size/resizable=false
 window/size/borderless=true
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/net.yarvis.pixel_pen/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
-
 [input]
 
 z={
