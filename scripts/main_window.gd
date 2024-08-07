@@ -773,7 +773,7 @@ func Party(party):
 	init_enemy()
 	left = 1
 func init_enemy():
-	$Cast/Enemy/Enemy_sprite.position.y - .1
+	$Cast/Enemy/Enemy_sprite.position.y -= .1
 	$Cast/Enemy/Enemy_sprite.scale = Vector2(3,3)
 	$Cast/Enemy/Enemy_sprite.show()
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.name+"/front.png")

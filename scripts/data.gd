@@ -13,6 +13,4 @@ class_name savedata
 @export var Enemy : Dictionary
 @export var starter : String
 @export var Money : int = 100
-@export var Items : Dictionary = {
-
-}
+@export var Items : Dictionary = {}
