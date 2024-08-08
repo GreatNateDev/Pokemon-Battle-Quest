@@ -96,3 +96,18 @@ func Animation(entity, move):
 				res.frame = 0
 				res.hframes = 1
 				res.scale = Vector2(1,1)
+		"Tackle":
+			res.texture = load("res://assets/moves/tackle.png")
+			res.position = target
+			res.scale = Vector2(2,2)
+			var tween = get_tree().create_tween()
+			var pos = Playerpos.global_position + Vector2(50,0)
+			var curpos = Playerpos.global_position
+			tween.tween_property(Playerpos,"global_position",pos,.3)
+			await get_tree().create_timer(.3).timeout
+			var tweene = get_tree().create_tween()
+			tweene.tween_property(Playerpos,"global_position",curpos,.3)
+			res.show()
+			await get_tree().create_timer(.3).timeout
+			res.hide()
+			res.scale = Vector2(1,1)

@@ -38,6 +38,6 @@ func RandMon():
 	random_pokemon.emit(value.type,value.type2,random_key,value.base_stats)
 
 
-func get_pokemon_data(name):
-	var mon = pkmn[name]
+func get_pokemon_data(xname):
+	var mon = pkmn[xname]
 	return_mon_data.emit(mon.type,mon.type2,mon.base_stats)

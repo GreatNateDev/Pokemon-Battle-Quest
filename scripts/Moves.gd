@@ -29,9 +29,17 @@ var Absorb = {
 	"type": "Grass",
 	"text":" had its health absorbed!"
 }
+var Tackle = {
+	"power": 40,
+	"accuracy": 100,
+	"c": null,
+	"type": "Normal",
+	"text": " was tackled!"
+}
 var movs = {
 	"Absorb": Absorb,
 	"Bite": Bite,
 	"Ember": Ember,
 	"Watergun": Watergun,
+	"Tackle": Tackle,
 }
