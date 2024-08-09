@@ -19,7 +19,7 @@ func Attack(Move, Entity, Stats, OStats):
 	var hit_chance = randi() % 100 + 1 
 	if hit_chance > mov.accuracy:
 		return 0
-	var crit_roll = randi() % 100 + 1  # Random number between 1 and 100
+	var crit_roll = randi() % 100 + 1 
 	var is_critical = crit_roll <= crit_chance
 	var random_number = randi() % 16 + 85
 	var base_damage = ((2 * Stats.level / 5 + 2) * Stats.atk * mov.power / OStats.def) / 50 + 2
