@@ -3,14 +3,18 @@ extends Control
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 var opp
+signal get_damagebased_ability(ability)
 signal anim(entity,mov)
 signal Damage(damage,Entity,text,type_eff)
 var Type = types.new()
 var Mover = Movos.new()
+var mod = null
 func Attack(Move, Entity, Stats, OStats):
 	if Entity == "Player": opp = "Enemy"
 	else : opp = "Player"
 	var mov = Mover.movs[Move]
+	var ability = Stats.ability
+	get_damagebased_ability.emit(ability,Stats)
 	var type_effectiveness = getMultiplier(mov.type,OStats.type,OStats.type2)
 	var stab = 1
 	if Stats.type == OStats.type: stab = 1.5
@@ -25,6 +29,9 @@ func Attack(Move, Entity, Stats, OStats):
 	var base_damage = ((2 * Stats.level / 5 + 2) * Stats.atk * mov.power / OStats.def) / 50 + 2
 	var adjusted_damage = base_damage * stab * type_effectiveness
 	var final_damage = adjusted_damage * random_number / 100
+	if mod != null:
+		final_damage *= mod
+		mod = null
 	if is_critical: 
 		final_damage = final_damage * 2
 		crito()
@@ -46,3 +53,7 @@ func crito():
 	else: pos = enemy.global_position
 	crit.position = pos
 	crit.emitting = true
+
+
+func _on_abilities_damage_rebound(ability_return):
+	mod = ability_return

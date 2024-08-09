@@ -21,24 +21,23 @@ var pkmn = {
 	"torchic": torchic,
 	"totodile": totodile,
 	"bulbasaur": bulbasaur,
-	"charmander": charmander,
-	"squirtle": squirtle,
+	"charmander": charmander,"squirtle": squirtle,
 	"cyndaquil": cyndaquil,
 	"chikorita": chikorita,
 }
 
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
-	pkmn_data.emit(data.type,data.type2,data.base_stats)
+	pkmn_data.emit(data.type,data.type2,data.base_stats,data.ability)
 
 
 func RandMon():
 	var keys = pkmn.keys()
 	var random_key = keys[randi() % keys.size()]
 	var value = pkmn[random_key]
-	random_pokemon.emit(value.type,value.type2,random_key,value.base_stats)
+	random_pokemon.emit(value.type,value.type2,random_key,value.base_stats,value.ability)
 
 
 func get_pokemon_data(xname):
 	var mon = pkmn[xname]
-	return_mon_data.emit(mon.type,mon.type2,mon.base_stats)
+	return_mon_data.emit(mon.type,mon.type2,mon.base_stats,mon.ability)

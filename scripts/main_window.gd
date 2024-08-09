@@ -125,6 +125,7 @@ func randomize_player():
 	type_requester.emit(data.starter)
 	data.Player.type = player_mon[0]
 	data.Player.type2 = player_mon[1]
+	data.Player.ability = player_mon[2]
 	data.Player.hp += bst.hp
 	data.Player.spd += bst.spd
 	data.Player.def += bst.def
@@ -181,6 +182,7 @@ func random_enemy_level_one():
 	data.Enemy.atk += rand_mon[3].atk
 	data.Enemy.def += rand_mon[3].def
 	data.Enemy.spd += rand_mon[3].spd
+	data.Enemy.ability = rand_mon[4]
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
 	movs.clear()
 	randmov.emit(data.Enemy.sprite)
@@ -346,10 +348,11 @@ func Move4():
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
-func pokemon_data(pkmn,type2,base):
+func pokemon_data(pkmn,type2,base,ability):
 	player_mon.clear()
 	player_mon.append(pkmn)
 	player_mon.append(type2)
+	player_mon.append(ability)
 	bst = base
 func init_money():
 	$Cast/Money/Money_label.text = str(data.Money)+"$"
@@ -526,6 +529,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
+						"Ability": data.Enemy.ability
 					}
 					update_moves()
 					refine_level_stats(data.Player1,false,true)
@@ -549,6 +553,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
+						"Ability": data.Enemy.ability
 					}
 					update_moves()
 					refine_level_stats(data.Player2,false,true)
@@ -572,6 +577,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
+						"Ability": data.Enemy.ability
 					}
 					update_moves()
 					refine_level_stats(data.Player3,false,true)
@@ -595,6 +601,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
+						"Ability": data.Enemy.ability
 					}
 					update_moves()
 					refine_level_stats(data.Player4,false,true)
@@ -618,6 +625,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
+						"Ability": data.Enemy.ability
 					}
 					update_moves()
 					refine_level_stats(data.Player5,false,true)
@@ -641,6 +649,7 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
+						"Ability": data.Enemy.ability
 					}
 					update_moves()
 					refine_level_stats(data.Player6,false,true)
@@ -754,8 +763,8 @@ func next_enemy():
 		trainer(1)
 	if data.battle_num > 5 and data.battle_num < 10:
 		random_enemy_level_one()
-func RandMon(type,type2,pk_name,base_stat):
-	rand_mon = [type,type2,pk_name,base_stat]
+func RandMon(type,type2,pk_name,base_stat,ability):
+	rand_mon = [type,type2,pk_name,base_stat,ability]
 func Mov_return(mov):
 	movs.append(mov)
 func update_moves():

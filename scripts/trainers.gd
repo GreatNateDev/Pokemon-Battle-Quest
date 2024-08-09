@@ -31,10 +31,11 @@ func IVify(level):
 			"hp": randi_range(5,6),
 			}
 	return dict
-func Return_data(type,type2,statx):
+func Return_data(type,type2,statx,ability):
 	data.append(type)
 	data.append(type2)
 	data.append(statx)
+	data.append(ability)
 func init_trainer(partys):
 	trainer.position = Enemypos.global_position
 	trainer.position.x += 230
@@ -84,7 +85,8 @@ func set_mon(amt,nameme):
 				"spd": stats.spd + base_ivs1.spd,
 				"hp": stats.hp + base_ivs1.hp,
 				"level": base_ivs1.level,
-				"name": nameme
+				"name": nameme,
+				"ability": data[3]
 			}
 		2:
 			stats = data[2]
@@ -96,7 +98,8 @@ func set_mon(amt,nameme):
 				"spd": stats.spd + base_ivs2.spd,
 				"hp": stats.hp + base_ivs1.hp,
 				"level": base_ivs1.level,
-				"name": nameme
+				"name": nameme,
+				"ability": data[3]
 			}
 		3:
 			stats = data[2]
@@ -108,7 +111,8 @@ func set_mon(amt,nameme):
 				"spd": stats.spd + base_ivs3.spd,
 				"hp": stats.hp + base_ivs3.hp,
 				"level": base_ivs3.level,
-				"name": nameme
+				"name": nameme,
+				"ability": data[3]
 			}
 		4:
 			stats = data[2]
@@ -120,7 +124,8 @@ func set_mon(amt,nameme):
 				"spd": stats.spd + base_ivs4.spd,
 				"hp": stats.hp + base_ivs4.hp,
 				"level": base_ivs4.level,
-				"name": nameme
+				"name": nameme,
+				"ability": data[3]
 				}
 		5:
 			stats = data[2]
@@ -132,7 +137,8 @@ func set_mon(amt,nameme):
 				"spd": stats.spd + base_ivs5.spd,
 				"hp": stats.hp + base_ivs5.hp,
 				"level": base_ivs5.level,
-				"name": nameme
+				"name": nameme,
+				"ability": data[3]
 				}
 		6:
 			stats = data[2]
@@ -144,7 +150,8 @@ func set_mon(amt,nameme):
 				"spd": stats.spd + base_ivs6.spd,
 				"hp": stats.hp + base_ivs6.hp,
 				"level": base_ivs6.level,
-				"name": nameme
+				"name": nameme,
+				"ability": data[3]
 				}
 	data.clear()
 func Trainer_battle(index):

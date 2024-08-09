@@ -25,21 +25,7 @@
 [ext_resource type="Script" path="res://scripts/items.gd" id="23_ckc1j"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="24_gg8a3"]
 [ext_resource type="Script" path="res://scripts/animations.gd" id="24_qbdsb"]
-
-[sub_resource type="GDScript" id="GDScript_1uha2"]
-resource_name = "res://scripts/abilities.gd"
-script/source = "extends Control
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
+[ext_resource type="Script" path="res://scripts/abilities.gd" id="26_0g7nj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -99,7 +85,7 @@ script = ExtResource("7_d748f")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = SubResource("GDScript_1uha2")
+script = ExtResource("26_0g7nj")
 
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
@@ -555,6 +541,7 @@ texture = ExtResource("24_gg8a3")
 [connection signal="get_pkmn_data" from="Trainers" to="Pokemon" method="get_pokemon_data"]
 [connection signal="send_party" from="Trainers" to="." method="Party"]
 [connection signal="text" from="Trainers" to="." method="_on_trainers_text"]
+[connection signal="damage_rebound" from="Abilities" to="Damage" method="_on_abilities_damage_rebound"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
