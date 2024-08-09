@@ -32,8 +32,8 @@ func faint(entity):
 			await get_tree().create_timer(.5).timeout
 			Enemypos.hide()
 func Animation(entity, move):
-	var target = Enemypos if entity == "Player" else Playerpos.global_position
-	var source = Playerpos if entity == "Player" else Enemypos.global_position
+	var target = Enemypos if entity == "Player" else Playerpos
+	var source = Playerpos if entity == "Player" else Enemypos
 	match move:
 		"Absorb":
 				res.texture = load("res://assets/moves/absorb.png")
