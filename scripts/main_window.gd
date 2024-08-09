@@ -211,6 +211,7 @@ func disable_btns(value):
 	$Cast/Buttons/Bag.disabled = value
 	$Cast/Buttons/Swap.disabled = value
 func Move1():
+	if $Castless/Box_and_buttons_centre/Move1.text == "":$Cast/darken.hide();$backround_layer/darken.hide();$Castless/Box_and_buttons_centre.hide();return
 	Attack.emit($Castless/Box_and_buttons_centre/Move1.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
@@ -254,16 +255,14 @@ func Damage(damage, entity, text, multi):
 	else:
 		textedit(text)
 func Enemy_atk():
-	var pick = randi_range(1,4)
-	if pick == 1:
-		data.Enemy.current = data.Enemy.move1
-	elif pick == 2:
-		data.Enemy.current = data.Enemy.move2
-	elif pick == 3:
-		data.Enemy.current = data.Enemy.move3
-	elif pick == 4:
-		data.Enemy.current = data.Enemy.move4
-	Attack.emit(data.Enemy.current,"Enemy",data.Enemy,data.Player)
+	var moves = [data.Enemy.move1, data.Enemy.move2, data.Enemy.move3, data.Enemy.move4]
+	var valid_moves = []
+	for move in moves:
+		if move != "":
+			valid_moves.append(move)
+	var pick = randi_range(0, valid_moves.size() - 1)
+	data.Enemy.current = valid_moves[pick]
+	Attack.emit(data.Enemy.current, "Enemy", data.Enemy, data.Player)
 func _on_after_attack_cooldown_timeout():
 	Enemy_atk()
 func text_from_moves(text,unblocked,entity):
@@ -296,6 +295,7 @@ func set_levels(entity):
 			$Cast/Player/lvl.text = "Level: "+str(data.Player.level)
 			$Cast/Enemy/lvl.text = "Level: "+str(data.Enemy.level)
 func Move2():
+	if $Castless/Box_and_buttons_centre/Move2.text == "":$Cast/darken.hide();$backround_layer/darken.hide();$Castless/Box_and_buttons_centre.hide();return
 	Attack.emit($Castless/Box_and_buttons_centre/Move2.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
@@ -335,11 +335,13 @@ func set_max_exp():
 	data.Player.max_exp = data.Player.level * 30
 	$Cast/Player/xpbar.max_value = data.Player.max_exp
 func Move3():
+	if $Castless/Box_and_buttons_centre/Move3.text == "":$Cast/darken.hide();$backround_layer/darken.hide();$Castless/Box_and_buttons_centre.hide();return
 	Attack.emit($Castless/Box_and_buttons_centre/Move3.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
 	$Castless/Box_and_buttons_centre.hide()
 func Move4():
+	if $Castless/Box_and_buttons_centre/Move4.text == "":$Cast/darken.hide();$backround_layer/darken.hide();$Castless/Box_and_buttons_centre.hide();return
 	Attack.emit($Castless/Box_and_buttons_centre/Move4.text,"Player",data.Player,data.Enemy)
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
