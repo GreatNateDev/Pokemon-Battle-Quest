@@ -175,5 +175,5 @@ var evos = {
 }
 
 func _on_main_window_evolve(mon: String, level: int) -> void:
-	if lvl.has(mon) and lvl[mon] == level:
+	if lvl.has(mon) and lvl[mon] <= level:
 		evo.emit(evos[mon])
