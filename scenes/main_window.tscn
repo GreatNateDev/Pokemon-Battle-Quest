@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=32 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/held_items.gd" id="9_frcu3"]
 [ext_resource type="Script" path="res://scripts/damage.gd" id="9_s3jf0"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
+[ext_resource type="Script" path="res://scripts/evolution.gd" id="10_t1pff"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="11_gdaxw"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="12_4muds"]
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_tf27j"]
@@ -93,6 +94,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("9_frcu3")
+
+[node name="Evolution" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_t1pff")
 
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
@@ -564,6 +571,7 @@ texture = ExtResource("24_gg8a3")
 
 [connection signal="Attack" from="." to="Damage" method="Attack"]
 [connection signal="HeldItem" from="." to="HeldItems" method="Item"]
+[connection signal="evolve" from="." to="Evolution" method="_on_main_window_evolve"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
 [connection signal="randmov" from="." to="Learnable_Moves" method="RandMov"]
 [connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
@@ -589,6 +597,7 @@ texture = ExtResource("24_gg8a3")
 [connection signal="damage_text" from="Abilities" to="." method="_on_abilities_damage_text"]
 [connection signal="item_return" from="HeldItems" to="." method="item_return"]
 [connection signal="loseitem" from="HeldItems" to="." method="loseitem"]
+[connection signal="evo" from="Evolution" to="." method="evolveit"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

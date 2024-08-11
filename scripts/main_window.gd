@@ -10,6 +10,7 @@ var rand_mon
 var catchable = true
 var movs : Array
 var player_mon : Array
+signal evolve(pokemon,level)
 signal trainer_battle(index)
 signal faint(entity)
 signal run_items(item)
@@ -339,6 +340,7 @@ func level_up():
 	set_max_exp()
 	set_levels("Player")
 	$Cast/Player/xpbar.value = 0
+	evolve.emit(data.Player.name,data.Player.level)
 func set_max_exp():
 	data.Player.max_exp = data.Player.level * 30
 	$Cast/Player/xpbar.max_value = data.Player.max_exp
@@ -892,3 +894,29 @@ func item_return(who: Variant, effect: Variant, num: Variant) -> void:
 				"hp":
 					data.Enemy.hp = num
 	reset_bars()
+
+
+func evolveit(mon: Variant) -> void:
+	$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+mon+".png")
+	var pk = pokemon.new()
+	var new_stats = pk.evodata(mon,data.Player.name)
+	data.Player.name = mon
+	recalc_evo_stats(new_stats)
+func recalc_evo_stats(stats):
+	data.Player.ability = stats[1]
+	var hp_sub = stats[2].hp
+	var spd_sub = stats[2].spd
+	var atk_sub = stats[2].atk
+	var def_sub = stats[2].def
+	var hp_add = stats[0].hp
+	var spd_add = stats[0].spd
+	var atk_add = stats[0].atk
+	var def_add = stats[0].def
+	data.Player.atk -= atk_sub
+	data.Player.spd -= spd_sub
+	data.Player.def -= def_sub
+	data.Player.hp -= hp_sub
+	data.Player.atk += atk_add
+	data.Player.def += def_add
+	data.Player.spd += spd_add
+	data.Player.hp += hp_add

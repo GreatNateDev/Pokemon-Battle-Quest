@@ -13,7 +13,6 @@ var zigzagoon = {"type": "Normal", "type2": "none", "catch": 255, "base_stats": 
 var mudkip = {"type": "Water", "type2": "none", "catch": 45, "base_stats": {"hp": 50, "atk": 70, "def": 50, "spd": 40}, "ability": "Torrent"}
 var torchic = {"type": "Fire", "type2": "none", "catch": 45, "base_stats": {"hp": 45, "atk": 60, "def": 40, "spd": 45}, "ability": "Blaze"}
 var treecko = {"type": "Grass", "type2": "none", "catch": 45, "base_stats": {"hp": 40, "atk": 45, "def": 35, "spd": 70}, "ability": "Overgrow"}
-
 var pkmn = {
 	"zigzagoon": zigzagoon,
 	"treecko": treecko,
@@ -41,3 +40,7 @@ func RandMon():
 func get_pokemon_data(xname):
 	var mon = pkmn[xname]
 	return_mon_data.emit(mon.type,mon.type2,mon.base_stats,mon.ability)
+func evodata(xname,old_name):
+	var mon = pkmn[xname]
+	var old = pkmn[old_name]
+	return [mon.base_stats,mon.ability,old.base_stats]
