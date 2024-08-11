@@ -17,6 +17,7 @@ signal Attack(Move,Entity,Stats,OStats)
 signal type_requester(pokemon)
 signal random_pokemon(mon)
 signal randmov()
+signal HeldItem(item)
 func load_data():
 	data = ResourceLoader.load(save_path+save_name).duplicate(true)
 func save_data():
@@ -28,6 +29,7 @@ func _ready():
 		randomize_player()
 		update_moves()
 		next_enemy()
+		read_item()
 		set_max_exp()
 		reset_bars()
 		cap_bars()
@@ -45,6 +47,7 @@ func _ready():
 		data.starter = Globals.starter
 		update_moves()
 		next_enemy()
+		read_item()
 		set_max_exp()
 		reset_bars()
 		cap_bars()
@@ -74,6 +77,7 @@ func _ready():
 		init_money()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		next_enemy()
+		read_item()
 		reset_bars()
 		cap_bars()
 		update_swapper()
@@ -121,6 +125,7 @@ func randomize_player():
 		"Move2": null,
 		"Move3": null,
 		"Move4": null,
+		"item": null,
 	}
 	type_requester.emit(data.starter)
 	data.Player.type = player_mon[0]
@@ -166,7 +171,8 @@ func random_enemy_level_one():
 		"predef" : null,
 		"preatk" : null,
 		"prespd" : null,
-		"type2" : null
+		"type2" : null,
+		"item": null,
 		
 	}
 	
@@ -530,7 +536,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
-						"Ability": data.Enemy.ability
+						"Ability": data.Enemy.ability,
+						"item": null,
 					}
 					update_moves()
 					refine_level_stats(data.Player1,false,true)
@@ -554,7 +561,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
-						"Ability": data.Enemy.ability
+						"Ability": data.Enemy.ability,
+						"item": null,
 					}
 					update_moves()
 					refine_level_stats(data.Player2,false,true)
@@ -578,7 +586,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
-						"Ability": data.Enemy.ability
+						"Ability": data.Enemy.ability,
+						"item": null,
 					}
 					update_moves()
 					refine_level_stats(data.Player3,false,true)
@@ -602,7 +611,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
-						"Ability": data.Enemy.ability
+						"Ability": data.Enemy.ability,
+						"item": null,
 					}
 					update_moves()
 					refine_level_stats(data.Player4,false,true)
@@ -626,7 +636,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
-						"Ability": data.Enemy.ability
+						"Ability": data.Enemy.ability,
+						"item": null,
 					}
 					update_moves()
 					refine_level_stats(data.Player5,false,true)
@@ -650,7 +661,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move2": data.Enemy.move2,
 						"Move3": data.Enemy.move3,
 						"Move4": data.Enemy.move4,
-						"Ability": data.Enemy.ability
+						"Ability": data.Enemy.ability,
+						"item": null,
 					}
 					update_moves()
 					refine_level_stats(data.Player6,false,true)
@@ -856,3 +868,6 @@ func _on_abilities_damage_text(text: String) -> void:
 	tweene.tween_property($top_layer/ability,"position",ogpos,1)
 	await get_tree().create_timer(1).timeout
 	$top_layer/ability/Label.text = ""
+func read_item():
+	HeldItem.emit(data.Player.item)
+	HeldItem.emit(data.Enemy.item)

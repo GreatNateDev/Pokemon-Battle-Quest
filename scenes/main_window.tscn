@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=31 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/trainers.gd" id="7_d748f"]
 [ext_resource type="Script" path="res://scripts/item_animations.gd" id="8_dybkr"]
 [ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
+[ext_resource type="Script" path="res://scripts/held_items.gd" id="9_frcu3"]
 [ext_resource type="Script" path="res://scripts/damage.gd" id="9_s3jf0"]
 [ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="11_gdaxw"]
@@ -86,6 +87,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("26_0g7nj")
+
+[node name="HeldItems" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_frcu3")
 
 [node name="Types" type="Control" parent="."]
 anchors_preset = 0
@@ -556,6 +563,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("24_gg8a3")
 
 [connection signal="Attack" from="." to="Damage" method="Attack"]
+[connection signal="HeldItem" from="." to="HeldItems" method="Item"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
 [connection signal="randmov" from="." to="Learnable_Moves" method="RandMov"]
 [connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
