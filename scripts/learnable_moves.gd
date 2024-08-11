@@ -21,6 +21,8 @@ var cyndaquil = ["Ember", "Tackle"]
 # Normal
 var zigzagoon = ["Bite", "Tackle"]
 
+#Bug
+var caterpie = ["Tackle"]
 # Mons
 var pkmn = {
 	"zigzagoon": zigzagoon,
@@ -33,6 +35,7 @@ var pkmn = {
 	"squirtle": squirtle,
 	"cyndaquil": cyndaquil,
 	"chikorita": chikorita,
+	"caterpie": caterpie,
 }
 
 func RandMov(mon):

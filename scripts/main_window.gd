@@ -783,6 +783,8 @@ func next_enemy():
 		trainer(1)
 	if data.battle_num > 5 and data.battle_num < 10:
 		random_enemy(5,7)
+	if data.battle_num == 10:
+		trainer(2)
 func RandMon(type,type2,pk_name,base_stat,ability):
 	rand_mon = [type,type2,pk_name,base_stat,ability]
 func Mov_return(mov):
@@ -922,13 +924,9 @@ func refresh_new_move_selection():
 	$Castless/New_Move/ItemList.set_item_text(1,$Castless/Box_and_buttons_centre/Move2.text)
 	$Castless/New_Move/ItemList.set_item_text(2,$Castless/Box_and_buttons_centre/Move3.text)
 	$Castless/New_Move/ItemList.set_item_text(3,$Castless/Box_and_buttons_centre/Move4.text)
-
-
 func lvlup_mov(mov: Variant) -> void:
 	$Castless/New_Move.show()
 	$Castless/New_Move/Label2.text = mov
-
-
 func new_mov_btn_clk(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	match index:
 		0:

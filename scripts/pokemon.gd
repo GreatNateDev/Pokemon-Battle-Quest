@@ -22,7 +22,8 @@ var pkmn = {
 	"mudkip": create_pokemon("Water", "none", 45, {"hp": 50, "atk": 70, "def": 50, "spd": 40}, "Torrent"),
 	"torchic": create_pokemon("Fire", "none", 45, {"hp": 45, "atk": 60, "def": 40, "spd": 45}, "Blaze"),
 	"treecko": create_pokemon("Grass", "none", 45, {"hp": 40, "atk": 45, "def": 35, "spd": 70}, "Overgrow"),
-	"ivysaur": create_pokemon("Grass", "Poison", 45, {"hp": 60, "atk": 62, "def": 63, "spd": 60}, "Overgrow")}
+	"ivysaur": create_pokemon("Grass", "Poison", 45, {"hp": 60, "atk": 62, "def": 63, "spd": 60}, "Overgrow"),
+	"caterpie": create_pokemon("Bug", "none", 255, {"hp": 45, "atk": 30, "def": 35, "spd": 45}, "Shield Dust")}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
 	pkmn_data.emit(data.type,data.type2,data.base_stats,data.ability)

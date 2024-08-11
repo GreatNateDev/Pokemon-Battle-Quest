@@ -163,4 +163,10 @@ func Trainer_battle(index):
 			get_pkmn_data.emit("zigzagoon")
 			set_mon(2,"zigzagoon")
 			set_party(mon1,mon2,null,null,null,null,"may","Hey there lets battle!")
+		2:
+			init_ivs(2,1)
+			get_pkmn_data.emit("caterpie")
+			set_mon(1,"caterpie")
+			set_party(mon1,null,null,null,null,null,"bug_catcher","You are going to be cooked by my bug types!")
+			
 	init_trainer(party)
