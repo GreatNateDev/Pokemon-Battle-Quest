@@ -20,16 +20,14 @@ var mon6
 var dict
 @onready var trainer = get_parent().get_node("Move_layer/trainer")
 @onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
-func IVify(level):
-	match level:
-		1:
-			dict = {
-			"level": randi_range(5,7),
-			"atk": randi_range(5,6),
-			"def": randi_range(5,6),
-			"spd": randi_range(5,6),
-			"hp": randi_range(5,6),
-			}
+func IVify():
+	dict = {
+	"level": randi_range(1,31),
+	"atk": randi_range(1,31),
+	"def": randi_range(1,31),
+	"spd": randi_range(1,31),
+	"hp": randi_range(1,31),
+	}
 	return dict
 func Return_data(type,type2,statx,ability):
 	data.append(type)
@@ -48,20 +46,20 @@ func init_trainer(partys):
 	tween.tween_property(trainer,"position",Vector2(output,trainer.position.y),1)
 	await get_tree().create_timer(1).timeout
 	send_party.emit(partys)
-func init_ivs(amt,lvl):
+func init_ivs(amt):
 	data.clear()
 	if amt >= 1:
-		base_ivs1 = IVify(lvl)
+		base_ivs1 = IVify()
 	if amt >= 2:
-		base_ivs2 = IVify(lvl)
+		base_ivs2 = IVify()
 	if amt >= 3:
-		base_ivs3 = IVify(lvl)
+		base_ivs3 = IVify()
 	if amt >= 4:
-		base_ivs4 = IVify(lvl)
+		base_ivs4 = IVify()
 	if amt >= 5:
-		base_ivs5 = IVify(lvl)
+		base_ivs5 = IVify()
 	if amt == 6:
-		base_ivs6 = IVify(lvl)
+		base_ivs6 = IVify()
 func set_party(first,second,third,forth,fifth,sixth,sprite,textx):
 				party = {
 				"first": first,
@@ -157,19 +155,19 @@ func set_mon(amt,nameme):
 func Trainer_battle(index):
 	match index:
 		1:
-			init_ivs(2,1)
+			init_ivs(2)
 			get_pkmn_data.emit("mudkip")
 			set_mon(1,"mudkip")
 			get_pkmn_data.emit("zigzagoon")
 			set_mon(2,"zigzagoon")
 			set_party(mon1,mon2,null,null,null,null,"may","Hey there lets battle!")
 		2:
-			init_ivs(1,1)
+			init_ivs(1)
 			get_pkmn_data.emit("caterpie")
 			set_mon(1,"caterpie")
 			set_party(mon1,null,null,null,null,null,"bug_catcher","You are going to be cooked by my bug types!")
 		3:
-			init_ivs(3,1)
+			init_ivs(3)
 			get_pkmn_data.emit("treecko")
 			set_mon(1,"treecko")
 			get_pkmn_data.emit("mudkip")
@@ -178,7 +176,7 @@ func Trainer_battle(index):
 			set_mon(3,"torchic")
 			set_party(mon1,mon2,mon3,null,null,null,"birch","Have you been completing you're pokedex?")
 		4:
-			init_ivs(3,1)
+			init_ivs(3)
 			get_pkmn_data.emit("treecko")
 			set_mon(1,"treecko")
 			get_pkmn_data.emit("mudkip")
