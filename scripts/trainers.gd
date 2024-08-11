@@ -164,9 +164,17 @@ func Trainer_battle(index):
 			set_mon(2,"zigzagoon")
 			set_party(mon1,mon2,null,null,null,null,"may","Hey there lets battle!")
 		2:
-			init_ivs(2,1)
+			init_ivs(1,1)
 			get_pkmn_data.emit("caterpie")
 			set_mon(1,"caterpie")
 			set_party(mon1,null,null,null,null,null,"bug_catcher","You are going to be cooked by my bug types!")
-			
+		3:
+			init_ivs(3,1)
+			get_pkmn_data.emit("treecko")
+			set_mon(1,"treecko")
+			get_pkmn_data.emit("mudkip")
+			set_mon(2,"mudkip")
+			get_pkmn_data.emit("torchic")
+			set_mon(3,"torchic")
+			set_party(mon1,mon2,mon3,null,null,null,"birch","Have you been completing you're pokedex?")
 	init_trainer(party)
