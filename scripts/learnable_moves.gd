@@ -12,7 +12,7 @@ var lotad = ["Tackle","Watergun"]
 var treecko = ["Absorb"]
 var bulbasaur = ["Absorb", "Tackle"]
 var chikorita = ["Absorb", "Tackle"]
-
+var seedot = ["Absorb", "Tackle"]
 # Fire
 var torchic = ["Ember"]
 var charmander = ["Ember"]
@@ -41,6 +41,7 @@ var pkmn = {
 	"caterpie": caterpie,
 	"poochyena": poochyena,
 	"lotad": lotad,
+	"seedot": seedot,
 }
 
 func RandMov(mon):
