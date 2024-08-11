@@ -366,6 +366,7 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			#save_data()
+			data.Player.hp -= 20
 			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			#shop()
 			#_on_moves_damage("Player",1000,"E","Water")
@@ -842,3 +843,16 @@ func next_mon():
 	data.battle_num += 1
 	catchable = true
 	next_enemy()
+
+
+func _on_abilities_damage_text(text: Variant) -> void:
+	$top_layer/ability/Label.text = text
+	var tween = get_tree().create_tween()
+	var ogpos = $top_layer/ability.position
+	var newpos = $top_layer/ability.position - Vector2(210,0)
+	tween.tween_property($top_layer/ability,"position",newpos,1)
+	await get_tree().create_timer(1).timeout
+	var tweene = get_tree().create_tween()
+	tweene.tween_property($top_layer/ability,"position",ogpos,1)
+	await get_tree().create_timer(1).timeout
+	$top_layer/ability/Label.text = ""

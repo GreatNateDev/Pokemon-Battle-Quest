@@ -484,6 +484,40 @@ initial_velocity_max = 84.5
 angle_min = -126.0
 angle_max = 52.5
 
+[node name="ability" type="Control" parent="top_layer"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -20.0
+offset_right = 136.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="top_layer/ability"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="top_layer/ability/Label"]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="backround_layer" type="CanvasLayer" parent="."]
 layer = -10
 follow_viewport_enabled = true
@@ -537,11 +571,13 @@ texture = ExtResource("24_gg8a3")
 [connection signal="failed" from="Item Animations" to="." method="failed"]
 [connection signal="Damage" from="Damage" to="." method="Damage"]
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
+[connection signal="get_damagebased_ability" from="Damage" to="Abilities" method="Damage_abilitys"]
 [connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]
 [connection signal="get_pkmn_data" from="Trainers" to="Pokemon" method="get_pokemon_data"]
 [connection signal="send_party" from="Trainers" to="." method="Party"]
 [connection signal="text" from="Trainers" to="." method="_on_trainers_text"]
 [connection signal="damage_rebound" from="Abilities" to="Damage" method="_on_abilities_damage_rebound"]
+[connection signal="damage_text" from="Abilities" to="." method="_on_abilities_damage_text"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]

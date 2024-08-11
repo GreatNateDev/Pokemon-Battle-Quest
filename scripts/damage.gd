@@ -14,7 +14,7 @@ func Attack(Move, Entity, Stats, OStats):
 	else : opp = "Player"
 	var mov = Mover.movs[Move]
 	var ability = Stats.ability
-	get_damagebased_ability.emit(ability,Stats)
+	get_damagebased_ability.emit(ability,Stats,Entity,mov.type)
 	var type_effectiveness = getMultiplier(mov.type,OStats.type,OStats.type2)
 	var stab = 1
 	if Stats.type == OStats.type: stab = 1.5
