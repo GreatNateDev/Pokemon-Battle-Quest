@@ -869,5 +869,5 @@ func _on_abilities_damage_text(text: String) -> void:
 	await get_tree().create_timer(1).timeout
 	$top_layer/ability/Label.text = ""
 func read_item():
-	HeldItem.emit(data.Player.item)
-	HeldItem.emit(data.Enemy.item)
+	HeldItem.emit(data.Player)
+	HeldItem.emit(data.Enemy)

@@ -1,8 +1,8 @@
 extends Control
 
 
-func Item(item: Variant) -> void:
-	match item:
+func Item(item: Variant,who: String) -> void:
+	match item.item:
 		"potion":
 			pass
 		"super_potion":
@@ -12,4 +12,4 @@ func Item(item: Variant) -> void:
 		"poke_ball":
 			pass
 		"oran_berry":
-			pass
+			if item.hp <= item.max_hp / 2: item.hp += 10; if item.hp > item.max_hp: item.hp = item.max_hp
