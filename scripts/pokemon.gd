@@ -3,40 +3,33 @@ class_name pokemon
 signal pkmn_data()
 signal return_mon_data()
 signal random_pokemon()
-var totodile = {"type": "Water", "type2": "none", "catch": 45, "base_stats": {"hp": 50, "atk": 65, "def": 64, "spd": 43}, "ability": "Torrent"}
-var bulbasaur = {"type": "Grass", "type2": "Poison", "catch": 45, "base_stats": {"hp": 45, "atk": 49, "def": 49, "spd": 45}, "ability": "Overgrow"}
-var charmander = {"type": "Fire", "type2": "none", "catch": 45, "base_stats": {"hp": 39, "atk": 52, "def": 43, "spd": 65}, "ability": "Blaze"}
-var squirtle = {"type": "Water", "type2": "none", "catch": 45, "base_stats": {"hp": 44, "atk": 48, "def": 65, "spd": 43}, "ability": "Torrent"}
-var cyndaquil = {"type": "Fire", "type2": "none", "catch": 45, "base_stats": {"hp": 39, "atk": 52, "def": 43, "spd": 65}, "ability": "Blaze"}
-var chikorita = {"type": "Grass", "type2": "none", "catch": 45, "base_stats": {"hp": 45, "atk": 49, "def": 65, "spd": 45}, "ability": "Overgrow"}
-var zigzagoon = {"type": "Normal", "type2": "none", "catch": 255, "base_stats": {"hp": 38, "atk": 30, "def": 41, "spd": 60}, "ability": "Pickup"}
-var mudkip = {"type": "Water", "type2": "none", "catch": 45, "base_stats": {"hp": 50, "atk": 70, "def": 50, "spd": 40}, "ability": "Torrent"}
-var torchic = {"type": "Fire", "type2": "none", "catch": 45, "base_stats": {"hp": 45, "atk": 60, "def": 40, "spd": 45}, "ability": "Blaze"}
-var treecko = {"type": "Grass", "type2": "none", "catch": 45, "base_stats": {"hp": 40, "atk": 45, "def": 35, "spd": 70}, "ability": "Overgrow"}
+func create_pokemon(type, type2, catch_rate, base_stats, ability):
+	return {
+		"type": type,
+		"type2": type2,
+		"catch": catch_rate,
+		"base_stats": base_stats,
+		"ability": ability
+	}
 var pkmn = {
-	"zigzagoon": zigzagoon,
-	"treecko": treecko,
-	"mudkip": mudkip,
-	"torchic": torchic,
-	"totodile": totodile,
-	"bulbasaur": bulbasaur,
-	"charmander": charmander,"squirtle": squirtle,
-	"cyndaquil": cyndaquil,
-	"chikorita": chikorita,
-}
-
+	"totodile": create_pokemon("Water", "none", 45, {"hp": 50, "atk": 65, "def": 64, "spd": 43}, "Torrent"),
+	"bulbasaur": create_pokemon("Grass", "Poison", 45, {"hp": 45, "atk": 49, "def": 49, "spd": 45}, "Overgrow"),
+	"charmander": create_pokemon("Fire", "none", 45, {"hp": 39, "atk": 52, "def": 43, "spd": 65}, "Blaze"),
+	"squirtle": create_pokemon("Water", "none", 45, {"hp": 44, "atk": 48, "def": 65, "spd": 43}, "Torrent"),
+	"cyndaquil": create_pokemon("Fire", "none", 45, {"hp": 39, "atk": 52, "def": 43, "spd": 65}, "Blaze"),
+	"chikorita": create_pokemon("Grass", "none", 45, {"hp": 45, "atk": 49, "def": 65, "spd": 45}, "Overgrow"),
+	"zigzagoon": create_pokemon("Normal", "none", 255, {"hp": 38, "atk": 30, "def": 41, "spd": 60}, "Pickup"),
+	"mudkip": create_pokemon("Water", "none", 45, {"hp": 50, "atk": 70, "def": 50, "spd": 40}, "Torrent"),
+	"torchic": create_pokemon("Fire", "none", 45, {"hp": 45, "atk": 60, "def": 40, "spd": 45}, "Blaze"),
+	"treecko": create_pokemon("Grass", "none", 45, {"hp": 40, "atk": 45, "def": 35, "spd": 70}, "Overgrow")}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
 	pkmn_data.emit(data.type,data.type2,data.base_stats,data.ability)
-
-
 func RandMon():
 	var keys = pkmn.keys()
 	var random_key = keys[randi() % keys.size()]
 	var value = pkmn[random_key]
 	random_pokemon.emit(value.type,value.type2,random_key,value.base_stats,value.ability)
-
-
 func get_pokemon_data(xname):
 	var mon = pkmn[xname]
 	return_mon_data.emit(mon.type,mon.type2,mon.base_stats,mon.ability)

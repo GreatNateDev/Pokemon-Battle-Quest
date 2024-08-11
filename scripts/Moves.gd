@@ -1,45 +1,17 @@
 extends Control
 class_name Movos
-var Watergun = {
-	"power": 40,
-	"accuracy": 100,
-	"c": null,
-	"type": "Water",
-	"text":" sprayed with water!"
-}
-
-var Bite = {
-	"power": 60,
-	"accuracy": 100,
-	"c": null,
-	"type": "Dark",
-	"text": " was bit!"
-}
-var Ember = {
-	"power": 40,
-	"accuracy": 100,
-	"c": null,
-	"type": "Fire",
-	"text": " was burned by embers!"
-}
-var Absorb = {
-	"power": 20,
-	"accuracy": 100,
-	"c": null,
-	"type": "Grass",
-	"text":" had its health absorbed!"
-}
-var Tackle = {
-	"power": 40,
-	"accuracy": 100,
-	"c": null,
-	"type": "Normal",
-	"text": " was tackled!"
-}
+func create_move(power, accuracy, move_type, text):
+	return {
+		"power": power,
+		"accuracy": accuracy,
+		"c": null,
+		"type": move_type,
+		"text": text
+	}
 var movs = {
-	"Absorb": Absorb,
-	"Bite": Bite,
-	"Ember": Ember,
-	"Watergun": Watergun,
-	"Tackle": Tackle,
-}
+	"Watergun": create_move(40, 100, "Water", " sprayed with water!"),
+	"Bite": create_move(60, 100, "Dark", " was bit!"),
+	"Ember": create_move(40, 100, "Fire", " was burned by embers!"),
+	"Absorb": create_move(20, 100, "Grass", " had its health absorbed!"),
+	"Tackle": create_move(40, 100, "Normal", " was tackled!")
+	}
