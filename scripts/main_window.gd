@@ -789,6 +789,10 @@ func next_enemy():
 		random_enemy(7,9,1)
 	if data.battle_num == 15:
 		trainer(3)
+	if data.battle_num > 15 and data.battle_num < 20:
+		random_enemy(10,12,1)
+	if data.battle_num == 20:
+		trainer(4)
 func RandMon(type,type2,pk_name,base_stat,ability):
 	rand_mon = [type,type2,pk_name,base_stat,ability]
 func Mov_return(mov):
