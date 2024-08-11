@@ -113,10 +113,10 @@ func randomize_player():
 	data.Player = {
 		"index": 1,
 		"level" : randi_range(5,7),
-		"hp" : randi_range(1,5),
-		"spd" : randi_range(1,5),
-		"atk" : randi_range(1,5),
-		"def" : randi_range(1,5),
+		"hp": randi_range(1,31),
+		"spd" : randi_range(1,31),
+		"atk" : randi_range(1,31),
+		"def" : randi_range(1,31),
 		"type": null,
 		"exp": 0,
 		"max_exp": null,
@@ -151,13 +151,13 @@ func randomize_player():
 	refine_level_stats(data.Player,false,true)
 	data.Player.max_hp = data.Player.hp
 	data.Player1 = data.Player
-func random_enemy_level_one():
+func random_enemy(lv1:int,lv2:int):
 	data.Enemy = {
-		"level" : randi_range(5,5),
-		"hp" : randi_range(1,5),
-		"spd" : randi_range(1,5),
-		"atk" : randi_range(1,5),
-		"def" : randi_range(1,5),
+		"level" : randi_range(lv1,lv2),
+		"hp": randi_range(1,31),
+		"spd" : randi_range(1,31),
+		"atk" : randi_range(1,31),
+		"def" : randi_range(1,31),
 		"move1": null,
 		"move2": null,
 		"move3": null,
@@ -778,11 +778,11 @@ func failed():
 	$"Timers/after_attack cooldown".start()
 func next_enemy():
 	if data.battle_num < 5:
-		random_enemy_level_one()
+		random_enemy(5,7)
 	if data.battle_num == 5:
 		trainer(1)
 	if data.battle_num > 5 and data.battle_num < 10:
-		random_enemy_level_one()
+		random_enemy(5,7)
 func RandMon(type,type2,pk_name,base_stat,ability):
 	rand_mon = [type,type2,pk_name,base_stat,ability]
 func Mov_return(mov):
