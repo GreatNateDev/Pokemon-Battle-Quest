@@ -845,7 +845,7 @@ func next_mon():
 	next_enemy()
 
 
-func _on_abilities_damage_text(text: Variant) -> void:
+func _on_abilities_damage_text(text: String) -> void:
 	$top_layer/ability/Label.text = text
 	var tween = get_tree().create_tween()
 	var ogpos = $top_layer/ability.position

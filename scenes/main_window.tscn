@@ -515,8 +515,9 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="top_layer/ability/Label"]
 z_index = -1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -13.0
+offset_right = 737.0
+offset_bottom = 38.0
 
 [node name="backround_layer" type="CanvasLayer" parent="."]
 layer = -10
