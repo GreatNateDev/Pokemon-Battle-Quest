@@ -869,5 +869,26 @@ func _on_abilities_damage_text(text: String) -> void:
 	await get_tree().create_timer(1).timeout
 	$top_layer/ability/Label.text = ""
 func read_item():
-	HeldItem.emit(data.Player)
-	HeldItem.emit(data.Enemy)
+	HeldItem.emit(data.Player,"Player")
+	HeldItem.emit(data.Enemy,"Enemy")
+
+
+func loseitem(who: Variant) -> void:
+	match who:
+		"Enemy":
+			data.Enemy.item = null
+		"Player":
+			data.Player.item = null
+
+
+func item_return(who: Variant, effect: Variant, num: Variant) -> void:
+	match who:
+		"Player":
+			match effect:
+				"hp":
+					data.Player.hp = num
+		"Enemy":
+			match effect:
+				"hp":
+					data.Enemy.hp = num
+	reset_bars()
