@@ -476,6 +476,46 @@ grow_horizontal = 2
 grow_vertical = 2
 item_count = 6
 
+[node name="New_Move" type="Control" parent="Castless"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Castless/New_Move"]
+layout_mode = 0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = -1.0
+text = "Choose a slot to replace"
+
+[node name="ItemList" type="ItemList" parent="Castless/New_Move"]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 144.0
+item_count = 5
+item_0/text = "Move1"
+item_1/text = "Move2"
+item_2/text = "Move3"
+item_3/text = "Move4"
+item_4/text = "Skip"
+
+[node name="Label2" type="Label" parent="Castless/New_Move"]
+layout_mode = 0
+offset_top = 144.0
+offset_right = 94.0
+offset_bottom = 167.0
+text = "move_name"
+
 [node name="top_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -573,6 +613,7 @@ texture = ExtResource("24_gg8a3")
 [connection signal="HeldItem" from="." to="HeldItems" method="Item"]
 [connection signal="evolve" from="." to="Evolution" method="_on_main_window_evolve"]
 [connection signal="faint" from="." to="Move Animations" method="faint"]
+[connection signal="get_new_move" from="." to="Learnable_Moves" method="_on_main_window_get_new_move"]
 [connection signal="randmov" from="." to="Learnable_Moves" method="RandMov"]
 [connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
 [connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
@@ -590,6 +631,7 @@ texture = ExtResource("24_gg8a3")
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
 [connection signal="get_damagebased_ability" from="Damage" to="Abilities" method="Damage_abilitys"]
 [connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]
+[connection signal="return_lvlup_mov" from="Learnable_Moves" to="." method="lvlup_mov"]
 [connection signal="get_pkmn_data" from="Trainers" to="Pokemon" method="get_pokemon_data"]
 [connection signal="send_party" from="Trainers" to="." method="Party"]
 [connection signal="text" from="Trainers" to="." method="_on_trainers_text"]
@@ -608,3 +650,4 @@ texture = ExtResource("24_gg8a3")
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
 [connection signal="item_clicked" from="Castless/Pokemon_Menu/ItemList" to="." method="Pokemon_swap"]
+[connection signal="item_clicked" from="Castless/New_Move/ItemList" to="." method="new_mov_btn_clk"]

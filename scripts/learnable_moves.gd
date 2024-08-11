@@ -2,7 +2,7 @@ extends Control
 
 # Signals
 signal Mov_return(mov)
-
+signal return_lvlup_mov(mov)
 # Water
 var totodile = ["Watergun", "Tackle"]
 var mudkip = ["Watergun", "Tackle"]
@@ -49,3 +49,15 @@ func RandMov(mon):
 			var output = available_moves[rand]
 			used_moves.append(output)
 			Mov_return.emit(output)
+
+
+func _on_main_window_get_new_move(data) -> void:
+	var index = data.level / 3
+	index = int(index)
+	var mon = data.name
+	if index >= 0 and index < pkmn[mon].size():
+		var move = pkmn[mon][index]
+		return_lvlup_mov.emit(move)
+	else:
+		print("Index out of range: ", index)
+		return

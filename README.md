@@ -33,8 +33,7 @@ This should just run in any godot editor 4.3x
 ## Contributing
 Make a pull request with the feature(s) you have made!
 
-## TODO:\
-add level up moves\
+## TODO:
 add all abilities from gen 3\
 add all items from gen 3\
 add all pokemon from gen 3\

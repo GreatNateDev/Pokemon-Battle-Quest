@@ -10,6 +10,7 @@ var rand_mon
 var catchable = true
 var movs : Array
 var player_mon : Array
+signal get_new_move(data)
 signal evolve(pokemon,level)
 signal trainer_battle(index)
 signal faint(entity)
@@ -85,6 +86,7 @@ func _ready():
 		if speeddiff == "Enemy":
 			disable_btns(true)
 			$"Timers/after_attack cooldown".start()
+	refresh_new_move_selection()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -340,6 +342,8 @@ func level_up():
 	set_max_exp()
 	set_levels("Player")
 	$Cast/Player/xpbar.value = 0
+	refresh_new_move_selection()
+	get_new_move.emit(data.Player)
 	evolve.emit(data.Player.name,data.Player.level)
 func set_max_exp():
 	data.Player.max_exp = data.Player.level * 30
@@ -374,7 +378,7 @@ func _input(event):
 	if OS.is_debug_build():
 		if event.is_action_pressed("ui_accept"):
 			#save_data()
-			level_up()
+			#level_up()
 			#data.Player.hp -= 20
 			#print("Player hp: "+str(data.Player.hp)+" Player def: "+str(data.Player.def)+" Player atk: "+str(data.Player.atk)+" Player spd: "+str(data.Player.spd)+"\nEnemy hp: "+str(data.Enemy.hp)+" Enemy atk: "+str(data.Enemy.atk)+" Enemy def: "+str(data.Enemy.def)+" Enemy spd: "+str(data.Enemy.spd))
 			#shop()
@@ -913,3 +917,28 @@ func recalc_evo_stats(stats):
 	data.Player.def += def_add
 	data.Player.spd += spd_add
 	data.Player.hp += hp_add
+func refresh_new_move_selection():
+	$Castless/New_Move/ItemList.set_item_text(0,$Castless/Box_and_buttons_centre/Move1.text)
+	$Castless/New_Move/ItemList.set_item_text(1,$Castless/Box_and_buttons_centre/Move2.text)
+	$Castless/New_Move/ItemList.set_item_text(2,$Castless/Box_and_buttons_centre/Move3.text)
+	$Castless/New_Move/ItemList.set_item_text(3,$Castless/Box_and_buttons_centre/Move4.text)
+
+
+func lvlup_mov(mov: Variant) -> void:
+	$Castless/New_Move.show()
+	$Castless/New_Move/Label2.text = mov
+
+
+func new_mov_btn_clk(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
+	match index:
+		0:
+			$Castless/Box_and_buttons_centre/Move1.text = $Castless/New_Move/Label2.text
+		1:
+			$Castless/Box_and_buttons_centre/Move2.text = $Castless/New_Move/Label2.text
+		2:
+			$Castless/Box_and_buttons_centre/Move3.text = $Castless/New_Move/Label2.text
+		3:
+			$Castless/Box_and_buttons_centre/Move4.text = $Castless/New_Move/Label2.text
+		4:
+			$Castless/New_Move.hide()
+	$Castless/New_Move.hide()
