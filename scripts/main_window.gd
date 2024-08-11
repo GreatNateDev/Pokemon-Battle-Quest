@@ -151,7 +151,7 @@ func randomize_player():
 	refine_level_stats(data.Player,false,true)
 	data.Player.max_hp = data.Player.hp
 	data.Player1 = data.Player
-func random_enemy(lv1:int,lv2:int):
+func random_enemy(lv1:int,lv2:int,monlvl:int):
 	data.Enemy = {
 		"level" : randi_range(lv1,lv2),
 		"hp": randi_range(1,31),
@@ -183,7 +183,7 @@ func random_enemy(lv1:int,lv2:int):
 	data.Enemy.preatk = data.Enemy.atk
 	data.Enemy.predef = data.Enemy.def
 	data.Enemy.prespd = data.Enemy.spd
-	random_pokemon.emit()
+	random_pokemon.emit(monlvl)
 	data.Enemy.type = rand_mon[0]
 	data.Enemy.type2 = rand_mon[1]
 	data.Enemy.sprite = rand_mon[2]
@@ -778,11 +778,11 @@ func failed():
 	$"Timers/after_attack cooldown".start()
 func next_enemy():
 	if data.battle_num < 5:
-		random_enemy(5,7)
+		random_enemy(5,7,1)
 	if data.battle_num == 5:
 		trainer(1)
 	if data.battle_num > 5 and data.battle_num < 10:
-		random_enemy(5,7)
+		random_enemy(5,7,1)
 	if data.battle_num == 10:
 		trainer(2)
 func RandMon(type,type2,pk_name,base_stat,ability):

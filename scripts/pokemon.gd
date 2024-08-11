@@ -24,13 +24,22 @@ var pkmn = {
 	"treecko": create_pokemon("Grass", "none", 45, {"hp": 40, "atk": 45, "def": 35, "spd": 70}, "Overgrow"),
 	"ivysaur": create_pokemon("Grass", "Poison", 45, {"hp": 60, "atk": 62, "def": 63, "spd": 60}, "Overgrow"),
 	"caterpie": create_pokemon("Bug", "none", 255, {"hp": 45, "atk": 30, "def": 35, "spd": 45}, "Shield Dust")}
+var pkmn1 = {
+	"zigzagoon": pkmn["zigzagoon"],
+	"caterpie": pkmn["caterpie"]
+}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
 	pkmn_data.emit(data.type,data.type2,data.base_stats,data.ability)
-func RandMon():
-	var keys = pkmn.keys()
-	var random_key = keys[randi() % keys.size()]
-	var value = pkmn[random_key]
+func RandMon(lvl):
+	var keys
+	var value
+	var random_key
+	match lvl: 
+		1:
+			keys = pkmn1.keys()
+			random_key = keys[randi() % keys.size()]
+			value = pkmn1[random_key]
 	random_pokemon.emit(value.type,value.type2,random_key,value.base_stats,value.ability)
 func get_pokemon_data(xname):
 	var mon = pkmn[xname]
