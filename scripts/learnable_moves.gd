@@ -7,7 +7,7 @@ signal return_lvlup_mov(mov)
 var totodile = ["Watergun", "Tackle"]
 var mudkip = ["Watergun", "Tackle"]
 var squirtle = ["Watergun", "Tackle"]
-
+var lotad = ["Tackle","Watergun"]
 # Grass
 var treecko = ["Absorb"]
 var bulbasaur = ["Absorb", "Tackle"]
@@ -23,6 +23,9 @@ var zigzagoon = ["Bite", "Tackle"]
 
 #Bug
 var caterpie = ["Tackle"]
+
+#Dark
+var poochyena = ["Tackle","Bite"]
 # Mons
 var pkmn = {
 	"zigzagoon": zigzagoon,
@@ -36,6 +39,8 @@ var pkmn = {
 	"cyndaquil": cyndaquil,
 	"chikorita": chikorita,
 	"caterpie": caterpie,
+	"poochyena": poochyena,
+	"lotad": lotad,
 }
 
 func RandMov(mon):
