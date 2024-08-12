@@ -49,7 +49,11 @@ var pkmn1 = {
 	"surskit": pkmn["surskit"],
 	"ralts": pkmn["ralts"],
 	"taillow": pkmn["taillow"],
-	"jigglypuff": pkmn["jigglypuff"]
+	"jigglypuff": pkmn["jigglypuff"],
+	"slakoth": pkmn["slakoth"],
+	"nincada": pkmn["nincada"],
+	"whismur": pkmn["whismur"],
+	"mukhita": pkmn["mukhita"],
 	}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
