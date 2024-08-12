@@ -3,44 +3,30 @@ extends Control
 # Signals
 signal Mov_return(mov)
 signal return_lvlup_mov(mov)
-# Water
+
 var totodile = ["Watergun", "Tackle"]
 var mudkip = ["Watergun", "Tackle"]
 var squirtle = ["Watergun", "Tackle"]
 var lotad = ["Tackle","Watergun"]
 var wingull = ["Watergun", "Tackle"]
-# Grass
 var treecko = ["Absorb"]
 var bulbasaur = ["Absorb", "Tackle"]
 var chikorita = ["Absorb", "Tackle"]
 var seedot = ["Absorb", "Tackle"]
 var shroomish = ["Tackle", "Absorb"]
-# Fire
 var torchic = ["Ember"]
 var charmander = ["Ember"]
 var cyndaquil = ["Ember", "Tackle"]
-
-# Normal
 var zigzagoon = ["Bite", "Tackle"]
-
-#Bug
+var slackoth = ["Tackle", "Watergun"]
 var caterpie = ["Tackle"]
-
-#Dark
 var poochyena = ["Tackle","Bite"]
-
-#Flying
 var taillow = ["Tackle"]
-
-#Psychic
 var ralts = ["Tackle"]
-
-#Bug
 var surskit = ["Watergun", "Tackle"]
-
-#Fairy
 var jigglypuff = ["Tackle"]
-# Mons
+var slakoth = ["Tackle"] #fix moves he cant learn these
+
 var pkmn = {
 	"zigzagoon": zigzagoon,
 	"treecko": treecko,
@@ -78,7 +64,6 @@ func RandMov(mon):
 			var output = available_moves[rand]
 			used_moves.append(output)
 			Mov_return.emit(output)
-
 
 func _on_main_window_get_new_move(data) -> void:
 	var index = data.level / 3

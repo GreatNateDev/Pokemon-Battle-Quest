@@ -6,6 +6,6 @@ func _ready():
 	text = text.replace("_","")
 	text = text.replace("~","")
 	$Label.text = text
-func _process(delta):
+func _process(_delta):
 	if Input.is_anything_pressed():
 		get_tree().change_scene_to_file("res://scenes/pkmn choice.tscn")

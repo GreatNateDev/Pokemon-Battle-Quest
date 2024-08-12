@@ -33,9 +33,10 @@ var pkmn = {
 	"surskit": create_pokemon("Bug", "Water", 255, {"hp": 40, "atk": 30, "def": 32, "spd": 50}, "Swift Swim"),
 	"shroomish": create_pokemon("Grass", "none", 255, {"hp": 60, "atk": 40, "def": 60, "spd": 35}, "Effect Spore"),
 	"jigglypuff": create_pokemon("Normal", "Fairy", 170, {"hp": 115, "atk": 45, "def": 20, "spd": 20}, "Cute Charm"),
-	
-
-	
+	"slakoth": create_pokemon("Normal", "none", 255, {"hp": 60, "atk": 60, "def": 60, "spd": 30}, "Truant"),
+	"nincada": create_pokemon("Bug", "Ground", 255, {"hp": 31, "atk": 45, "def": 90, "spd": 40}, "Compoundeyes"),
+	"whismur": create_pokemon("Normal", "none", 255, {"hp": 44, "atk": 50, "def": 23, "spd": 44}, "Soundproof"),
+	"mukhita": create_pokemon("Steel", "none", 255, {"hp": 70, "atk": 50, "def": 90, "spd": 30}, "Swift Swim"),
 	}
 var pkmn1 = {
 	"zigzagoon": pkmn["zigzagoon"],
