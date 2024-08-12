@@ -83,6 +83,7 @@ func _ready():
 		reset_bars()
 		cap_bars()
 		update_swapper()
+		set_names("P")
 		if speeddiff == "Enemy":
 			disable_btns(true)
 			$"Timers/after_attack cooldown".start()
