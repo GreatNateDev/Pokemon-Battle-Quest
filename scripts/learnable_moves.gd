@@ -8,11 +8,13 @@ var totodile = ["Watergun", "Tackle"]
 var mudkip = ["Watergun", "Tackle"]
 var squirtle = ["Watergun", "Tackle"]
 var lotad = ["Tackle","Watergun"]
+var wingull = ["Watergun", "Tackle"]
 # Grass
 var treecko = ["Absorb"]
 var bulbasaur = ["Absorb", "Tackle"]
 var chikorita = ["Absorb", "Tackle"]
 var seedot = ["Absorb", "Tackle"]
+var shroomish = ["Tackle", "Absorb"]
 # Fire
 var torchic = ["Ember"]
 var charmander = ["Ember"]
@@ -26,6 +28,15 @@ var caterpie = ["Tackle"]
 
 #Dark
 var poochyena = ["Tackle","Bite"]
+
+#Flying
+var taillow = ["Tackle"]
+
+#Psychic
+var ralts = ["Tackle"]
+
+#Bug
+var surskit = ["Watergun", "Tackle"]
 # Mons
 var pkmn = {
 	"zigzagoon": zigzagoon,
@@ -42,6 +53,11 @@ var pkmn = {
 	"poochyena": poochyena,
 	"lotad": lotad,
 	"seedot": seedot,
+	"taillow": taillow,
+	"wingull": wingull,
+	"shroomish": shroomish,
+	"ralts": ralts,
+	"surskit": surskit,
 }
 
 func RandMov(mon):

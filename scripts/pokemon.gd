@@ -27,6 +27,12 @@ var pkmn = {
 	"poochyena": create_pokemon("Dark", "none", 190, {"hp": 35, "atk": 55, "def": 35, "spd": 35}, "Run Away"),
 	"lotad": create_pokemon("Water", "Grass", 255, {"hp": 40, "atk": 30, "def": 30, "spd": 30}, "Swift Swim"),
 	"seedot": create_pokemon("Grass", "none", 255, {"hp": 40, "atk": 40, "def": 50, "spd": 30}, "Chlorophyll"),
+	"taillow": create_pokemon("Normal", "Flying", 200, {"hp": 40, "atk": 55, "def": 30, "spd": 85}, "Guts"),
+	"wingull": create_pokemon("Water", "Flying", 255, {"hp": 40, "atk": 30, "def": 30, "spd": 85}, "Keen Eye"),
+	"ralts": create_pokemon("Psychic", "Fairy", 235, {"hp": 28, "atk": 25, "def": 25, "spd": 40}, "Synchronize"),
+	"surskit": create_pokemon("Bug", "Water", 255, {"hp": 40, "atk": 30, "def": 32, "spd": 50}, "Swift Swim"),
+	"shroomish": create_pokemon("Grass", "none", 255, {"hp": 60, "atk": 40, "def": 60, "spd": 35}, "Effect Spore"),
+
 	
 
 	
@@ -37,6 +43,11 @@ var pkmn1 = {
 	"poochyena": pkmn["poochyena"],
 	"lotad": pkmn["lotad"],
 	"seedot": pkmn["seedot"],
+	"wingull": pkmn["wingull"],
+	"shroomish": pkmn["shroomish"],
+	"surskit": pkmn["surskit"],
+	"ralts": pkmn["ralts"],
+	"taillow": pkmn["taillow"],
 	}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
