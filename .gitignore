@@ -3,3 +3,4 @@
 *.DS_STORE
 addons/
 *.exe
+*.x86_64
