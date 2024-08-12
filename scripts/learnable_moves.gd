@@ -28,7 +28,7 @@ var jigglypuff = ["Tackle"]
 var slakoth = ["Tackle"] #fix moves he cant learn these
 var nincada = ["Tackle"] #fix moves he cant learn these
 var whismur = ["Watergun"]
-var mukhita = ["Bite"]
+var makuhita = ["Bite"]
 var pkmn = {
 	"zigzagoon": zigzagoon,
 	"treecko": treecko,
@@ -53,7 +53,7 @@ var pkmn = {
 	"slakoth": slakoth,
 	"nincada": nincada,
 	"whismur": whismur,
-	"mukhita": mukhita,
+	"makuhita": makuhita,
 }
 
 func RandMov(mon):

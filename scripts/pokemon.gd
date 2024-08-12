@@ -36,7 +36,7 @@ var pkmn = {
 	"slakoth": create_pokemon("Normal", "none", 255, {"hp": 60, "atk": 60, "def": 60, "spd": 30}, "Truant"),
 	"nincada": create_pokemon("Bug", "Ground", 255, {"hp": 31, "atk": 45, "def": 90, "spd": 40}, "Compoundeyes"),
 	"whismur": create_pokemon("Normal", "none", 255, {"hp": 44, "atk": 50, "def": 23, "spd": 44}, "Soundproof"),
-	"mukhita": create_pokemon("Steel", "none", 255, {"hp": 70, "atk": 50, "def": 90, "spd": 30}, "Swift Swim"),
+	"makuhita": create_pokemon("Steel", "none", 255, {"hp": 70, "atk": 50, "def": 90, "spd": 30}, "Swift Swim"),
 	}
 var pkmn1 = {
 	"zigzagoon": pkmn["zigzagoon"],
@@ -53,7 +53,7 @@ var pkmn1 = {
 	"slakoth": pkmn["slakoth"],
 	"nincada": pkmn["nincada"],
 	"whismur": pkmn["whismur"],
-	"mukhita": pkmn["mukhita"],
+	"makuhita": pkmn["mukhita"],
 	}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
