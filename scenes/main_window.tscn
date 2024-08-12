@@ -227,6 +227,14 @@ offset_bottom = 34.0
 theme_override_colors/font_color = Color(0, 0.294118, 0, 1)
 text = "Level: "
 
+[node name="name" type="Label" parent="Cast/Player"]
+layout_mode = 0
+offset_left = 94.6667
+offset_top = -37.3333
+offset_right = 204.667
+offset_bottom = 4.66667
+text = "Mudkip"
+
 [node name="Enemy" type="Control" parent="Cast"]
 layout_mode = 3
 anchors_preset = 1
@@ -276,6 +284,14 @@ offset_right = -76.0
 offset_bottom = 49.0
 theme_override_colors/font_color = Color(0, 0.294118, 0, 1)
 text = "Level: "
+
+[node name="name" type="Label" parent="Cast/Enemy"]
+layout_mode = 0
+offset_left = -325.333
+offset_top = 40.0
+offset_right = -266.333
+offset_bottom = 63.0
+text = "Mudkip"
 
 [node name="Buttons" type="Control" parent="Cast"]
 layout_mode = 3

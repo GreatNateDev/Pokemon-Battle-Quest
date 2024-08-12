@@ -37,6 +37,9 @@ var ralts = ["Tackle"]
 
 #Bug
 var surskit = ["Watergun", "Tackle"]
+
+#Fairy
+var jigglypuff = ["Tackle"]
 # Mons
 var pkmn = {
 	"zigzagoon": zigzagoon,
@@ -58,6 +61,7 @@ var pkmn = {
 	"shroomish": shroomish,
 	"ralts": ralts,
 	"surskit": surskit,
+	"jigglypuff": jigglypuff,
 }
 
 func RandMov(mon):

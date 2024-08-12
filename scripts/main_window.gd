@@ -107,8 +107,14 @@ func refine_level_stats(entity,lvlup,starting):
 		entity.atk += value
 		entity.def += value
 func set_types():
-	$Cast/Player/type.text = data.Player.type
-	$Cast/Enemy/type.text = data.Enemy.type
+	if data.Player.type2 == "none":
+		$Cast/Player/type.text = data.Player.type
+	else:
+		$Cast/Player/type.text = data.Player.type+","+data.Player.type2
+	if data.Enemy.type2 == "none":
+		$Cast/Enemy/type.text = data.Enemy.type
+	else:
+		$Cast/Enemy/type.text = data.Enemy.type+","+data.Enemy.type2
 func randomize_player():
 	data.Player = {
 		"index": 1,
@@ -151,6 +157,7 @@ func randomize_player():
 	refine_level_stats(data.Player,false,true)
 	data.Player.max_hp = data.Player.hp
 	data.Player1 = data.Player
+	set_names("P")
 func random_enemy(lv1:int,lv2:int,monlvl:int):
 	data.Enemy = {
 		"level" : randi_range(lv1,lv2),
@@ -204,6 +211,7 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 	data.Enemy.move4 = movs[3]
 	refine_level_stats(data.Enemy,false,true)
 	data.Enemy.max_hp = data.Enemy.hp
+	set_names("E")
 	if data.Player.spd >= data.Enemy.spd:
 		speeddiff = "Player"
 	else:
@@ -948,3 +956,9 @@ func new_mov_btn_clk(index: int, _at_position: Vector2, _mouse_button_index: int
 		4:
 			$Castless/New_Move.hide()
 	$Castless/New_Move.hide()
+func set_names(n):
+	match n:
+		"P":
+			$Cast/Player/name.text = data.Player.name
+		"E":
+			$Cast/Enemy/name.text = data.Enemy.sprite

@@ -32,7 +32,7 @@ var pkmn = {
 	"ralts": create_pokemon("Psychic", "Fairy", 235, {"hp": 28, "atk": 25, "def": 25, "spd": 40}, "Synchronize"),
 	"surskit": create_pokemon("Bug", "Water", 255, {"hp": 40, "atk": 30, "def": 32, "spd": 50}, "Swift Swim"),
 	"shroomish": create_pokemon("Grass", "none", 255, {"hp": 60, "atk": 40, "def": 60, "spd": 35}, "Effect Spore"),
-
+	"jigglypuff": create_pokemon("Normal", "Fairy", 170, {"hp": 115, "atk": 45, "def": 20, "spd": 20}, "Cute Charm"),
 	
 
 	
@@ -48,6 +48,7 @@ var pkmn1 = {
 	"surskit": pkmn["surskit"],
 	"ralts": pkmn["ralts"],
 	"taillow": pkmn["taillow"],
+	"jigglypuff": pkmn["jigglypuff"]
 	}
 func _on_main_window_type_requester(pokemoner):
 	var data = pkmn.get(pokemoner)
