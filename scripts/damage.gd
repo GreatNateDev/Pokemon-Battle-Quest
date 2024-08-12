@@ -6,6 +6,9 @@ var opp
 signal get_damagebased_ability(ability)
 signal anim(entity,mov)
 signal Damage(damage,Entity,text,type_eff)
+signal heal(hp:int)
+signal flinch()
+signal effectem(status: String)
 var Type = types.new()
 var Mover = Movos.new()
 var mod = null
@@ -37,6 +40,7 @@ func Attack(Move, Entity, Stats, OStats):
 		crito()
 	Damage.emit(max(int(final_damage), 1),Entity,opp+mov.text,type_effectiveness)
 	anim.emit(Entity,Move)
+	effect(Mover.movs[Move],final_damage)
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
 	if move_type in Type.typx:
@@ -57,3 +61,16 @@ func crito():
 
 func _on_abilities_damage_rebound(ability_return):
 	mod = ability_return
+func effect(move,dam):
+	match move:
+		"Bite":
+			var roll = randf()
+			if roll < 0.30:
+				flinch.emit()
+		"Absorb":
+			var healo = dam / 2
+			heal.emit(healo)
+		"Ember":
+			var roll = randf()
+			if roll < 0.10:
+				effectem.emit("Burn")
