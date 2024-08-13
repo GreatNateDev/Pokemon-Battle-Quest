@@ -10,6 +10,7 @@ signal Damage(damage,Entity,text,type_eff)
 signal heal(hp:int)
 signal flinch()
 signal effectem(status: String)
+signal statuser(statdict)
 var Type = types.new()
 var Mover = Movos.new()
 var mod = null
@@ -18,7 +19,8 @@ func Attack(Move, Entity, Stats, OStats):
 	else : opp = "Player"
 	var mov = Mover.movs[Move]
 	if mov.status == true:
-		statusx.mov(mov)
+		var emitme = statusx.mov(mov)
+		statuser.emit(emitme)
 		return
 	var ability = Stats.ability
 	get_damagebased_ability.emit(ability,Stats,Entity,mov.type)
