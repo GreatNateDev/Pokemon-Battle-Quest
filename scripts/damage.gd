@@ -3,6 +3,7 @@ extends Control
 @onready var player = get_parent().get_node("Cast/Player/Player_sprite")
 @onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
 var opp
+var statusx = StatusMoves.new()
 signal get_damagebased_ability(ability)
 signal anim(entity,mov)
 signal Damage(damage,Entity,text,type_eff)
@@ -16,6 +17,9 @@ func Attack(Move, Entity, Stats, OStats):
 	if Entity == "Player": opp = "Enemy"
 	else : opp = "Player"
 	var mov = Mover.movs[Move]
+	if mov.status == true:
+		statusx.mov(mov)
+		return
 	var ability = Stats.ability
 	get_damagebased_ability.emit(ability,Stats,Entity,mov.type)
 	var type_effectiveness = getMultiplier(mov.type,OStats.type,OStats.type2)
