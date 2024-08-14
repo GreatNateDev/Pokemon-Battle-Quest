@@ -963,3 +963,9 @@ func set_names(n):
 			$Cast/Player/name.text = data.Player.name
 		"E":
 			$Cast/Enemy/name.text = data.Enemy.sprite
+
+
+func statify(statdict: Variant) -> void:
+	match statdict.status:
+		"para":
+			pass
