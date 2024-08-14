@@ -34,9 +34,8 @@ This should just run in any godot editor 4.3x
 Make a pull request with the feature(s) you have made!
 
 ## TODO:
-status moves
-add move effects
-physical/special split
+add move effects\
+physical/special split\
 add trainers all the way up to champion\
 add all abilities from gen 3\
 add all items from gen 3\
