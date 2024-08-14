@@ -11,6 +11,7 @@ signal heal(hp:int)
 signal flinch()
 signal effectem(status: String)
 signal statuser(statdict)
+signal fail(text)
 var Type = types.new()
 var Mover = Movos.new()
 var mod = null
@@ -20,7 +21,7 @@ func Attack(Move, Entity, Stats, OStats):
 	var mov = Mover.movs[Move]
 	if mov.status == true:
 		var emitme = statusx.mov(mov)
-		statuser.emit(emitme)
+		statuser.emit(emitme,Entity)
 		return
 	var ability = Stats.ability
 	get_damagebased_ability.emit(ability,Stats,Entity,mov.type)
@@ -44,6 +45,13 @@ func Attack(Move, Entity, Stats, OStats):
 	if is_critical: 
 		final_damage = final_damage * 2
 		crito()
+	if Stats.status != null:
+		match Stats.status:
+			"para":
+				var chance = randi() % 100
+				if chance < 25:
+					fail.emit("The "+Entity+"'s Move Failed due to Paralysis!",Entity)
+					return
 	Damage.emit(max(int(final_damage), 1),Entity,opp+mov.text,type_effectiveness)
 	anim.emit(Entity,Move)
 	effect(Mover.movs[Move],final_damage)

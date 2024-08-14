@@ -645,6 +645,7 @@ texture = ExtResource("24_gg8a3")
 [connection signal="failed" from="Item Animations" to="." method="failed"]
 [connection signal="Damage" from="Damage" to="." method="Damage"]
 [connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
+[connection signal="fail" from="Damage" to="." method="move_failed_by_status"]
 [connection signal="get_damagebased_ability" from="Damage" to="Abilities" method="Damage_abilitys"]
 [connection signal="statuser" from="Damage" to="." method="statify"]
 [connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]

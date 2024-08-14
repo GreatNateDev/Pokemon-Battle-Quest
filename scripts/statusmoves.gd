@@ -8,4 +8,12 @@ var moves = {
         "status": "para",
         "value": 5
     },
+    "stun_spore": {
+        "status": "para",
+        "value": 5
+    },
+    "glare": {
+        "status": "para",
+        "value": 5
+    },
 }

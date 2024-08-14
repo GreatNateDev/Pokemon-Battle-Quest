@@ -136,6 +136,9 @@ func randomize_player():
 		"Move3": null,
 		"Move4": null,
 		"item": null,
+		"status": null,
+		"status_value": 0,
+		"status_value2": 0,
 	}
 	type_requester.emit(data.starter)
 	data.Player.type = player_mon[0]
@@ -184,6 +187,9 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 		"prespd" : null,
 		"type2" : null,
 		"item": null,
+		"status": null,
+		"status_value": 0,
+		"status_value2": 0,
 		
 	}
 	
@@ -554,6 +560,9 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move4": data.Enemy.move4,
 						"Ability": data.Enemy.ability,
 						"item": null,
+						"status":null,
+						"status_value": 0,
+						"status_value2": 0, 
 					}
 					update_moves()
 					refine_level_stats(data.Player1,false,true)
@@ -579,6 +588,9 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move4": data.Enemy.move4,
 						"Ability": data.Enemy.ability,
 						"item": null,
+						"status":null,
+						"status_value": 0, 
+						"status_value2": 0,
 					}
 					update_moves()
 					refine_level_stats(data.Player2,false,true)
@@ -604,6 +616,9 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move4": data.Enemy.move4,
 						"Ability": data.Enemy.ability,
 						"item": null,
+						"status":null,
+						"status_value": 0, 
+						"status_value2": 0,
 					}
 					update_moves()
 					refine_level_stats(data.Player3,false,true)
@@ -629,6 +644,9 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move4": data.Enemy.move4,
 						"Ability": data.Enemy.ability,
 						"item": null,
+						"status":null,
+						"status_value": 0, 
+						"status_value2": 0,
 					}
 					update_moves()
 					refine_level_stats(data.Player4,false,true)
@@ -654,6 +672,9 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move4": data.Enemy.move4,
 						"Ability": data.Enemy.ability,
 						"item": null,
+						"status":null,
+						"status_value": 0, 
+						"status_value2": 0,
 					}
 					update_moves()
 					refine_level_stats(data.Player5,false,true)
@@ -679,6 +700,9 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"Move4": data.Enemy.move4,
 						"Ability": data.Enemy.ability,
 						"item": null,
+						"status":null,
+						"status_value": 0,
+						"status_value2": 0, 
 					}
 					update_moves()
 					refine_level_stats(data.Player6,false,true)
@@ -965,7 +989,38 @@ func set_names(n):
 			$Cast/Enemy/name.text = data.Enemy.sprite
 
 
-func statify(statdict: Variant) -> void:
+func statify(statdict: Variant,entity) -> void:
 	match statdict.status:
 		"para":
-			pass
+			match entity:
+				"Player":
+					data.Player.status = "para"
+					data.Player.status_value = statdict.value
+					data.Player.status_value2 = data.Player.spd
+					data.Player.spd /= 2
+				"Enemy":
+					data.Enemy.status = "para"
+					data.Enemy.status_value = statdict.value
+					data.Enemy.status_value2 = data.Enemy.spd
+					data.Enemy.spd /= 2
+
+
+func move_failed_by_status(text: Variant, entity) -> void:
+	textedit(text)
+	match entity:
+		"Player":
+			data.Player.status_value -= 1
+			if data.Player.status_value == 0:
+				match data.Player.status:
+					"para":
+						data.Player.spd = data.Player.status_value2
+						
+				data.Player.status = null
+		"Enemy":
+			data.Enemy.status_value -= 1
+			if data.Enemy.status_value == 0:
+				match data.Enemy.status:
+					"para":
+						data.Enemy.spd = data.Enemy.status_value2
+						
+				data.Enemy.status = null
