@@ -9,7 +9,6 @@ signal anim(entity,mov)
 signal Damage(damage,Entity,text,type_eff)
 signal heal(hp:int)
 signal flinch()
-signal effectem(status: String)
 signal statuser(statdict)
 signal fail(text)
 var Type = types.new()
@@ -52,9 +51,10 @@ func Attack(Move, Entity, Stats, OStats):
 				if chance < 25:
 					fail.emit("The "+Entity+"'s Move Failed due to Paralysis!",Entity)
 					return
+	if effect(Mover.movs[Move],final_damage,Entity) == "exit":
+		return
 	Damage.emit(max(int(final_damage), 1),Entity,opp+mov.text,type_effectiveness)
 	anim.emit(Entity,Move)
-	effect(Mover.movs[Move],final_damage)
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
 	if move_type in Type.typx:
@@ -75,16 +75,21 @@ func crito():
 
 func _on_abilities_damage_rebound(ability_return):
 	mod = ability_return
-func effect(move,dam):
+func effect(move,dam,entity):
 	match move:
 		"Bite":
 			var roll = randf()
 			if roll < 0.30:
-				flinch.emit()
+				flinch.emit(entity)
+				return "exit"
 		"Absorb":
 			var healo = dam / 2
-			heal.emit(healo)
+			heal.emit(healo,entity)
 		"Ember":
 			var roll = randf()
 			if roll < 0.10:
-				effectem.emit("Burn")
+				var brn = {
+					"status": "brn",
+					"value": 5,
+				}
+				statuser.emit(brn)

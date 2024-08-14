@@ -1024,3 +1024,26 @@ func move_failed_by_status(text: Variant, entity) -> void:
 						data.Enemy.spd = data.Enemy.status_value2
 						
 				data.Enemy.status = null
+
+
+func _on_damage_heal(hp: int,entity) -> void:
+	match entity:
+		"Player":
+			if data.Player.hp + hp > data.Player.max_hp:
+				data.Player.hp = data.Player.max_hp
+			else:
+				data.Player.hp += hp
+
+		"Enemy":
+			if data.Enemy.hp + hp > data.Enemy.max_hp:
+				data.Enemy.hp = data.Enemy.max_hp
+			else:
+				data.Enemy.hp += hp
+
+
+func flinch(entity) -> void:
+	match entity:
+		"Player":
+			textedit("You flintched!")
+		"Enemy":
+			textedit("They flinched!")
