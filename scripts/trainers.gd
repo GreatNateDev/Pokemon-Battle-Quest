@@ -27,6 +27,8 @@ func IVify():
 	"def": randi_range(1,31),
 	"spd": randi_range(1,31),
 	"hp": randi_range(1,31),
+	"spatk": randi_range(1,31),
+	"spdef": randi_range(1,31),
 	}
 	return dict
 func Return_data(type,type2,statx,ability):
@@ -82,6 +84,8 @@ func set_mon(amt,nameme):
 				"def": stats.def + base_ivs1.def,
 				"spd": stats.spd + base_ivs1.spd,
 				"hp": stats.hp + base_ivs1.hp,
+				"spatk": stats.spatk + base_ivs1.spatk,
+				"spdef": stats.spdef + base_ivs1.spdef,
 				"level": base_ivs1.level,
 				"name": nameme,
 				"ability": data[3]
@@ -95,6 +99,8 @@ func set_mon(amt,nameme):
 				"def": stats.def + base_ivs2.def,
 				"spd": stats.spd + base_ivs2.spd,
 				"hp": stats.hp + base_ivs1.hp,
+				"spatk": stats.spatk + base_ivs2.spatk,
+				"spdef": stats.spdef + base_ivs2.spdef,
 				"level": base_ivs1.level,
 				"name": nameme,
 				"ability": data[3]
@@ -108,6 +114,8 @@ func set_mon(amt,nameme):
 				"def": stats.def + base_ivs3.def,
 				"spd": stats.spd + base_ivs3.spd,
 				"hp": stats.hp + base_ivs3.hp,
+				"spatk": stats.spatk + base_ivs3.spatk,
+				"spdef": stats.spdef + base_ivs3.spdef,
 				"level": base_ivs3.level,
 				"name": nameme,
 				"ability": data[3]
@@ -121,6 +129,8 @@ func set_mon(amt,nameme):
 				"def": stats.def + base_ivs4.def,
 				"spd": stats.spd + base_ivs4.spd,
 				"hp": stats.hp + base_ivs4.hp,
+				"spatk": stats.spatk + base_ivs4.spatk,
+				"spdef": stats.spdef + base_ivs4.spdef,
 				"level": base_ivs4.level,
 				"name": nameme,
 				"ability": data[3]
@@ -134,6 +144,8 @@ func set_mon(amt,nameme):
 				"def": stats.def + base_ivs5.def,
 				"spd": stats.spd + base_ivs5.spd,
 				"hp": stats.hp + base_ivs5.hp,
+				"spatk": stats.spatk + base_ivs5.spatk,
+				"spdef": stats.spdef + base_ivs5.spdef,
 				"level": base_ivs5.level,
 				"name": nameme,
 				"ability": data[3]
@@ -147,6 +159,8 @@ func set_mon(amt,nameme):
 				"def": stats.def + base_ivs6.def,
 				"spd": stats.spd + base_ivs6.spd,
 				"hp": stats.hp + base_ivs6.hp,
+				"spatk": stats.spatk + base_ivs6.spatk,
+				"spdef": stats.spdef + base_ivs6.spdef,
 				"level": base_ivs6.level,
 				"name": nameme,
 				"ability": data[3]

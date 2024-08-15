@@ -96,17 +96,23 @@ func refine_level_stats(entity,lvlup,starting):
 		var old_spd = entity.spd
 		var old_atk = entity.atk
 		var old_def = entity.def
+		var old_spatk = entity.spatk
+		var old_spdef = entity.spdef
 		entity.hp += 2
 		entity.spd += 2
 		entity.atk += 2
 		entity.def += 2
-		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def))
+		entity.spatk += 2
+		entity.spdef += 2
+		textedit("You leveled up! here are you're old VS new stat HP "+str(old_hp)+" > "+str(entity.hp)+"\nSPEED "+str(old_spd)+" > "+str(entity.spd)+"\nATTACK "+str(old_atk)+" > "+str(entity.atk)+"\nDEFENSE "+str(old_def)+" > "+str(entity.def)+"\nSPECIAL ATTACK"+str(old_spatk)+" > "+str(entity.spatk)+"\nSPECIAL DEFENSE "+str(old_spdef)+" > "+str(entity.spdef))
 	if starting == true:
 		var value = entity.level * 2
 		entity.hp += value
 		entity.spd += value
 		entity.atk += value
 		entity.def += value
+		entity.spatk += value
+		entity.spdef += value
 func set_types():
 	if data.Player.type2 == "none":
 		$Cast/Player/type.text = data.Player.type
@@ -124,6 +130,8 @@ func randomize_player():
 		"spd" : randi_range(1,31),
 		"atk" : randi_range(1,31),
 		"def" : randi_range(1,31),
+		"spatk": randi_range(1,31),
+		"spdef": randi_range(1,31),
 		"type": null,
 		"exp": 0,
 		"max_exp": null,
@@ -148,6 +156,8 @@ func randomize_player():
 	data.Player.spd += bst.spd
 	data.Player.def += bst.def
 	data.Player.atk += bst.atk
+	data.Player.spatk += bst.spatk
+	data.Player.spdef += bst.spdef
 	movs.clear()
 	randmov.emit(data.Player.name)
 	randmov.emit(data.Player.name)
@@ -169,6 +179,8 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 		"spd" : randi_range(1,31),
 		"atk" : randi_range(1,31),
 		"def" : randi_range(1,31),
+		"spatk": randi_range(1,31),
+		"spdef": randi_range(1,31),
 		"move1": null,
 		"move2": null,
 		"move3": null,
@@ -197,6 +209,8 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 	data.Enemy.preatk = data.Enemy.atk
 	data.Enemy.predef = data.Enemy.def
 	data.Enemy.prespd = data.Enemy.spd
+	data.Enemy.prespatk = data.Enemy.spatk
+	data.Enemy.prespdef = data.Enemy.spdef
 	random_pokemon.emit(monlvl)
 	data.Enemy.type = rand_mon[0]
 	data.Enemy.type2 = rand_mon[1]
@@ -205,6 +219,8 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 	data.Enemy.atk += rand_mon[3].atk
 	data.Enemy.def += rand_mon[3].def
 	data.Enemy.spd += rand_mon[3].spd
+	data.Enemy.spatk += rand_mon[3].spatk
+	data.Enemy.spdef += rand_mon[3].spdef
 	data.Enemy.ability = rand_mon[4]
 	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
 	movs.clear()
@@ -547,6 +563,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
 						"spd": data.Enemy.prespd,
+						"spatk": data.Enemy.prespatk,
+						"spdef": data.Enemy.prespdef,
 						"level": data.Enemy.level,
 						"type2": data.Enemy.type2,
 						"exp": 0,
@@ -574,6 +592,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
 						"spd": data.Enemy.prespd,
+						"spatk": data.Enemy.prespatk,
+						"spdef": data.Enemy.prespdef,
 						"level": data.Enemy.level,
 						"type": data.Enemy.type,
 						"exp": 0,
@@ -602,6 +622,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
 						"spd": data.Enemy.prespd,
+						"spatk": data.Enemy.prespatk,
+						"spdef": data.Enemy.prespdef,
 						"level": data.Enemy.level,
 						"type": data.Enemy.type,
 						"exp": 0,
@@ -630,6 +652,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
 						"spd": data.Enemy.prespd,
+						"spatk": data.Enemy.prespatk,
+						"spdef": data.Enemy.prespdef,
 						"level": data.Enemy.level,
 						"type": data.Enemy.type,
 						"exp": 0,
@@ -658,6 +682,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
 						"spd": data.Enemy.prespd,
+						"spatk": data.Enemy.prespatk,
+						"spdef": data.Enemy.prespdef,
 						"level": data.Enemy.level,
 						"type": data.Enemy.type,
 						"exp": 0,
@@ -686,6 +712,8 @@ func Pokemon_swap(index, _at_position, _mouse_button_index):
 						"def": data.Enemy.predef,
 						"atk": data.Enemy.preatk,
 						"spd": data.Enemy.prespd,
+						"spatk": data.Enemy.prespatk,
+						"spdef": data.Enemy.prespdef,
 						"level": data.Enemy.level,
 						"type": data.Enemy.type,
 						"exp": 0,
@@ -948,18 +976,26 @@ func recalc_evo_stats(stats):
 	var spd_sub = stats[2].spd
 	var atk_sub = stats[2].atk
 	var def_sub = stats[2].def
+	var spatk_sub = stats[2].spatk
+	var spdef_sub = stats[2].spdef
 	var hp_add = stats[0].hp
 	var spd_add = stats[0].spd
 	var atk_add = stats[0].atk
 	var def_add = stats[0].def
+	var spatk_add = stats[0].spatk
+	var spdef_add = stats[0].spdef
 	data.Player.atk -= atk_sub
 	data.Player.spd -= spd_sub
 	data.Player.def -= def_sub
 	data.Player.hp -= hp_sub
+	data.Player.spatk -= spatk_sub
+	data.Player.spdef -= spdef_sub
 	data.Player.atk += atk_add
 	data.Player.def += def_add
 	data.Player.spd += spd_add
 	data.Player.hp += hp_add
+	data.Player.spatk += spatk_add
+	data.Player.spdef += spdef_add
 func refresh_new_move_selection():
 	$Castless/New_Move/ItemList.set_item_text(0,$Castless/Box_and_buttons_centre/Move1.text)
 	$Castless/New_Move/ItemList.set_item_text(1,$Castless/Box_and_buttons_centre/Move2.text)
