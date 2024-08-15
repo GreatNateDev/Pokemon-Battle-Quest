@@ -30,12 +30,17 @@ func Attack(Move, Entity, Stats, OStats):
 	var crit_chance = 6.25
 	if mov.c !=null: crit_chance = 12.5
 	var hit_chance = randi() % 100 + 1 
+	var damager
 	if hit_chance > mov.accuracy:
 		return 0
+	if mov.catagory == "Physical":
+		damager = Stats.atk
+	if mov.catagory == "Special":
+		damager = Stats.spatk
 	var crit_roll = randi() % 100 + 1 
 	var is_critical = crit_roll <= crit_chance
 	var random_number = randi() % 16 + 85
-	var base_damage = ((2 * Stats.level / 5 + 2) * Stats.atk * mov.power / OStats.def) / 50 + 2
+	var base_damage = ((2 * Stats.level / 5 + 2) * damager * mov.power / OStats.def) / 50 + 2
 	var adjusted_damage = base_damage * stab * type_effectiveness
 	var final_damage = adjusted_damage * random_number / 100
 	if mod != null:
