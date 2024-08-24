@@ -1,6 +1,6 @@
 extends Resource
 class_name savedata
-@export var battle_num = 0
+@export var battle_num = 2
 @export var players_turn = true
 @export var current_player : Dictionary
 @export var Player : Dictionary

@@ -26,6 +26,7 @@ func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
 	if Globals.loader == false and Globals.back_shop == false:
+		save_data()
 		data.starter = Globals.starter 
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
 		randomize_player()
@@ -125,7 +126,7 @@ func set_types():
 func randomize_player():
 	data.Player = {
 		"index": 1,
-		"level" : randi_range(5,7),
+		"level" : randi_range(500,700),
 		"hp": randi_range(1,31),
 		"spd" : randi_range(1,31),
 		"atk" : randi_range(1,31),
@@ -838,22 +839,20 @@ func failed():
 	disable_btns(true)
 	$"Timers/after_attack cooldown".start()
 func next_enemy():
-	if data.battle_num < 5:
-		random_enemy(5,7,1)
-	if data.battle_num == 5:
-		trainer(1)
-	if data.battle_num > 5 and data.battle_num < 10:
-		random_enemy(5,7,1)
-	if data.battle_num == 10:
-		trainer(2)
-	if data.battle_num > 10 and data.battle_num < 15:
-		random_enemy(7,9,1)
-	if data.battle_num == 15:
-		trainer(3)
-	if data.battle_num > 15 and data.battle_num < 20:
-		random_enemy(10,12,1)
-	if data.battle_num == 20:
-		trainer(4)
+	print("enter func")
+	if data.battle_num % 5 == 0 and data.battle_num != 0:
+		print("here")
+		trainer(data.battle_num / 5)
+	else:
+		if data.battle_num < 5 and data.battle_num >= 0:
+			print("working")
+			random_enemy(5, 7, 1)
+		if data.battle_num < 10 and data.battle_num > 5:
+			random_enemy(5, 7, 1)
+		if data.battle_num < 15 and data.battle_num > 10:
+			random_enemy(7, 9, 1)
+		if data.battle_num < 20 and data.battle_num > 15:
+			random_enemy(10, 12, 1)
 func RandMon(type,type2,pk_name,base_stat,ability):
 	rand_mon = [type,type2,pk_name,base_stat,ability]
 func Mov_return(mov):
@@ -1083,3 +1082,13 @@ func flinch(entity) -> void:
 			textedit("You flintched!")
 		"Enemy":
 			textedit("They flinched!")
+func _process(delta: float) -> void:
+	update_display()
+func update_display():
+	update_bag()
+	update_moves()
+	update_swapper()
+	reset_bars()
+	cap_bars()
+	set_levels("both")
+	set_types()
