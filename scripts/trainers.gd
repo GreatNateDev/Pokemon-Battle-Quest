@@ -20,6 +20,7 @@ var mon6
 var dict
 @onready var trainer = get_parent().get_node("Move_layer/trainer")
 @onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
+@onready var Enemyassets = get_parent().get_node("Cast/Enemy")
 func IVify(minx,maxx):
 	dict = {
 	"level": randi_range(minx,maxx),
@@ -48,7 +49,7 @@ func init_trainer(partys):
 	tween.tween_property(trainer,"position",Vector2(output,trainer.position.y),1)
 	await get_tree().create_timer(1).timeout
 	send_party.emit(partys)
-	Enemypos.show()
+	Enemyassets.show()
 func init_ivs(amt,minx,maxx):
 	data.clear()
 	if amt >= 1:

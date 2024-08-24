@@ -133,7 +133,7 @@ func set_types():
 func randomize_player():
 	data.Player = {
 		"index": 1,
-		"level" : randi_range(500,700),
+		"level" : randi_range(5,7),
 		"hp": randi_range(1,31),
 		"spd" : randi_range(1,31),
 		"atk" : randi_range(1,31),
@@ -851,7 +851,7 @@ func failed():
 	$"Timers/after_attack cooldown".start()
 func next_enemy():
 	if data.battle_num % 5 == 0 and data.battle_num != 0:
-		$Cast/Enemy/Enemy_sprite.hide()
+		$Cast/Enemy.hide()
 		trainer(data.battle_num / 5)
 	else:
 		if data.battle_num < 5 and data.battle_num >= 0:
@@ -905,6 +905,7 @@ func init_enemy():
 	set_levels("both")
 	reset_bars()
 	cap_bars()
+	set_names("T")
 	if data.Player.spd >= data.Enemy.spd:
 		speeddiff = "Player"
 	else:
@@ -922,35 +923,47 @@ func next_mon():
 				data.Enemy = Trainer_Party.second
 				disable_btns(false)
 				init_enemy()
+				set_names("T")
+				set_levels("Enemy")
 				return
 		3:
 			if Trainer_Party.third != null:
 				data.Enemy = Trainer_Party.third
 				disable_btns(false)
 				init_enemy()
+				set_names("T")
+				set_levels("Enemy")
 				return
 		4:
 			if Trainer_Party.forth != null:
 				data.Enemy = Trainer_Party.forth
 				disable_btns(false)
 				init_enemy()
+				set_names("T")
+				set_levels("Enemy")
 				return
 		5:
 			if Trainer_Party.fifth != null:
 				data.Enemy = Trainer_Party.fifth
 				disable_btns(false)
 				init_enemy()
+				set_names("T")
+				set_levels("Enemy")
 				return
 		6:
 			if Trainer_Party.sixth != null:
 				data.Enemy = Trainer_Party.sixth
 				disable_btns(false)
 				init_enemy()
+				set_names("T")
+				set_levels("Enemy")
 				return
+	textedit("Trainer Defeated")
+	await get_tree().create_timer(1).timeout
 	disable_btns(false)
 	data.battle_num += 1
 	catchable = true
-	next_enemy()
+	await shop()
 func _on_abilities_damage_text(text: String) -> void:
 	$top_layer/ability/Label.text = text
 	var tween = get_tree().create_tween()
@@ -1041,6 +1054,8 @@ func set_names(n):
 			$Cast/Player/name.text = data.Player.name
 		"E":
 			$Cast/Enemy/name.text = data.Enemy.sprite
+		"T":
+			$Cast/Enemy/name.text = data.Enemy.name
 func statify(statdict: Variant,entity) -> void:
 	match statdict.status:
 		"para":
