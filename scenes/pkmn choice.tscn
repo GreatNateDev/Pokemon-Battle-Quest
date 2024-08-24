@@ -190,7 +190,6 @@ scale = Vector2(2, 2)
 text = "Choose you're starter!!!"
 
 [node name="Label2" type="Label" parent="choice"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -209,7 +208,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="choice"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

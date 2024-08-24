@@ -50,7 +50,7 @@ func _ready():
 		verify(save_name)
 		load_data()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
-		data.starter = Globals.starter
+		Globals.starter = data.starter 
 		update_moves()
 		next_enemy()
 		read_item()
@@ -66,6 +66,7 @@ func _ready():
 			$"Timers/after_attack cooldown".start()
 		reset_bars()
 		cap_bars()
+		set_names("P")
 	if Globals.back_shop == true and Globals.loader == false:
 		Globals.back_shop = false
 		verify(save_path)
