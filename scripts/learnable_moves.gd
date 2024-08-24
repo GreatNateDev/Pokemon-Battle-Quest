@@ -78,6 +78,3 @@ func _on_main_window_get_new_move(data) -> void:
 	if index >= 0 and index < pkmn[mon].size():
 		var move = pkmn[mon][index]
 		return_lvlup_mov.emit(move)
-	else:
-		print("Index out of range: ", index)
-		return

@@ -212,7 +212,6 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 		"status_value2": 0,
 		
 	}
-	
 	data.Enemy.prehp = data.Enemy.hp
 	data.Enemy.preatk = data.Enemy.atk
 	data.Enemy.predef = data.Enemy.def
@@ -230,7 +229,6 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 	data.Enemy.spatk += rand_mon[3].spatk
 	data.Enemy.spdef += rand_mon[3].spdef
 	data.Enemy.ability = rand_mon[4]
-	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
 	movs.clear()
 	randmov.emit(data.Enemy.sprite)
 	randmov.emit(data.Enemy.sprite)
@@ -247,6 +245,10 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 		speeddiff = "Player"
 	else:
 		speeddiff = "Enemy"
+	$Cast/Enemy/Enemy_sprite.position.y -= .1
+	$Cast/Enemy/Enemy_sprite.scale = Vector2(3,3)
+	$Cast/Enemy/Enemy_sprite.show()
+	$Cast/Enemy/Enemy_sprite.texture = load("res://assets/pokemon/"+data.Enemy.sprite+"/front.png")
 func reset_bars():
 	if data.Player != {}: $Cast/Player/hpbar.value = data.Player.hp
 	if data.Enemy != {} and data.Enemy.hp != null: $Cast/Enemy/hpbar.value = data.Enemy.hp
@@ -853,7 +855,6 @@ func next_enemy():
 		trainer(data.battle_num / 5)
 	else:
 		if data.battle_num < 5 and data.battle_num >= 0:
-			print("working")
 			random_enemy(5, 7, 1)
 		if data.battle_num < 10 and data.battle_num > 5:
 			random_enemy(5, 7, 1)
@@ -919,24 +920,34 @@ func next_mon():
 		2:
 			if Trainer_Party.second != null:
 				data.Enemy = Trainer_Party.second
+				disable_btns(false)
 				init_enemy()
+				return
 		3:
 			if Trainer_Party.third != null:
 				data.Enemy = Trainer_Party.third
+				disable_btns(false)
 				init_enemy()
+				return
 		4:
 			if Trainer_Party.forth != null:
 				data.Enemy = Trainer_Party.forth
+				disable_btns(false)
 				init_enemy()
+				return
 		5:
 			if Trainer_Party.fifth != null:
 				data.Enemy = Trainer_Party.fifth
+				disable_btns(false)
 				init_enemy()
+				return
 		6:
 			if Trainer_Party.sixth != null:
 				data.Enemy = Trainer_Party.sixth
+				disable_btns(false)
 				init_enemy()
-		
+				return
+	disable_btns(false)
 	data.battle_num += 1
 	catchable = true
 	next_enemy()

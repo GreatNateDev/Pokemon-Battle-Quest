@@ -43,7 +43,6 @@ func Item_anim(item, e):
 			#print(final_capture_rate)
 			var probability = final_capture_rate /255.0
 			var breaker
-			print(probability)
 			for i in range(4):  
 				if randf() > probability:
 					breaker = true
