@@ -39,6 +39,3 @@ add all abilities from gen 3\
 add all items from gen 3\
 add all pokemon from gen 3\
 add all moves from gen 3
-
-## BUGS:
-Loading a save doesnt work at all; STATUS: __CRITICAL__
