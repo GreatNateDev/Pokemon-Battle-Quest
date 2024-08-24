@@ -162,6 +162,9 @@ offset_bottom = 40.0
 wait_time = 1.5
 one_shot = true
 
+[node name="damage_state_disabler" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="Cast" type="CanvasLayer" parent="."]
 layer = 0
 follow_viewport_enabled = true
@@ -661,6 +664,7 @@ texture = ExtResource("24_gg8a3")
 [connection signal="loseitem" from="HeldItems" to="." method="loseitem"]
 [connection signal="evo" from="Evolution" to="." method="evolveit"]
 [connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
+[connection signal="timeout" from="Timers/damage_state_disabler" to="." method="_on_damage_state_disabler_timeout"]
 [connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
 [connection signal="pressed" from="Cast/Buttons/Bag" to="." method="Bag"]

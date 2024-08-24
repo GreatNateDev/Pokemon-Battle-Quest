@@ -10,6 +10,7 @@ var rand_mon
 var catchable = true
 var movs : Array
 var player_mon : Array
+var damage_state = false
 signal get_new_move(data)
 signal evolve(pokemon,level)
 signal trainer_battle(index)
@@ -247,13 +248,13 @@ func random_enemy(lv1:int,lv2:int,monlvl:int):
 	else:
 		speeddiff = "Enemy"
 func reset_bars():
-	$Cast/Player/hpbar.value = data.Player.hp
-	$Cast/Enemy/hpbar.value = data.Enemy.hp
-	$Cast/Player/xpbar.value = data.Player.exp
+	if data.Player != {}: $Cast/Player/hpbar.value = data.Player.hp
+	if data.Enemy != {} and data.Enemy.hp != null: $Cast/Enemy/hpbar.value = data.Enemy.hp
+	if data.Player != {}: $Cast/Player/xpbar.value = data.Player.exp
 func cap_bars():
-	$Cast/Player/hpbar.max_value = data.Player.hp
-	$Cast/Enemy/hpbar.max_value = data.Enemy.hp
-	$Cast/Player/xpbar.max_value = data.Player.max_exp
+	if data.Player != {}: $Cast/Player/hpbar.max_value = data.Player.hp
+	if data.Enemy != {} and data.Enemy.hp != null: $Cast/Enemy/hpbar.max_value = data.Enemy.hp
+	if data.Player != {}: $Cast/Player/xpbar.max_value = data.Player.max_exp
 func disable_btns(value):
 	$Cast/Buttons/Fight.disabled = value
 	$Cast/Buttons/Run.disabled = value
@@ -275,6 +276,8 @@ func textedit(text):
 	tween.tween_property($Cast/textbox/Label,"text",text,.3)
 func Damage(damage, entity, text, multi):
 	await get_tree().create_timer(.5).timeout
+	damage_state = true
+	$Timers/damage_state_disabler.start()
 	if entity == "Enemy":
 		playsound(multi)
 		data.Player.hp -= damage
@@ -845,9 +848,8 @@ func failed():
 	disable_btns(true)
 	$"Timers/after_attack cooldown".start()
 func next_enemy():
-	print("enter func")
 	if data.battle_num % 5 == 0 and data.battle_num != 0:
-		print("here")
+		$Cast/Enemy/Enemy_sprite.hide()
 		trainer(data.battle_num / 5)
 	else:
 		if data.battle_num < 5 and data.battle_num >= 0:
@@ -1028,8 +1030,6 @@ func set_names(n):
 			$Cast/Player/name.text = data.Player.name
 		"E":
 			$Cast/Enemy/name.text = data.Enemy.sprite
-
-
 func statify(statdict: Variant,entity) -> void:
 	match statdict.status:
 		"para":
@@ -1044,8 +1044,6 @@ func statify(statdict: Variant,entity) -> void:
 					data.Enemy.status_value = statdict.value
 					data.Enemy.status_value2 = data.Enemy.spd
 					data.Enemy.spd /= 2
-
-
 func move_failed_by_status(text: Variant, entity) -> void:
 	textedit(text)
 	match entity:
@@ -1065,8 +1063,6 @@ func move_failed_by_status(text: Variant, entity) -> void:
 						data.Enemy.spd = data.Enemy.status_value2
 						
 				data.Enemy.status = null
-
-
 func _on_damage_heal(hp: int,entity) -> void:
 	match entity:
 		"Player":
@@ -1080,15 +1076,17 @@ func _on_damage_heal(hp: int,entity) -> void:
 				data.Enemy.hp = data.Enemy.max_hp
 			else:
 				data.Enemy.hp += hp
-
-
 func flinch(entity) -> void:
 	match entity:
 		"Player":
 			textedit("You flintched!")
 		"Enemy":
 			textedit("They flinched!")
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_display()
 func update_display():
 	set_types()
+	reset_bars()
+	if damage_state == true: reset_bars()
+func _on_damage_state_disabler_timeout() -> void:
+	damage_state = false
