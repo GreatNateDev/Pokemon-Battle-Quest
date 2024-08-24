@@ -43,6 +43,8 @@ func _ready():
 		if speeddiff == "Enemy":
 			disable_btns(true)
 			$"Timers/after_attack cooldown".start()
+		reset_bars()
+		cap_bars()
 	elif Globals.loader == true and Globals.back_shop == false:
 		verify(save_name)
 		load_data()
@@ -61,6 +63,8 @@ func _ready():
 		if speeddiff == "Enemy":
 			disable_btns(true)
 			$"Timers/after_attack cooldown".start()
+		reset_bars()
+		cap_bars()
 	if Globals.back_shop == true and Globals.loader == false:
 		Globals.back_shop = false
 		verify(save_path)
@@ -89,6 +93,8 @@ func _ready():
 			disable_btns(true)
 			$"Timers/after_attack cooldown".start()
 	refresh_new_move_selection()
+	reset_bars()
+	cap_bars()
 func verify(path):
 	DirAccess.make_dir_absolute(path)
 func refine_level_stats(entity,lvlup,starting):
@@ -115,13 +121,13 @@ func refine_level_stats(entity,lvlup,starting):
 		entity.spatk += value
 		entity.spdef += value
 func set_types():
-	if data.Player.type2 == "none":
+	if data.Player != {} and data.Player.type2 == "none" and data.Player.type != null and data.Player.type2 != null:
 		$Cast/Player/type.text = data.Player.type
-	else:
+	elif data.Player != {} and data.Player.type != null and data.Player.type2 != null:
 		$Cast/Player/type.text = data.Player.type+","+data.Player.type2
-	if data.Enemy.type2 == "none":
+	if data.Enemy != {} and data.Enemy.type2 == "none" and data.Enemy.type2 != null and data.Enemy.type != null:
 		$Cast/Enemy/type.text = data.Enemy.type
-	else:
+	elif data.Enemy != {} and data.Enemy.type2 != null and data.Enemy.type != null:
 		$Cast/Enemy/type.text = data.Enemy.type+","+data.Enemy.type2
 func randomize_player():
 	data.Player = {
@@ -1085,10 +1091,4 @@ func flinch(entity) -> void:
 func _process(delta: float) -> void:
 	update_display()
 func update_display():
-	update_bag()
-	update_moves()
-	update_swapper()
-	reset_bars()
-	cap_bars()
-	set_levels("both")
 	set_types()
