@@ -1117,4 +1117,3 @@ func update_display():
 	if damage_state == true: reset_bars()
 func _on_damage_state_disabler_timeout() -> void:
 	damage_state = false
-#TEST
