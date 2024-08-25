@@ -114,7 +114,8 @@ func Animation(entity, move):
 		"Vinewhip":
 			res.texture = load("res://assets/moves/vine_whip.png")
 			res.position = target.global_position
-			res.scale = Vector2(2,2)
+			res.scale = Vector2(3,3)
+			res.position.x -= 32
 			res.vframes = 5
 			res.frame = 0
 			res.show()
@@ -126,8 +127,6 @@ func Animation(entity, move):
 			res.frame = 3
 			await get_tree().create_timer(.2).timeout
 			res.frame = 4
-			await get_tree().create_timer(.2).timeout
-			res.frame = 5
 			await get_tree().create_timer(.2).timeout
 			res.hide()
 			res.scale = Vector2(1,1)
@@ -139,19 +138,60 @@ func Animation(entity, move):
 			res.scale = Vector2(2,2)
 			res.vframes = 5
 			res.frame = 0
+			res.position.y += 16
+			var ln2 = Sprite2D.new()
+			res.add_sibling(ln2)
+			ln2.texture = load("res://assets/moves/thunderbolt.png")
+			ln2.position = res.position
+			ln2.position.y -= 64
+			ln2.scale = Vector2(2,2)
+			ln2.vframes = 5
+			ln2.frame = 0
+			var ln3 = Sprite2D.new()
+			res.add_sibling(ln3)
+			ln3.texture = load("res://assets/moves/thunderbolt.png")
+			ln3.position = ln2.position
+			ln3.position.y -= 64
+			ln3.scale = Vector2(2,2)
+			ln3.vframes = 5
+			ln3.frame = 0
+			var ln4 = Sprite2D.new()
+			res.add_sibling(ln4)
+			ln4.texture = load("res://assets/moves/thunderbolt.png")
+			ln4.position = ln3.position
+			ln4.position.y -= 64
+			ln4.scale = Vector2(2,2)
+			ln4.vframes = 5
+			ln4.frame = 0
+			ln2.show()
+			ln3.show()
+			ln4.show()
 			res.show()
 			await get_tree().create_timer(.2).timeout
 			res.frame = 1
+			ln2.frame = 1
+			ln3.frame = 1
+			ln4.frame = 1
 			await get_tree().create_timer(.2).timeout
 			res.frame = 2
+			ln2.frame = 2
+			ln3.frame = 2
+			ln4.frame = 2
 			await get_tree().create_timer(.2).timeout
 			res.frame = 3
+			ln2.frame = 3
+			ln3.frame = 3
+			ln4.frame = 3
 			await get_tree().create_timer(.2).timeout
 			res.frame = 4
-			await get_tree().create_timer(.2).timeout
-			res.frame = 5
+			ln2.frame = 4
+			ln3.frame = 4
+			ln4.frame = 4
 			await get_tree().create_timer(.2).timeout
 			res.hide()
+			ln2.queue_free()
+			ln3.queue_free()
+			ln4.queue_free()
 			res.scale = Vector2(1,1)
 			res.vframes = 1
 			res.frame = 0
