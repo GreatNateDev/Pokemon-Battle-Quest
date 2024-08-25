@@ -60,7 +60,6 @@ var pkmn1 = {
 	"makuhita": pkmn["makuhita"],
 	}
 func _on_main_window_type_requester(pokemoner):
-	print_debug("enter")
 	var data = pkmn.get(pokemoner)
 	pkmn_data.emit(data.type,data.type2,data.base_stats,data.ability)
 func RandMon(lvl):
