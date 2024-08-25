@@ -443,7 +443,6 @@ offset_bottom = 71.0
 text = "Bite"
 
 [node name="Bag" type="Control" parent="Castless"]
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 8
@@ -534,6 +533,36 @@ offset_top = 144.0
 offset_right = 94.0
 offset_bottom = 167.0
 text = "move_name"
+
+[node name="bag_exit" type="Control" parent="Castless"]
+visible = false
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -544.0
+offset_top = -16.0
+offset_right = -544.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Exit_Bag" type="Button" parent="Castless/bag_exit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit Bag"
 
 [node name="top_layer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -675,3 +704,4 @@ texture = ExtResource("24_gg8a3")
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
 [connection signal="item_clicked" from="Castless/Pokemon_Menu/ItemList" to="." method="Pokemon_swap"]
 [connection signal="item_clicked" from="Castless/New_Move/ItemList" to="." method="new_mov_btn_clk"]
+[connection signal="pressed" from="Castless/bag_exit/Exit_Bag" to="." method="exit_bag"]

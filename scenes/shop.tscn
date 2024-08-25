@@ -162,6 +162,15 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "Pokedolars: "
 
+[node name="Skip_shop" type="Button" parent="Label"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 65.0
+offset_bottom = 55.0
+text = "Skip"
+
 [connection signal="pressed" from="Panel one/Panel/TextureButton" to="." method="oone"]
 [connection signal="pressed" from="Panel two/Panel2/TextureButton" to="." method="otwo"]
 [connection signal="pressed" from="Panel three/Panel3/TextureButton" to="." method="othree"]
+[connection signal="pressed" from="Label/Skip_shop" to="." method="_on_skip_shop_pressed"]

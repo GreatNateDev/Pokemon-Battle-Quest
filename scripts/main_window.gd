@@ -442,6 +442,7 @@ func Bag():
 	$Cast/darken.show()
 	$backround_layer/darken.show()
 	$Castless/Bag.show()
+	$Castless/bag_exit.show()
 	disable_btns(true)
 	update_bag()
 func update_bag():
@@ -469,6 +470,7 @@ func Item_pressed(key):
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
 	$Castless/Bag.hide()
+	$Castless/bag_exit.hide()
 	disable_btns(false)
 	if key == "poke_ball" and catchable == false: $"Timers/after_attack cooldown".start(); disable_btns(true)
 	run_items.emit(key,data.Enemy)
@@ -1117,3 +1119,11 @@ func update_display():
 	if damage_state == true: reset_bars()
 func _on_damage_state_disabler_timeout() -> void:
 	damage_state = false
+
+
+func exit_bag() -> void:
+	$Castless/Bag.hide()
+	$Cast/darken.hide()
+	$backround_layer/darken.hide()
+	$Castless/bag_exit.hide()
+	disable_btns(false)

@@ -9,7 +9,7 @@ var one
 var two
 var three
 func _ready():
-	$Label/Label.text = "Pokedolars: " + str(Globals.money)+"\n press z to skip"
+	$Label/Label.text = "Pokedolars: " + str(Globals.money)
 	var items = itemlist.new()
 	one = items.list.pick_random()
 	two = items.list.pick_random()
@@ -51,6 +51,7 @@ func othree():
 		Globals.money -= price_three
 		Globals.item = three
 	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
-func _input(event):
-	if event.is_action_pressed("z"):
-		get_tree().change_scene_to_file("res://scenes/main_window.tscn")
+
+
+func _on_skip_shop_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_window.tscn")
