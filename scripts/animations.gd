@@ -111,3 +111,47 @@ func Animation(entity, move):
 			await get_tree().create_timer(.3).timeout
 			res.hide()
 			res.scale = Vector2(1,1)
+		"Vinewhip":
+			res.texture = load("res://assets/moves/vine_whip.png")
+			res.position = target.global_position
+			res.scale = Vector2(2,2)
+			res.vframes = 5
+			res.frame = 0
+			res.show()
+			await get_tree().create_timer(.2).timeout
+			res.frame = 1
+			await get_tree().create_timer(.2).timeout
+			res.frame = 2
+			await get_tree().create_timer(.2).timeout
+			res.frame = 3
+			await get_tree().create_timer(.2).timeout
+			res.frame = 4
+			await get_tree().create_timer(.2).timeout
+			res.frame = 5
+			await get_tree().create_timer(.2).timeout
+			res.hide()
+			res.scale = Vector2(1,1)
+			res.vframes = 1
+			res.frame = 0
+		"Thunderbolt":
+			res.texture = load("res://assets/moves/thunderbolt.png")
+			res.position = target.global_position
+			res.scale = Vector2(2,2)
+			res.vframes = 5
+			res.frame = 0
+			res.show()
+			await get_tree().create_timer(.2).timeout
+			res.frame = 1
+			await get_tree().create_timer(.2).timeout
+			res.frame = 2
+			await get_tree().create_timer(.2).timeout
+			res.frame = 3
+			await get_tree().create_timer(.2).timeout
+			res.frame = 4
+			await get_tree().create_timer(.2).timeout
+			res.frame = 5
+			await get_tree().create_timer(.2).timeout
+			res.hide()
+			res.scale = Vector2(1,1)
+			res.vframes = 1
+			res.frame = 0

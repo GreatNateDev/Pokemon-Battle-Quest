@@ -29,6 +29,10 @@ var slakoth = ["Tackle"] #fix moves he cant learn these
 var nincada = ["Tackle"] #fix moves he cant learn these
 var whismur = ["Watergun"]
 var makuhita = ["Bite"]
+var azurill = ["Watergun", "Tackle"]
+var nosepass = ["Tackle", "Rockthrow"]
+var skitty = ["Tackle"]
+var sableye = ["Tackle"]
 var pkmn = {
 	"zigzagoon": zigzagoon,
 	"treecko": treecko,
@@ -54,6 +58,10 @@ var pkmn = {
 	"nincada": nincada,
 	"whismur": whismur,
 	"makuhita": makuhita,
+	"azurill": azurill,
+	"nosepass": nosepass,
+	"skitty": skitty,
+	"sableye": sableye
 }
 
 func RandMov(mon):

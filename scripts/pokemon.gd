@@ -37,6 +37,10 @@ var pkmn = {
 	"nincada": create_pokemon("Bug", "Ground", 255, {"hp": 31, "atk": 45, "def": 90, "spd": 40, "spatk": 30, "spdef": 30}, "Compoundeyes"),
 	"whismur": create_pokemon("Normal", "none", 255, {"hp": 44, "atk": 50, "def": 23, "spd": 44, "spatk": 41, "spdef": 25}, "Soundproof"),
 	"makuhita": create_pokemon("Fighting", "none", 255, {"hp": 70, "atk": 50, "def": 90, "spd": 30, "spatk": 40, "spdef": 40}, "Swift Swim"),
+	"azurill": create_pokemon("Normal", "Fairy", 190, {"hp": 50, "atk": 20, "def": 40, "spd": 20, "spatk": 20, "spdef": 40}, "Thick Fat"),
+	"nosepass": create_pokemon("Rock", "none", 255, {"hp": 30, "atk": 45, "def": 135, "spd": 45, "spatk": 90, "spdef": 30}, "Sturdy"),
+	"skitty": create_pokemon("Normal", "none", 255, {"hp": 50, "atk": 45, "def": 45, "spd": 50, "spatk": 35, "spdef": 35}, "Cute Charm"),
+	"sableye": create_pokemon("Dark", "Ghost", 255, {"hp": 50, "atk": 75, "def": 75, "spd": 50, "spatk": 75, "spdef": 75}, "Keen Eye"),
 	}
 var pkmn1 = {
 	"zigzagoon": pkmn["zigzagoon"],
@@ -56,6 +60,7 @@ var pkmn1 = {
 	"makuhita": pkmn["makuhita"],
 	}
 func _on_main_window_type_requester(pokemoner):
+	print_debug("enter")
 	var data = pkmn.get(pokemoner)
 	pkmn_data.emit(data.type,data.type2,data.base_stats,data.ability)
 func RandMon(lvl):

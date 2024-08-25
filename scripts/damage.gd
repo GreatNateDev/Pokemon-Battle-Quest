@@ -77,7 +77,6 @@ func crito():
 	crit.position = pos
 	crit.emitting = true
 
-
 func _on_abilities_damage_rebound(ability_return):
 	mod = ability_return
 func effect(move,dam,entity):
