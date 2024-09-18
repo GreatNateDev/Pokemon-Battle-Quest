@@ -1127,3 +1127,12 @@ func exit_bag() -> void:
 	$backround_layer/darken.hide()
 	$Castless/bag_exit.hide()
 	disable_btns(false)
+
+
+func Mega() -> void:
+	var me = megas.new()
+	var awn = me.pick(data.Player.name)
+	if awn == null:
+		return
+	$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+awn+"/back.png")
+	data.Player.name = awn
