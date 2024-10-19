@@ -17,7 +17,7 @@ A Pokemon battle simulator created in godot 4.3
 - Gen 3 Pokemon
 - Gen 3 items
 - Active development
-- Made in Godot
+- Made in Redot
 - Maybe mod support soon eg custom items pokemon trainers etc
 ## Demo
 https://greatnatedev.github.io/Battle_HTML/
@@ -29,7 +29,7 @@ https://greatnatedev.github.io/Battle_HTML/
 ## Feedback
 To send feedback make an issue in this repo
 ## Building
-This should just run in any godot editor 4.3x
+This should just run in any Redot editor 4.4x
 ## Contributing
 Make a pull request with the feature(s) you have made!
 
