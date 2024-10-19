@@ -27,6 +27,7 @@ func save_data():
 	ResourceSaver.save(data,save_path+save_name)
 func _ready():
 	if Globals.loader == false and Globals.back_shop == false:
+		check_data_folder()
 		save_data()
 		data.starter = Globals.starter 
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
@@ -47,6 +48,7 @@ func _ready():
 		reset_bars()
 		cap_bars()
 	elif Globals.loader == true and Globals.back_shop == false:
+		check_data_folder()
 		verify(save_name)
 		load_data()
 		$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+str(data.starter)+"/back.png")
@@ -69,6 +71,7 @@ func _ready():
 		set_names("P")
 	if Globals.back_shop == true and Globals.loader == false:
 		Globals.back_shop = false
+		check_data_folder()
 		verify(save_path)
 		load_data()
 		update_moves()
@@ -1119,16 +1122,12 @@ func update_display():
 	if damage_state == true: reset_bars()
 func _on_damage_state_disabler_timeout() -> void:
 	damage_state = false
-
-
 func exit_bag() -> void:
 	$Castless/Bag.hide()
 	$Cast/darken.hide()
 	$backround_layer/darken.hide()
 	$Castless/bag_exit.hide()
 	disable_btns(false)
-
-
 func Mega() -> void:
 	var me = megas.new()
 	var awn = me.pick(data.Player.name)
@@ -1136,3 +1135,10 @@ func Mega() -> void:
 		return
 	$Cast/Player/Player_sprite.texture = load("res://assets/pokemon/"+awn+"/back.png")
 	data.Player.name = awn
+func check_data_folder():
+	var d = DirAccess.open("user://")
+	if d.dir_exists("save"):
+		return
+	else:
+		d.make_dir("save")
+		return
