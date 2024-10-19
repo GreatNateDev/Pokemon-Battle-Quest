@@ -343,6 +343,7 @@ offset_bottom = 41.0
 text = "Swap"
 
 [node name="Mega_EVO" type="TextureButton" parent="Cast/Buttons"]
+visible = false
 layout_mode = 0
 offset_top = -300.0
 offset_right = 323.0
