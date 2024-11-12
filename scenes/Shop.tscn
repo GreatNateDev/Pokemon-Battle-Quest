@@ -1,5 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvnl1ftigu1vg"]
-
+[gd_scene format=3 uid="uid://bvnl1ftigu1vg"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3

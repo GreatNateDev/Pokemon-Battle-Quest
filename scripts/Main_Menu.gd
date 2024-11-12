@@ -15,7 +15,6 @@ func bulbasaur() -> void:
 	Globals.starter = "bulbasaur"
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
 
-
 func cyndaquil() -> void:
 	Globals.loaded = false
 	Globals.starter = "cyndaquil"
