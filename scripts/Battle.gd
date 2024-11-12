@@ -17,3 +17,15 @@ func _ready():
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
 	Globals.moves = Player.MOVES
 #Events
+func Move1() -> void:
+	$BattleAnimations.Animation($Cast/Player/Player_sprite,$Cast/Enemy/Enemy_sprite,$Castless/Box_and_buttons_centre/Move1.text)
+	$UI.endFight()
+func Move2() -> void:
+	$BattleAnimations.Animation($Cast/Player/Player_sprite,$Cast/Enemy/Enemy_sprite,$Castless/Box_and_buttons_centre/Move2.text) 
+	$UI.endFight()
+func Move3() -> void:
+	$BattleAnimations.Animation($Cast/Player/Player_sprite,$Cast/Enemy/Enemy_sprite,$Castless/Box_and_buttons_centre/Move3.text)
+	$UI.endFight()
+func Move4() -> void:
+	$BattleAnimations.Animation($Cast/Player/Player_sprite,$Cast/Enemy/Enemy_sprite,$Castless/Box_and_buttons_centre/Move4.text)
+	$UI.endFight()

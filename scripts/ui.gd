@@ -48,3 +48,6 @@ func Fight_Pressed() -> void:
 		else:
 			buttons[i].text = ""
 	
+func endFight():
+	darken.hide()
+	fightbuttons.hide()
