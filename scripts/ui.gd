@@ -17,13 +17,13 @@ func init(Player,Enemy):
 	p_hpbar.value = Player.hp
 	p_exp.max_value = Player.max_exp
 	p_exp.value = Player.exp
-	p_type.text = Player.type + ", "+Player.type2
-	p_name.text = Player.name
+	p_type.text = Player.type1 + ", "+Player.type2
+	p_name.text = Player.name.capitalize()
 	p_level.text = "Lvl. " + str(Player.level)
 	p_texture.texture = load("res://assets/pokemon/"+Player.name+"/back.png")
 	e_hpbar.max_value = Enemy.hp
 	e_hpbar.value = Enemy.hp
-	e_type.text = Enemy.type + ", "+Enemy.type2
-	e_name.text = Enemy.name
+	e_type.text = Enemy.type1 + ", "+Enemy.type2
+	e_name.text = Enemy.name.capitalize()
 	e_level.text = "Lvl. " + str(Enemy.level)
 	e_texture.texture = load("res://assets/pokemon/"+Enemy.name+"/front.png")
