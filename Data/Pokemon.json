@@ -1,0 +1,26 @@
+
+{
+  "id": 1,
+  "name": "Bulbasaur",
+  "type1": "Grass",
+  "type2": "Poison",
+  "abilities": ["Overgrow", "Chlorophyll"],
+  "stats": {
+    "Hp": 45,
+    "Attack": 49,
+    "Defense": 49,
+    "SpAttack": 65,
+    "SpDefense": 65,
+    "Speed": 45
+  },
+  "moves": [
+    "Tackle",
+    "Growl",
+    "Vine Whip",
+    "Growth",
+    "Leech Seed",
+    "Razor Leaf",
+    "Solar Beam"
+  ],
+    "evo": ["Ivysaur",16]
+}

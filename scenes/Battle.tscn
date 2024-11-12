@@ -1,21 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=21 format=3 uid="uid://byxnol66fqe53"]
 
-[ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_kn1bo"]
-[ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_gp350"]
-[ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_sdee2"]
-[ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_7b3ev"]
-[ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="5_x3o80"]
-[ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="6_7jinj"]
-[ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="7_m2uom"]
-[ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="8_eih3f"]
-[ext_resource type="Texture2D" uid="uid://cvci26ta7e28g" path="res://assets/pokemon/mudkip/back.png" id="9_731mw"]
-[ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="10_7je1n"]
-[ext_resource type="Texture2D" uid="uid://bmvtqmjekndjv" path="res://assets/UI/mega.png" id="11_7714k"]
-[ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="12_qhepu"]
-[ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/UI/moves.png" id="13_4u6xj"]
-[ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_oc4fc"]
-[ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_01d1r"]
-[ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_156xr"]
+[ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
+[ext_resource type="Script" path="res://scripts/Battle.gd" id="1_gcpvl"]
+[ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_l1t7a"]
+[ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_wu1l2"]
+[ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_aneb2"]
+[ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="5_alole"]
+[ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="6_6whck"]
+[ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="7_q8x7c"]
+[ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="8_ip42o"]
+[ext_resource type="Texture2D" uid="uid://cvci26ta7e28g" path="res://assets/pokemon/mudkip/back.png" id="9_brrfw"]
+[ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="10_llrwc"]
+[ext_resource type="Texture2D" uid="uid://bmvtqmjekndjv" path="res://assets/UI/mega.png" id="11_n1iay"]
+[ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="12_dwriy"]
+[ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/UI/moves.png" id="13_wpnxy"]
+[ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
+[ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
+[ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -26,7 +27,7 @@ bg_color = Color(0.114231, 0.54926, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asvjh"]
 bg_color = Color(0.968627, 0, 0.215686, 1)
 
-[node name="Main_Window" type="Control"]
+[node name="BattleField" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +38,7 @@ offset_right = 7.0
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gcpvl")
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
@@ -44,33 +46,33 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="faint" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("1_kn1bo")
+stream = ExtResource("1_2g463")
 volume_db = 24.0
 
 [node name="lvlup" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("2_gp350")
+stream = ExtResource("2_l1t7a")
 volume_db = 24.0
 
 [node name="weak attack" type="AudioStreamPlayer2D" parent="SFX"]
 position = Vector2(567.8, 259.76)
-stream = ExtResource("3_sdee2")
+stream = ExtResource("3_wu1l2")
 volume_db = 24.0
 
 [node name="attack" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("4_7b3ev")
+stream = ExtResource("4_aneb2")
 volume_db = 24.0
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="SFX"]
 position = Vector2(564, 320)
-stream = ExtResource("5_x3o80")
+stream = ExtResource("5_alole")
 autoplay = true
 
 [node name="super attack" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("6_7jinj")
+stream = ExtResource("6_6whck")
 volume_db = 24.0
 
 [node name="caught" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("7_m2uom")
+stream = ExtResource("7_q8x7c")
 volume_db = 24.0
 
 [node name="Cast" type="CanvasLayer" parent="."]
@@ -94,13 +96,13 @@ z_index = -5
 texture_filter = 1
 position = Vector2(321, -107)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_eih3f")
+texture = ExtResource("8_ip42o")
 
 [node name="Player_sprite" type="Sprite2D" parent="Cast/Player"]
 texture_filter = 1
 position = Vector2(316, -189)
 scale = Vector2(3, 3)
-texture = ExtResource("9_731mw")
+texture = ExtResource("9_brrfw")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Player"]
 layout_mode = 0
@@ -161,13 +163,13 @@ scale = Vector2(1.5, 1.5)
 z_index = -5
 position = Vector2(-227, 222)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_eih3f")
+texture = ExtResource("8_ip42o")
 
 [node name="Enemy_sprite" type="Sprite2D" parent="Cast/Enemy"]
 texture_filter = 1
 position = Vector2(-223, 213)
 scale = Vector2(3, 3)
-texture = ExtResource("10_7je1n")
+texture = ExtResource("10_llrwc")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Enemy"]
 layout_mode = 0
@@ -254,7 +256,7 @@ offset_top = -300.0
 offset_right = 323.0
 offset_bottom = 33.0
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("11_7714k")
+texture_normal = ExtResource("11_n1iay")
 
 [node name="darken" type="CanvasModulate" parent="Cast"]
 visible = false
@@ -275,7 +277,7 @@ grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Cast/textbox"]
 position = Vector2(-214, -119)
-texture = ExtResource("12_qhepu")
+texture = ExtResource("12_dwriy")
 
 [node name="Label" type="Label" parent="Cast/textbox"]
 layout_mode = 0
@@ -325,7 +327,7 @@ scale = Vector2(2, 2)
 [node name="Menu_Box" type="Sprite2D" parent="Castless/Box_and_buttons_centre"]
 texture_filter = 1
 scale = Vector2(5, 5)
-texture = ExtResource("13_4u6xj")
+texture = ExtResource("13_wpnxy")
 
 [node name="Move1" type="Button" parent="Castless/Box_and_buttons_centre"]
 layout_mode = 0
@@ -494,7 +496,7 @@ one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
 randomness = 1.0
-texture = ExtResource("14_oc4fc")
+texture = ExtResource("14_amsgh")
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
@@ -546,7 +548,7 @@ follow_viewport_enabled = true
 texture_filter = 1
 position = Vector2(1373.5, 808.5)
 scale = Vector2(11.3776, 7.57101)
-texture = ExtResource("15_01d1r")
+texture = ExtResource("15_v0x6n")
 metadata/_edit_lock_ = true
 
 [node name="darken" type="CanvasModulate" parent="backround_layer"]
@@ -572,4 +574,4 @@ visible = false
 texture_filter = 1
 position = Vector2(1824, 192)
 scale = Vector2(5, 5)
-texture = ExtResource("16_156xr")
+texture = ExtResource("16_ofqqp")
