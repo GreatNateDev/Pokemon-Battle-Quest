@@ -1,6 +1,5 @@
 [gd_scene load_steps=3 format=3 uid="uid://mxa1k5teh75c"]
 
-[ext_resource type="Script" path="res://scripts/guide.gd" id="1_n2qmt"]
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="1_r8i6c"]
 
 [node name="Guide" type="Control"]
@@ -10,7 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n2qmt")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
