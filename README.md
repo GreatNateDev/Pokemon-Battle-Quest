@@ -1,7 +1,7 @@
 
 # Pokemon Monster Battle Arena
 
-A Pokemon battle simulator created in godot 4.3
+A Pokemon battle simulator created in Redot 4.3rc1
 
 
 
@@ -29,7 +29,7 @@ https://greatnatedev.github.io/Battle_HTML/
 ## Feedback
 To send feedback make an issue in this repo
 ## Building
-This should just run in any Redot editor 4.4x
+This should just run in any Redot editor 4.3x
 ## Contributing
 Make a pull request with the feature(s) you have made!
 
