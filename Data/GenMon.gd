@@ -2,8 +2,6 @@ class_name Gmon
 func MonGen(P):
 	var file = FileAccess.open("res://Data/Pokemon.json", FileAccess.READ)
 	var json = JSON.parse_string(file.get_as_text())
-	print(P)
-	print(json[P])
 	var Pokemon = {
 		name = json[P].name,
 		type1= json[P].type1,
