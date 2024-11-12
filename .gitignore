@@ -7,3 +7,4 @@ addons/
 *.apk
 libpixelpen.linux.release.x86_64.so
 libpixelpen.windows.release.x86_64.dll
+.vscode/settings.json
