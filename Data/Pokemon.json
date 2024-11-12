@@ -1,7 +1,6 @@
-
-{
+{"bulbasaur": {
   "id": 1,
-  "name": "Bulbasaur",
+  "name": "bulbasaur",
   "type1": "Grass",
   "type2": "Poison",
   "abilities": ["Overgrow", "Chlorophyll"],
@@ -22,5 +21,5 @@
     "Razor Leaf",
     "Solar Beam"
   ],
-    "evo": ["Ivysaur",16]
-}
+    "evo": ["ivysaur",16]
+}}

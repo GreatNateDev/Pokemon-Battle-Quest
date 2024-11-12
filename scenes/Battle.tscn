@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=22 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
 [ext_resource type="Script" path="res://scripts/Battle.gd" id="1_gcpvl"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="18_5fcgm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -575,3 +576,9 @@ texture_filter = 1
 position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_5fcgm")
