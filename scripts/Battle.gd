@@ -13,5 +13,7 @@ func _ready():
 	Player = GMon.MonGen(Globals.starter, true)
 	Enemy = GMon.MonGen(Globals.starter,false)
 	$UI.init(Player,Enemy)
-	MoveLoader.init(Player)
+	Player["MOVES"]=MoveLoader.init(Player)
+	Enemy["MOVES"]=MoveLoader.init(Enemy)
+	Globals.moves = Player.MOVES
 #Events

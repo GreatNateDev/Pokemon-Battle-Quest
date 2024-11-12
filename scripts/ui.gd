@@ -13,6 +13,10 @@ extends Control
 @export var e_texture : Sprite2D
 @export var darken : CanvasModulate
 @export var fightbuttons : Control
+@export var move1 : Button
+@export var move2 : Button
+@export var move3 : Button
+@export var move4 : Button
 func init(Player,Enemy):
 	money.text = str(Globals.money) + "$"
 	p_hpbar.max_value = Player.hp
@@ -34,3 +38,13 @@ func init(Player,Enemy):
 func Fight_Pressed() -> void:
 	darken.show()
 	fightbuttons.show()
+	if Globals.moves == null || Globals.moves.size() == 0:
+		return
+		
+	var buttons = [move1, move2, move3, move4]
+	for i in range(buttons.size()):
+		if i < Globals.moves.size() && Globals.moves[i] != null:
+			buttons[i].text = Globals.moves[i]
+		else:
+			buttons[i].text = ""
+	
