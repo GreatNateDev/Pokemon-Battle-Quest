@@ -4,10 +4,12 @@ extends Control
 var GMon = preload("res://Data/GenMon.gd").new()
 var Init = preload("res://Data/Init.gd").new()
 var Save = preload("res://Data/Save.gd").new()
+#Globals
+var Player : Dictionary
+var Enemy : Dictionary
 #Ready
 func _ready():
-	var Player = GMon.MonGen(Globals.starter)
-	Player["exp"] = 0
-	Player["max_exp"] = Player.level * 100
-	var Enemy = GMon.MonGen(Globals.starter)
+	Player = GMon.MonGen(Globals.starter, true)
+	Enemy = GMon.MonGen(Globals.starter,false)
 	$UI.init(Player,Enemy)
+#Events

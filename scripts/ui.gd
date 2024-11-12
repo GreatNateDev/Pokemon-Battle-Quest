@@ -11,6 +11,8 @@ extends Control
 @export var e_name : Label
 @export var e_level : Label
 @export var e_texture : Sprite2D
+@export var darken : CanvasModulate
+@export var fightbuttons : Control
 func init(Player,Enemy):
 	money.text = str(Globals.money) + "$"
 	p_hpbar.max_value = Player.hp
@@ -27,3 +29,8 @@ func init(Player,Enemy):
 	e_name.text = Enemy.name.capitalize()
 	e_level.text = "Lvl. " + str(Enemy.level)
 	e_texture.texture = load("res://assets/pokemon/"+Enemy.name+"/front.png")
+
+
+func Fight_Pressed() -> void:
+	darken.show()
+	fightbuttons.show()

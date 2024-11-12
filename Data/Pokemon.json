@@ -17,13 +17,13 @@
       "Speed": 45
     },
     "moves": [
-      "Tackle",
-      "Growl",
-      "Vine Whip",
-      "Growth",
-      "Leech Seed",
-      "Razor Leaf",
-      "Solar Beam"
+      "tackle",
+      "growl",
+      "vine-whip",
+      "growth",
+      "leech-seed",
+      "razor-leaf",
+      "solar-beam"
     ],
     "evo": [
       "ivysaur",
@@ -48,13 +48,13 @@
       "Speed": 43
     },
     "moves": [
-      "Scratch",
-      "Leer",
-      "Water Gun",
-      "Rage",
-      "Bite",
-      "Scary Face",
-      "Hydro Pump"
+      "scratch",
+      "leer",
+      "water-gun",
+      "rage",
+      "bite",
+      "scary-face",
+      "hydro-pump"
     ],
     "evo": [
       "croconaw",
@@ -79,13 +79,13 @@
       "Speed": 65
     },
     "moves": [
-      "Scratch",
-      "Growl",
-      "Ember",
-      "Metal Claw",
-      "Flamethrower",
-      "Slash",
-      "Fire Blast"
+      "scratch",
+      "growl",
+      "ember",
+      "metal-claw",
+      "flamethrower",
+      "slash",
+      "fire-blast"
     ],
     "evo": [
       "charmeleon",
@@ -110,13 +110,13 @@
       "Speed": 43
     },
     "moves": [
-      "Tackle",
-      "Tail Whip",
-      "Water Gun",
-      "Withdraw",
-      "Bubble",
-      "Bite",
-      "Hydro Pump"
+      "tackle",
+      "tail-whip",
+      "water-gun",
+      "withdraw",
+      "bubble",
+      "bite",
+      "hydro-pump"
     ],
     "evo": [
       "wartortle",
@@ -141,13 +141,13 @@
       "Speed": 45
     },
     "moves": [
-      "Tackle",
-      "Growl",
-      "Razor Leaf",
-      "Reflect",
-      "Synthesis",
-      "Body Slam",
-      "Solar Beam"
+      "tackle",
+      "growl",
+      "razor-leaf",
+      "reflect",
+      "synthesis",
+      "body-slam",
+      "solar-beam"
     ],
     "evo": [
       "bayleef",
@@ -172,13 +172,13 @@
       "Speed": 45
     },
     "moves": [
-      "Scratch",
-      "Growl",
-      "Ember",
-      "Sand Attack",
-      "Fire Spin",
-      "Quick Attack",
-      "Flamethrower"
+      "scratch",
+      "growl",
+      "ember",
+      "sand-attack",
+      "fire-spin",
+      "quick-attack",
+      "flamethrower"
     ],
     "evo": [
       "combusken",
@@ -203,13 +203,13 @@
       "Speed": 40
     },
     "moves": [
-      "Tackle",
-      "Growl",
-      "Water Gun",
-      "Mud-Slap",
-      "Rock Throw",
-      "Protect",
-      "Hydro Pump"
+      "tackle",
+      "growl",
+      "water-gun",
+      "mud-slap",
+      "rock-throw",
+      "protect",
+      "hydro-pump"
     ],
     "evo": [
       "marshtomp",
@@ -234,13 +234,13 @@
       "Speed": 70
     },
     "moves": [
-      "Pound",
-      "Leer",
-      "Absorb",
-      "Quick Attack",
-      "Mega Drain",
-      "Agility",
-      "Energy Ball"
+      "pound",
+      "leer",
+      "absorb",
+      "quick-attack",
+      "mega-drain",
+      "agility",
+      "energy-ball"
     ],
     "evo": [
       "grovyle",
@@ -265,13 +265,13 @@
       "Speed": 65
     },
     "moves": [
-      "Tackle",
-      "Leer",
-      "Ember",
-      "Smokescreen",
-      "Quick Attack",
-      "Swift",
-      "Flamethrower"
+      "tackle",
+      "leer",
+      "ember",
+      "smokescreen",
+      "quick-attack",
+      "swift",
+      "flamethrower"
     ],
     "evo": [
       "quilava",

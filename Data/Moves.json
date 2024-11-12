@@ -1,0 +1,51 @@
+
+{
+  "tackle": {
+    "name": "Tackle",
+    "type": "normal",
+    "category": "P",
+    "power": 40
+  },
+  "scratch": {
+    "name": "Scratch",
+    "type": "normal",
+    "category": "P",
+    "power": 40
+  },
+  "ember": {
+    "name": "Ember",
+    "type": "fire",
+    "category": "S",
+    "power": 40
+  },
+  "water-gun": {
+    "name": "Water Gun",
+    "type": "water",
+    "category": "S",
+    "power": 40
+  },
+  "vine-whip": {
+    "name": "Vine Whip",
+    "type": "grass",
+    "category": "P",
+    "power": 45
+  },
+  "thundershock": {
+    "name": "Thunder Shock",
+    "type": "electric",
+    "category": "S",
+    "power": 40
+  },
+  "quick-attack": {
+    "name": "Quick Attack",
+    "type": "normal",
+    "category": "P",
+    "power": 40
+  },
+  "psychic": {
+    "name": "Psychic",
+    "type": "psychic",
+    "category": "S",
+    "power": 90
+  }
+}
