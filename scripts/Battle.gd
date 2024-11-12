@@ -6,5 +6,6 @@ var Init = preload("res://Data/Init.gd").new()
 var Save = preload("res://Data/Save.gd").new()
 #Ready
 func _ready():
-	pass
+	var Player = GMon.MonGen("Bulbasaur")
+
 

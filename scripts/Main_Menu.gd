@@ -1,37 +1,51 @@
-
-
-
-
+extends Control
 func charmander() -> void:
-	pass # Replace with function body.
-
+	Globals.loaded = false
+	Globals.starter = "charmander"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 func squirtle() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "squirtle"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 
 func bulbasaur() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "bulbasaur"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 
 func cyndaquil() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "cyndaquil"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 
 func tododile() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "tododile"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 
 func chikorita() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "chikorita"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 
 func torchic() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "torchic"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 
 func mudkip() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "mudkip"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")
 
 func treecko() -> void:
-	pass # Replace with function body.
+	Globals.loaded = false
+	Globals.starter = "treecko"
+	get_tree().change_scene_to_file("res://scripts/Battle.tscn")

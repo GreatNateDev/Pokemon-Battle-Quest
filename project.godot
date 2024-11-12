@@ -19,7 +19,7 @@ config/icon="res://assets/IOS/icon1024.png"
 
 [autoload]
 
-Globals="*res://scripts/globals.gd"
+Globals="*res://Data/GLOBALS.gd"
 
 [display]
 
