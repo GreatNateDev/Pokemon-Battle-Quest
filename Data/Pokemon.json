@@ -1,25 +1,281 @@
-{"bulbasaur": {
-  "id": 1,
-  "name": "bulbasaur",
-  "type1": "Grass",
-  "type2": "Poison",
-  "abilities": ["Overgrow", "Chlorophyll"],
-  "stats": {
-    "Hp": 45,
-    "Attack": 49,
-    "Defense": 49,
-    "SpAttack": 65,
-    "SpDefense": 65,
-    "Speed": 45
+{
+  "bulbasaur": {
+    "id": 1,
+    "name": "bulbasaur",
+    "type1": "Grass",
+    "type2": "Poison",
+    "abilities": [
+      "Overgrow",
+      "Chlorophyll"
+    ],
+    "stats": {
+      "Hp": 45,
+      "Attack": 49,
+      "Defense": 49,
+      "SpAttack": 65,
+      "SpDefense": 65,
+      "Speed": 45
+    },
+    "moves": [
+      "Tackle",
+      "Growl",
+      "Vine Whip",
+      "Growth",
+      "Leech Seed",
+      "Razor Leaf",
+      "Solar Beam"
+    ],
+    "evo": [
+      "ivysaur",
+      16
+    ]
   },
-  "moves": [
-    "Tackle",
-    "Growl",
-    "Vine Whip",
-    "Growth",
-    "Leech Seed",
-    "Razor Leaf",
-    "Solar Beam"
-  ],
-    "evo": ["ivysaur",16]
-}}
+  "tododile": {
+    "id": 158,
+    "name": "totodile",
+    "type1": "Water",
+    "type2": "None",
+    "abilities": [
+      "Torrent",
+      "Sheer Force"
+    ],
+    "stats": {
+      "Hp": 50,
+      "Attack": 65,
+      "Defense": 64,
+      "SpAttack": 44,
+      "SpDefense": 48,
+      "Speed": 43
+    },
+    "moves": [
+      "Scratch",
+      "Leer",
+      "Water Gun",
+      "Rage",
+      "Bite",
+      "Scary Face",
+      "Hydro Pump"
+    ],
+    "evo": [
+      "croconaw",
+      18
+    ]
+  },
+  "charmander": {
+    "id": 4,
+    "name": "charmander",
+    "type1": "Fire",
+    "type2": "None",
+    "abilities": [
+      "Blaze",
+      "Solar Power"
+    ],
+    "stats": {
+      "Hp": 39,
+      "Attack": 52,
+      "Defense": 43,
+      "SpAttack": 60,
+      "SpDefense": 50,
+      "Speed": 65
+    },
+    "moves": [
+      "Scratch",
+      "Growl",
+      "Ember",
+      "Metal Claw",
+      "Flamethrower",
+      "Slash",
+      "Fire Blast"
+    ],
+    "evo": [
+      "charmeleon",
+      16
+    ]
+  },
+  "squirtle": {
+    "id": 7,
+    "name": "squirtle",
+    "type1": "Water",
+    "type2": "None",
+    "abilities": [
+      "Torrent",
+      "Rain Dish"
+    ],
+    "stats": {
+      "Hp": 44,
+      "Attack": 48,
+      "Defense": 65,
+      "SpAttack": 50,
+      "SpDefense": 64,
+      "Speed": 43
+    },
+    "moves": [
+      "Tackle",
+      "Tail Whip",
+      "Water Gun",
+      "Withdraw",
+      "Bubble",
+      "Bite",
+      "Hydro Pump"
+    ],
+    "evo": [
+      "wartortle",
+      16
+    ]
+  },
+  "chikorita": {
+    "id": 152,
+    "name": "chikorita",
+    "type1": "Grass",
+    "type2": "None",
+    "abilities": [
+      "Overgrow",
+      "Leaf Guard"
+    ],
+    "stats": {
+      "Hp": 45,
+      "Attack": 49,
+      "Defense": 65,
+      "SpAttack": 49,
+      "SpDefense": 65,
+      "Speed": 45
+    },
+    "moves": [
+      "Tackle",
+      "Growl",
+      "Razor Leaf",
+      "Reflect",
+      "Synthesis",
+      "Body Slam",
+      "Solar Beam"
+    ],
+    "evo": [
+      "bayleef",
+      16
+    ]
+  },
+  "torchic": {
+    "id": 255,
+    "name": "torchic",
+    "type1": "Fire",
+    "type2": "None",
+    "abilities": [
+      "Blaze",
+      "Speed Boost"
+    ],
+    "stats": {
+      "Hp": 45,
+      "Attack": 60,
+      "Defense": 40,
+      "SpAttack": 70,
+      "SpDefense": 50,
+      "Speed": 45
+    },
+    "moves": [
+      "Scratch",
+      "Growl",
+      "Ember",
+      "Sand Attack",
+      "Fire Spin",
+      "Quick Attack",
+      "Flamethrower"
+    ],
+    "evo": [
+      "combusken",
+      16
+    ]
+  },
+  "mudkip": {
+    "id": 258,
+    "name": "mudkip",
+    "type1": "Water",
+    "type2": "None",
+    "abilities": [
+      "Torrent",
+      "Damp"
+    ],
+    "stats": {
+      "Hp": 50,
+      "Attack": 70,
+      "Defense": 50,
+      "SpAttack": 50,
+      "SpDefense": 50,
+      "Speed": 40
+    },
+    "moves": [
+      "Tackle",
+      "Growl",
+      "Water Gun",
+      "Mud-Slap",
+      "Rock Throw",
+      "Protect",
+      "Hydro Pump"
+    ],
+    "evo": [
+      "marshtomp",
+      16
+    ]
+  },
+  "treecko": {
+    "id": 252,
+    "name": "treecko",
+    "type1": "Grass",
+    "type2": "None",
+    "abilities": [
+      "Overgrow",
+      "Unburden"
+    ],
+    "stats": {
+      "Hp": 40,
+      "Attack": 45,
+      "Defense": 35,
+      "SpAttack": 65,
+      "SpDefense": 55,
+      "Speed": 70
+    },
+    "moves": [
+      "Pound",
+      "Leer",
+      "Absorb",
+      "Quick Attack",
+      "Mega Drain",
+      "Agility",
+      "Energy Ball"
+    ],
+    "evo": [
+      "grovyle",
+      16
+    ]
+  },
+  "cyndaquil": {
+    "id": 155,
+    "name": "cyndaquil",
+    "type1": "Fire",
+    "type2": "None",
+    "abilities": [
+      "Blaze",
+      "Flash Fire"
+    ],
+    "stats": {
+      "Hp": 39,
+      "Attack": 52,
+      "Defense": 43,
+      "SpAttack": 60,
+      "SpDefense": 50,
+      "Speed": 65
+    },
+    "moves": [
+      "Tackle",
+      "Leer",
+      "Ember",
+      "Smokescreen",
+      "Quick Attack",
+      "Swift",
+      "Flamethrower"
+    ],
+    "evo": [
+      "quilava",
+      14
+    ]
+  }
+}
