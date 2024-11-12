@@ -1,3 +1,29 @@
 extends Control
-func init():
-	$Cast/Money/Money_label.text = str(Globals.money) +"$"
+@export var money : Label
+@export var p_hpbar : ProgressBar
+@export var p_type : Label
+@export var p_name : Label
+@export var p_level : Label
+@export var p_exp : ProgressBar
+@export var p_texture : Sprite2D
+@export var e_hpbar : ProgressBar
+@export var e_type : Label
+@export var e_name : Label
+@export var e_level : Label
+@export var e_texture : Sprite2D
+func init(Player,Enemy):
+	money.text = str(Globals.money) + "$"
+	p_hpbar.max_value = Player.hp
+	p_hpbar.value = Player.hp
+	p_exp.max_value = Player.max_exp
+	p_exp.value = Player.exp
+	p_type.text = Player.type + ", "+Player.type2
+	p_name.text = Player.name
+	p_level.text = "Lvl. " + str(Player.level)
+	p_texture.texture = load("res://assets/pokemon/"+Player.name+"/back.png")
+	e_hpbar.max_value = Enemy.hp
+	e_hpbar.value = Enemy.hp
+	e_type.text = Enemy.type + ", "+Enemy.type2
+	e_name.text = Enemy.name
+	e_level.text = "Lvl. " + str(Enemy.level)
+	e_texture.texture = load("res://assets/pokemon/"+Enemy.name+"/front.png")

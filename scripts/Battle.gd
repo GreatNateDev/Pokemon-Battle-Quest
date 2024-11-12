@@ -7,3 +7,4 @@ var Save = preload("res://Data/Save.gd").new()
 #Ready
 func _ready():
 	var Player = GMon.MonGen(Globals.starter)
+	$UI.init()

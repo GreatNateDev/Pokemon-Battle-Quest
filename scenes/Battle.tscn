@@ -577,8 +577,20 @@ position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("18_5fcgm")
+money = NodePath("../Cast/Money/Money_label")
+p_hpbar = NodePath("../Cast/Player/hpbar")
+p_type = NodePath("../Cast/Player/type")
+p_name = NodePath("../Cast/Player/name")
+p_level = NodePath("../Cast/Player/lvl")
+p_exp = NodePath("../Cast/Player/xpbar")
+p_texture = NodePath("../Cast/Player/Player_sprite")
+e_hpbar = NodePath("../Cast/Enemy/hpbar")
+e_type = NodePath("../Cast/Enemy/type")
+e_name = NodePath("../Cast/Enemy/name")
+e_level = NodePath("../Cast/Enemy/lvl")
+e_texture = NodePath("../Cast/Enemy/Enemy_sprite")
