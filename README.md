@@ -3,20 +3,20 @@
 
 A Pokemon battle simulator created in Redot 4.3rc1
 ## THIS PR NEEDS THESE THINGS
-add more to damage formula
-shop
-loading
-abilitys
-items
-catching
-bag
-evos
-held items
-status moves
-phy/special split
-trainers
-battles
-enemy ai
+- add more to damage formula
+- shop
+- loading
+- abilitys
+- items
+- catching
+- bag
+- evos
+- held items
+- status moves
+- phy/special split
+- trainers
+- battles
+- enemy ai
 
 
 ## Features
