@@ -33,6 +33,8 @@ func Fight(move) -> void:
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
 	Enemy.hp -= d[0]
+	if Enemy.hp <= 0:
+		$UI.faint("Enemy")
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
@@ -42,6 +44,8 @@ func Fight(move) -> void:
 	$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
 	d = Damage.Attack(move,"Enemy",Enemy,Player)
 	Player.hp -= d[0]
+	if Player.hp <= 0:
+		$UI.faint("Player")
 	$UI.textedit(d[1])
 	$UI.reset_bars("Player",Player.hp)
 	$UI.disable_btns(false)

@@ -72,3 +72,9 @@ func disable_btns(value):
 	run.disabled = value
 	bag.disabled = value
 	swap.disabled = value
+func faint(entity):
+	match entity:
+		"Player":
+			pass
+		"Enemy":
+			pass
