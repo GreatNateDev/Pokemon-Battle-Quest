@@ -16,7 +16,8 @@ A Pokemon battle simulator created in Redot 4.3rc1
 - phy/special split
 - trainers
 - battles
-- enemy ai
+- enemy death
+- player death
 
 
 ## Features

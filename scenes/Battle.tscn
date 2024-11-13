@@ -578,7 +578,7 @@ position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -602,6 +602,10 @@ move2 = NodePath("../Castless/Box_and_buttons_centre/Move2")
 move3 = NodePath("../Castless/Box_and_buttons_centre/Move3")
 move4 = NodePath("../Castless/Box_and_buttons_centre/Move4")
 text = NodePath("../Cast/textbox/Label")
+bag = NodePath("../Cast/Buttons/Bag")
+swap = NodePath("../Cast/Buttons/Swap")
+run = NodePath("../Cast/Buttons/Run")
+fight = NodePath("../Cast/Buttons/Fight")
 
 [node name="BattleAnimations" type="Control" parent="." node_paths=PackedStringArray("res", "Player", "Enemy")]
 anchors_preset = 0

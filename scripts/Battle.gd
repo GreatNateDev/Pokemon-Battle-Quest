@@ -29,10 +29,19 @@ func Move3() -> void:
 func Move4() -> void:
 	Fight($Castless/Box_and_buttons_centre/Move4.text)
 	$BattleAnimations.Animation($Cast/Player/Player_sprite,$Cast/Enemy/Enemy_sprite,$Castless/Box_and_buttons_centre/Move4.text)
-	
 func Fight(move) -> void:
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
 	Enemy.hp -= d[0]
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
+	$UI.disable_btns(true)
+	await get_tree().create_timer(1.5).timeout
+	move = randi_range(0, len(Enemy.MOVES) - 1)
+	move = Enemy.MOVES[move]
+	$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
+	d = Damage.Attack(move,"Enemy",Enemy,Player)
+	Player.hp -= d[0]
+	$UI.textedit(d[1])
+	$UI.reset_bars("Player",Player.hp)
+	$UI.disable_btns(false)
