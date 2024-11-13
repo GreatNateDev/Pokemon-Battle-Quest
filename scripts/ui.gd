@@ -54,6 +54,9 @@ func endFight():
 func reset_bars(entity, hp):
 	match entity:
 		"Player":
-			p_hpbar.value = hp
+			await get_tree().create_timer(.5).timeout
+			get_tree().create_tween().tween_property(p_hpbar,"value",hp,.5)
+
 		"Enemy":
-			e_hpbar.value = hp
+			await get_tree().create_timer(.5).timeout
+			get_tree().create_tween().tween_property(e_hpbar,"value",hp,.5)

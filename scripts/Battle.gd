@@ -34,5 +34,5 @@ func Move4() -> void:
 func Fight(move) -> void:
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
-	Enemy.stats["HP"] -= d
-	$UI.reset_bars("Enemy",Enemy.stats["HP"])
+	Enemy.hp -= d
+	$UI.reset_bars("Enemy",Enemy.hp)

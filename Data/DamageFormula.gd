@@ -3,6 +3,7 @@ class_name DamageFormula
 var opp
 #FIX SPACES
 func Attack(Move, Entity, Stats, OStats):
+	return 1
 	if Entity == "Player": opp = "Enemy"
 	else : opp = "Player"
 	var f = FileAccess.open("res://Data/Moves.json", FileAccess.READ)
