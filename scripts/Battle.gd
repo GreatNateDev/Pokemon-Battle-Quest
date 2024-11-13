@@ -35,6 +35,13 @@ func Fight(move) -> void:
 	Enemy.hp -= d[0]
 	if Enemy.hp <= 0:
 		$UI.faint("Enemy")
+		$UI.textedit("Enemy fainted!")
+		Enemy = {}
+		GMon.MonGen(Globals.starter,false)
+		await get_tree().create_timer(1.5).timeout
+		$Cast/Enemy/Enemy_sprite.scale = Vector2(3,3)
+		$Cast/Enemy/Enemy_sprite.position.x -= 100
+		return
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
@@ -46,6 +53,7 @@ func Fight(move) -> void:
 	Player.hp -= d[0]
 	if Player.hp <= 0:
 		$UI.faint("Player")
+		
 	$UI.textedit(d[1])
 	$UI.reset_bars("Player",Player.hp)
 	$UI.disable_btns(false)

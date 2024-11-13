@@ -578,7 +578,7 @@ position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -606,6 +606,8 @@ bag = NodePath("../Cast/Buttons/Bag")
 swap = NodePath("../Cast/Buttons/Swap")
 run = NodePath("../Cast/Buttons/Run")
 fight = NodePath("../Cast/Buttons/Fight")
+p_sprite = NodePath("../Cast/Player/Player_sprite")
+e_sprite = NodePath("../Cast/Enemy/Enemy_sprite")
 
 [node name="BattleAnimations" type="Control" parent="." node_paths=PackedStringArray("res", "Player", "Enemy")]
 anchors_preset = 0
