@@ -36,12 +36,9 @@ func Fight(move) -> void:
 	if Enemy.hp <= 0:
 		$UI.faint("Enemy")
 		$UI.textedit("Enemy fainted!")
-		Enemy = {}
-		GMon.MonGen(Globals.starter,false)
+		#save players dat money etc
 		await get_tree().create_timer(1.5).timeout
-		$Cast/Enemy/Enemy_sprite.scale = Vector2(3,3)
-		$Cast/Enemy/Enemy_sprite.position.x -= 100
-		return
+		#load shop
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
