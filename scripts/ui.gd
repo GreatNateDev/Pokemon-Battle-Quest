@@ -51,3 +51,9 @@ func Fight_Pressed() -> void:
 func endFight():
 	darken.hide()
 	fightbuttons.hide()
+func reset_bars(entity, hp):
+	match entity:
+		"Player":
+			p_hpbar.value = hp
+		"Enemy":
+			e_hpbar.value = hp
