@@ -15,7 +15,12 @@ func Attack(Move, Entity, Stats, OStats):
 	var base_damage = ((2 * Stats.level / 5 + 2)  * mov.power / OStats.defense) / 50 + 2
 	var adjusted_damage = base_damage * type_effectiveness
 	var final_damage = adjusted_damage * random_number / 100
-	return final_damage
+	var txt
+	if opp == "Player":
+		txt = mov.PTEXT
+	elif opp == "Enemy":
+		txt = mov.ETEXT
+	return [int(final_damage),txt]
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
 	if move_type in Type.typx:

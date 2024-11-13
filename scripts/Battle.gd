@@ -2,7 +2,6 @@
 extends Control
 #Imports
 var GMon = preload("res://Data/GenMon.gd").new()
-var Init = preload("res://Data/Init.gd").new()
 var Save = preload("res://Data/Save.gd").new()
 var MoveLoader = preload("res://Data/MoveLoader.gd").new()
 var Damage = preload("res://Data/DamageFormula.gd").new()
@@ -34,5 +33,6 @@ func Move4() -> void:
 func Fight(move) -> void:
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
-	Enemy.hp -= d
+	Enemy.hp -= d[0]
+	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)

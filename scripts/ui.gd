@@ -17,6 +17,7 @@ extends Control
 @export var move2 : Button
 @export var move3 : Button
 @export var move4 : Button
+@export var text : Label
 func init(Player,Enemy):
 	money.text = str(Globals.money) + "$"
 	p_hpbar.max_value = Player.hp
@@ -60,3 +61,5 @@ func reset_bars(entity, hp):
 		"Enemy":
 			await get_tree().create_timer(.5).timeout
 			get_tree().create_tween().tween_property(e_hpbar,"value",hp,.5)
+func textedit(texte):
+	get_tree().create_tween().tween_property(text,"text",texte,.3)
