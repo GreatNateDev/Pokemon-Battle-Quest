@@ -38,7 +38,8 @@ func Fight(move) -> void:
 		$UI.textedit("Enemy fainted!")
 		#save players dat money etc
 		await get_tree().create_timer(1.5).timeout
-		#load shop
+		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
+		return
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
