@@ -24,6 +24,8 @@ extends Control
 @export var fight : Button
 @export var p_sprite : Sprite2D
 @export var e_sprite : Sprite2D
+@export var music : AudioStreamPlayer2D
+@export var faint_sfx : AudioStreamPlayer2D
 func init(Player,Enemy):
 	money.text = str(Globals.money) + "$"
 	p_hpbar.max_value = Player.hp
@@ -76,9 +78,12 @@ func disable_btns(value):
 	swap.disabled = value
 func faint(entity):
 	#play faint sfx
+	#add triggers for below if trainer / has more mon
 	match entity:
 		"Player":
 			await get_tree().create_timer(.5).timeout
+			stop_audio()
+			faint_sfx.play()
 			get_tree().create_tween().tween_property(p_sprite,"scale",Vector2(0,0),1).set_ease(Tween.EASE_OUT)
 			get_tree().create_tween().tween_property(p_sprite,"position",Vector2(p_sprite.position.x,p_sprite.position.y+100),1).set_ease(Tween.EASE_OUT)
 			textedit("You fainted!")
@@ -86,5 +91,10 @@ func faint(entity):
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 		"Enemy":
 			await get_tree().create_timer(.5).timeout
+			stop_audio()
+			faint_sfx.play()
 			get_tree().create_tween().tween_property(e_sprite,"scale",Vector2(0,0),1).set_ease(Tween.EASE_OUT)
 			get_tree().create_tween().tween_property(e_sprite,"position",Vector2(e_sprite.position.x,e_sprite.position.y+50),1).set_ease(Tween.EASE_OUT)
+func stop_audio():
+	music.stop()
+	

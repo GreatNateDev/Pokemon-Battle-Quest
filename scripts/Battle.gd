@@ -37,7 +37,8 @@ func Fight(move) -> void:
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
 	if Enemy.hp <= 0:
-		#cut music
+		#add triggers for below if trainer
+		$UI.stop_audio()
 		#play vic music if wild or if last trainers mon
 		$UI.faint("Enemy")
 		$UI.textedit("Enemy fainted!")
@@ -52,6 +53,8 @@ func Fight(move) -> void:
 	d = Damage.Attack(move,"Enemy",Enemy,Player)
 	Player.hp -= d[0]
 	if Player.hp <= 0:
+		#add triggers for below if has more mon
+		$UI.stop_audio()
 		$UI.faint("Player")
 	$UI.textedit(d[1])
 	$UI.reset_bars("Player",Player.hp)
