@@ -33,17 +33,19 @@ func Fight(move) -> void:
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
 	Enemy.hp -= d[0]
-	if Enemy.hp <= 0:
-		$UI.faint("Enemy")
-		$UI.textedit("Enemy fainted!")
-		#save players dat money etc
-		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
-		return
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
-	await get_tree().create_timer(1.5).timeout
+	if Enemy.hp <= 0:
+		#cut music
+		#play vic music if wild or if last trainers mon
+		$UI.faint("Enemy")
+		$UI.textedit("Enemy fainted!")
+		#save players dat money etc
+		await get_tree().create_timer(2.5).timeout
+		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
+		return
+	await get_tree().create_timer(2.5).timeout
 	move = randi_range(0, len(Enemy.MOVES) - 1)
 	move = Enemy.MOVES[move]
 	$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
@@ -51,7 +53,6 @@ func Fight(move) -> void:
 	Player.hp -= d[0]
 	if Player.hp <= 0:
 		$UI.faint("Player")
-		
 	$UI.textedit(d[1])
 	$UI.reset_bars("Player",Player.hp)
 	$UI.disable_btns(false)

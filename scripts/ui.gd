@@ -75,13 +75,14 @@ func disable_btns(value):
 	bag.disabled = value
 	swap.disabled = value
 func faint(entity):
+	#play faint sfx
 	match entity:
 		"Player":
 			await get_tree().create_timer(.5).timeout
 			get_tree().create_tween().tween_property(p_sprite,"scale",Vector2(0,0),1).set_ease(Tween.EASE_OUT)
 			get_tree().create_tween().tween_property(p_sprite,"position",Vector2(p_sprite.position.x,p_sprite.position.y+100),1).set_ease(Tween.EASE_OUT)
 			textedit("You fainted!")
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(2).timeout
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 		"Enemy":
 			await get_tree().create_timer(.5).timeout
