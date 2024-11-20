@@ -3,6 +3,7 @@ extends Control
 #Imports
 var GMon = preload("res://Data/GenMon.gd").new()
 var Save = preload("res://Data/Save.gd").new()
+var Load = preload("res://Data/Load.gd").new()
 var MoveLoader = preload("res://Data/MoveLoader.gd").new()
 var Damage = preload("res://Data/DamageFormula.gd").new()
 #Globals
@@ -10,12 +11,22 @@ var Player : Dictionary
 var Enemy : Dictionary
 #Ready
 func _ready():
-	Player = GMon.MonGen(Globals.starter, true)
-	Enemy = GMon.MonGen(Globals.starter,false)
-	$UI.init(Player,Enemy)
-	Player["MOVES"]=MoveLoader.init(Player)
-	Enemy["MOVES"]=MoveLoader.init(Enemy)
+	if Globals.loaded == false:
+		Player = GMon.MonGen(Globals.starter, true)
+		Player["MOVES"]=MoveLoader.init(Player)
+	else:
+		var data = Load.loadfile()
+		if data == null:
+			printerr("No save file found")
+			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+			return
+		Globals.starter = data[0]
+		Player = data[1]
+		Globals.money = data[2]
 	Globals.moves = Player.MOVES
+	Enemy = GMon.MonGen(Globals.starter,false)
+	Enemy["MOVES"]=MoveLoader.init(Enemy)
+	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
 	Fight($Castless/Box_and_buttons_centre/Move1.text)
@@ -38,12 +49,12 @@ func Fight(move) -> void:
 	$UI.disable_btns(true)
 	if Enemy.hp <= 0:
 		#add triggers for below if trainer
-		$UI.stop_audio()
 		#play vic music if wild or if last trainers mon
 		$UI.faint("Enemy")
 		$UI.textedit("Enemy fainted!")
-		#save players dat money etc
+		await Save.savefile(Player,Globals.money,Globals.starter)
 		await get_tree().create_timer(2.5).timeout
+		Globals.loaded = true
 		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
 		return
 	await get_tree().create_timer(2.5).timeout
@@ -54,7 +65,6 @@ func Fight(move) -> void:
 	Player.hp -= d[0]
 	if Player.hp <= 0:
 		#add triggers for below if has more mon
-		$UI.stop_audio()
 		$UI.faint("Player")
 	$UI.textedit(d[1])
 	$UI.reset_bars("Player",Player.hp)

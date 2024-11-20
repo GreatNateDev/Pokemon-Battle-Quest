@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bvnl1ftigu1vg"]
+[gd_scene load_steps=2 format=3 uid="uid://bvnl1ftigu1vg"]
+
+[ext_resource type="Script" path="res://scripts/Shop.gd" id="1_rgcs7"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rgcs7")
 
 [node name="Panel one" type="Control" parent="."]
 layout_mode = 1
@@ -166,3 +169,5 @@ offset_top = 24.0
 offset_right = 65.0
 offset_bottom = 55.0
 text = "Skip"
+
+[connection signal="pressed" from="Label/Skip_shop" to="." method="skip"]

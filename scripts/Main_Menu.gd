@@ -48,3 +48,8 @@ func treecko() -> void:
 	Globals.loaded = false
 	Globals.starter = "treecko"
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
+
+
+func Loaded_pressed() -> void:
+	Globals.loaded = true
+	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
