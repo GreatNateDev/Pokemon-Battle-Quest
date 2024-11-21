@@ -580,7 +580,7 @@ position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite", "music", "faint_sfx")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite", "music", "faint_sfx", "main")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -612,6 +612,7 @@ p_sprite = NodePath("../Cast/Player/Player_sprite")
 e_sprite = NodePath("../Cast/Enemy/Enemy_sprite")
 music = NodePath("../SFX/Audio")
 faint_sfx = NodePath("../SFX/faint")
+main = NodePath("..")
 
 [node name="BattleAnimations" type="Control" parent="." node_paths=PackedStringArray("res", "Player", "Enemy")]
 anchors_preset = 0

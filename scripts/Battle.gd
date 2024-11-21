@@ -12,7 +12,7 @@ var Enemy : Dictionary
 #Ready
 func _ready():
 	if Globals.loaded == false:
-		Player = GMon.MonGen(Globals.starter, true)
+		Player = GMon.MonGen(Globals.starter)
 		Player["MOVES"]=MoveLoader.init(Player)
 	else:
 		var data = Load.loadfile()
@@ -23,8 +23,10 @@ func _ready():
 		Player = data[1]
 		Globals.money = data[2]
 	Globals.moves = Player.MOVES
-	Enemy = GMon.MonGen(Globals.starter,false)
+	Enemy = GMon.MonGen(Globals.starter)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
+	update_level(Player)
+	update_level(Enemy)
 	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
@@ -51,7 +53,12 @@ func Fight(move) -> void:
 		#play vic music if wild or if last trainers mon
 		$UI.faint("Enemy")
 		$UI.textedit("Enemy fainted!")
-		await Save.savefile(Player,Globals.money,Globals.starter)
+		Player.exp += Enemy.level * 12
+		$UI.update_exp()
+		if Player.exp >= Player.max_exp:
+			update_level(Player)
+			$UI.update_exp()
+		Save.savefile(Player,Globals.money,Globals.starter)
 		await get_tree().create_timer(2.5).timeout
 		Globals.loaded = true
 		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
@@ -73,7 +80,7 @@ func Run() -> void:
 	var rand = randi() % 256
 	if chance > rand:
 		$UI.textedit("Got away safely!")
-		GMon.MonGen(Globals.starter,false)
+		GMon.MonGen(Globals.starter)
 	else:
 		$UI.textedit("Can't escape!")
 		$UI.disable_btns(true)
@@ -89,3 +96,28 @@ func Run() -> void:
 		$UI.textedit(d[1])
 		$UI.reset_bars("Player",Player.hp)
 		$UI.disable_btns(false)
+func update_level(Entity : Dictionary) -> Dictionary:
+	Entity.max_exp = Entity.level * 100
+	Entity.exp = 0
+	var stats = FileAccess.open("res://Data/Pokemon.json", FileAccess.READ)
+	stats = JSON.parse_string(stats.get_as_text())
+	stats = stats[Entity.name].stats
+	Entity.hp = stats.Hp
+	Entity.attack = stats.Attack
+	Entity.defense = stats.Defense
+	Entity.spattack = stats.SpAttack
+	Entity.spdefense = stats.SpDefense
+	Entity.speed = stats.Speed
+	Entity.hp += Entity.IVS.hp
+	Entity.attack += Entity.IVS.attack
+	Entity.defense += Entity.IVS.defense
+	Entity.spattack += Entity.IVS.spattack
+	Entity.spdefense += Entity.IVS.spdefense
+	Entity.speed += Entity.IVS.speed
+	Entity.hp += Entity.EVS.hp
+	Entity.attack += Entity.EVS.attack
+	Entity.defense += Entity.EVS.defense
+	Entity.spattack += Entity.EVS.spattack
+	Entity.spdefense += Entity.EVS.spdefense
+	Entity.speed += Entity.EVS.speed
+	return Entity

@@ -26,6 +26,7 @@ extends Control
 @export var e_sprite : Sprite2D
 @export var music : AudioStreamPlayer2D
 @export var faint_sfx : AudioStreamPlayer2D
+@export var main : Control # Dont use this to much please
 func init(Player,Enemy):
 	money.text = str(Globals.money) + "$"
 	p_hpbar.max_value = Player.hp
@@ -97,4 +98,5 @@ func faint(entity):
 			get_tree().create_tween().tween_property(e_sprite,"position",Vector2(e_sprite.position.x,e_sprite.position.y+50),1).set_ease(Tween.EASE_OUT)
 func stop_audio():
 	music.stop()
-	
+func update_exp():
+	get_tree().create_tween().tween_property(p_exp,"value",main.Player.exp,.5)

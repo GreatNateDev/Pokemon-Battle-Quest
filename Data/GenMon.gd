@@ -1,5 +1,5 @@
 class_name Gmon
-func MonGen(P, isPlayer):
+func MonGen(P):
 	var file = FileAccess.open("res://Data/Pokemon.json", FileAccess.READ)
 	var json = JSON.parse_string(file.get_as_text())
 	var Pokemon = {
@@ -43,7 +43,6 @@ func MonGen(P, isPlayer):
 			speed = 1
 		}
 	}
-	if isPlayer:
-		mon["exp"] = 0
-		mon["max_exp"] = mon.level * 100
+	mon["exp"] = 0
+	mon["max_exp"] = mon.level * 100
 	return mon
