@@ -121,3 +121,11 @@ func update_level(Entity : Dictionary) -> Dictionary:
 	Entity.spdefense += Entity.EVS.spdefense
 	Entity.speed += Entity.EVS.speed
 	return Entity
+func Bag() -> void:
+	$UI.disable_btns(true)
+	$Cast/darken.visible = true
+	$Castless/Bag.visible = true
+	$Castless/bag_exit.show()
+	$Bag.update_bag()
+	
+	
