@@ -1,5 +1,4 @@
 func savefile(Player,money,starter):
-	print("ft run") 
 	DirAccess.make_dir_absolute("user://Saves")
 	var file = FileAccess.open("user://Saves/Pokemon.save", FileAccess.WRITE)
 	if file == null:

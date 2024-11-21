@@ -12,7 +12,6 @@ func Attack(Move, Entity, Stats, OStats):
 	var mov = json[Move]
 	var type_effectiveness = getMultiplier(mov.type,OStats.type1,OStats.type2)
 	var random_number = randi() % 16 + 85
-	print(mov.power)
 	var base_damage = ((2 * Stats.level / 5 + 2)  * mov.power / OStats.defense) / 50 + 2
 	var adjusted_damage = base_damage * type_effectiveness
 	var final_damage = adjusted_damage * random_number / 100

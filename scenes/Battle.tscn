@@ -623,6 +623,7 @@ Player = NodePath("../Cast/Player/Player_sprite")
 Enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
+[connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]

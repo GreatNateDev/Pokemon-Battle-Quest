@@ -17,7 +17,6 @@ func _ready():
 	else:
 		var data = Load.loadfile()
 		if data == null:
-			printerr("No save file found")
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 			return
 		Globals.starter = data[0]
@@ -69,3 +68,24 @@ func Fight(move) -> void:
 	$UI.textedit(d[1])
 	$UI.reset_bars("Player",Player.hp)
 	$UI.disable_btns(false)
+func Run() -> void:
+	var chance = (Player.speed / Enemy.speed) * 128
+	var rand = randi() % 256
+	if chance > rand:
+		$UI.textedit("Got away safely!")
+		GMon.MonGen(Globals.starter,false)
+	else:
+		$UI.textedit("Can't escape!")
+		$UI.disable_btns(true)
+		await get_tree().create_timer(2.5).timeout
+		var move = randi_range(0, len(Enemy.MOVES) - 1)
+		move = Enemy.MOVES[move]
+		$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
+		var d = Damage.Attack(move,"Enemy",Enemy,Player)
+		Player.hp -= d[0]
+		if Player.hp <= 0:
+			#add triggers for below if has more mon
+			$UI.faint("Player")
+		$UI.textedit(d[1])
+		$UI.reset_bars("Player",Player.hp)
+		$UI.disable_btns(false)
