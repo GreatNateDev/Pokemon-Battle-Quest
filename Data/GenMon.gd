@@ -45,4 +45,22 @@ func MonGen(P):
 	}
 	mon["exp"] = 0
 	mon["max_exp"] = mon.level * 100
+	if Globals.mon1 == null:
+		mon["index"] = 1
+		Globals.mon1 = mon
+	elif Globals.mon2 == null:
+		mon["index"] = 2
+		Globals.mon2 = mon
+	elif Globals.mon3 == null:
+		mon["index"] = 3
+		Globals.mon3 = mon
+	elif Globals.mon4 == null:
+		mon["index"] = 4
+		Globals.mon4 = mon
+	elif Globals.mon5 == null:
+		mon["index"] = 5
+		Globals.mon5 = mon
+	elif Globals.mon6 == null:
+		mon["index"] = 6
+		Globals.mon6 = mon
 	return mon

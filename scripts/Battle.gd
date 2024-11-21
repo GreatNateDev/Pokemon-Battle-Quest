@@ -22,6 +22,26 @@ func _ready():
 		Globals.starter = data[0]
 		Player = data[1]
 		Globals.money = data[2]
+		Globals.mon1 = data[3]
+		Globals.mon2 = data[4]
+		Globals.mon3 = data[5]
+		Globals.mon4 = data[6]
+		Globals.mon5 = data[7]
+		Globals.mon6 = data[8]
+		Globals.index = data[9]
+		match Globals.index:
+			1:
+				Player = Globals.mon1
+			2:
+				Player = Globals.mon2
+			3:
+				Player = Globals.mon3
+			4:
+				Player = Globals.mon4
+			5:
+				Player = Globals.mon5
+			6:	
+				Player = Globals.mon6
 	Globals.moves = Player.MOVES
 	Enemy = GMon.MonGen(Globals.starter)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
@@ -58,7 +78,8 @@ func Fight(move) -> void:
 		if Player.exp >= Player.max_exp:
 			update_level(Player)
 			$UI.update_exp()
-		Save.savefile(Player,Globals.money,Globals.starter)
+		SaveMon(Player)
+		Save.savefile(Player,Globals.money,Globals.starter,Globals.mon1,Globals.mon2,Globals.mon3,Globals.mon4,Globals.mon5,Globals.mon6,Globals.index)
 		await get_tree().create_timer(2.5).timeout
 		Globals.loaded = true
 		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
@@ -126,6 +147,24 @@ func Bag() -> void:
 	$Cast/darken.visible = true
 	$Castless/Bag.visible = true
 	$Castless/bag_exit.show()
-	$Bag.update_bag()
-	
-	
+	$Bag.update_bag()	
+func SaveMon(Entity : Dictionary) -> void:
+	match Entity.index:
+		1:
+			Globals.mon1 = Entity
+			Globals.index = 1
+		2:
+			Globals.mon2 = Entity
+			Globals.index = 2
+		3:
+			Globals.mon3 = Entity
+			Globals.index = 3
+		4:
+			Globals.mon4 = Entity
+			Globals.index = 4
+		5:
+			Globals.mon5 = Entity
+			Globals.index = 5
+		6:
+			Globals.mon6 = Entity
+			Globals.index = 6
