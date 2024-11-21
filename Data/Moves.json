@@ -1,0 +1,67 @@
+
+{
+  "tackle": {
+    "name": "Tackle",
+    "type": "Normal",
+    "category": "P",
+    "power": 40,
+    "PTEXT": "The Player tackled the opponent.",
+    "ETEXT": "The opponent tackled the player."
+  },
+  "scratch": {
+    "name": "Scratch",
+    "type": "Normal",
+    "category": "P",
+    "power": 40,
+    "PTEXT": "The Player scratched the opponent.",
+    "ETEXT": "The opponent scratched the player."
+  },
+  "ember": {
+    "name": "Ember",
+    "type": "Fire",
+    "category": "S",
+    "power": 40,
+    "PTEXT": "The Player burned the opponent.",
+    "ETEXT": "The opponent burned the player."
+  },
+  "water-gun": {
+    "name": "Water Gun",
+    "type": "Water",
+    "category": "S",
+    "power": 40,
+    "PTEXT": "The Player shot water at the opponent.",
+    "ETEXT": "The opponent shot water at the player."
+  },
+  "vine-whip": {
+    "name": "Vine Whip",
+    "type": "Grass",
+    "category": "P",
+    "power": 45,
+    "PTEXT": "The Player whipped the opponent with vines.",
+    "ETEXT": "The opponent whipped the player with vines."
+  },
+  "thundershock": {
+    "name": "Thunder Shock",
+    "type": "Electric",
+    "category": "S",
+    "power": 40,
+    "PTEXT": "The Player shocked the opponent with electricity.",
+    "ETEXT": "The opponent shocked the player with electricity."
+  },
+  "quick-attack": {
+    "name": "Quick Attack",
+    "type": "Normal",
+    "category": "P",
+    "power": 40,
+    "PTEXT": "The Player attacked the opponent quickly.",
+    "ETEXT": "The opponent attacked the player quickly."
+  },
+  "psychic": {
+    "name": "Psychic",
+    "type": "Psychic",
+    "category": "S",
+    "power": 90,
+    "PTEXT": "The Player used Psychic on the opponent.",
+    "ETEXT": "The opponent used Psychic on the player."
+  }
+}
