@@ -2,154 +2,34 @@
 
 [ext_resource type="Script" path="res://scripts/Shop.gd" id="1_rgcs7"]
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" node_paths=PackedStringArray("button_1", "button_2", "button_3", "label_1", "label_2", "label_3")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_rgcs7")
+button_1 = NodePath("GridContainer/Panel/TextureButton")
+button_2 = NodePath("GridContainer/Panel2/TextureButton")
+button_3 = NodePath("GridContainer/Panel3/TextureButton")
+label_1 = NodePath("GridContainer/Panel/Label")
+label_2 = NodePath("GridContainer/Panel2/Label")
+label_3 = NodePath("GridContainer/Panel3/Label")
 
-[node name="Panel one" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="Panel one"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 69.0
-offset_right = 642.0
-offset_bottom = 1069.0
-
-[node name="TextureButton" type="TextureButton" parent="Panel one/Panel"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 248.0
-offset_right = 20.0
-offset_bottom = 288.0
-grow_horizontal = 2
-scale = Vector2(3, 3)
-
-[node name="Label" type="Label" parent="Panel one/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -271.0
-offset_right = 20.0
-offset_bottom = -248.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-
-[node name="Panel two" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Panel2" type="Panel" parent="Panel two"]
-layout_mode = 0
-offset_left = -298.0
-offset_top = 69.0
-offset_right = 342.0
-offset_bottom = 1069.0
-
-[node name="TextureButton" type="TextureButton" parent="Panel two/Panel2"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 248.0
-offset_right = 20.0
-offset_bottom = 288.0
-grow_horizontal = 2
-scale = Vector2(3, 3)
-
-[node name="Label" type="Label" parent="Panel two/Panel2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -271.0
-offset_right = 20.0
-offset_bottom = -248.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-
-[node name="Panel three" type="Control" parent="."]
+[node name="Label" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
+offset_left = 928.0
+offset_right = 968.0
 offset_bottom = 40.0
 grow_horizontal = 0
-
-[node name="Panel3" type="Panel" parent="Panel three"]
-layout_mode = 0
-offset_left = -598.0
-offset_top = 69.0
-offset_right = 42.0
-offset_bottom = 1069.0
-
-[node name="TextureButton" type="TextureButton" parent="Panel three/Panel3"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 248.0
-offset_right = 20.0
-offset_bottom = 288.0
-grow_horizontal = 2
-scale = Vector2(3, 3)
-
-[node name="Label" type="Label" parent="Panel three/Panel3"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -271.0
-offset_right = 20.0
-offset_bottom = -248.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-
-[node name="Label" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
 
 [node name="Label" type="Label" parent="Label"]
 layout_mode = 1
@@ -170,4 +50,128 @@ offset_right = 65.0
 offset_bottom = 55.0
 text = "Skip"
 
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 1928.0
+offset_bottom = 1083.0
+theme_override_constants/h_separation = 10
+columns = 3
+
+[node name="Panel" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="GridContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -291.5
+offset_right = 133.0
+offset_bottom = -171.5
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 2
+
+[node name="Panel2" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/Panel2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="GridContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -291.5
+offset_right = 133.0
+offset_bottom = -171.5
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 2
+
+[node name="Panel3" type="Panel" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer/Panel3"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Label" type="Label" parent="GridContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -291.5
+offset_right = 133.0
+offset_bottom = -171.5
+grow_horizontal = 2
+grow_vertical = 2
+autowrap_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+zoom = Vector2(0.8, 0.8)
+
 [connection signal="pressed" from="Label/Skip_shop" to="." method="skip"]
+[connection signal="pressed" from="GridContainer/Panel/TextureButton" to="." method="one_pressed"]
+[connection signal="pressed" from="GridContainer/Panel2/TextureButton" to="." method="two_pressed"]
+[connection signal="pressed" from="GridContainer/Panel3/TextureButton" to="." method="three_pressed"]
