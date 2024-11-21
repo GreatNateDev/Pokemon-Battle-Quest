@@ -28,6 +28,11 @@ extends Control
 @export var faint_sfx : AudioStreamPlayer2D
 @export var main : Control # Dont use this to much please
 func init(Player,Enemy):
+	print("init")
+	print(Player.max_exp)
+	print(Player.exp)
+	p_exp.max_value = Player.max_exp
+	p_exp.value = Player.exp
 	money.text = str(Globals.money) + "$"
 	p_hpbar.max_value = Player.hp
 	p_hpbar.value = Player.hp
@@ -35,7 +40,7 @@ func init(Player,Enemy):
 	p_exp.value = Player.exp
 	p_type.text = Player.type1 + ", "+Player.type2
 	p_name.text = Player.name.capitalize()
-	p_level.text = "Lvl. " + str(Player.level)
+	p_level.text = "Lvl. " + str(int(Player.level))
 	p_texture.texture = load("res://assets/pokemon/"+Player.name+"/back.png")
 	e_hpbar.max_value = Enemy.hp
 	e_hpbar.value = Enemy.hp
