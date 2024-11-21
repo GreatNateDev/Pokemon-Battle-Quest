@@ -26,6 +26,22 @@ func MonGen(P, isPlayer):
 		spdefense = Pokemon.spdefense,
 		speed = Pokemon.speed,
 		moves = Pokemon.moves,
+		IVS = {
+			hp = randi_range(1,31),
+			attack = randi_range(1,31),
+			defense = randi_range(1,31),
+			spattack = randi_range(1,31),
+			spdefense = randi_range(1,31),
+			speed = randi_range(1,31)
+		},
+		EVS = {
+			hp = 1,
+			attack = 1,
+			defense = 1,
+			spattack = 1,
+			spdefense = 1,
+			speed = 1
+		}
 	}
 	if isPlayer:
 		mon["exp"] = 0
