@@ -9,6 +9,8 @@ func MonGen(P, isPlayer):
 		hp = json[P].stats.Hp,
 		attack = json[P].stats.Attack,
 		defense = json[P].stats.Defense,
+		spdefense = json[P].stats.SpDefense,
+		spattack = json[P].stats.SpAttack,
 		speed = json[P].stats.Speed,
 		moves = json[P].moves,
 	}
@@ -20,6 +22,8 @@ func MonGen(P, isPlayer):
 		hp = Pokemon.hp,
 		attack = Pokemon.attack,
 		defense = Pokemon.defense,
+		spattack = Pokemon.spattack,
+		spdefense = Pokemon.spdefense,
 		speed = Pokemon.speed,
 		moves = Pokemon.moves,
 	}
