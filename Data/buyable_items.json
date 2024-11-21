@@ -21,12 +21,12 @@
       "price": 1500
     },
     {
-      "name": "Ultra Ball",
+      "name": "ultra_ball",
       "description": "A high-performance ball for catching Pokémon.",
       "price": 1200
     },
     {
-      "name": "Full Restore",
+      "name": "large_potion",
       "description": "A medicine that fully restores HP and heals status conditions.",
       "price": 3000
     }
