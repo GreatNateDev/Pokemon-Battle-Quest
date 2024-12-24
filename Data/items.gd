@@ -1,17 +1,13 @@
 extends Control
-@onready var res = get_parent().get_node("Move_layer/item")
-@onready var player = get_parent().get_node("Cast/Player/Player_sprite")
-@onready var enemy = get_parent().get_node("Cast/Enemy/Enemy_sprite")
-@onready var star = get_parent().get_node("Move_layer/star")
-@onready var caughtsfx = get_parent().get_node("SFX/caught")
-@onready var Audio = get_parent().get_node("SFX/Audio")
-@onready var pkmn = pokemon.new()
-signal anim_text(text)
-signal caught()
-signal failed()
-func Item_anim(item, e):
-	match item:
-		"poke_ball":
+@export var res : Sprite2D
+@export var MainScene : Control
+func Item(ItemName):
+	match ItemName:
+		"potion":
+			MainScene.Player.hp += 20
+			if MainScene.Player.hp > MainScene.Player.max_hp:
+				MainScene.Player.hp = MainScene.Player.max_hp
+		"pokeball":
 			res.position = player.global_position
 			res.texture = load("res://assets/items/poke_ball.png")
 			res.scale = Vector2(2,2)
@@ -69,4 +65,4 @@ func Item_anim(item, e):
 					caught.emit()
 					await get_tree().create_timer(4).timeout
 					res.hide()
-					res.scale = Vector2(1,1)
+					res.scale = Vector2(1,1)	
