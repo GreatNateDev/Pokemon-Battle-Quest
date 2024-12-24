@@ -28,9 +28,6 @@ extends Control
 @export var faint_sfx : AudioStreamPlayer2D
 @export var main : Control # Dont use this to much please
 func init(Player,Enemy):
-	print("init")
-	print(Player.max_exp)
-	print(Player.exp)
 	p_exp.max_value = Player.max_exp
 	p_exp.value = Player.exp
 	money.text = str(Globals.money) + "$"

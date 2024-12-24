@@ -12,11 +12,10 @@ var Enemy : Dictionary
 #Ready
 func _ready():
 	if Globals.loaded == false:
-		print("new")
 		Player = GMon.MonGen(Globals.starter,true)
 		Player["MOVES"]=MoveLoader.init(Player)
+		Player = update_level(Player)
 	else:
-		print("load")
 		var data = Load.loadfile()
 		if data == null:
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
@@ -34,27 +33,20 @@ func _ready():
 		match Globals.index:
 			1:
 				Player = Globals.mon1
-				print("loaded 1")
 			2:
 				Player = Globals.mon2
-				print("loaded 2")
 			3:
 				Player = Globals.mon3
-				print("loaded 3")
 			4:
 				Player = Globals.mon4
-				print("loaded 4")
 			5:
 				Player = Globals.mon5
-				print("loaded 5")
-			6:	
+			6:
 				Player = Globals.mon6
-				print("loaded 6")
 	Globals.moves = Player.MOVES
 	Enemy = GMon.MonGen(Globals.starter,false)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
-	update_level(Player)
-	update_level(Enemy)
+	Enemy = update_level(Enemy)
 	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
@@ -87,7 +79,6 @@ func Fight(move) -> void:
 			update_level(Player)
 			$UI.update_exp()
 		SaveMon(Player)
-		print(Globals.mon1)
 		Save.savefile(Player,Globals.money,Globals.starter,Globals.mon1,Globals.mon2,Globals.mon3,Globals.mon4,Globals.mon5,Globals.mon6,Globals.index)
 		await get_tree().create_timer(2.5).timeout
 		Globals.loaded = true
@@ -158,29 +149,22 @@ func Bag() -> void:
 	$Castless/bag_exit.show()
 	$Bag.update_bag()	
 func SaveMon(Entity : Dictionary) -> void:
-	print(Entity)
 	match Entity.index:
 		1:
 			Globals.mon1 = Entity
 			Globals.index = 1
-			print("1")
 		2:
 			Globals.mon2 = Entity
 			Globals.index = 2
-			print("2")
 		3:
 			Globals.mon3 = Entity
 			Globals.index = 3
-			print("3")
 		4:
 			Globals.mon4 = Entity
 			Globals.index = 4
-			print("4")
 		5:
 			Globals.mon5 = Entity
 			Globals.index = 5
-			print("5")
 		6:
 			Globals.mon6 = Entity
 			Globals.index = 6
-			print("6")
