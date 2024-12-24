@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://ys1gxh8em3by" path="res://scripts/ui.gd" id="18_5fcgm"]
 [ext_resource type="Script" uid="uid://pdn0o0835mcq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
 [ext_resource type="Script" uid="uid://qhjpjoqo6orq" path="res://Data/Bag.gd" id="20_m7t4b"]
-[ext_resource type="Script" uid="uid://cgrhf4na3mm20" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" path="res://Data/items.gd" id="21_xdbdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -637,11 +637,12 @@ bag = NodePath("../Castless/Bag")
 odarken = NodePath("../backround_layer/darken")
 ui = NodePath("../UI")
 
-[node name="Items" type="Control" parent="."]
+[node name="Items" type="Control" parent="." node_paths=PackedStringArray("MainScene")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("21_xdbdk")
+MainScene = NodePath("..")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]

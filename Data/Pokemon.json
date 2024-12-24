@@ -28,7 +28,8 @@
 	"evo": [
 	  "ivysaur",
 	  16
-	]
+	],
+	"catch": 45
   },
   "totodile": {
 	"id": 158,
@@ -59,7 +60,8 @@
 	"evo": [
 	  "croconaw",
 	  18
-	]
+	],
+	"catch": 45
   },
   "charmander": {
 	"id": 4,
@@ -90,7 +92,8 @@
 	"evo": [
 	  "charmeleon",
 	  16
-	]
+	],
+	"catch": 45
   },
   "squirtle": {
 	"id": 7,
@@ -121,7 +124,8 @@
 	"evo": [
 	  "wartortle",
 	  16
-	]
+	],
+	"catch": 45
   },
   "chikorita": {
 	"id": 152,
@@ -152,7 +156,8 @@
 	"evo": [
 	  "bayleef",
 	  16
-	]
+	],
+	"catch": 45
   },
   "torchic": {
 	"id": 255,
@@ -183,7 +188,8 @@
 	"evo": [
 	  "combusken",
 	  16
-	]
+	],
+	"catch": 45
   },
   "mudkip": {
 	"id": 258,
@@ -214,7 +220,8 @@
 	"evo": [
 	  "marshtomp",
 	  16
-	]
+	],
+	"catch": 45
   },
   "treecko": {
 	"id": 252,
@@ -245,7 +252,8 @@
 	"evo": [
 	  "grovyle",
 	  16
-	]
+	],
+	"catch": 45
   },
   "cyndaquil": {
 	"id": 155,
@@ -276,6 +284,7 @@
 	"evo": [
 	  "quilava",
 	  14
-	]
+	],
+	"catch": 45
   }
 }
