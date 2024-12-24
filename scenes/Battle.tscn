@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
 [ext_resource type="Script" path="res://scripts/Battle.gd" id="1_gcpvl"]
@@ -17,9 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="18_5fcgm"]
-[ext_resource type="Script" uid="uid://b2u5k2dh57k8i" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
-[ext_resource type="Script" uid="uid://mble0cd0dysk" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" uid="uid://ys1gxh8em3by" path="res://scripts/ui.gd" id="18_5fcgm"]
+[ext_resource type="Script" uid="uid://pdn0o0835mcq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
+[ext_resource type="Script" uid="uid://qhjpjoqo6orq" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" uid="uid://cgrhf4na3mm20" path="res://Data/items.gd" id="21_xdbdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -635,6 +636,12 @@ bag_exit = NodePath("../Castless/bag_exit")
 bag = NodePath("../Castless/Bag")
 odarken = NodePath("../backround_layer/darken")
 ui = NodePath("../UI")
+
+[node name="Items" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("21_xdbdk")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]

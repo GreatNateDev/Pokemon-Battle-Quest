@@ -64,4 +64,5 @@ func MonGen(P, isPlayer):
 		elif Globals.mon6 == null:
 			mon["index"] = 6
 			Globals.mon6 = mon
+		mon["max_hp"] = mon.hp
 	return mon

@@ -141,6 +141,8 @@ func update_level(Entity : Dictionary) -> Dictionary:
 	Entity.spattack += Entity.EVS.spattack
 	Entity.spdefense += Entity.EVS.spdefense
 	Entity.speed += Entity.EVS.speed
+	if Entity.has("max_hp"):
+		Entity.max_hp = Entity.hp
 	return Entity
 func Bag() -> void:
 	$UI.disable_btns(true)
