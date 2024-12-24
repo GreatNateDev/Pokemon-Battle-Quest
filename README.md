@@ -1,4 +1,4 @@
-
+# NOTE TO SELF REMOVE DEBUG TACKLE
 # Pokemon Battle Quest
 A Pokemon battle simulator created in Redot
 ## Features

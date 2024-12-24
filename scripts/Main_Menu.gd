@@ -21,9 +21,9 @@ func cyndaquil() -> void:
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
 
 
-func tododile() -> void:
+func totodile() -> void:
 	Globals.loaded = false
-	Globals.starter = "tododile"
+	Globals.starter = "totodile"
 	get_tree().change_scene_to_file("res://scenes/Battle.tscn")
 
 

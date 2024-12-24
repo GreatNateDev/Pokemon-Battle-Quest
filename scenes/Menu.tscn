@@ -62,7 +62,7 @@ texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("4_suvcs")
 
-[node name="tododile" type="TextureButton" parent="choice/GridContainer"]
+[node name="totodile" type="TextureButton" parent="choice/GridContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("5_jdmah")
@@ -140,7 +140,7 @@ text = "Load"
 [connection signal="pressed" from="choice/GridContainer/mudkip" to="." method="mudkip"]
 [connection signal="pressed" from="choice/GridContainer/torchic" to="." method="torchic"]
 [connection signal="pressed" from="choice/GridContainer/chikorita" to="." method="chikorita"]
-[connection signal="pressed" from="choice/GridContainer/tododile" to="." method="tododile"]
+[connection signal="pressed" from="choice/GridContainer/totodile" to="." method="totodile"]
 [connection signal="pressed" from="choice/GridContainer/cyndaquil" to="." method="cyndaquil"]
 [connection signal="pressed" from="choice/GridContainer/bulbasaur" to="." method="bulbasaur"]
 [connection signal="pressed" from="choice/GridContainer/squirtle" to="." method="squirtle"]
