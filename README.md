@@ -1,27 +1,7 @@
 
-# Pokemon Monster Battle Arena
-
-A Pokemon battle simulator created in Redot 4.3rc1
-## THIS PR NEEDS THESE THINGS
-- add more to damage formula
-- shop
-- loading
-- abilitys
-- items
-- catching
-- bag
-- evos
-- held items
-- status moves
-- phy/special split
-- trainers
-- battles
-- enemy death
-- player death
-
-
+# Pokemon Battle Quest
+A Pokemon battle simulator created in Redot
 ## Features
-
 - Gen 3 damage formula
 - Pokemon Switching
 - 1000 "Battles"
@@ -37,17 +17,13 @@ A Pokemon battle simulator created in Redot 4.3rc1
 ## Demo
 https://greatnatedev.github.io/Battle_HTML/
 ## Authors
-
 - [@GreatNateDev](https://www.github.com/GreatNateDev)
-
-
 ## Feedback
 To send feedback make an issue in this repo
 ## Building
 This should just run in any Redot editor 4.3x
 ## Contributing
 Make a pull request with the feature(s) you have made!
-
 ## TODO:
 add trainers all the way up to champion\
 add all abilities from gen 3\
