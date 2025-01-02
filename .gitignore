@@ -1,9 +1,12 @@
 .godot/
 *.tmp
 *.DS_STORE
-addons/
 *.exe
 *.x86_64
 *.apk
-libpixelpen.linux.release.x86_64.so
-libpixelpen.windows.release.x86_64.dll
+.vscode/settings.json
+export_presets.cfg
+LIST
+.editorconfig
+.vscode
+*.uid

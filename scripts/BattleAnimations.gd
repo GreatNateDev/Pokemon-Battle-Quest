@@ -1,41 +1,11 @@
-extends Control
-@onready var res = get_parent().get_node("Move_layer/move")
-@onready var Enemypos = get_parent().get_node("Cast/Enemy/Enemy_sprite")
-@onready var Playerpos = get_parent().get_node("Cast/Player/Player_sprite")
-func faint(entity):
-	match entity:
-		"Player":
-			var tweene = get_tree().create_tween()
-			var tween = get_tree().create_tween()
-			var pos = Playerpos.position.y + 50
-			tween.tween_property(Playerpos,"scale",Vector2(.1,.1),.5)
-			tweene.tween_property(Playerpos,"position",Vector2(Playerpos.position.x,pos),5)
-			await get_tree().create_timer(.5).timeout
-			Playerpos.hide()
-			await get_tree().create_timer(3).timeout
-		"Swap":
-			await get_tree().create_timer(3).timeout
-			var tweene = get_tree().create_tween()
-			var tween = get_tree().create_tween()
-			var pos = Playerpos.position.y - 50
-			Playerpos.show()
-			tween.tween_property(Playerpos,"scale",Vector2(3,3),.5)
-			tweene.tween_property(Playerpos,"position",Vector2(Playerpos.position.x,pos),.5)
-			await get_tree().create_timer(.5).timeout
-			await get_tree().create_timer(3).timeout
-		"Enemy":
-			var tweene = get_tree().create_tween()
-			var tween = get_tree().create_tween()
-			var pos = Enemypos.position.y + .1
-			tween.tween_property(Enemypos,"scale",Vector2(.1,.1),.5)
-			tweene.tween_property(Enemypos,"position",Vector2(Enemypos.position.x,pos),5)
-			await get_tree().create_timer(.5).timeout
-			Enemypos.hide()
-func Animation(entity, move):
-	var target = Enemypos if entity == "Player" else Playerpos
-	var source = Playerpos if entity == "Player" else Enemypos
+extends Node
+class_name BattleAnimations
+@export var res : Sprite2D
+@export var Player : Sprite2D
+@export var Enemy : Sprite2D
+func Animation(source,target,move):
 	match move:
-		"Absorb":
+		"absorb":
 				res.texture = load("res://assets/moves/absorb.png")
 				res.scale = Vector2(2,2)
 				res.show()
@@ -45,7 +15,7 @@ func Animation(entity, move):
 				await get_tree().create_timer(.5).timeout
 				res.hide()
 				res.scale = Vector2(1,1)
-		"Bite":
+		"bite":
 				res.texture = load("res://assets/moves/bite.png")
 				res.scale = Vector2(2,2)
 				res.hframes = 2
@@ -58,7 +28,7 @@ func Animation(entity, move):
 				res.hide()
 				res.hframes = 1
 				res.scale = Vector2(1,1)
-		"Watergun":
+		"watergun":
 				res.texture = load("res://assets/moves/bubble.png")
 				res.vframes = 3
 				res.frame = 0
@@ -76,7 +46,7 @@ func Animation(entity, move):
 				res.frame = 0
 				res.vframes = 1
 				res.scale = Vector2(2,2)
-		"Ember":
+		"ember":
 				res.texture = load("res://assets/moves/ember.png")
 				res.hframes = 5
 				res.frame = 0
@@ -96,7 +66,7 @@ func Animation(entity, move):
 				res.frame = 0
 				res.hframes = 1
 				res.scale = Vector2(1,1)
-		"Tackle":
+		"tackle":
 			res.texture = load("res://assets/moves/tackle.png")
 			res.position = target.global_position
 			res.scale = Vector2(2,2)
@@ -111,7 +81,7 @@ func Animation(entity, move):
 			await get_tree().create_timer(.3).timeout
 			res.hide()
 			res.scale = Vector2(1,1)
-		"Vinewhip":
+		"vinewhip":
 			res.texture = load("res://assets/moves/vine_whip.png")
 			res.position = target.global_position
 			res.scale = Vector2(3,3)
@@ -132,7 +102,7 @@ func Animation(entity, move):
 			res.scale = Vector2(1,1)
 			res.vframes = 1
 			res.frame = 0
-		"Thunderbolt":
+		"thunderbolt":
 			res.texture = load("res://assets/moves/thunderbolt.png")
 			res.position = target.global_position
 			res.scale = Vector2(2,2)
