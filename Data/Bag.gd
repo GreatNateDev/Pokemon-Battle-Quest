@@ -5,6 +5,7 @@ extends Control
 @export var bag : Control
 @export var odarken : CanvasModulate
 @export var ui : Control
+@export var items : Control
 func update_bag():
 	for child in container.get_children():
 		child.queue_free()
@@ -25,6 +26,7 @@ func Item_pressed(key):
 		var texture_to_check = "res://assets/items/"+key+".png"
 		for button in get_tree().get_nodes_in_group("ItemButton"):
 			if button.texture_normal.resource_path == texture_to_check:
+				items.Item(key)
 				button.queue_free()
 		Globals.items.erase(key)
 	_on_exit_bag_pressed()

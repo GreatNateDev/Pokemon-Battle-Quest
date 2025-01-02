@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
-[ext_resource type="Script" path="res://scripts/Battle.gd" id="1_gcpvl"]
+[ext_resource type="Script" uid="uid://ccbavdihhtiue" path="res://scripts/Battle.gd" id="1_gcpvl"]
 [ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_l1t7a"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_wu1l2"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_aneb2"]
@@ -17,10 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
-[ext_resource type="Script" uid="uid://ys1gxh8em3by" path="res://scripts/ui.gd" id="18_5fcgm"]
-[ext_resource type="Script" uid="uid://pdn0o0835mcq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
-[ext_resource type="Script" uid="uid://qhjpjoqo6orq" path="res://Data/Bag.gd" id="20_m7t4b"]
-[ext_resource type="Script" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" uid="uid://ddtxskvj5y4sh" path="res://scripts/ui.gd" id="18_5fcgm"]
+[ext_resource type="Script" uid="uid://chglsocs7uyd3" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
+[ext_resource type="Script" uid="uid://bt8opjh2kwtrm" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" uid="uid://cciq3ypvsoguc" path="res://Data/items.gd" id="21_xdbdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -625,7 +625,7 @@ res = NodePath("../Move_layer/move")
 Player = NodePath("../Cast/Player/Player_sprite")
 Enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 
-[node name="Bag" type="Control" parent="." node_paths=PackedStringArray("container", "darken", "bag_exit", "bag", "odarken", "ui")]
+[node name="Bag" type="Control" parent="." node_paths=PackedStringArray("container", "darken", "bag_exit", "bag", "odarken", "ui", "items")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -636,13 +636,17 @@ bag_exit = NodePath("../Castless/bag_exit")
 bag = NodePath("../Castless/Bag")
 odarken = NodePath("../backround_layer/darken")
 ui = NodePath("../UI")
+items = NodePath("../Items")
 
-[node name="Items" type="Control" parent="." node_paths=PackedStringArray("MainScene")]
+[node name="Items" type="Control" parent="." node_paths=PackedStringArray("res", "MainScene", "player", "enemy")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("21_xdbdk")
+res = NodePath("../Move_layer/item")
 MainScene = NodePath("..")
+player = NodePath("../Cast/Player/Player_sprite")
+enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]
