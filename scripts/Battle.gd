@@ -1,6 +1,7 @@
 #Derives
 extends Control
 #Imports
+var Spawner = preload("res://Data/Spawning.gd").new()
 var GMon = preload("res://Data/GenMon.gd").new()
 var Save = preload("res://Data/Save.gd").new()
 var Load = preload("res://Data/Load.gd").new()
@@ -44,7 +45,8 @@ func _ready():
 			6:
 				Player = Globals.mon6
 	Globals.moves = Player.MOVES
-	Enemy = GMon.MonGen(Globals.starter,false)
+	var e_mon = Spawner.Spawn(1)
+	Enemy = GMon.MonGen(e_mon,false)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
 	Enemy = update_level(Enemy)
 	$UI.init(Player,Enemy)
