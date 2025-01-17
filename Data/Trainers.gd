@@ -13,7 +13,7 @@ func Check(id):
 					rival_mon = "charmander"
 				"squirtle":
 					rival_mon = "bulbasaur"
-			return CreateTrainer("Gray","You're about to get smashed kid",3,[rival_mon,null,null,null,null,null])
+			return CreateTrainer("Gray","You're about to get smashed kid",3,[rival_mon,null,null,null,null,null],1)
 		2:
 			pass
 		3:
@@ -22,11 +22,12 @@ func Check(id):
 			pass
 			
 			
-func CreateTrainer(Name,Text,Level,Party):
+func CreateTrainer(Name: String ,Text: String , Level : int , Party: Array , amt : int ):
 	Party = CreateParty(Party,Level)
 	return {
 		"name": Name,
 		"text": Text,
+		"amt": amt,
 		"party": Party
 	}
 func CreateParty(Party,Level):

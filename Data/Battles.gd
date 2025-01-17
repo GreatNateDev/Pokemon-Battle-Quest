@@ -11,3 +11,5 @@ func Check():
 			return 3
 		20:
 			return 4
+		_:
+			return null

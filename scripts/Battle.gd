@@ -12,6 +12,8 @@ var BattleChecker = preload("res://Data/Battles.gd").new()
 #Globals
 var Player : Dictionary
 var Enemy : Dictionary
+var isTrainer : bool = false
+var TrainerData : Dictionary
 #Ready
 func _ready():
 	if Globals.loaded == false:
@@ -49,8 +51,10 @@ func _ready():
 	Globals.moves = Player.MOVES
 	var checker = BattleChecker.Check()
 	if checker != null:
-		#init based on data
-		$UI.init(Player,Enemy)
+		$UI.init(Player,checker.mon1)
+		isTrainer = true
+		Enemy = checker.mon1
+		TrainerData = checker
 	var e_mon = Spawner.Spawn(1)
 	Enemy = GMon.MonGen(e_mon,false)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
@@ -131,7 +135,7 @@ func Bag() -> void:
 	$Cast/darken.visible = true
 	$Castless/Bag.visible = true
 	$Castless/bag_exit.show()
-	$Bag.update_bag()	
+	$Bag.update_bag()
 func SaveMon(Entity : Dictionary) -> void:
 	match Entity.index:
 		1:
