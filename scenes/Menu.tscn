@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c1l5a53y8du8s"]
 
-[ext_resource type="Script" uid="uid://bjxjjmc5e0ph3" path="res://scripts/Main_Menu.gd" id="1_krxnk"]
+[ext_resource type="Script" uid="uid://h2qkfnlc4mnp" path="res://scripts/Main_Menu.gd" id="1_krxnk"]
 [ext_resource type="Texture2D" uid="uid://bu2gulnu4yaq5" path="res://assets/pokemon/treecko/front.png" id="2_1gqtk"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="3_7g28n"]
 [ext_resource type="Texture2D" uid="uid://dohtna0cj63ev" path="res://assets/pokemon/torchic/front.png" id="4_7wrk3"]

@@ -1,11 +1,13 @@
 #Derives
 extends Control
 #Imports
+var TrainerLoader = preload("res://Data/Trainers.gd")
 var Spawner = preload("res://Data/Spawning.gd").new()
 var GMon = preload("res://Data/GenMon.gd").new()
 var Save = preload("res://Data/Save.gd").new()
 var Load = preload("res://Data/Load.gd").new()
 var MoveLoader = preload("res://Data/MoveLoader.gd").new()
+var LevelUpdater = preload("res://Data/Level_updater.gd").new()
 var Damage = preload("res://Data/DamageFormula.gd").new()
 #Globals
 var Player : Dictionary
@@ -15,7 +17,7 @@ func _ready():
 	if Globals.loaded == false:
 		Player = GMon.MonGen(Globals.starter,true)
 		Player["MOVES"]=MoveLoader.init(Player)
-		Player = update_level(Player)
+		Player = LevelUpdater.update_level(Player)
 	else:
 		var data = Load.loadfile()
 		if data == null:
@@ -48,7 +50,7 @@ func _ready():
 	var e_mon = Spawner.Spawn(1)
 	Enemy = GMon.MonGen(e_mon,false)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
-	Enemy = update_level(Enemy)
+	Enemy = LevelUpdater.update_level(Enemy)
 	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
@@ -78,7 +80,7 @@ func Fight(move) -> void:
 		Player.exp += Enemy.level * 12
 		$UI.update_exp()
 		if Player.exp >= Player.max_exp:
-			update_level(Player)
+			Player = LevelUpdater.update_level(Player)
 			$UI.update_exp()
 		SaveMon(Player)
 		Save.savefile(Player,Globals.money,Globals.starter,Globals.mon1,Globals.mon2,Globals.mon3,Globals.mon4,Globals.mon5,Globals.mon6,Globals.index)
@@ -119,33 +121,6 @@ func Run() -> void:
 		$UI.textedit(d[1])
 		$UI.reset_bars("Player",Player.hp)
 		$UI.disable_btns(false)
-func update_level(Entity : Dictionary) -> Dictionary:
-	Entity.max_exp = Entity.level * 100
-	Entity.exp = 0
-	var stats = FileAccess.open("res://Data/Pokemon.json", FileAccess.READ)
-	stats = JSON.parse_string(stats.get_as_text())
-	stats = stats[Entity.name].stats
-	Entity.hp = stats.Hp
-	Entity.attack = stats.Attack
-	Entity.defense = stats.Defense
-	Entity.spattack = stats.SpAttack
-	Entity.spdefense = stats.SpDefense
-	Entity.speed = stats.Speed
-	Entity.hp += Entity.IVS.hp
-	Entity.attack += Entity.IVS.attack
-	Entity.defense += Entity.IVS.defense
-	Entity.spattack += Entity.IVS.spattack
-	Entity.spdefense += Entity.IVS.spdefense
-	Entity.speed += Entity.IVS.speed
-	Entity.hp += Entity.EVS.hp
-	Entity.attack += Entity.EVS.attack
-	Entity.defense += Entity.EVS.defense
-	Entity.spattack += Entity.EVS.spattack
-	Entity.spdefense += Entity.EVS.spdefense
-	Entity.speed += Entity.EVS.speed
-	if Entity.has("max_hp"):
-		Entity.max_hp = Entity.hp
-	return Entity
 func Bag() -> void:
 	$UI.disable_btns(true)
 	$Cast/darken.visible = true
