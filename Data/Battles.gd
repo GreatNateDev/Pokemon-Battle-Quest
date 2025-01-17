@@ -1,9 +1,10 @@
 class_name Battles
+var TrainerLoader = preload("res://Data/Trainers.gd").new()
 func Check():
-	var : int BattleID = Globals.BattleID
+	var BattleID : int = Globals.BattleID
 	match BattleID:
 		5:
-			return 1
+			return TrainerLoader.Check(1)
 		10:
 			return 2 
 		15:

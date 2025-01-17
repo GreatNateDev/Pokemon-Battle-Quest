@@ -13,7 +13,7 @@ func Check(id):
 					rival_mon = "charmander"
 				"squirtle":
 					rival_mon = "bulbasaur"
-			CreateTrainer("Gray","You're about to get smashed kid",3,[rival_mon,null,null,null,null,null])
+			return CreateTrainer("Gray","You're about to get smashed kid",3,[rival_mon,null,null,null,null,null])
 		2:
 			pass
 		3:
@@ -35,8 +35,9 @@ func CreateParty(Party,Level):
 	for i in Party:
 		if i == null: break
 		var e = GMon.MonGen(i,false)
-		e = MoveLoader.init(e)
+		e["MOVES"]=MoveLoader.init(e)
 		e = LevelLoader.update_level(e)
+		e.level = Level
 		returnable_dict["mon"+str(incrementer)] = e
 		incrementer += 1
-			
+	return returnable_dict

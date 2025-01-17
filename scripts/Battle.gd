@@ -1,7 +1,6 @@
 #Derives
 extends Control
 #Imports
-var TrainerLoader = preload("res://Data/Trainers.gd")
 var Spawner = preload("res://Data/Spawning.gd").new()
 var GMon = preload("res://Data/GenMon.gd").new()
 var Save = preload("res://Data/Save.gd").new()
@@ -9,6 +8,7 @@ var Load = preload("res://Data/Load.gd").new()
 var MoveLoader = preload("res://Data/MoveLoader.gd").new()
 var LevelUpdater = preload("res://Data/Level_updater.gd").new()
 var Damage = preload("res://Data/DamageFormula.gd").new()
+var BattleChecker = preload("res://Data/Battles.gd").new()
 #Globals
 var Player : Dictionary
 var Enemy : Dictionary
@@ -47,6 +47,10 @@ func _ready():
 			6:
 				Player = Globals.mon6
 	Globals.moves = Player.MOVES
+	var checker = BattleChecker.Check()
+	if checker != null:
+		#init based on data
+		$UI.init(Player,Enemy)
 	var e_mon = Spawner.Spawn(1)
 	Enemy = GMon.MonGen(e_mon,false)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
@@ -75,6 +79,7 @@ func Fight(move) -> void:
 	if Enemy.hp <= 0:
 		#add triggers for below if trainer
 		#play vic music if wild or if last trainers mon
+		Globals.BattleID += 1
 		$UI.faint("Enemy")
 		$UI.textedit("Enemy fainted!")
 		Player.exp += Enemy.level * 12
