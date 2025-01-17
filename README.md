@@ -25,6 +25,14 @@ This should just run in any Redot editor 4.3x
 ## Contributing
 Make a pull request with the feature(s) you have made!
 ## TODO:
+abilities\
+true damage formula\
+status moves and effects\
+moves that are more than just moves\
+z-moves\
+gigantamaxxing\
+add held items\
+add mega evolotion\
 add trainers all the way up to champion\
 add all abilities from gen 3\
 add all items from gen 3\
