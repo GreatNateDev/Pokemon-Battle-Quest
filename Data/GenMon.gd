@@ -1,5 +1,5 @@
 class_name Gmon
-func MonGen(P, isPlayer):
+func MonGen(P, isPlayer, isTrainer):
 	var file = FileAccess.open("res://Data/Pokemon.json", FileAccess.READ)
 	var json = JSON.parse_string(file.get_as_text())
 	var Pokemon = {
@@ -65,4 +65,6 @@ func MonGen(P, isPlayer):
 			mon["index"] = 6
 			Globals.mon6 = mon
 		mon["max_hp"] = mon.hp
+	if isTrainer != 0:
+		mon["index"] = isTrainer
 	return mon

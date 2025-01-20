@@ -31,11 +31,11 @@ func CreateTrainer(Name: String ,Text: String , Level : int , Party: Array , amt
 		"party": Party
 	}
 func CreateParty(Party,Level):
-	var returnable_dict : Dictionary
+	var returnable_dict : Dictionary = {"mon1": null,"mon2":null,"mon3":null,"mon4":null,"mon5":null,"mon6":null}
 	var incrementer : int = 1
 	for i in Party:
 		if i == null: break
-		var e = GMon.MonGen(i,false)
+		var e = GMon.MonGen(i,false,incrementer)
 		e["MOVES"]=MoveLoader.init(e)
 		e = LevelLoader.update_level(e)
 		e.level = Level

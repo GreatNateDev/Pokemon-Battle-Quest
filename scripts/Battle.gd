@@ -17,7 +17,7 @@ var TrainerData : Dictionary
 #Ready
 func _ready():
 	if Globals.loaded == false:
-		Player = GMon.MonGen(Globals.starter,true)
+		Player = GMon.MonGen(Globals.starter,true,false)
 		Player["MOVES"]=MoveLoader.init(Player)
 		Player = LevelUpdater.update_level(Player)
 	else:
@@ -56,7 +56,7 @@ func _ready():
 		Enemy = checker.mon1
 		TrainerData = checker
 	var e_mon = Spawner.Spawn(1)
-	Enemy = GMon.MonGen(e_mon,false)
+	Enemy = GMon.MonGen(e_mon,false,0)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
 	Enemy = LevelUpdater.update_level(Enemy)
 	$UI.init(Player,Enemy)
@@ -81,7 +81,12 @@ func Fight(move) -> void:
 	$UI.reset_bars("Enemy",Enemy.hp)
 	$UI.disable_btns(true)
 	if Enemy.hp <= 0:
-		#add triggers for below if trainer
+		if isTrainer == true:
+			var incer = Enemy.index
+			isTrainer["mon"+Enemy.index] = {}
+			incer += 1
+			Enemy = isTrainer["mon"+incer]
+			
 		#play vic music if wild or if last trainers mon
 		Globals.BattleID += 1
 		$UI.faint("Enemy")
@@ -114,7 +119,7 @@ func Run() -> void:
 	var rand = randi() % 256
 	if chance > rand:
 		$UI.textedit("Got away safely!")
-		GMon.MonGen(Globals.starter,false)
+		GMon.MonGen(Globals.starter,false,0)
 	else:
 		$UI.textedit("Can't escape!")
 		$UI.disable_btns(true)
