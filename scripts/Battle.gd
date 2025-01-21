@@ -17,7 +17,7 @@ var TrainerData : Dictionary
 #Ready
 func _ready():
 	if Globals.loaded == false:
-		Player = GMon.MonGen(Globals.starter,true,false)
+		Player = GMon.MonGen(Globals.starter,true,0)
 		Player["MOVES"]=MoveLoader.init(Player)
 		Player = LevelUpdater.update_level(Player)
 	else:
@@ -83,9 +83,9 @@ func Fight(move) -> void:
 	if Enemy.hp <= 0:
 		if isTrainer == true:
 			var incer = Enemy.index
-			isTrainer["mon"+Enemy.index] = {}
+			TrainerData["mon"+Enemy.index] = {}
 			incer += 1
-			Enemy = isTrainer["mon"+incer]
+			Enemy = TrainerData["mon"+incer]
 			
 		#play vic music if wild or if last trainers mon
 		Globals.BattleID += 1
