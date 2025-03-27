@@ -51,10 +51,10 @@ func _ready():
 	Globals.moves = Player.MOVES
 	var checker = BattleChecker.Check()
 	if checker != null:
-		$UI.init(Player,checker.mon1)
 		isTrainer = true
-		Enemy = checker.mon1
+		Enemy = checker.party.mon1
 		TrainerData = checker
+		$UI.textedit(checker.text)
 	var e_mon = Spawner.Spawn(1)
 	Enemy = GMon.MonGen(e_mon,false,0)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
-[ext_resource type="Script" uid="uid://ccbavdihhtiue" path="res://scripts/Battle.gd" id="1_gcpvl"]
+[ext_resource type="Script" uid="uid://73q45qypxg4w" path="res://scripts/Battle.gd" id="1_gcpvl"]
 [ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_l1t7a"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_wu1l2"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_aneb2"]
@@ -17,10 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
-[ext_resource type="Script" uid="uid://ddtxskvj5y4sh" path="res://scripts/ui.gd" id="18_5fcgm"]
-[ext_resource type="Script" uid="uid://chglsocs7uyd3" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
-[ext_resource type="Script" uid="uid://bt8opjh2kwtrm" path="res://Data/Bag.gd" id="20_m7t4b"]
-[ext_resource type="Script" uid="uid://cciq3ypvsoguc" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" uid="uid://ry7sfvlflgwj" path="res://scripts/ui.gd" id="18_5fcgm"]
+[ext_resource type="Script" uid="uid://dyxeatryxsghq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
+[ext_resource type="Script" uid="uid://cjus1iffxtqk3" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" uid="uid://68hwnd1wpyt5" path="res://Data/items.gd" id="21_xdbdk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -497,12 +497,12 @@ z_index = 1
 texture_filter = 1
 position = Vector2(624.186, 727.863)
 emitting = false
+texture = ExtResource("14_amsgh")
 lifetime = 2.0
 one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
 randomness = 1.0
-texture = ExtResource("14_amsgh")
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0

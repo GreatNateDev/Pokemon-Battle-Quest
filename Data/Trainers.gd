@@ -23,12 +23,12 @@ func Check(id):
 			
 			
 func CreateTrainer(Name: String ,Text: String , Level : int , Party: Array , amt : int ):
-	Party = CreateParty(Party,Level)
+	var NewParty = CreateParty(Party,Level)
 	return {
 		"name": Name,
 		"text": Text,
 		"amt": amt,
-		"party": Party
+		"party": NewParty
 	}
 func CreateParty(Party,Level):
 	var returnable_dict : Dictionary = {"mon1": null,"mon2":null,"mon3":null,"mon4":null,"mon5":null,"mon6":null}
