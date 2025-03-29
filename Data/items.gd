@@ -33,3 +33,4 @@ func Item(ItemName):
 			var tweenw = get_tree().create_tween()
 			tweenw.tween_property(res,"position",Vector2(res.position.x,res.position.y + 100),1)
 			await get_tree().create_timer(1).timeout
+			$PokeBall.catch("regular")

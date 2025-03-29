@@ -28,7 +28,9 @@ func Item_pressed(key):
 			if button.texture_normal.resource_path == texture_to_check:
 				items.Item(key)
 				button.queue_free()
-		Globals.items.erase(key)
+	else:
+		items.Item(key)
+	Globals.items.erase(key)
 	_on_exit_bag_pressed()
 
 

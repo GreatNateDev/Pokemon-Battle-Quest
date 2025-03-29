@@ -45,6 +45,7 @@ func MonGen(P, isPlayer, isTrainer):
 	}
 	mon["exp"] = 0
 	mon["max_exp"] = mon.level * 100
+	mon["catch_rate"] = json[P].catch
 	if isPlayer == true:
 		if Globals.mon1 == null:
 			mon["index"] = 1

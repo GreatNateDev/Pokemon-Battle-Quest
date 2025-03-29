@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=26 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
 [ext_resource type="Script" uid="uid://73q45qypxg4w" path="res://scripts/Battle.gd" id="1_gcpvl"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://dyxeatryxsghq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
 [ext_resource type="Script" uid="uid://cjus1iffxtqk3" path="res://Data/Bag.gd" id="20_m7t4b"]
 [ext_resource type="Script" uid="uid://68hwnd1wpyt5" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" uid="uid://b6evmpv7b86xi" path="res://Data/PokeBall.gd" id="22_vuojo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -647,6 +648,13 @@ res = NodePath("../Move_layer/item")
 MainScene = NodePath("..")
 player = NodePath("../Cast/Player/Player_sprite")
 enemy = NodePath("../Cast/Enemy/Enemy_sprite")
+
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("22_vuojo")
+main = NodePath("..")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]

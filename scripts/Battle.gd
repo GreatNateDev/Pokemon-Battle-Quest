@@ -62,6 +62,7 @@ func _ready():
 	Enemy = GMon.MonGen(e_mon,false,0)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
 	Enemy = LevelUpdater.update_level(Enemy)
+	Globals.enemydata = Enemy
 	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
