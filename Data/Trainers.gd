@@ -13,7 +13,9 @@ func Check(id):
 					rival_mon = "charmander"
 				"squirtle":
 					rival_mon = "bulbasaur"
-			return CreateTrainer("Gray","You're about to get smashed kid",3,[rival_mon,null,null,null,null,null],1)
+				_:
+					rival_mon = "charmander"
+			return CreateTrainer("Brendan","You're about to get smashed kid",3,[rival_mon,null,null,null,null,null],1)
 		2:
 			pass
 		3:

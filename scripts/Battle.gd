@@ -54,7 +54,10 @@ func _ready():
 		isTrainer = true
 		Enemy = checker.party.mon1
 		TrainerData = checker
+		Globals.trainer = checker.name
 		$UI.textedit(checker.text)
+		$UI.init(Player,Enemy)
+		return 0
 	var e_mon = Spawner.Spawn(1)
 	Enemy = GMon.MonGen(e_mon,false,0)
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
@@ -83,7 +86,7 @@ func Fight(move) -> void:
 	if Enemy.hp <= 0:
 		if isTrainer == true:
 			var incer = Enemy.index
-			TrainerData["mon"+Enemy.index] = {}
+			TrainerData["mon"+str(Enemy.index)] = {}
 			incer += 1
 			Enemy = TrainerData["mon"+incer]
 			

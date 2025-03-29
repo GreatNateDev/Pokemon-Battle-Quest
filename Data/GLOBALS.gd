@@ -15,3 +15,4 @@ var mon5
 var mon6
 var index : int = 1
 var BattleID : int = 5
+var trainer : String

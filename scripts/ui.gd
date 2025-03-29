@@ -45,6 +45,9 @@ func init(Player,Enemy):
 	e_name.text = Enemy.name.capitalize()
 	e_level.text = "Lvl. " + str(Enemy.level)
 	e_texture.texture = load("res://assets/pokemon/"+Enemy.name+"/front.png")
+	if main.isTrainer == true:
+		e_texture.hide()
+		play_trainer_anim()
 
 
 func Fight_Pressed() -> void:
@@ -102,3 +105,15 @@ func stop_audio():
 	music.stop()
 func update_exp():
 	get_tree().create_tween().tween_property(p_exp,"value",main.Player.exp,.5)
+func play_trainer_anim():
+	var trainersprite = load("res://assets/trainers/"+Globals.trainer.to_lower()+".png")
+	var old = e_texture.texture
+	e_texture.texture = trainersprite
+	e_texture.show()
+	var old_pos = e_texture.position
+	var new_x = e_texture.position.x + 400 
+	var new_y = e_texture.position.y
+	await get_tree().create_timer(1).timeout
+	await get_tree().create_tween().tween_property(e_texture,"position",Vector2(new_x,new_y),1).finished
+	e_texture.texture = old 
+	e_texture.position = old_pos
