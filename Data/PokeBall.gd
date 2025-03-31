@@ -1,11 +1,15 @@
 extends Control
 @export var main : Control
 @export var ball : Sprite2D
+@export var stars : AnimationPlayer
+@export var starspos : Control
 var final_result
 func catch(baller : String):
 	match baller:
 		"regular":
 			final_result = await try(1)
+		"master":
+			final_result = await try(255)
 	return final_result
 func try(ball_modifier):
 	print(main.Enemy)
@@ -20,6 +24,14 @@ func calculate_shakes(catch_value: float) -> Dictionary:
 	if catch_value >= 255.0:
 		result["caught"] = true
 		result["shakes"] = 4
+		print(1)
+		await shake_anim()
+		print(2)
+		await shake_anim()
+		print(3)
+		await shake_anim()
+		print(4)
+		catch_anim()
 		return result
 	
 	# Gen III "shake threshold" formula
@@ -33,11 +45,11 @@ func calculate_shakes(catch_value: float) -> Dictionary:
 	for i in 4:
 		var rand_val = rng.randi() % 65536  # Random 0-65535
 		if rand_val < shake_threshold:
-			await shake_anim()
+			shake_anim()
 			print("shaked")
 			result["shakes"] += 1
 		else:
-			break  # Break out early if a check fails
+			print("escape!!!")
 	
 	# If all 4 shakes passed, catch succeeds
 	if result["shakes"] == 4:
@@ -47,3 +59,8 @@ func shake_anim():
 	await get_tree().create_tween().tween_property(ball,"skew",-1,.5).finished
 	await get_tree().create_tween().tween_property(ball,"skew",1,.5).finished
 	await get_tree().create_tween().tween_property(ball,"skew",0,.5).finished
+func catch_anim():
+	ball.self_modulate = Color.DIM_GRAY
+	starspos.position = ball.position
+	#stars.play("Main")
+	
