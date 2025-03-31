@@ -1,34 +1,34 @@
 {
   "items": [
-    {
-      "name": "poke_ball",
-      "description": "A device for catching wild Pokémon.",
-      "price": 200
-    },
-    {
-      "name": "potion",
-      "description": "A spray-type medicine for treating wounds.",
-      "price": 300
-    },
-    {
-      "name": "super_potion",
-      "description": "A potion that restores a larger amount of HP.",
-      "price": 700
-    },
-    {
-      "name": "revive",
-      "description": "A medicine that revives a fainted Pokémon.",
-      "price": 1500
-    },
-    {
-      "name": "ultra_ball",
-      "description": "A high-performance ball for catching Pokémon.",
-      "price": 1200
-    },
-    {
-      "name": "large_potion",
-      "description": "A medicine that fully restores HP and heals status conditions.",
-      "price": 3000
-    }
+	{
+	  "name": "pokeball",
+	  "description": "A device for catching wild Pokémon.",
+	  "price": 200
+	},
+	{
+	  "name": "potion",
+	  "description": "A spray-type medicine for treating wounds.",
+	  "price": 300
+	},
+	{
+	  "name": "super_potion",
+	  "description": "A potion that restores a larger amount of HP.",
+	  "price": 700
+	},
+	{
+	  "name": "revive",
+	  "description": "A medicine that revives a fainted Pokémon.",
+	  "price": 1500
+	},
+	{
+	  "name": "ultra_ball",
+	  "description": "A high-performance ball for catching Pokémon.",
+	  "price": 1200
+	},
+	{
+	  "name": "large_potion",
+	  "description": "A medicine that fully restores HP and heals status conditions.",
+	  "price": 3000
+	}
   ]
 }

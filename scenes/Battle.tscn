@@ -639,7 +639,7 @@ odarken = NodePath("../backround_layer/darken")
 ui = NodePath("../UI")
 items = NodePath("../Items")
 
-[node name="Items" type="Control" parent="." node_paths=PackedStringArray("res", "MainScene", "player", "enemy")]
+[node name="Items" type="Control" parent="." node_paths=PackedStringArray("res", "MainScene", "player", "enemy", "PokeBall")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -648,13 +648,15 @@ res = NodePath("../Move_layer/item")
 MainScene = NodePath("..")
 player = NodePath("../Cast/Player/Player_sprite")
 enemy = NodePath("../Cast/Enemy/Enemy_sprite")
+PokeBall = NodePath("../PokeBall")
 
-[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main")]
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_vuojo")
 main = NodePath("..")
+ball = NodePath("../Move_layer/item")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]

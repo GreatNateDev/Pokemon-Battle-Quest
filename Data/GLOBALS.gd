@@ -14,6 +14,6 @@ var mon4
 var mon5
 var mon6
 var index : int = 1
-var BattleID : int = 5
+var BattleID : int = 1
 var trainer : String
 var enemydata : Dictionary
