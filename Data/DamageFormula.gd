@@ -25,9 +25,6 @@ func Attack(Move, Entity, Stats, OStats):
 		txt = mov.ETEXT
 	elif opp == "Enemy":
 		txt = mov.PTEXT
-		#debug tackle
-	#if mov.name == "Tackle":
-		#final_damage *= 100
 	return [int(final_damage),txt]
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
