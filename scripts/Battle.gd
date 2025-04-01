@@ -23,6 +23,8 @@ func _ready():
 	else:
 		Globals.loaded = false
 		var data = Load.loadfile()
+		print("load")
+		print(data)
 		if data == null:
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 			return
@@ -209,4 +211,3 @@ func PokemonSwap(index: int, at_position: Vector2, mouse_button_index: int) -> v
 			else:
 				return
 	
-
