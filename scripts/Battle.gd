@@ -21,6 +21,7 @@ func _ready():
 		Player["MOVES"]=MoveLoader.init(Player)
 		Player = LevelUpdater.update_level(Player)
 	else:
+		Globals.loaded = false
 		var data = Load.loadfile()
 		if data == null:
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
@@ -35,6 +36,7 @@ func _ready():
 		Globals.mon5 = data[7]
 		Globals.mon6 = data[8]
 		Globals.index = data[9]
+		#this may be problematic
 		match Globals.index:
 			1:
 				Player = Globals.mon1
@@ -167,4 +169,44 @@ func SaveMon(Entity : Dictionary) -> void:
 			Globals.mon6 = Entity
 			Globals.index = 6
 func Swap() -> void:
-	pass
+	$UI.UpdateSwapMenu()
+func PokemonSwap(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	match index:
+		0:  # Switch to mon1
+			if Player.index != 1 and Globals.mon1 != null:
+				set("Globals.mon%d" % Player.index, Player)
+				Player = Globals.mon1
+			else:
+				return
+		1:  # Switch to mon2
+			if Player.index != 2 and Globals.mon2 != null:
+				set("Globals.mon%d" % Player.index, Player)
+				Player = Globals.mon2
+			else:
+				return
+		2:  # Switch to mon3
+			if Player.index != 3 and Globals.mon3 != null:
+				set("Globals.mon%d" % Player.index, Player)
+				Player = Globals.mon3
+			else:
+				return
+		3:  # Switch to mon4
+			if Player.index != 4 and Globals.mon4 != null:
+				set("Globals.mon%d" % Player.index, Player)
+				Player = Globals.mon4
+			else:
+				return
+		4:  # Switch to mon5
+			if Player.index != 5 and Globals.mon5 != null:
+				set("Globals.mon%d" % Player.index, Player)
+				Player = Globals.mon5
+			else:
+				return
+		5:  # Switch to mon6
+			if Player.index != 6 and Globals.mon6 != null:
+				set("Globals.mon%d" % Player.index, Player)
+				Player = Globals.mon6
+			else:
+				return
+	
+

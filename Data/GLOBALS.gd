@@ -6,7 +6,7 @@ var loaded : bool = false
 #Saved Data
 var starter : String = ""
 var money : int = 99
-var items : Dictionary
+var items : Dictionary = {"master_ball" : 1}
 var mon1
 var mon2
 var mon3
