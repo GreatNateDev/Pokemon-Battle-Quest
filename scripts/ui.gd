@@ -26,6 +26,7 @@ extends Control
 @export var e_sprite : Sprite2D
 @export var music : AudioStreamPlayer2D
 @export var faint_sfx : AudioStreamPlayer2D
+@export var swap_menu : ItemList
 @export var main : Control # Dont use this to much please
 func init(Player,Enemy):
 	p_exp.max_value = Player.max_exp
@@ -117,3 +118,5 @@ func play_trainer_anim():
 	await get_tree().create_tween().tween_property(e_texture,"position",Vector2(new_x,new_y),1).finished
 	e_texture.texture = old 
 	e_texture.position = old_pos
+func UpdateSwapMenu():
+	for i in Globals.mons

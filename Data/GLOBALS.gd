@@ -13,6 +13,7 @@ var mon3
 var mon4
 var mon5
 var mon6
+var mons = [mon1,mon2,mon3,mon4,mon5,mon6]
 var index : int = 1
 var BattleID : int = 1
 var trainer : String
