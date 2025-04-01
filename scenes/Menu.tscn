@@ -1,5 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c1l5a53y8du8s"]
 
+[ext_resource type="Script" uid="uid://beaxg4v5s8i1h" path="res://scripts/Main_Menu.gd" id="1_krxnk"]
 [ext_resource type="Texture2D" uid="uid://bu2gulnu4yaq5" path="res://assets/pokemon/treecko/front.png" id="2_1gqtk"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="3_7g28n"]
 [ext_resource type="Texture2D" uid="uid://dohtna0cj63ev" path="res://assets/pokemon/torchic/front.png" id="4_7wrk3"]
@@ -10,98 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b0p6mxkoi5tec" path="res://assets/pokemon/squirtle/front.png" id="8_wqpn4"]
 [ext_resource type="Texture2D" uid="uid://du1e0hgxg7uow" path="res://assets/pokemon/charmander/front.png" id="9_mhxgf"]
 
-[sub_resource type="GDScript" id="GDScript_k83u4"]
-script/source = "extends Node
-func data(mon):
-	Globals.starter = mon
-	get_tree().change_scene_to_file(\"res://scenes/main_window.tscn\")
-func _on_treecko_pressed():
-	data(\"treecko\")
-func _on_mudkip_pressed():
-	data(\"mudkip\")
-func _on_torchic_pressed():
-	data(\"torchic\")
-func _on_load_pressed():
-	if ResourceLoader.exists(\"user://save/Data.tres\") == true:
-		Globals.loader = true
-		get_tree().change_scene_to_file(\"res://scenes/main_window.tscn\")
-	else:
-		$Label2.text = \"Sorry! no save was detected\"
-
-
-func guide():
-	get_tree().change_scene_to_file(\"res://scenes/guide.tscn\")
-
-
-func Changelog():
-	get_tree().change_scene_to_file(\"res://scenes/changelog.tscn\")
-
-
-func _on_squirtle_pressed():
-	data(\"squirtle\")
-
-
-func _on_charmander_pressed():
-	data(\"charmander\")
-
-
-func _on_bulbasaur_pressed():
-	data(\"bulbasaur\")
-
-
-func _on_cyndaquil_pressed():
-	data(\"cyndaquil\")
-
-
-func _on_tododile_pressed():
-	data(\"totodile\")
-
-
-func _on_chikorita_pressed():
-	data(\"chikorita\")
-"
-
 [node name="choice" type="Node"]
-script = SubResource("GDScript_k83u4")
-
-[node name="side button right" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Button2" type="Button" parent="side button right"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -367.0
-offset_right = -1.0
-offset_bottom = 91.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 60
-text = "Game Guide"
-
-[node name="side button left" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button3" type="Button" parent="side button left"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_right = 326.0
-offset_bottom = 91.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 60
-text = "ReadMe"
+script = ExtResource("1_krxnk")
 
 [node name="choice" type="Control" parent="."]
 layout_mode = 3
@@ -151,7 +62,7 @@ texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("4_suvcs")
 
-[node name="tododile" type="TextureButton" parent="choice/GridContainer"]
+[node name="totodile" type="TextureButton" parent="choice/GridContainer"]
 texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("5_jdmah")
@@ -176,7 +87,7 @@ texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("9_mhxgf")
 
-[node name="Label" type="Label" parent="choice"]
+[node name="Title" type="Label" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -191,7 +102,7 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Choose you're starter!!!"
 
-[node name="Label2" type="Label" parent="choice"]
+[node name="OR" type="Label" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -209,7 +120,7 @@ text = "or"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="choice"]
+[node name="LOAD" type="Button" parent="choice"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -225,15 +136,13 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 text = "Load"
 
-[connection signal="pressed" from="side button right/Button2" to="." method="guide"]
-[connection signal="pressed" from="side button left/Button3" to="." method="Changelog"]
-[connection signal="pressed" from="choice/GridContainer/treecko" to="." method="_on_treecko_pressed"]
-[connection signal="pressed" from="choice/GridContainer/mudkip" to="." method="_on_mudkip_pressed"]
-[connection signal="pressed" from="choice/GridContainer/torchic" to="." method="_on_torchic_pressed"]
-[connection signal="pressed" from="choice/GridContainer/chikorita" to="." method="_on_chikorita_pressed"]
-[connection signal="pressed" from="choice/GridContainer/tododile" to="." method="_on_tododile_pressed"]
-[connection signal="pressed" from="choice/GridContainer/cyndaquil" to="." method="_on_cyndaquil_pressed"]
-[connection signal="pressed" from="choice/GridContainer/bulbasaur" to="." method="_on_bulbasaur_pressed"]
-[connection signal="pressed" from="choice/GridContainer/squirtle" to="." method="_on_squirtle_pressed"]
-[connection signal="pressed" from="choice/GridContainer/charmander" to="." method="_on_charmander_pressed"]
-[connection signal="pressed" from="choice/Button" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="choice/GridContainer/treecko" to="." method="treecko"]
+[connection signal="pressed" from="choice/GridContainer/mudkip" to="." method="mudkip"]
+[connection signal="pressed" from="choice/GridContainer/torchic" to="." method="torchic"]
+[connection signal="pressed" from="choice/GridContainer/chikorita" to="." method="chikorita"]
+[connection signal="pressed" from="choice/GridContainer/totodile" to="." method="totodile"]
+[connection signal="pressed" from="choice/GridContainer/cyndaquil" to="." method="cyndaquil"]
+[connection signal="pressed" from="choice/GridContainer/bulbasaur" to="." method="bulbasaur"]
+[connection signal="pressed" from="choice/GridContainer/squirtle" to="." method="squirtle"]
+[connection signal="pressed" from="choice/GridContainer/charmander" to="." method="charmander"]
+[connection signal="pressed" from="choice/LOAD" to="." method="Loaded_pressed"]

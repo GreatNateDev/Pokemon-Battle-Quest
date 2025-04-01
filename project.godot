@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Pokemon Battle Quest"
-run/main_scene="res://scenes/pkmn choice.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://scenes/Menu.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.625575, 7.46027e-07, 1.44392e-07, 1)
 boot_splash/show_image=false
 config/icon="res://assets/IOS/icon1024.png"
 
 [autoload]
 
-Globals="*res://scripts/globals.gd"
+Globals="*res://Data/GLOBALS.gd"
 
 [display]
 

@@ -1,34 +1,29 @@
-[gd_scene load_steps=33 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
 
-[ext_resource type="Script" path="res://scripts/main_window.gd" id="1_lta6h"]
-[ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="3_1hr1h"]
-[ext_resource type="Texture2D" uid="uid://cvci26ta7e28g" path="res://assets/pokemon/mudkip/back.png" id="3_514l4"]
-[ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="4_2ah0f"]
-[ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/UI/moves.png" id="5_b0t8s"]
-[ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="5_dyh0f"]
-[ext_resource type="Script" path="res://scripts/Moves.gd" id="5_v2ebp"]
-[ext_resource type="Script" path="res://scripts/learnable_moves.gd" id="6_htm76"]
-[ext_resource type="Script" path="res://scripts/trainers.gd" id="7_d748f"]
-[ext_resource type="Script" path="res://scripts/item_animations.gd" id="8_dybkr"]
-[ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="8_ht83t"]
-[ext_resource type="Script" path="res://scripts/held_items.gd" id="9_frcu3"]
-[ext_resource type="Script" path="res://scripts/damage.gd" id="9_s3jf0"]
-[ext_resource type="Script" path="res://scripts/pokemon.gd" id="10_rwwo6"]
-[ext_resource type="Script" path="res://scripts/evolution.gd" id="10_t1pff"]
-[ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="11_gdaxw"]
-[ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="12_4muds"]
-[ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_tf27j"]
-[ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="15_avpwn"]
-[ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="15_hwawq"]
-[ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="16_6kc6n"]
-[ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="17_3nwhe"]
-[ext_resource type="Script" path="res://scripts/Types.gd" id="19_rjewy"]
-[ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="20_y8gax"]
-[ext_resource type="Script" path="res://scripts/items.gd" id="23_ckc1j"]
-[ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="24_gg8a3"]
-[ext_resource type="Script" path="res://scripts/animations.gd" id="24_qbdsb"]
-[ext_resource type="Texture2D" uid="uid://bmvtqmjekndjv" path="res://assets/UI/mega.png" id="25_8074n"]
-[ext_resource type="Script" path="res://scripts/abilities.gd" id="26_0g7nj"]
+[ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
+[ext_resource type="Script" uid="uid://73q45qypxg4w" path="res://scripts/Battle.gd" id="1_gcpvl"]
+[ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_l1t7a"]
+[ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_wu1l2"]
+[ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_aneb2"]
+[ext_resource type="AudioStream" uid="uid://h4mawmj2f857" path="res://assets/music & sfx/battle_music.wav" id="5_alole"]
+[ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="6_6whck"]
+[ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="7_q8x7c"]
+[ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="8_ip42o"]
+[ext_resource type="AudioStream" uid="uid://cav26ivb1m6og" path="res://assets/music & sfx/ballshake.wav" id="9_3b6xh"]
+[ext_resource type="Texture2D" uid="uid://cvci26ta7e28g" path="res://assets/pokemon/mudkip/back.png" id="9_brrfw"]
+[ext_resource type="AudioStream" uid="uid://c5vbbnw7y0n1g" path="res://assets/music & sfx/caughtsfx.wav" id="10_lcn8m"]
+[ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="10_llrwc"]
+[ext_resource type="Texture2D" uid="uid://bmvtqmjekndjv" path="res://assets/UI/mega.png" id="11_n1iay"]
+[ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="12_dwriy"]
+[ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/UI/moves.png" id="13_wpnxy"]
+[ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
+[ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
+[ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
+[ext_resource type="Script" uid="uid://ry7sfvlflgwj" path="res://scripts/ui.gd" id="18_5fcgm"]
+[ext_resource type="Script" uid="uid://dyxeatryxsghq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
+[ext_resource type="Script" uid="uid://cjus1iffxtqk3" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" uid="uid://68hwnd1wpyt5" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" uid="uid://b6evmpv7b86xi" path="res://Data/PokeBall.gd" id="22_vuojo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -39,7 +34,7 @@ bg_color = Color(0.114231, 0.54926, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asvjh"]
 bg_color = Color(0.968627, 0, 0.215686, 1)
 
-[node name="Main_Window" type="Control"]
+[node name="BattleField" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,76 +45,7 @@ offset_right = 7.0
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lta6h")
-
-[node name="Pokemon" type="Control" parent="."]
-anchors_preset = 0
-script = ExtResource("10_rwwo6")
-
-[node name="Items" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("23_ckc1j")
-
-[node name="Item Animations" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("8_dybkr")
-
-[node name="Damage" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_s3jf0")
-
-[node name="Learnable_Moves" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("6_htm76")
-
-[node name="Trainers" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("7_d748f")
-
-[node name="Abilities" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("26_0g7nj")
-
-[node name="HeldItems" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("9_frcu3")
-
-[node name="Evolution" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("10_t1pff")
-
-[node name="Types" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("19_rjewy")
-
-[node name="Move Animations" type="Control" parent="."]
-anchors_preset = 0
-script = ExtResource("24_qbdsb")
-
-[node name="Moves" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_v2ebp")
+script = ExtResource("1_gcpvl")
 
 [node name="SFX" type="Control" parent="."]
 anchors_preset = 0
@@ -127,46 +53,44 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="faint" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("16_6kc6n")
-volume_db = 24.0
+stream = ExtResource("1_2g463")
+volume_db = 4.19
+pitch_scale = 0.7
 
 [node name="lvlup" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("15_avpwn")
+stream = ExtResource("2_l1t7a")
 volume_db = 24.0
 
 [node name="weak attack" type="AudioStreamPlayer2D" parent="SFX"]
 position = Vector2(567.8, 259.76)
-stream = ExtResource("11_gdaxw")
+stream = ExtResource("3_wu1l2")
 volume_db = 24.0
 
 [node name="attack" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("12_4muds")
+stream = ExtResource("4_aneb2")
 volume_db = 24.0
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="SFX"]
 position = Vector2(564, 320)
-stream = ExtResource("8_ht83t")
+stream = ExtResource("5_alole")
+volume_db = -7.924
 autoplay = true
 
 [node name="super attack" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("20_y8gax")
+stream = ExtResource("6_6whck")
 volume_db = 24.0
 
 [node name="caught" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("15_hwawq")
-volume_db = 24.0
+stream = ExtResource("7_q8x7c")
+volume_db = 7.0
 
-[node name="Timers" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ballshake" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_3b6xh")
+volume_db = 12.876
 
-[node name="after_attack cooldown" type="Timer" parent="Timers"]
-wait_time = 1.5
-one_shot = true
-
-[node name="damage_state_disabler" type="Timer" parent="Timers"]
-one_shot = true
+[node name="caughtsfx" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_lcn8m")
+volume_db = 16.838
 
 [node name="Cast" type="CanvasLayer" parent="."]
 layer = 0
@@ -189,13 +113,13 @@ z_index = -5
 texture_filter = 1
 position = Vector2(321, -107)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_1hr1h")
+texture = ExtResource("8_ip42o")
 
 [node name="Player_sprite" type="Sprite2D" parent="Cast/Player"]
 texture_filter = 1
 position = Vector2(316, -189)
 scale = Vector2(3, 3)
-texture = ExtResource("3_514l4")
+texture = ExtResource("9_brrfw")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Player"]
 layout_mode = 0
@@ -256,13 +180,13 @@ scale = Vector2(1.5, 1.5)
 z_index = -5
 position = Vector2(-227, 222)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_1hr1h")
+texture = ExtResource("8_ip42o")
 
 [node name="Enemy_sprite" type="Sprite2D" parent="Cast/Enemy"]
 texture_filter = 1
 position = Vector2(-223, 213)
 scale = Vector2(3, 3)
-texture = ExtResource("4_2ah0f")
+texture = ExtResource("10_llrwc")
 
 [node name="hpbar" type="ProgressBar" parent="Cast/Enemy"]
 layout_mode = 0
@@ -349,7 +273,7 @@ offset_top = -300.0
 offset_right = 323.0
 offset_bottom = 33.0
 scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("25_8074n")
+texture_normal = ExtResource("11_n1iay")
 
 [node name="darken" type="CanvasModulate" parent="Cast"]
 visible = false
@@ -370,7 +294,7 @@ grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Cast/textbox"]
 position = Vector2(-214, -119)
-texture = ExtResource("5_dyh0f")
+texture = ExtResource("12_dwriy")
 
 [node name="Label" type="Label" parent="Cast/textbox"]
 layout_mode = 0
@@ -420,7 +344,7 @@ scale = Vector2(2, 2)
 [node name="Menu_Box" type="Sprite2D" parent="Castless/Box_and_buttons_centre"]
 texture_filter = 1
 scale = Vector2(5, 5)
-texture = ExtResource("5_b0t8s")
+texture = ExtResource("13_wpnxy")
 
 [node name="Move1" type="Button" parent="Castless/Box_and_buttons_centre"]
 layout_mode = 0
@@ -584,12 +508,12 @@ z_index = 1
 texture_filter = 1
 position = Vector2(624.186, 727.863)
 emitting = false
+texture = ExtResource("14_amsgh")
 lifetime = 2.0
 one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
 randomness = 1.0
-texture = ExtResource("14_tf27j")
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
@@ -641,7 +565,7 @@ follow_viewport_enabled = true
 texture_filter = 1
 position = Vector2(1373.5, 808.5)
 scale = Vector2(11.3776, 7.57101)
-texture = ExtResource("17_3nwhe")
+texture = ExtResource("15_v0x6n")
 metadata/_edit_lock_ = true
 
 [node name="darken" type="CanvasModulate" parent="backround_layer"]
@@ -656,7 +580,6 @@ visible = false
 texture_filter = 1
 
 [node name="item" type="Sprite2D" parent="Move_layer"]
-visible = false
 texture_filter = 1
 
 [node name="star" type="Sprite2D" parent="Move_layer"]
@@ -667,54 +590,94 @@ visible = false
 texture_filter = 1
 position = Vector2(1824, 192)
 scale = Vector2(5, 5)
-texture = ExtResource("24_gg8a3")
+texture = ExtResource("16_ofqqp")
 
-[connection signal="Attack" from="." to="Damage" method="Attack"]
-[connection signal="HeldItem" from="." to="HeldItems" method="Item"]
-[connection signal="evolve" from="." to="Evolution" method="_on_main_window_evolve"]
-[connection signal="faint" from="." to="Move Animations" method="faint"]
-[connection signal="get_new_move" from="." to="Learnable_Moves" method="_on_main_window_get_new_move"]
-[connection signal="randmov" from="." to="Learnable_Moves" method="RandMov"]
-[connection signal="random_pokemon" from="." to="Pokemon" method="RandMon"]
-[connection signal="run_items" from="." to="Items" method="_on_main_window_run_items"]
-[connection signal="trainer_battle" from="." to="Trainers" method="Trainer_battle"]
-[connection signal="type_requester" from="." to="Pokemon" method="_on_main_window_type_requester"]
-[connection signal="pkmn_data" from="Pokemon" to="." method="pokemon_data"]
-[connection signal="random_pokemon" from="Pokemon" to="." method="RandMon"]
-[connection signal="return_mon_data" from="Pokemon" to="Trainers" method="Return_data"]
-[connection signal="animation" from="Items" to="Item Animations" method="Item_anim"]
-[connection signal="potion" from="Items" to="." method="Potion"]
-[connection signal="anim_text" from="Item Animations" to="." method="anim_text"]
-[connection signal="caught" from="Item Animations" to="." method="caught"]
-[connection signal="failed" from="Item Animations" to="." method="failed"]
-[connection signal="Damage" from="Damage" to="." method="Damage"]
-[connection signal="anim" from="Damage" to="Move Animations" method="Animation"]
-[connection signal="fail" from="Damage" to="." method="move_failed_by_status"]
-[connection signal="flinch" from="Damage" to="." method="flinch"]
-[connection signal="get_damagebased_ability" from="Damage" to="Abilities" method="Damage_abilitys"]
-[connection signal="heal" from="Damage" to="." method="_on_damage_heal"]
-[connection signal="statuser" from="Damage" to="." method="statify"]
-[connection signal="Mov_return" from="Learnable_Moves" to="." method="Mov_return"]
-[connection signal="return_lvlup_mov" from="Learnable_Moves" to="." method="lvlup_mov"]
-[connection signal="get_pkmn_data" from="Trainers" to="Pokemon" method="get_pokemon_data"]
-[connection signal="send_party" from="Trainers" to="." method="Party"]
-[connection signal="text" from="Trainers" to="." method="_on_trainers_text"]
-[connection signal="damage_rebound" from="Abilities" to="Damage" method="_on_abilities_damage_rebound"]
-[connection signal="damage_text" from="Abilities" to="." method="_on_abilities_damage_text"]
-[connection signal="item_return" from="HeldItems" to="." method="item_return"]
-[connection signal="loseitem" from="HeldItems" to="." method="loseitem"]
-[connection signal="evo" from="Evolution" to="." method="evolveit"]
-[connection signal="timeout" from="Timers/after_attack cooldown" to="." method="_on_after_attack_cooldown_timeout"]
-[connection signal="timeout" from="Timers/damage_state_disabler" to="." method="_on_damage_state_disabler_timeout"]
-[connection signal="pressed" from="Cast/Buttons/Fight" to="." method="_on_fight_pressed"]
-[connection signal="pressed" from="Cast/Buttons/Run" to="." method="run_clicked"]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite", "music", "faint_sfx", "swap_menu", "main")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_5fcgm")
+money = NodePath("../Cast/Money/Money_label")
+p_hpbar = NodePath("../Cast/Player/hpbar")
+p_type = NodePath("../Cast/Player/type")
+p_name = NodePath("../Cast/Player/name")
+p_level = NodePath("../Cast/Player/lvl")
+p_exp = NodePath("../Cast/Player/xpbar")
+p_texture = NodePath("../Cast/Player/Player_sprite")
+e_hpbar = NodePath("../Cast/Enemy/hpbar")
+e_type = NodePath("../Cast/Enemy/type")
+e_name = NodePath("../Cast/Enemy/name")
+e_level = NodePath("../Cast/Enemy/lvl")
+e_texture = NodePath("../Cast/Enemy/Enemy_sprite")
+darken = NodePath("../Cast/darken")
+fightbuttons = NodePath("../Castless/Box_and_buttons_centre")
+move1 = NodePath("../Castless/Box_and_buttons_centre/Move1")
+move2 = NodePath("../Castless/Box_and_buttons_centre/Move2")
+move3 = NodePath("../Castless/Box_and_buttons_centre/Move3")
+move4 = NodePath("../Castless/Box_and_buttons_centre/Move4")
+text = NodePath("../Cast/textbox/Label")
+bag = NodePath("../Cast/Buttons/Bag")
+swap = NodePath("../Cast/Buttons/Swap")
+run = NodePath("../Cast/Buttons/Run")
+fight = NodePath("../Cast/Buttons/Fight")
+p_sprite = NodePath("../Cast/Player/Player_sprite")
+e_sprite = NodePath("../Cast/Enemy/Enemy_sprite")
+music = NodePath("../SFX/Audio")
+faint_sfx = NodePath("../SFX/faint")
+swap_menu = NodePath("../Castless/Pokemon_Menu/ItemList")
+main = NodePath("..")
+
+[node name="BattleAnimations" type="Control" parent="." node_paths=PackedStringArray("res", "Player", "Enemy")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_cj8pw")
+res = NodePath("../Move_layer/move")
+Player = NodePath("../Cast/Player/Player_sprite")
+Enemy = NodePath("../Cast/Enemy/Enemy_sprite")
+
+[node name="Bag" type="Control" parent="." node_paths=PackedStringArray("container", "darken", "bag_exit", "bag", "odarken", "ui", "items")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_m7t4b")
+container = NodePath("../Castless/Bag/Container")
+darken = NodePath("../Cast/darken")
+bag_exit = NodePath("../Castless/bag_exit")
+bag = NodePath("../Castless/Bag")
+odarken = NodePath("../backround_layer/darken")
+ui = NodePath("../UI")
+items = NodePath("../Items")
+
+[node name="Items" type="Control" parent="." node_paths=PackedStringArray("res", "MainScene", "player", "enemy", "PokeBall")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("21_xdbdk")
+res = NodePath("../Move_layer/item")
+MainScene = NodePath("..")
+player = NodePath("../Cast/Player/Player_sprite")
+enemy = NodePath("../Cast/Enemy/Enemy_sprite")
+PokeBall = NodePath("../PokeBall")
+
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("22_vuojo")
+main = NodePath("..")
+ball = NodePath("../Move_layer/item")
+ballshake = NodePath("../SFX/ballshake")
+caughtsfx = NodePath("../SFX/caughtsfx")
+fanfair = NodePath("../SFX/caught")
+Audio = NodePath("../SFX/Audio")
+
+[connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
+[connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]
 [connection signal="pressed" from="Cast/Buttons/Bag" to="." method="Bag"]
 [connection signal="pressed" from="Cast/Buttons/Swap" to="." method="Swap"]
-[connection signal="pressed" from="Cast/Buttons/Mega_EVO" to="." method="Mega"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move1" to="." method="Move1"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
-[connection signal="item_clicked" from="Castless/Pokemon_Menu/ItemList" to="." method="Pokemon_swap"]
-[connection signal="item_clicked" from="Castless/New_Move/ItemList" to="." method="new_mov_btn_clk"]
-[connection signal="pressed" from="Castless/bag_exit/Exit_Bag" to="." method="exit_bag"]
+[connection signal="pressed" from="Castless/bag_exit/Exit_Bag" to="Bag" method="_on_exit_bag_pressed"]

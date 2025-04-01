@@ -1,41 +1,21 @@
-
-# Pokemon Monster Battle Arena
-
-A Pokemon battle simulator created in Redot 4.3rc1
-
-
-
+# Pokemon Battle Quest
+A Pokemon battle simulator created in Godot
 ## Features
-
-- Gen 3 damage formula
-- Pokemon Switching
-- 1000 "Battles"
-- Cross platform windows web some times on major vers linux and ios and android
+- Gen 3 damage formula with newer Physical and Special split
+- Pokemon Switching (SOON)
+- 1000 "Battles" (SOON)
+- Cross platform windows web some times on major vers linux and ios and android (MAJOR RELEASES ONLY)
 - Saving every battle
-- brotato esk shop system
-- Gen 3 abilities
-- Gen 3 Pokemon
-- Gen 3 items
-- Active development
-- Made in Redot
-- Maybe mod support soon eg custom items pokemon trainers etc
-## Demo
+- Pokérouge esk shop system
+- All Gen 3 abilities (SOON)
+- All Gen 3 Pokemon (SOON)
+- All Gen 3 items (SOON)
+- Maybe mod support soon eg custom items pokemon trainers etc (DELAYED)
+## Web Build
 https://greatnatedev.github.io/Battle_HTML/
 ## Authors
-
 - [@GreatNateDev](https://www.github.com/GreatNateDev)
-
-
-## Feedback
-To send feedback make an issue in this repo
 ## Building
-This should just run in any Redot editor 4.3x
-## Contributing
-Make a pull request with the feature(s) you have made!
-
+This should just run in any Gedot editor 4.4.x
 ## TODO:
-add trainers all the way up to champion\
-add all abilities from gen 3\
-add all items from gen 3\
-add all pokemon from gen 3\
-add all moves from gen 3
+Switching Pokemon Setup for all sorts of parts of the Game
