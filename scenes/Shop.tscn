@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvnl1ftigu1vg"]
 
-[ext_resource type="Script" uid="uid://debwcyd2ytmq0" path="res://scripts/Shop.gd" id="1_rgcs7"]
+[ext_resource type="Script" uid="uid://bf81mv32584he" path="res://scripts/Shop.gd" id="1_rgcs7"]
 
 [node name="Shop" type="Control" node_paths=PackedStringArray("button_1", "button_2", "button_3", "label_1", "label_2", "label_3")]
 layout_mode = 3

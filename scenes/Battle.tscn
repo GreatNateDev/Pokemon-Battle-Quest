@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
-[ext_resource type="Script" uid="uid://73q45qypxg4w" path="res://scripts/Battle.gd" id="1_gcpvl"]
+[ext_resource type="Script" uid="uid://c1xab3hsfufb7" path="res://scripts/Battle.gd" id="1_gcpvl"]
 [ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_l1t7a"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_wu1l2"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_aneb2"]
@@ -19,11 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
-[ext_resource type="Script" uid="uid://ry7sfvlflgwj" path="res://scripts/ui.gd" id="18_5fcgm"]
-[ext_resource type="Script" uid="uid://dyxeatryxsghq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
-[ext_resource type="Script" uid="uid://cjus1iffxtqk3" path="res://Data/Bag.gd" id="20_m7t4b"]
-[ext_resource type="Script" uid="uid://68hwnd1wpyt5" path="res://Data/items.gd" id="21_xdbdk"]
-[ext_resource type="Script" uid="uid://b6evmpv7b86xi" path="res://Data/PokeBall.gd" id="22_vuojo"]
+[ext_resource type="Script" uid="uid://bdwbag5atxgc7" path="res://scripts/ui.gd" id="18_5fcgm"]
+[ext_resource type="Script" uid="uid://by8qrsvi633tu" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
+[ext_resource type="Script" uid="uid://x52lxjyr2x2h" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" uid="uid://dnvu23yn4eqw5" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" uid="uid://x8d1xxhfurs8" path="res://Data/PokeBall.gd" id="22_vuojo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -592,7 +592,7 @@ position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite", "music", "faint_sfx", "swap_menu", "main")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite", "music", "faint_sfx", "swap_menu", "swap_menu_root", "main")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -625,6 +625,7 @@ e_sprite = NodePath("../Cast/Enemy/Enemy_sprite")
 music = NodePath("../SFX/Audio")
 faint_sfx = NodePath("../SFX/faint")
 swap_menu = NodePath("../Castless/Pokemon_Menu/ItemList")
+swap_menu_root = NodePath("../Castless/Pokemon_Menu")
 main = NodePath("..")
 
 [node name="BattleAnimations" type="Control" parent="." node_paths=PackedStringArray("res", "Player", "Enemy")]
@@ -680,4 +681,5 @@ Audio = NodePath("../SFX/Audio")
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move2" to="." method="Move2"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move3" to="." method="Move3"]
 [connection signal="pressed" from="Castless/Box_and_buttons_centre/Move4" to="." method="Move4"]
+[connection signal="item_clicked" from="Castless/Pokemon_Menu/ItemList" to="." method="PokemonSwap"]
 [connection signal="pressed" from="Castless/bag_exit/Exit_Bag" to="Bag" method="_on_exit_bag_pressed"]

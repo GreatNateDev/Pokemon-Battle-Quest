@@ -73,18 +73,24 @@ func catch_anim():
 	
 	
 func finish_caught():
-	if Globals.mon1 != null:
+	if Globals.mon1 == null:
 		Globals.mon1 = main.Enemy
-	elif Globals.mon2 != null:
+		Globals.mon1.index = 1
+	elif Globals.mon2 == null:
 		Globals.mon2 = main.Enemy
-	elif Globals.mon3 != null:
+		Globals.mon2.index = 2
+	elif Globals.mon3 == null:
 		Globals.mon3 = main.Enemy
-	elif Globals.mon4 != null:
+		Globals.mon3.index = 3
+	elif Globals.mon4 == null:
 		Globals.mon4 = main.Enemy
-	elif Globals.mon5 != null:
+		Globals.mon4.index = 4
+	elif Globals.mon5 == null:
 		Globals.mon5 = main.Enemy
-	elif Globals.mon6 != null:
+		Globals.mon5.index = 5
+	elif Globals.mon6 == null:
 		Globals.mon6 = main.Enemy
+		Globals.mon6.index = 6
 	else:
 		print("fail")
 		#replace_mon()
