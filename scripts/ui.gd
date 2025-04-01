@@ -124,19 +124,19 @@ func UpdateSwapMenu():
 		if Globals.mon1 != null:
 			swap_menu.set_item_icon(0,load("res://assets/pokemon/"+Globals.mon1.name+"/front.png"))
 			swap_menu.set_item_text(0, Globals.mon1.name)
-		elif Globals.mon2 != null:
+		if Globals.mon2 != null:
 			swap_menu.set_item_icon(1,load("res://assets/pokemon/"+Globals.mon2.name+"/front.png"))
 			swap_menu.set_item_text(1, Globals.mon2.name)
-		elif Globals.mon3 != null:
+		if Globals.mon3 != null:
 			swap_menu.set_item_icon(2,load("res://assets/pokemon/"+Globals.mon3.name+"/front.png"))
 			swap_menu.set_item_text(2, Globals.mon3.name)
-		elif Globals.mon4 != null:
+		if Globals.mon4 != null:
 			swap_menu.set_item_icon(3,load("res://assets/pokemon/"+Globals.mon4.name+"/front.png"))
 			swap_menu.set_item_text(3, Globals.mon4.name)
-		elif Globals.mon5 != null:
+		if Globals.mon5 != null:
 			swap_menu.set_item_icon(4,load("res://assets/pokemon/"+Globals.mon5.name+"/front.png"))
 			swap_menu.set_item_text(4, Globals.mon5.name)
-		elif Globals.mon6 != null:
+		if Globals.mon6 != null:
 			swap_menu.set_item_icon(5,load("res://assets/pokemon/"+Globals.mon6.name+"/front.png"))
 			swap_menu.set_item_text(5, Globals.mon6.name)
 		swap_menu_root.show()

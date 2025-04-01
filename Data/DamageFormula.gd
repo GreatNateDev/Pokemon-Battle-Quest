@@ -22,11 +22,12 @@ func Attack(Move, Entity, Stats, OStats):
 	var final_damage = adjusted_damage * random_number / 100
 	var txt
 	if opp == "Player":
-		txt = mov.PTEXT
-	elif opp == "Enemy":
 		txt = mov.ETEXT
-	if mov.name == "Tackle":
-		final_damage *= 100
+	elif opp == "Enemy":
+		txt = mov.PTEXT
+		#debug tackle
+	#if mov.name == "Tackle":
+		#final_damage *= 100
 	return [int(final_damage),txt]
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1

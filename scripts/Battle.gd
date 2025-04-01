@@ -21,10 +21,8 @@ func _ready():
 		Player["MOVES"]=MoveLoader.init(Player)
 		Player = LevelUpdater.update_level(Player)
 	else:
-		Globals.loaded = false
 		var data = Load.loadfile()
-		print("load")
-		print(data)
+		Globals.loaded = false
 		if data == null:
 			get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 			return
@@ -112,17 +110,7 @@ func Fight(move) -> void:
 		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
 		return
 	await get_tree().create_timer(2.5).timeout
-	move = randi_range(0, len(Enemy.MOVES) - 1)
-	move = Enemy.MOVES[move]
-	$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
-	d = Damage.Attack(move,"Enemy",Enemy,Player)
-	Player.hp -= d[0]
-	if Player.hp <= 0:
-		#add triggers for below if has more mon
-		$UI.faint("Player")
-	$UI.textedit(d[1])
-	$UI.reset_bars("Player",Player.hp)
-	$UI.disable_btns(false)
+	EnemyAttack()
 func Run() -> void:
 	var chance = (Player.speed / Enemy.speed) * 128
 	var rand = randi() % 256
@@ -172,7 +160,7 @@ func SaveMon(Entity : Dictionary) -> void:
 			Globals.index = 6
 func Swap() -> void:
 	$UI.UpdateSwapMenu()
-func PokemonSwap(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+func PokemonSwap(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	match index:
 		0:  # Switch to mon1
 			if Player.index != 1 and Globals.mon1 != null:
@@ -210,4 +198,21 @@ func PokemonSwap(index: int, at_position: Vector2, mouse_button_index: int) -> v
 				Player = Globals.mon6
 			else:
 				return
-	
+	$UI.UpdateSwapMenu()
+	$UI.init(Player,Enemy)
+	await get_tree().create_timer(2).timeout
+	EnemyAttack()
+func EnemyAttack():
+	var move
+	var d
+	move = randi_range(0, len(Enemy.MOVES) - 1)
+	move = Enemy.MOVES[move]
+	$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
+	d = Damage.Attack(move,"Enemy",Enemy,Player)
+	Player.hp -= d[0]
+	if Player.hp <= 0:
+		#add triggers for below if has more mon
+		$UI.faint("Player")
+	$UI.textedit(d[1])
+	$UI.reset_bars("Player",Player.hp)
+	$UI.disable_btns(false)

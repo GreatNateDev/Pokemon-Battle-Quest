@@ -16,7 +16,6 @@ func Spawn(biome):
 		1:
 			var start = 0
 			var end = Spawns["biome1"]["mons"].size() - 1
-			print(end)
 			var point = randi_range(start,end)
 			return Spawns["biome1"]["mons"][point]
 		2:

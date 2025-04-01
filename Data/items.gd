@@ -11,7 +11,6 @@ func Item(ItemName):
 			if MainScene.Player.hp > MainScene.Player.max_hp:
 				MainScene.Player.hp = MainScene.Player.max_hp
 		"pokeball":
-			print("Loaded")
 			res.position = player.global_position
 			res.texture = load("res://assets/items/pokeball.png")
 			res.scale = Vector2(2,2)
@@ -36,7 +35,6 @@ func Item(ItemName):
 			await get_tree().create_timer(1).timeout
 			PokeBall.catch("regular")
 		"master_ball":
-			print("Loaded")
 			res.position = player.global_position
 			res.texture = load("res://assets/items/master_ball.png")
 			res.scale = Vector2(2,2)

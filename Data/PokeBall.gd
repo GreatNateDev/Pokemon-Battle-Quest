@@ -14,7 +14,6 @@ func catch(baller : String):
 			final_result = await try(255)
 	return final_result
 func try(ball_modifier):
-	print(main.Enemy)
 	var catch_value = (( (3.0 * main.Enemy.max_hp - 2.0 * main.Enemy.hp) * main.Enemy.catch_rate * ball_modifier ) / (3.0 * main.Enemy.max_hp)) * main.Enemy.status_mod
 	var final = await calculate_shakes(catch_value)
 	if final["caught"] == true:
@@ -26,13 +25,9 @@ func calculate_shakes(catch_value: float) -> Dictionary:
 	if catch_value >= 255.0:
 		result["caught"] = true
 		result["shakes"] = 4
-		print(1)
 		await shake_anim()
-		print(2)
 		await shake_anim()
-		print(3)
 		await shake_anim()
-		print(4)
 		catch_anim()
 		return result
 	
@@ -48,7 +43,6 @@ func calculate_shakes(catch_value: float) -> Dictionary:
 		var rand_val = rng.randi() % 65536  # Random 0-65535
 		if rand_val < shake_threshold:
 			shake_anim()
-			print("shaked")
 			result["shakes"] += 1
 		else:
 			print("escape!!!")
