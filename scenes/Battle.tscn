@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
 [ext_resource type="Script" uid="uid://73q45qypxg4w" path="res://scripts/Battle.gd" id="1_gcpvl"]
@@ -9,7 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://dqxsqmarixhak" path="res://assets/music & sfx/super_attack.wav" id="6_6whck"]
 [ext_resource type="AudioStream" uid="uid://c64dvj2m4ym3a" path="res://assets/music & sfx/caught.wav" id="7_q8x7c"]
 [ext_resource type="Texture2D" uid="uid://dord0sy4g5q2a" path="res://assets/UI/shadow.png" id="8_ip42o"]
+[ext_resource type="AudioStream" uid="uid://cav26ivb1m6og" path="res://assets/music & sfx/ballshake.wav" id="9_3b6xh"]
 [ext_resource type="Texture2D" uid="uid://cvci26ta7e28g" path="res://assets/pokemon/mudkip/back.png" id="9_brrfw"]
+[ext_resource type="AudioStream" uid="uid://c5vbbnw7y0n1g" path="res://assets/music & sfx/caughtsfx.wav" id="10_lcn8m"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="10_llrwc"]
 [ext_resource type="Texture2D" uid="uid://bmvtqmjekndjv" path="res://assets/UI/mega.png" id="11_n1iay"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="12_dwriy"]
@@ -17,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
-[ext_resource type="Texture2D" uid="uid://dcsry4qtad6vx" path="res://assets/UI/catch_star.svg" id="18_3b6xh"]
 [ext_resource type="Script" uid="uid://ry7sfvlflgwj" path="res://scripts/ui.gd" id="18_5fcgm"]
 [ext_resource type="Script" uid="uid://dyxeatryxsghq" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
 [ext_resource type="Script" uid="uid://cjus1iffxtqk3" path="res://Data/Bag.gd" id="20_m7t4b"]
@@ -32,235 +33,6 @@ bg_color = Color(0.114231, 0.54926, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asvjh"]
 bg_color = Color(0.968627, 0, 0.215686, 1)
-
-[sub_resource type="Animation" id="Animation_lcn8m"]
-resource_name = "Main"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CatchAnimPos/CatchAnimation/StarMiddle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CatchAnimPos/CatchAnimation/StarMiddle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CatchAnimPos/CatchAnimation/StarRight:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(16, -6)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CatchAnimPos/CatchAnimation/StarRight:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CatchAnimPos/CatchAnimation/StarLeft:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-16, -6)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CatchAnimPos/CatchAnimation/StarLeft:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CatchAnimPos/CatchAnimation/StarMiddle:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0.203922, 1, 0), Color(0, 0.203922, 1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CatchAnimPos/CatchAnimation/StarRight:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0.203922, 1, 0), Color(0, 0.203922, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CatchAnimPos/CatchAnimation/StarLeft:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0.203922, 1, 0), Color(0, 0.203922, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_yhk5m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CatchAnimPos/CatchAnimation/StarMiddle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CatchAnimPos/CatchAnimation/StarMiddle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CatchAnimPos/CatchAnimation/StarRight:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CatchAnimPos/CatchAnimation/StarRight:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CatchAnimPos/CatchAnimation/StarLeft:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CatchAnimPos/CatchAnimation/StarLeft:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CatchAnimPos/CatchAnimation/StarMiddle:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.203922, 1, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CatchAnimPos/CatchAnimation/StarRight:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.203922, 1, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CatchAnimPos/CatchAnimation/StarLeft:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.203922, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n2clt"]
-_data = {
-&"Main": SubResource("Animation_lcn8m"),
-&"RESET": SubResource("Animation_yhk5m")
-}
 
 [node name="BattleField" type="Control"]
 layout_mode = 3
@@ -310,7 +82,15 @@ volume_db = 24.0
 
 [node name="caught" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("7_q8x7c")
-volume_db = 24.0
+volume_db = 7.0
+
+[node name="ballshake" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_3b6xh")
+volume_db = 12.876
+
+[node name="caughtsfx" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_lcn8m")
+volume_db = 16.838
 
 [node name="Cast" type="CanvasLayer" parent="."]
 layer = 0
@@ -800,7 +580,6 @@ visible = false
 texture_filter = 1
 
 [node name="item" type="Sprite2D" parent="Move_layer"]
-visible = false
 texture_filter = 1
 
 [node name="star" type="Sprite2D" parent="Move_layer"]
@@ -812,32 +591,6 @@ texture_filter = 1
 position = Vector2(1824, 192)
 scale = Vector2(5, 5)
 texture = ExtResource("16_ofqqp")
-
-[node name="CatchAnimPos" type="Control" parent="Move_layer"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="CatchAnimation" type="AnimationPlayer" parent="Move_layer/CatchAnimPos"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_n2clt")
-}
-autoplay = "Main"
-
-[node name="StarMiddle" type="Sprite2D" parent="Move_layer/CatchAnimPos/CatchAnimation"]
-modulate = Color(0, 0.203922, 1, 0)
-texture_filter = 1
-texture = ExtResource("18_3b6xh")
-
-[node name="StarRight" type="Sprite2D" parent="Move_layer/CatchAnimPos/CatchAnimation"]
-modulate = Color(0, 0.203922, 1, 0)
-texture_filter = 1
-texture = ExtResource("18_3b6xh")
-
-[node name="StarLeft" type="Sprite2D" parent="Move_layer/CatchAnimPos/CatchAnimation"]
-modulate = Color(0, 0.203922, 1, 0)
-texture_filter = 1
-texture = ExtResource("18_3b6xh")
 
 [node name="UI" type="Control" parent="." node_paths=PackedStringArray("money", "p_hpbar", "p_type", "p_name", "p_level", "p_exp", "p_texture", "e_hpbar", "e_type", "e_name", "e_level", "e_texture", "darken", "fightbuttons", "move1", "move2", "move3", "move4", "text", "bag", "swap", "run", "fight", "p_sprite", "e_sprite", "music", "faint_sfx", "main")]
 anchors_preset = 0
@@ -906,15 +659,17 @@ player = NodePath("../Cast/Player/Player_sprite")
 enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 PokeBall = NodePath("../PokeBall")
 
-[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "stars", "starspos")]
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_vuojo")
 main = NodePath("..")
 ball = NodePath("../Move_layer/item")
-stars = NodePath("../Move_layer/CatchAnimPos/CatchAnimation")
-starspos = NodePath("../Move_layer/CatchAnimPos")
+ballshake = NodePath("../SFX/ballshake")
+caughtsfx = NodePath("../SFX/caughtsfx")
+fanfair = NodePath("../SFX/caught")
+Audio = NodePath("../SFX/Audio")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]

@@ -1,8 +1,10 @@
 extends Control
 @export var main : Control
 @export var ball : Sprite2D
-@export var stars : AnimationPlayer
-@export var starspos : Control
+@export var ballshake : AudioStreamPlayer2D
+@export var caughtsfx : AudioStreamPlayer2D
+@export var fanfair : AudioStreamPlayer2D
+@export var Audio : AudioStreamPlayer2D
 var final_result
 func catch(baller : String):
 	match baller:
@@ -56,11 +58,43 @@ func calculate_shakes(catch_value: float) -> Dictionary:
 		result["caught"] = true
 	return result
 func shake_anim():
-	await get_tree().create_tween().tween_property(ball,"skew",-1,.5).finished
-	await get_tree().create_tween().tween_property(ball,"skew",1,.5).finished
-	await get_tree().create_tween().tween_property(ball,"skew",0,.5).finished
+	ballshake.play()
+	await get_tree().create_tween().tween_property(ball,"skew",-.3,.2).finished
+	await get_tree().create_tween().tween_property(ball,"skew",.3,.2).finished
+	await get_tree().create_tween().tween_property(ball,"skew",0,.2).finished
+	await get_tree().create_timer(.4).timeout
 func catch_anim():
+	caughtsfx.play()
 	ball.self_modulate = Color.DIM_GRAY
-	starspos.position = ball.position
-	#stars.play("Main")
+	Audio.stop()
+	await get_tree().create_timer(.3).timeout
+	fanfair.play()
+	finish_caught()
 	
+	
+func finish_caught():
+	if Globals.mon1 != null:
+		Globals.mon1 = main.Enemy
+	elif Globals.mon2 != null:
+		Globals.mon2 = main.Enemy
+	elif Globals.mon3 != null:
+		Globals.mon3 = main.Enemy
+	elif Globals.mon4 != null:
+		Globals.mon4 = main.Enemy
+	elif Globals.mon5 != null:
+		Globals.mon5 = main.Enemy
+	elif Globals.mon6 != null:
+		Globals.mon6 = main.Enemy
+	else:
+		print("fail")
+		#replace_mon()
+	Globals.BattleID += 1
+	main.Player.exp += main.Enemy.level * 12
+	if main.Player.exp >= main.Player.max_exp:
+			main.Player = main.LevelUpdater.update_level(main.Player)
+	main.SaveMon(main.Player)
+	main.Save.savefile(main.Player,Globals.money,Globals.starter,Globals.mon1,Globals.mon2,Globals.mon3,Globals.mon4,Globals.mon5,Globals.mon6,Globals.index)
+	Globals.loaded = true
+	await get_tree().create_timer(7).timeout
+	await get_tree().create_tween().tween_property(fanfair,"position",Vector2(3000,0),5).finished
+	get_tree().change_scene_to_file("res://scenes/Shop.tscn")
