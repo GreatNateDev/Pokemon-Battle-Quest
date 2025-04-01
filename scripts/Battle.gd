@@ -167,4 +167,4 @@ func SaveMon(Entity : Dictionary) -> void:
 			Globals.mon6 = Entity
 			Globals.index = 6
 func Swap() -> void:
-	
+	pass
