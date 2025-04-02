@@ -28,7 +28,7 @@ func Animation(source,target,move):
 				res.hide()
 				res.hframes = 1
 				res.scale = Vector2(1,1)
-		"watergun":
+		"water-gun":
 				res.texture = load("res://assets/moves/bubble.png")
 				res.vframes = 3
 				res.frame = 0
@@ -81,7 +81,7 @@ func Animation(source,target,move):
 			await get_tree().create_timer(.3).timeout
 			res.hide()
 			res.scale = Vector2(1,1)
-		"vinewhip":
+		"vine-whip":
 			res.texture = load("res://assets/moves/vine_whip.png")
 			res.position = target.global_position
 			res.scale = Vector2(3,3)
