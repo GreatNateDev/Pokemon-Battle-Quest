@@ -28,6 +28,9 @@ extends Control
 @export var faint_sfx : AudioStreamPlayer2D
 @export var swap_menu : ItemList
 @export var swap_menu_root : Control
+@export var normal : AudioStreamPlayer2D
+@export var supereff : AudioStreamPlayer2D
+@export var weak : AudioStreamPlayer2D
 @export var main : Control # Dont use this to much please
 func init(Player,Enemy):
 	p_exp.max_value = Player.max_exp
@@ -142,3 +145,16 @@ func UpdateSwapMenu():
 		swap_menu_root.show()
 	elif swap_menu_root.visible == true:
 		swap_menu_root.hide()
+func typesound(type):
+	await get_tree().create_timer(.5).timeout
+	match type:
+		1:
+			normal.play()
+		2:
+			supereff.play()
+		.5:
+			weak.play()
+		.25:
+			weak.play()
+		4:
+			supereff.play()

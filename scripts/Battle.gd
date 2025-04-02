@@ -7,8 +7,8 @@ var Save = preload("res://Data/Save.gd").new()
 var Load = preload("res://Data/Load.gd").new()
 var MoveLoader = preload("res://Data/MoveLoader.gd").new()
 var LevelUpdater = preload("res://Data/Level_updater.gd").new()
-var Damage = preload("res://Data/DamageFormula.gd").new()
 var BattleChecker = preload("res://Data/Battles.gd").new()
+var Damage = preload("res://Data/DamageFormula.gd").new()
 #Globals
 var Player : Dictionary
 var Enemy : Dictionary
@@ -65,7 +65,6 @@ func _ready():
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
 	Enemy = LevelUpdater.update_level(Enemy)
 	Enemy["max_hp"] = Enemy.hp
-	Globals.enemydata = Enemy
 	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
@@ -83,6 +82,7 @@ func Move4() -> void:
 func Fight(move) -> void:
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
+	$UI.typesound(d[2])
 	Enemy.hp -= d[0]
 	$UI.textedit(d[1])
 	$UI.reset_bars("Enemy",Enemy.hp)
@@ -209,6 +209,7 @@ func EnemyAttack():
 	move = Enemy.MOVES[move]
 	$BattleAnimations.Animation($Cast/Enemy/Enemy_sprite,$Cast/Player/Player_sprite,move)
 	d = Damage.Attack(move,"Enemy",Enemy,Player)
+	$UI.typesound(d[2])
 	Player.hp -= d[0]
 	if Player.hp <= 0:
 		#add triggers for below if has more mon

@@ -25,7 +25,7 @@ func Attack(Move, Entity, Stats, OStats):
 		txt = mov.ETEXT
 	elif opp == "Enemy":
 		txt = mov.PTEXT
-	return [int(final_damage),txt]
+	return [int(final_damage),txt,type_effectiveness]
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1
 	if move_type in Type.typx:
