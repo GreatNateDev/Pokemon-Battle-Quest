@@ -2,7 +2,6 @@
 A Pokemon battle simulator created in Godot
 ## Features
 - Gen 3 damage formula with newer Physical and Special split
-- Pokemon Switching (SOON)
 - 1000 "Battles" (SOON)
 - Cross platform windows web some times on major vers linux and ios and android (MAJOR RELEASES ONLY)
 - Saving every battle
@@ -14,4 +13,4 @@ A Pokemon battle simulator created in Godot
 ## Building
 This should just run in any Godot editor 4.4.x
 ## TODO:
-Switching Pokemon Setup for all sorts of parts of the Game
+Bug Hunting
