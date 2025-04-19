@@ -664,7 +664,7 @@ player = NodePath("../Cast/Player/Player_sprite")
 enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 PokeBall = NodePath("../PokeBall")
 
-[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio")]
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio", "Enemy")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -675,6 +675,7 @@ ballshake = NodePath("../SFX/ballshake")
 caughtsfx = NodePath("../SFX/caughtsfx")
 fanfair = NodePath("../SFX/caught")
 Audio = NodePath("../SFX/Audio")
+Enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]

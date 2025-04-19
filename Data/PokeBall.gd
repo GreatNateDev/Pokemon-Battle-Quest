@@ -5,6 +5,8 @@ extends Control
 @export var caughtsfx : AudioStreamPlayer2D
 @export var fanfair : AudioStreamPlayer2D
 @export var Audio : AudioStreamPlayer2D
+@export var Enemy : Sprite2D
+@export var escapesfx : AudioStreamPlayer2D
 var final_result
 func catch(baller : String):
 	match baller:
@@ -45,7 +47,9 @@ func calculate_shakes(catch_value: float) -> Dictionary:
 			shake_anim()
 			result["shakes"] += 1
 		else:
-			print("escape!!!")
+			result["caught"] = false
+			escapeanim()
+			
 	
 	# If all 4 shakes passed, catch succeeds
 	if result["shakes"] == 4:
@@ -98,3 +102,10 @@ func finish_caught():
 	await get_tree().create_timer(7).timeout
 	await get_tree().create_tween().tween_property(fanfair,"position",Vector2(3000,0),5).finished
 	get_tree().change_scene_to_file("res://scenes/Shop.tscn")
+func escapeanim():
+	ball.texture = load("res://assets/items/open.png")
+	#Play Escape Sound
+	await get_tree().create_timer(.5).timeout
+	Enemy.show()
+	ball.hide()
+	

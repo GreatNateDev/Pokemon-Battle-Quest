@@ -14,3 +14,4 @@ A Pokemon battle simulator created in Godot
 This should just run in any Godot editor 4.4.x
 ## TODO:
 Bug Hunting
+Rework EVs 
