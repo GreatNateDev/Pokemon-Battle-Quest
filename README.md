@@ -13,9 +13,12 @@ A Pokemon battle simulator created in Godot
 ## Building
 This should just run in any Godot editor 4.4.x
 ## TODO:
+Releasing Pokemon When over 6\
 Rework EVs\
 Gen 9 Damage formula\
 Work on "Story"\
 Add Pokemon Content (Items, abilities, pokemon)\
+Add Something to make it more rougelike some kind of perminate reward\
+Maybe Modding Support\
 Project Completed!
 
