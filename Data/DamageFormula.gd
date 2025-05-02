@@ -20,11 +20,20 @@ func Attack(Move, Entity, Stats, OStats):
 		base_damage = ((2 * Stats.level / 5 + 2)  * mov.power * Stats.spattack / OStats.spdefense) / 50 + 2
 	var adjusted_damage = base_damage * type_effectiveness
 	var final_damage = adjusted_damage * random_number / 100
-	var txt
+	var txt : String
 	if opp == "Player":
-		txt = mov.ETEXT
+		txt = mov.text
+		txt = txt.replace("%o", Globals.p_name.capitalize())
+		txt = txt.replace("%a", Globals.e_name.capitalize())
 	elif opp == "Enemy":
-		txt = mov.PTEXT
+		txt = mov.text
+		txt = txt.replace("%o", Globals.e_name.capitalize())
+		txt = txt.replace("%a", Globals.p_name.capitalize())
+	print(type_effectiveness)
+	if type_effectiveness in [2, 4]:  
+		txt += ", it was super effective!"
+	elif type_effectiveness in [0.5, 0.25]:  
+		txt += ", it was not very effective!"
 	return [int(final_damage),txt,type_effectiveness]
 func getMultiplier(move_type, primary_type, secondary_type):
 	var multiplier = 1

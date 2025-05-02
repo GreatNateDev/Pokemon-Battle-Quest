@@ -65,6 +65,8 @@ func _ready():
 	Enemy["MOVES"]=MoveLoader.init(Enemy)
 	Enemy = LevelUpdater.update_level(Enemy)
 	Enemy["max_hp"] = Enemy.hp
+	Globals.p_name = Player.name
+	Globals.e_name = Enemy.name
 	$UI.init(Player,Enemy)
 #Events
 func Move1() -> void:
@@ -80,6 +82,7 @@ func Move4() -> void:
 	Fight($Castless/Box_and_buttons_centre/Move4.text)
 	$BattleAnimations.Animation($Cast/Player/Player_sprite,$Cast/Enemy/Enemy_sprite,$Castless/Box_and_buttons_centre/Move4.text)
 func Fight(move) -> void:
+	Globals.p_name = Player.name
 	$UI.endFight()
 	var d = Damage.Attack(move,"Player",Player,Enemy)
 	$UI.typesound(d[2])
@@ -203,6 +206,7 @@ func PokemonSwap(index: int, _at_position: Vector2, _mouse_button_index: int) ->
 	await get_tree().create_timer(2).timeout
 	EnemyAttack()
 func EnemyAttack():
+	Globals.e_name = Enemy.name
 	var move
 	var d
 	move = randi_range(0, len(Enemy.MOVES) - 1)

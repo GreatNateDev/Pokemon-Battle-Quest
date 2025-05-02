@@ -5,70 +5,61 @@
 	"type": "Normal",
 	"category": "P",
 	"power": 40,
-	"PTEXT": "The Player tackled the opponent.",
-	"ETEXT": "The opponent tackled the player."
+	"text": "The %a tackled the %o!"
   },
   "scratch": {
 	"name": "Scratch",
 	"type": "Normal",
 	"category": "P",
 	"power": 40,
-	"PTEXT": "The Player scratched the opponent.",
-	"ETEXT": "The opponent scratched the player."
+	"text": "The %a scratched the %o!"
   },
   "ember": {
 	"name": "Ember",
 	"type": "Fire",
 	"category": "S",
 	"power": 40,
-	"PTEXT": "The Player burned the opponent.",
-	"ETEXT": "The opponent burned the player."
+	"text": "The %a burned the %o!"
   },
   "water-gun": {
 	"name": "Water Gun",
 	"type": "Water",
 	"category": "S",
 	"power": 40,
-	"PTEXT": "The Player shot water at the opponent.",
-	"ETEXT": "The opponent shot water at the player."
+	"text": "The %a shot water at the %o!"
   },
   "vine-whip": {
 	"name": "Vine Whip",
 	"type": "Grass",
 	"category": "P",
 	"power": 45,
-	"PTEXT": "The Player whipped the opponent with vines.",
-	"ETEXT": "The opponent whipped the player with vines."
+	"text": "The %a whipped the %o with vines!"
   },
   "thundershock": {
 	"name": "Thunder Shock",
 	"type": "Electric",
 	"category": "S",
 	"power": 40,
-	"PTEXT": "The Player shocked the opponent with electricity.",
-	"ETEXT": "The opponent shocked the player with electricity."
+	"text": "The %a shocked the %o with electricity!"
   },
   "quick-attack": {
 	"name": "Quick Attack",
 	"type": "Normal",
 	"category": "P",
 	"power": 40,
-	"PTEXT": "The Player attacked the opponent quickly.",
-	"ETEXT": "The opponent attacked the player quickly."
+	"text": "The %a attacked the %o quickly!"
   },
   "psychic": {
 	"name": "Psychic",
 	"type": "Psychic",
 	"category": "S",
 	"power": 90,
-	"PTEXT": "The Player used Psychic on the opponent.",
-	"ETEXT": "The opponent used Psychic on the Player."
+	"text": "The %a used Psychic on the %o!"
   },
 "thunderbolt": {
 	"name": "Thunderbolt",
 	"type": "Electric",
 	"category": "S",
 	"power": 90,
-	"PTEXT": "The Player shot a Thunderbolt at the opponent.",
-	"ETEXT": "The opponent shot a Thunderbolt at the Player"
+	"text": "The %a shot a Thunderbolt at the %o!"
 }}

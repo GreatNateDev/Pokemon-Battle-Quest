@@ -17,3 +17,5 @@ var mons = [mon1,mon2,mon3,mon4,mon5,mon6]
 var index : int = 1
 var BattleID : int = 1
 var trainer : String
+var e_name : String
+var p_name : String
