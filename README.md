@@ -18,7 +18,7 @@ Rework EVs\
 Gen 9 Damage formula\
 Work on "Story"\
 Add Pokemon Content (Items, abilities, pokemon)\
-Add Something to make it more rougelike some kind of perminate reward\
+Add Something to make it more rougelike some kind of permanent reward\
 Maybe Modding Support\
 Project Completed!
 
