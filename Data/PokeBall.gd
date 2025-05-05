@@ -7,6 +7,7 @@ extends Control
 @export var Audio : AudioStreamPlayer2D
 @export var Enemy : Sprite2D
 @export var escapesfx : AudioStreamPlayer2D
+@export var ui : Control
 var final_result
 func catch(baller : String):
 	match baller:
@@ -90,8 +91,8 @@ func finish_caught():
 		Globals.mon6 = main.Enemy
 		Globals.mon6.index = 6
 	else:
-		print("fail")
-		#replace_mon()
+		Globals.replacing = main.Enemy
+		ui.UpdateSwapMenu()
 	Globals.BattleID += 1
 	main.Player.exp += main.Enemy.level * 12
 	if main.Player.exp >= main.Player.max_exp:

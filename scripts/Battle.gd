@@ -95,7 +95,7 @@ func Fight(move) -> void:
 			var incer = Enemy.index
 			TrainerData["mon"+str(Enemy.index)] = {}
 			incer += 1
-			Enemy = TrainerData["mon"+incer]
+			Enemy = TrainerData["mon"+str(incer)]
 			
 		#play vic music if wild or if last trainers mon
 		Globals.BattleID += 1
@@ -106,11 +106,7 @@ func Fight(move) -> void:
 		if Player.exp >= Player.max_exp:
 			Player = LevelUpdater.update_level(Player)
 			$UI.update_exp()
-		SaveMon(Player)
-		Save.savefile(Player,Globals.money,Globals.starter,Globals.mon1,Globals.mon2,Globals.mon3,Globals.mon4,Globals.mon5,Globals.mon6,Globals.index)
-		await get_tree().create_timer(2.5).timeout
-		Globals.loaded = true
-		get_tree().change_scene_to_file("res://scenes/Shop.tscn")
+		Saver()
 		return
 	await get_tree().create_timer(2.5).timeout
 	EnemyAttack()
@@ -163,44 +159,92 @@ func SaveMon(Entity : Dictionary) -> void:
 			Globals.index = 6
 func Swap() -> void:
 	$UI.UpdateSwapMenu()
+func Saver() -> void:
+	SaveMon(Player)
+	Save.savefile(Player,Globals.money,Globals.starter,Globals.mon1,Globals.mon2,Globals.mon3,Globals.mon4,Globals.mon5,Globals.mon6,Globals.index)
+	await get_tree().create_timer(2.5).timeout
+	Globals.loaded = true
+	get_tree().change_scene_to_file("res://scenes/Shop.tscn")
 func PokemonSwap(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
-	match index:
-		0:  # Switch to mon1
-			if Player.index != 1 and Globals.mon1 != null:
-				set("Globals.mon%d" % Player.index, Player)
-				Player = Globals.mon1
-			else:
-				return
-		1:  # Switch to mon2
-			if Player.index != 2 and Globals.mon2 != null:
-				set("Globals.mon%d" % Player.index, Player)
-				Player = Globals.mon2
-			else:
-				return
-		2:  # Switch to mon3
-			if Player.index != 3 and Globals.mon3 != null:
-				set("Globals.mon%d" % Player.index, Player)
-				Player = Globals.mon3
-			else:
-				return
-		3:  # Switch to mon4
-			if Player.index != 4 and Globals.mon4 != null:
-				set("Globals.mon%d" % Player.index, Player)
-				Player = Globals.mon4
-			else:
-				return
-		4:  # Switch to mon5
-			if Player.index != 5 and Globals.mon5 != null:
-				set("Globals.mon%d" % Player.index, Player)
-				Player = Globals.mon5
-			else:
-				return
-		5:  # Switch to mon6
-			if Player.index != 6 and Globals.mon6 != null:
-				set("Globals.mon%d" % Player.index, Player)
-				Player = Globals.mon6
-			else:
-				return
+	if Globals.replacing == {}:
+		match index:
+			0:  # Switch to mon1
+				if Player.index != 1 and Globals.mon1 != null:
+					set("Globals.mon%d" % Player.index, Player)
+					Player = Globals.mon1
+				else:
+					return
+			1:  # Switch to mon2
+				if Player.index != 2 and Globals.mon2 != null:
+					set("Globals.mon%d" % Player.index, Player)
+					Player = Globals.mon2
+				else:
+					return
+			2:  # Switch to mon3
+				if Player.index != 3 and Globals.mon3 != null:
+					set("Globals.mon%d" % Player.index, Player)
+					Player = Globals.mon3
+				else:
+					return
+			3:  # Switch to mon4
+				if Player.index != 4 and Globals.mon4 != null:
+					set("Globals.mon%d" % Player.index, Player)
+					Player = Globals.mon4
+				else:
+					return
+			4:  # Switch to mon5
+				if Player.index != 5 and Globals.mon5 != null:
+					set("Globals.mon%d" % Player.index, Player)
+					Player = Globals.mon5
+				else:
+					return
+			5:  # Switch to mon6
+				if Player.index != 6 and Globals.mon6 != null:
+					set("Globals.mon%d" % Player.index, Player)
+					Player = Globals.mon6
+				else:
+					return
+	else:
+		match index:
+			1:
+				if Player.index != 1 and Globals.mon1 != null:
+					Globals.mon1 = null
+					Player = Globals.replacing
+					Player.index = 1
+					Globals.mon1 = Player
+			2:
+				if Player.index != 2 and Globals.mon2 != null:
+					Globals.mon2 = null
+					Player = Globals.replacing
+					Player.index = 2
+					Globals.mon2 = Player
+			3:
+				if Player.index != 3 and Globals.mon3 != null:
+					Globals.mon3 = null
+					Player = Globals.replacing
+					Player.index = 3
+					Globals.mon3 = Player
+			4:
+				if Player.index != 4 and Globals.mon4 != null:
+					Globals.mon4 = null
+					Player = Globals.replacing
+					Player.index = 4
+					Globals.mon4 = Player
+			5:
+				if Player.index != 5 and Globals.mon5 != null:
+					Globals.mon5 = null
+					Player = Globals.replacing
+					Player.index = 5
+					Globals.mon5 = Player
+			6:
+				if Player.index != 6 and Globals.mon != null:
+					Globals.mon6 = null
+					Player = Globals.replacing
+					Player.index = 6
+					Globals.mon6 = Player
+		Saver()
+
+
 	$UI.UpdateSwapMenu()
 	$UI.init(Player,Enemy)
 	await get_tree().create_timer(2).timeout

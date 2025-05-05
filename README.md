@@ -14,11 +14,18 @@ A Pokemon battle simulator created in Godot
 This should just run in any Godot editor 4.4.x
 ## TODO:
 Releasing Pokemon When over 6\
+Add real Gen 9 EXP formula\
 Rework EVs\
 Gen 9 Damage formula\
+Add options on the swap screen\
 Work on "Story"\
 Add Pokemon Content (Items, abilities, pokemon)\
+Complete Graphic Overhall\
 Add Something to make it more rougelike some kind of permanent reward\
 Maybe Modding Support\
 Project Completed!
+## BUGS:
+When you swap the names in the textblank when attacking dont change\
+Escape SFX doesnt exist\
+fix the new 6th down swap system
 

@@ -4,12 +4,12 @@ func Check():
 	var BattleID : int = Globals.BattleID
 	match BattleID:
 		5:
-			return TrainerLoader.Check(1)
+			return null  #TrainerLoader.Check(1)
 		10:
-			return 2 
+			return null
 		15:
-			return 3
+			return null
 		20:
-			return 4
+			return null
 		_:
 			return null

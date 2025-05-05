@@ -27,10 +27,10 @@ func Item_pressed(key):
 		for button in get_tree().get_nodes_in_group("ItemButton"):
 			if button.texture_normal.resource_path == texture_to_check:
 				items.Item(key)
+				Globals.items.erase(key)
 				button.queue_free()
 	else:
 		items.Item(key)
-	Globals.items.erase(key)
 	_on_exit_bag_pressed()
 
 

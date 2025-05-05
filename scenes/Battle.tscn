@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
-[ext_resource type="Script" uid="uid://c1xab3hsfufb7" path="res://scripts/Battle.gd" id="1_gcpvl"]
+[ext_resource type="Script" path="res://scripts/Battle.gd" id="1_gcpvl"]
 [ext_resource type="AudioStream" uid="uid://ckn8b5i6b3alm" path="res://assets/music & sfx/LVLUP.wav" id="2_l1t7a"]
 [ext_resource type="AudioStream" uid="uid://c6b12enjiovaq" path="res://assets/music & sfx/weak_attack.wav" id="3_wu1l2"]
 [ext_resource type="AudioStream" uid="uid://6xeqrlw56tjw" path="res://assets/music & sfx/attack.wav" id="4_aneb2"]
@@ -19,11 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://cqtg8ahs85rx5" path="res://assets/UI/crit.png" id="14_amsgh"]
 [ext_resource type="Texture2D" uid="uid://cbn1nlqnbd2fc" path="res://assets/UI/backround_level_one.png" id="15_v0x6n"]
 [ext_resource type="Texture2D" uid="uid://ddygika6d2qdj" path="res://assets/trainers/may.png" id="16_ofqqp"]
-[ext_resource type="Script" uid="uid://bdwbag5atxgc7" path="res://scripts/ui.gd" id="18_5fcgm"]
-[ext_resource type="Script" uid="uid://by8qrsvi633tu" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
-[ext_resource type="Script" uid="uid://x52lxjyr2x2h" path="res://Data/Bag.gd" id="20_m7t4b"]
-[ext_resource type="Script" uid="uid://dnvu23yn4eqw5" path="res://Data/items.gd" id="21_xdbdk"]
-[ext_resource type="Script" uid="uid://x8d1xxhfurs8" path="res://Data/PokeBall.gd" id="22_vuojo"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="18_5fcgm"]
+[ext_resource type="Script" path="res://scripts/BattleAnimations.gd" id="19_cj8pw"]
+[ext_resource type="Script" path="res://Data/Bag.gd" id="20_m7t4b"]
+[ext_resource type="Script" path="res://Data/items.gd" id="21_xdbdk"]
+[ext_resource type="Script" path="res://Data/PokeBall.gd" id="22_vuojo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykd6k"]
 bg_color = Color(0.968925, 0, 0.215202, 1)
@@ -508,12 +508,12 @@ z_index = 1
 texture_filter = 1
 position = Vector2(624.186, 727.863)
 emitting = false
-texture = ExtResource("14_amsgh")
 lifetime = 2.0
 one_shot = true
 speed_scale = 1.5
 explosiveness = 1.0
 randomness = 1.0
+texture = ExtResource("14_amsgh")
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
@@ -664,9 +664,10 @@ player = NodePath("../Cast/Player/Player_sprite")
 enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 PokeBall = NodePath("../PokeBall")
 
-[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio", "Enemy")]
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio", "Enemy", "ui")]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = -1.0
+offset_right = 39.0
 offset_bottom = 40.0
 script = ExtResource("22_vuojo")
 main = NodePath("..")
@@ -676,6 +677,7 @@ caughtsfx = NodePath("../SFX/caughtsfx")
 fanfair = NodePath("../SFX/caught")
 Audio = NodePath("../SFX/Audio")
 Enemy = NodePath("../Cast/Enemy/Enemy_sprite")
+ui = NodePath("../UI")
 
 [connection signal="pressed" from="Cast/Buttons/Fight" to="UI" method="Fight_Pressed"]
 [connection signal="pressed" from="Cast/Buttons/Run" to="." method="Run"]
