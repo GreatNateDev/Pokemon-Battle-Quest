@@ -244,7 +244,8 @@ func PokemonSwap(index: int, _at_position: Vector2, _mouse_button_index: int) ->
 					Globals.mon6 = Player
 		Saver()
 
-
+	Globals.p_name = Player.name
+	Globals.e_name = Enemy.name
 	$UI.UpdateSwapMenu()
 	$UI.init(Player,Enemy)
 	await get_tree().create_timer(2).timeout

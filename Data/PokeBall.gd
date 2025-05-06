@@ -5,8 +5,8 @@ extends Control
 @export var caughtsfx : AudioStreamPlayer2D
 @export var fanfair : AudioStreamPlayer2D
 @export var Audio : AudioStreamPlayer2D
+@export var escape : AudioStreamPlayer2D
 @export var Enemy : Sprite2D
-@export var escapesfx : AudioStreamPlayer2D
 @export var ui : Control
 var final_result
 func catch(baller : String):
@@ -105,7 +105,7 @@ func finish_caught():
 	get_tree().change_scene_to_file("res://scenes/Shop.tscn")
 func escapeanim():
 	ball.texture = load("res://assets/items/open.png")
-	#Play Escape Sound
+	escape.play()
 	await get_tree().create_timer(.5).timeout
 	Enemy.show()
 	ball.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://byxnol66fqe53"]
+[gd_scene load_steps=29 format=3 uid="uid://byxnol66fqe53"]
 
 [ext_resource type="AudioStream" uid="uid://d0ndh7wbh0g5q" path="res://assets/music & sfx/faint.wav" id="1_2g463"]
 [ext_resource type="Script" path="res://scripts/Battle.gd" id="1_gcpvl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cvci26ta7e28g" path="res://assets/pokemon/mudkip/back.png" id="9_brrfw"]
 [ext_resource type="AudioStream" uid="uid://c5vbbnw7y0n1g" path="res://assets/music & sfx/caughtsfx.wav" id="10_lcn8m"]
 [ext_resource type="Texture2D" uid="uid://ppvtn3efwkvx" path="res://assets/pokemon/mudkip/front.png" id="10_llrwc"]
+[ext_resource type="AudioStream" uid="uid://chkc04crvnqsg" path="res://assets/music & sfx/open.wav" id="11_ddpyr"]
 [ext_resource type="Texture2D" uid="uid://bmvtqmjekndjv" path="res://assets/UI/mega.png" id="11_n1iay"]
 [ext_resource type="Texture2D" uid="uid://cglct2g2n4x7p" path="res://assets/UI/box.png" id="12_dwriy"]
 [ext_resource type="Texture2D" uid="uid://0cu0km76xi7u" path="res://assets/UI/moves.png" id="13_wpnxy"]
@@ -91,6 +92,10 @@ volume_db = 12.876
 [node name="caughtsfx" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("10_lcn8m")
 volume_db = 16.838
+
+[node name="open" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_ddpyr")
+volume_db = 6.933
 
 [node name="Cast" type="CanvasLayer" parent="."]
 layer = 0
@@ -664,7 +669,7 @@ player = NodePath("../Cast/Player/Player_sprite")
 enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 PokeBall = NodePath("../PokeBall")
 
-[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio", "Enemy", "ui")]
+[node name="PokeBall" type="Control" parent="." node_paths=PackedStringArray("main", "ball", "ballshake", "caughtsfx", "fanfair", "Audio", "escape", "Enemy", "ui")]
 anchors_preset = 0
 offset_left = -1.0
 offset_right = 39.0
@@ -676,6 +681,7 @@ ballshake = NodePath("../SFX/ballshake")
 caughtsfx = NodePath("../SFX/caughtsfx")
 fanfair = NodePath("../SFX/caught")
 Audio = NodePath("../SFX/Audio")
+escape = NodePath("../SFX/open")
 Enemy = NodePath("../Cast/Enemy/Enemy_sprite")
 ui = NodePath("../UI")
 
