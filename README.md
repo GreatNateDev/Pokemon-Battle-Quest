@@ -27,5 +27,6 @@ Add Something to make it more rougelike some kind of permanent reward\
 Maybe Modding Support\
 Project Completed!
 ## BUGS:
+fix the fact that pokemon regen health when swapping to and from them\
 fix the new 6th down swap system\
 
